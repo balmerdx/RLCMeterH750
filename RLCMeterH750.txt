@@ -28,3 +28,14 @@ AD8031ARTZ - использовать как мощный ОУ перед ADC и
 	Пускай в предусилителе ОУ будет KU=3
 	Тогда в инструментальном нужен KU = 5
 	Нкжен резистор на 12 KOm
+
+
+Ищем мелкие энкодеры (желательно на край корпуса)
+	EVQWKA001 неплохой и с документацией
+	https://ru.aliexpress.com/item/33049515970.html
+	https://ru.mouser.com/datasheet/2/315/panasonic_atc0000ce27-1196962.pdf
+
+	EVQWKL001 - похожий, но головка побольше
+	https://ru.aliexpress.com/item/33051910087.html
+
+	https://ru.aliexpress.com/item/32813163679.html - SIQ-02FVS3 тоже вполне разумный вариант

@@ -1319,4 +1319,186 @@ Wire Wire Line
 	2450 2850 2050 2850
 Text Label 2050 2850 0    50   ~ 0
 25MHz
+$Comp
+L Device:Rotary_Encoder_Switch SW?
+U 1 1 5D9C2BDD
+P 5600 7050
+F 0 "SW?" H 5600 7417 50  0000 C CNN
+F 1 "EVQWKL001" H 5600 7326 50  0000 C CNN
+F 2 "balmer:Encoder_EVQWK4" H 5450 7210 50  0001 C CNN
+F 3 "~" H 5600 7310 50  0001 C CNN
+	1    5600 7050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5D9D807B
+P 4900 6900
+F 0 "C?" H 5015 6946 50  0000 L CNN
+F 1 "22n" H 5015 6855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4938 6750 50  0001 C CNN
+F 3 "~" H 4900 6900 50  0001 C CNN
+	1    4900 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5D9DD258
+P 4900 7200
+F 0 "C?" H 5015 7246 50  0000 L CNN
+F 1 "22n" H 5015 7155 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4938 7050 50  0001 C CNN
+F 3 "~" H 4900 7200 50  0001 C CNN
+	1    4900 7200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5D9DD6BF
+P 6100 7050
+F 0 "C?" H 6215 7096 50  0000 L CNN
+F 1 "22n" H 6215 7005 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6138 6900 50  0001 C CNN
+F 3 "~" H 6100 7050 50  0001 C CNN
+	1    6100 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 6950 5900 6900
+Wire Wire Line
+	5900 6900 6000 6900
+Wire Wire Line
+	5900 7150 5900 7200
+Wire Wire Line
+	5900 7200 6100 7200
+Wire Wire Line
+	4900 7350 5300 7350
+Wire Wire Line
+	5300 7350 5300 7150
+Wire Wire Line
+	5300 7050 5200 7050
+Connection ~ 4900 7050
+Wire Wire Line
+	4900 6750 5300 6750
+Wire Wire Line
+	5300 6750 5300 6950
+$Comp
+L power:GND #PWR?
+U 1 1 5DA0647D
+P 6000 6900
+F 0 "#PWR?" H 6000 6650 50  0001 C CNN
+F 1 "GND" H 6005 6727 50  0001 C CNN
+F 2 "" H 6000 6900 50  0001 C CNN
+F 3 "" H 6000 6900 50  0001 C CNN
+	1    6000 6900
+	1    0    0    -1  
+$EndComp
+Connection ~ 6000 6900
+Wire Wire Line
+	6000 6900 6100 6900
+$Comp
+L power:GND #PWR?
+U 1 1 5DA06A5A
+P 5200 7050
+F 0 "#PWR?" H 5200 6800 50  0001 C CNN
+F 1 "GND" H 5205 6877 50  0001 C CNN
+F 2 "" H 5200 7050 50  0001 C CNN
+F 3 "" H 5200 7050 50  0001 C CNN
+	1    5200 7050
+	1    0    0    -1  
+$EndComp
+Connection ~ 5200 7050
+Wire Wire Line
+	5200 7050 4900 7050
+$Comp
+L Device:R R?
+U 1 1 5DA124D2
+P 4700 6750
+F 0 "R?" V 4600 6750 50  0000 C CNN
+F 1 "10k" V 4700 6750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4630 6750 50  0001 C CNN
+F 3 "~" H 4700 6750 50  0001 C CNN
+	1    4700 6750
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5DA15634
+P 4700 7350
+F 0 "R?" V 4600 7350 50  0000 C CNN
+F 1 "10k" V 4700 7350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4630 7350 50  0001 C CNN
+F 3 "~" H 4700 7350 50  0001 C CNN
+	1    4700 7350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4550 7350 4550 7050
+Wire Wire Line
+	4900 6750 4850 6750
+Connection ~ 4900 6750
+Wire Wire Line
+	4900 7350 4850 7350
+Connection ~ 4900 7350
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5DA37693
+P 4400 7050
+F 0 "#PWR?" H 4400 6900 50  0001 C CNN
+F 1 "+3.3V" H 4415 7223 50  0000 C CNN
+F 2 "" H 4400 7050 50  0001 C CNN
+F 3 "" H 4400 7050 50  0001 C CNN
+	1    4400 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 7050 4400 7050
+Connection ~ 4550 7050
+Wire Wire Line
+	4550 7050 4550 6750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5DA445DC
+P 6800 7200
+F 0 "#PWR?" H 6800 7050 50  0001 C CNN
+F 1 "+3.3V" H 6815 7373 50  0000 C CNN
+F 2 "" H 6800 7200 50  0001 C CNN
+F 3 "" H 6800 7200 50  0001 C CNN
+	1    6800 7200
+	1    0    0    -1  
+$EndComp
+Text Label 5000 6750 0    50   ~ 0
+ENC_A
+Text Label 5000 7350 0    50   ~ 0
+ENC_B
+$Comp
+L Device:R R?
+U 1 1 5DA649A2
+P 6600 7200
+F 0 "R?" V 6500 7200 50  0000 C CNN
+F 1 "10k" V 6600 7200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6530 7200 50  0001 C CNN
+F 3 "~" H 6600 7200 50  0001 C CNN
+	1    6600 7200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6100 7200 6450 7200
+Connection ~ 6100 7200
+Text Label 6200 7200 0    50   ~ 0
+ENC_C
+Wire Wire Line
+	6800 7200 6750 7200
+Wire Wire Line
+	4650 1450 5000 1450
+Text Label 4750 1450 0    50   ~ 0
+ENC_A
+Wire Wire Line
+	4650 1550 5000 1550
+Wire Wire Line
+	4650 1650 5000 1650
+Text Label 4750 1550 0    50   ~ 0
+ENC_B
+Text Label 4750 1650 0    50   ~ 0
+ENC_C
 $EndSCHEMATC
