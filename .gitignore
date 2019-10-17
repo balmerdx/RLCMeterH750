@@ -1,2 +1,5 @@
 *\.sch-bak
 *\.kicad_pcb-bak
+
+circuit/RLCMeterH750/out
+circuit/TestDSBGA6/out
