@@ -131,3 +131,68 @@ SPU1410LR5H-QB - MEMS микрофон с аналоговым выходом, �
 Как вариант полностью отказаться от кнопок, и перейти на touch display
 
 ----------------------------------------------------------------------------------------------------------------
+
+
+GCC_PATH = ${ARM_NONE_EABI}
+
+python ~/radio/stm32/tools/stm32_flash_0.py /home/balmer/radio/stm32/tmp/TestH743_USB_1/build/TestH743_USB.bin
+
+/home/balmer/opt/gcc-arm-none-eabi-8-2019-q3-update/bin/arm-none-eabi-gdb --symbols=build/TestH743_USB.elf
+
+- попробовать сделать Speed Test на STM32H7
+
+void speedLoop()
+{
+    for(int i=0; i<ARRAY_SIZE; i++)
+    {
+        float f = array_a[i]*array_b[i]+array_c[i];
+        if(f>10.0f || f<-10.0f)
+            f *= 0.2f;
+
+        array_c[i] = f;
+    }
+}
+
+	time taken 0.063690 seconds на  Intel Core 7 mobile (10000 loop count)
+	10.220 seconds на STM32H7 (96 MHz) данные и так лежали в DTCM RAM (т.е. в самой быстрой)
+	4.971 seconds на STM32H7 (480 MHz)
+
+
+void speedLoop()
+{
+    for(int i=0; i<ARRAY_SIZE; i++)
+    {
+        float f = array_a[i]*array_b[i]+array_c[i];
+        array_c[i] = f;
+    }
+}
+
+	time taken 0.032620 seconds на  Intel Core 7 mobile (10000 loop count)
+
+	ICache disable
+	5.553  seconds на STM32H7 (96 MHz)
+	2.903 seconds на STM32H7 (480 MHz)
+
+	ICache enable
+	4.269 seconds на STM32H7 (96 MHz)
+	0.853 seconds на STM32H7 (480 MHz)
+
+RV210316637CN
+
+
+>>> 480e6/10000/4096
+11.71875
+>>> 488e6/10000/4096*3.
+35.7421875
+>>> 480e6/10000/4096*3.
+35.15625
+>>> 1.8e9/10000/4096*0.03
+1.318359375
+>>> 96e6/10000/4096*5.55
+13.0078125
+
+
+
+
+- @$(CC) $(OBJS) $(USER_OBJS) $(LDFLAGS) -o "$(TARGET)_$(MAKECMDGOALS).elf" - правильный порядок требуется, чтобы не было _init неорпределённого и других системных библиотек
+
