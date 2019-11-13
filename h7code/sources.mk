@@ -13,7 +13,7 @@ DEPS += \
 	output/base/Src/usbd_cdc_if.d \
 	output/base/Src/usbd_conf.d \
 	output/base/Src/usbd_desc.d \
-	output/base/startup_stm32h743xx.d \
+	output/base/startup_stm32h750xx.d \
 	output/usb/usbd_core.d \
 	output/usb/usbd_ctlreq.d \
 	output/usb/usbd_ioreq.d \
@@ -55,7 +55,7 @@ OBJS += \
 	output/base/Src/usbd_cdc_if.o \
 	output/base/Src/usbd_conf.o \
 	output/base/Src/usbd_desc.o \
-	output/base/startup_stm32h743xx.o \
+	output/base/startup_stm32h750xx.o \
 	output/usb/usbd_core.o \
 	output/usb/usbd_ctlreq.o \
 	output/usb/usbd_ioreq.o \
@@ -123,8 +123,8 @@ output/base/Src/usbd_desc.o: ./Src/usbd_desc.c
 	@echo 'Building target: usbd_desc.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
-output/base/startup_stm32h743xx.o: ./startup_stm32h743xx.s
-	@echo 'Building target: startup_stm32h743xx.s'
+output/base/startup_stm32h750xx.o: ./startup_stm32h750xx.s
+	@echo 'Building target: startup_stm32h750xx.s'
 	@$(CC) $(ASM_FLAGS) -o "$@" "$<"
 
 output/usb/usbd_core.o: Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c

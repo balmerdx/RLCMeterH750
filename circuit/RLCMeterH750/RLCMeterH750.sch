@@ -1751,4 +1751,6 @@ Wire Wire Line
 	4700 3850 4700 3900
 Wire Wire Line
 	4700 3900 5000 3900
+Text Notes 7450 2100 0    50   ~ 0
+U3 Ошибка!!\nНужен был корпус\nTSSOP-8_3x3mm_P0.65mm
 $EndSCHEMATC

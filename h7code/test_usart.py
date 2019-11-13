@@ -10,7 +10,8 @@ ser = None
 def connect():
 	global ser
 	ser = serial.Serial(
-		port='/dev/ttyACM1',
+		port='/dev/ttyACM0',#UART
+		#port='/dev/ttyACM1',#USB
 		baudrate=115200,
 		#baudrate=500000,
 		parity=serial.PARITY_NONE,

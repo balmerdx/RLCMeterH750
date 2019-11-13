@@ -176,6 +176,11 @@ void speedLoop()
 	ICache enable
 	4.269 seconds на STM32H7 (96 MHz)
 	0.853 seconds на STM32H7 (480 MHz)
+	1.068 seconds на STM32H7 (384 MHz)
+
+	1.025 seconds на STM32H750 (400 MHz)
+
+
 
 RV210316637CN
 
@@ -195,4 +200,38 @@ RV210316637CN
 
 
 - @$(CC) $(OBJS) $(USER_OBJS) $(LDFLAGS) -o "$(TARGET)_$(MAKECMDGOALS).elf" - правильный порядок требуется, чтобы не было _init неорпределённого и других системных библиотек
+
+
+- данные принимаются в функции CDC_Receive_FS --ok
+
+- STM32H7 (384 MHz) 148 мА с включенным USB
+	Если мы нацеливаемся на 200 мА потребление, то нужна батарея минимум 600 мА-ч
+
+	PWR_REGULATOR_VOLTAGE_SCALE0 - 1.21 V
+	PWR_REGULATOR_VOLTAGE_SCALE1 - 1.213 V
+	PWR_REGULATOR_VOLTAGE_SCALE2 - 1.129 V
+	PWR_REGULATOR_VOLTAGE_SCALE3 - 1.063 V
+
+
+	Да, вполне выгодно питать ядпро STM32H7 от отдельного Step Down на 1.2V
+
+
+TPS62207 - 1.2V StepDown 1 MHz 30 Ma 0.3$
+TPS62205 - 2.5V
+TPS62203 - 3.3V
+
+10 uH
+TDK SPM6530T-100M-HZ  - хороший, но большой, точно выдержит 1 МГц и несколько ампер
+
+LVF808040-100M-NGR(10pcs) - слабенький, с трудом держит ток 0.5A, но дешевый и расчитан на 1 МГц
+
+
+
+- частота 
+	8/1*96/2 = 384
+	8/32*129/2 = 16.125
+
+
+	С кварцем 25 МГц нам надо обеспечить 48 МГц на USB (это PLL1 DIVQ1)
+
 

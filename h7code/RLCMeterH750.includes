@@ -1,0 +1,11 @@
+/home/balmer/opt/gcc-arm-none-eabi-7-2018-q2-update/arm-none-eabi/include
+/home/balmer/opt/gcc-arm-none-eabi-7-2018-q2-update/arm-none-eabi/include/c++/7.3.1/tr1
+Drivers/STM32H7xx_HAL_Driver/Inc
+Drivers/STM32H7xx_HAL_Driver/Inc/Legacy
+Drivers/CMSIS/Include
+Drivers/CMSIS/Device/ST/STM32H7xx/Include
+Src
+Inc
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+

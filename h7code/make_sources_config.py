@@ -7,6 +7,7 @@
 import sys
 sys.path.insert(0, '/home/balmer/radio/stm32/projects/BalmerVNA/make_py')
 import make_sources
+import copy
 
 STM_LIB_DIR = "/home/balmer/radio/stm32/new_lib/l0/STM32Cube_FW_L0_V1.10.0/Drivers/STM32L0xx_HAL_Driver"
 QT_PROJECT_NAME = "RLCMeterH750"
@@ -19,7 +20,8 @@ sources = [
 		"Src",
 		],
 	"files" : [
-		"startup_stm32h743xx.s"
+		#"startup_stm32h743xx.s"
+		"startup_stm32h750xx.s"
 		]
 },
 {
@@ -41,6 +43,7 @@ sources = [
 
 },
 {
+	"label" : "hal_src",
 	"base" : "Drivers/STM32H7xx_HAL_Driver/Src",
 	"output" : "hal",
 	"files" : [
@@ -72,8 +75,30 @@ sources = [
 		]
 
 },
+{
+	"label" : "hal_src",
+	"base" : "Drivers/STM32H7xx_HAL_Driver",
+	"output" : "hal",
+	"dirs" : [
+		"Inc"
+	]
+},
 ]
 
-
+#include hal .h files
+'''
+for source in sources:
+	if "label" not in source:
+		continue
+	if source["label"]=="hal_src":
+		sourceh = copy.deepcopy(source)
+		del sourceh["label"]
+		sourceh["base"] = "Drivers/STM32H7xx_HAL_Driver/Inc"
+		files = sourceh["files"]
+		for i in range(len(files)):
+			files[i] = files[i].replace(".c", ".h")
+		sources.append(sourceh)
+		break
+'''
 if __name__ == "__main__":
 	make_sources.makeProject(sources, QT_PROJECT_NAME)

@@ -27,7 +27,7 @@ endif
 
 ifeq ($(MAKECMDGOALS),release)
 C_DEFINES= -DNDEBUG
-C_FLAGS = -Os
+C_FLAGS = -O3
 endif
 
 C_FLAGS += -fdata-sections -ffunction-sections
@@ -37,14 +37,16 @@ LDFLAGS += -Wl,--gc-sections
 #C_FLAGS += -funsigned-char
 C_DEFINES+= \
 -DUSE_HAL_DRIVER \
--DSTM32H743xx
+-DSTM32H743xx \
+-DHSE_VALUE=25000000
 
 C_FLAGS+= -Wall -c -MMD $(C_INCLIDES) $(C_DEFINES) $(M_CPU)
 #C_FLAGS+= -g -Wa,-adhls #asm listing
 #C_FLAGS+= -S
 
 LIBS = -lc -lm -lnosys
-LDFLAGS += -TSTM32H743ZITx_FLASH.ld  $(LIBS)  -Wl,-Map=output/linker.map,--cref
+#LDFLAGS += -TSTM32H743ZITx_FLASH.ld  $(LIBS)  -Wl,-Map=output/linker.map,--cref
+LDFLAGS += -TSTM32H750VBTx_FLASH.ld  $(LIBS)  -Wl,-Map=output/linker.map,--cref
 ASM_FLAGS = -x assembler-with-cpp -c $(M_CPU)
 
 TARGET=output/program
