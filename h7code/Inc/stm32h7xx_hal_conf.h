@@ -21,6 +21,7 @@
 #ifndef __STM32H7xx_HAL_CONF_H
 #define __STM32H7xx_HAL_CONF_H
 
+#include <stdbool.h>
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -66,7 +67,7 @@
 /* #define HAL_SPDIFRX_MODULE_ENABLED   */
 /* #define HAL_SPI_MODULE_ENABLED   */
 /* #define HAL_SWPMI_MODULE_ENABLED   */
-/* #define HAL_TIM_MODULE_ENABLED   */
+#define HAL_TIM_MODULE_ENABLED
 #define HAL_UART_MODULE_ENABLED
 /* #define HAL_USART_MODULE_ENABLED   */
 /* #define HAL_IRDA_MODULE_ENABLED   */

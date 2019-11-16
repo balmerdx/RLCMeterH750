@@ -24,6 +24,7 @@
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
 #include "test_loop_speed.h"
+#include "hardware/quadrature_encoder.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -77,13 +78,6 @@ ETH_HandleTypeDef heth;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
-extern uint32_t _itcm_start;
-extern uint32_t _itcm_end;
-extern uint32_t _itcm_start_in_flash;
-/*
-extern const uint32_t _sdata;
-extern const uint32_t _edata;
-*/
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -105,14 +99,6 @@ uint32_t testSpeed()
 	uint32_t start = HAL_GetTick();
 	for(int i=0; i<loop_count; i++)
 		speedLoop();
-	/*
-	int size = (uint32_t)&_itcm_end-(uint32_t)&_itcm_start;
-	memcpy(&_itcm_start, &_itcm_start_in_flash, size);
-	void (*speedLoop0)() = &speedLoop; 
-	for(int i=0; i<loop_count; i++)
-		//speedLoop();
-		speedLoop0();
-*/
 	uint32_t end = HAL_GetTick();
 
 	return end-start;
@@ -124,58 +110,53 @@ uint32_t testSpeed()
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+    HAL_Init();
 
-  /* USER CODE END 1 */
-  
+    SystemClock_Config();
 
-  /* MCU Configuration--------------------------------------------------------*/
+    MX_GPIO_Init();
+    MX_ETH_Init();
+    MX_USB_DEVICE_Init();
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+    QuadEncInit();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ETH_Init();
-  MX_USB_DEVICE_Init();
-  /* USER CODE BEGIN 2 */
-  static char buffer_cdc[128];
-  /* USER CODE END 2 */
+    static char buffer_cdc[128];
 
     SCB_EnableICache();
     SCB_EnableDCache();
-  delta_ms = testSpeed();
-	//int size = sprintf(buffer, "Test %lx, %lx sz=%lx", (uint32_t)&_itcm_start, (uint32_t)&_itcm_end, (uint32_t)&_itcm_end-(uint32_t)&_itcm_start);
-	//int size = sprintf(buffer, "Test %lx, %lx sz=%lx", (uint32_t)_sdata, (uint32_t)_edata, (uint32_t)_edata-(uint32_t)_sdata);
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
-    int size_cdc = sprintf(buffer_cdc, "USB. Speed %i ms bytes = %li time=%li", (int)delta_ms, received_bytes, HAL_GetTick()/1000);
-    received_bytes = 0;
-    CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
-	HAL_Delay(2000);
+    //delta_ms = testSpeed();
+    uint16_t old_enc_value = 1234;
+    bool old_enc_button = false;
 
-	if(delta_ms==517)
-	{
-		testSpeed();
-	}
+    while (1)
+    {
+        //int enc_a = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7);
+        //int enc_b = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
+        //int enc_s = HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_4);
+        /* USER CODE END WHILE */
+        //int size_cdc = sprintf(buffer_cdc, "USB. Speed %i ms bytes = %li time=%li", (int)delta_ms, received_bytes, HAL_GetTick()/1000);
+        //int size_cdc = sprintf(buffer_cdc, "USB. a=%i b=%i s=%i", enc_a, enc_b, enc_s);
 
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+        uint16_t enc_value = QuadEncValue();
+        bool enc_button = QuadEncButton();
+
+        if(enc_value!=old_enc_value || enc_button!=old_enc_button)
+        {
+            old_enc_value = enc_value;
+            old_enc_button = enc_button;
+
+            int size_cdc = sprintf(buffer_cdc, "USB. enc=%i s=%i", (int)enc_value, enc_button?1:0);
+            received_bytes = 0;
+            CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
+        }
+
+        HAL_Delay(50);
+
+        if(delta_ms==517)
+        {
+            testSpeed();
+        }
+    }
 }
 
 
@@ -309,11 +290,24 @@ static void MX_ETH_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOH_CLK_ENABLE();
+/*
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    //Test Encoder
+    //PB6, PB7, PD4
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
+    GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+    GPIO_InitStruct.Pin = GPIO_PIN_4;
+    HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+*/
 }
 /*
 static void MX_GPIO_Init(void)

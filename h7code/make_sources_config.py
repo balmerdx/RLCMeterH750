@@ -17,7 +17,9 @@ sources = [
 	"base" : ".",
 	"output" : "base",
 	"dirs" : [
+		"Inc",
 		"Src",
+		"Src/hardware",
 		],
 	"files" : [
 		#"startup_stm32h743xx.s"

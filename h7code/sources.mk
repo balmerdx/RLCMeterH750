@@ -13,6 +13,7 @@ DEPS += \
 	output/base/Src/usbd_cdc_if.d \
 	output/base/Src/usbd_conf.d \
 	output/base/Src/usbd_desc.d \
+	output/base/Src/hardware/quadrature_encoder.d \
 	output/base/startup_stm32h750xx.d \
 	output/usb/usbd_core.d \
 	output/usb/usbd_ctlreq.d \
@@ -55,6 +56,7 @@ OBJS += \
 	output/base/Src/usbd_cdc_if.o \
 	output/base/Src/usbd_conf.o \
 	output/base/Src/usbd_desc.o \
+	output/base/Src/hardware/quadrature_encoder.o \
 	output/base/startup_stm32h750xx.o \
 	output/usb/usbd_core.o \
 	output/usb/usbd_ctlreq.o \
@@ -121,6 +123,10 @@ output/base/Src/usbd_conf.o: ./Src/usbd_conf.c
 
 output/base/Src/usbd_desc.o: ./Src/usbd_desc.c
 	@echo 'Building target: usbd_desc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/hardware/quadrature_encoder.o: ./Src/hardware/quadrature_encoder.c
+	@echo 'Building target: quadrature_encoder.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/startup_stm32h750xx.o: ./startup_stm32h750xx.s
