@@ -26,6 +26,7 @@
 #include "test_loop_speed.h"
 #include "hardware/quadrature_encoder.h"
 #include "ili/UTFT.h"
+#include "ili/DefaultFonts.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -129,10 +130,14 @@ int main(void)
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
 
-    UTFT_InitLCD(UTFT_PORTRAIT);
-    UTFT_fillScrW(VGA_RED);
+    UTFT_InitLCD(UTFT_LANDSCAPE2);
+    UTFT_fillScrW(VGA_BLACK);
     UTFT_setColorW(VGA_GREEN);
     UTFT_fillRect(10,10, 20,20);
+
+    UTFT_setFont(BigFont);
+    UTFT_setColorW(VGA_WHITE);
+    UTFT_print("Hello ILI9341", 20, 30);
 
     while (1)
     {

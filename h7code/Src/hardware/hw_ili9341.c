@@ -32,6 +32,11 @@ void Error_Handler(void);
 
 static SPI_HandleTypeDef SpiHandle;
 
+#define BUFFER_SIZE 128
+static uint8_t spi_tx_buffer[BUFFER_SIZE];
+static int spi_tx_buffer_count; //количество байтов в spi_tx_buffer
+
+
 void HwLcdInit()
 {
     GPIO_CLOCK_ENABLE();
@@ -66,7 +71,7 @@ void HwLcdInit()
     HAL_GPIO_Init(TFT_PORT_CS, &gpio);
 
     SpiHandle.Instance               = TFT_SPI;
-    SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;//SPI_BAUDRATEPRESCALER_32;
+    SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
     SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
     SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
     SpiHandle.Init.CLKPolarity       = SPI_POLARITY_LOW;
@@ -85,6 +90,8 @@ void HwLcdInit()
     {
         Error_Handler();
     }
+
+    spi_tx_buffer_count = 0;
 }
 
 void DelaySome()
@@ -132,16 +139,25 @@ uint8_t HwLcdSendReceive(uint8_t data)
 
 void HwLcdSend16NoWait(uint16_t data)
 {
+/*
     HwLcdSend(data>>8);
     HwLcdSend(data);
-/*
-    if(HAL_SPI_Transmit(&SpiHandle, (uint8_t*)&data, 2, TIMEOUT_MS)!=HAL_OK)
-    {
-        Error_Handler();
-    }
 */
+    if(spi_tx_buffer_count>=BUFFER_SIZE-1)
+        HwLcdWait();
+
+    spi_tx_buffer[spi_tx_buffer_count] = data>>8;
+    spi_tx_buffer[spi_tx_buffer_count+1] = data;
+    spi_tx_buffer_count += 2;
 }
 
 void HwLcdWait()
 {
+    if(spi_tx_buffer_count>0)
+    if(HAL_SPI_Transmit(&SpiHandle, spi_tx_buffer, spi_tx_buffer_count, TIMEOUT_MS)!=HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    spi_tx_buffer_count = 0;
 }

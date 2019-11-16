@@ -134,7 +134,6 @@ static int disp_x_size=239, disp_y_size=319;
 static uint16_t front_color;
 static uint16_t back_color;
 
-static uint8_t orient;
 //uint8_t display_model, display_transfer_mode, display_serial_mode;
 //regtype *P_RS, *P_WR, *P_CS, *P_RST, *P_SDA, *P_SCL, *P_ALE;
 //regsize B_RS, B_WR, B_CS, B_RST, B_SDA, B_SCL, B_ALE;
@@ -255,6 +254,7 @@ uint8_t UTFT_readID(void)
 
 void UTFT_InitLCD(uint8_t orientation)
 {
+    uint8_t orient;
     HwLcdInit();
     HwLcdPinLed(1);
     HwLcdPinCE(1);
@@ -265,7 +265,7 @@ void UTFT_InitLCD(uint8_t orientation)
     HwLcdPinRst(1);
 
     orient=orientation;
-    if (orient==UTFT_LANDSCAPE)
+    if (orient==UTFT_LANDSCAPE || orient==UTFT_LANDSCAPE2)
     {
         swap(int, disp_x_size, disp_y_size);
     }
@@ -417,6 +417,8 @@ void UTFT_InitLCD(uint8_t orientation)
     sendCMD(SET_ADDRESS_MODE);    	// Memory Access Control
     if (orient==UTFT_LANDSCAPE)
         WRITE_DATA(PAGECOL_SELECTION | COLUMN_ADDRESS_ORDER | PAGE_ADDRESS_ORDER | BGR); //landscape
+    else if(orient==UTFT_LANDSCAPE2)
+        WRITE_DATA(PAGECOL_SELECTION | BGR); //landscape
     else
         WRITE_DATA(0x48);  	//C8	   MH=0 BGR=1 ML=0 MV=0 MX=1 MY=0
     

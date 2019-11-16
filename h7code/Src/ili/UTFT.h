@@ -23,6 +23,8 @@
 
 #define UTFT_PORTRAIT 0
 #define UTFT_LANDSCAPE 1
+//rotate dicplay to 180 degrees
+#define UTFT_LANDSCAPE2 2
 
 //*********************************
 // COLORS
