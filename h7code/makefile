@@ -17,6 +17,8 @@ C_INCLIDES= \
 -IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
 -IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
 
+C_INCLIDES+= -includeDrivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
+
 M_CPU = -mthumb -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard
 LDFLAGS = $(M_CPU) -specs=nano.specs
 

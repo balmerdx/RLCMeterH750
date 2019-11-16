@@ -13,7 +13,12 @@ DEPS += \
 	output/base/Src/usbd_cdc_if.d \
 	output/base/Src/usbd_conf.d \
 	output/base/Src/usbd_desc.d \
+	output/base/Src/hardware/hw_ili9341.d \
 	output/base/Src/hardware/quadrature_encoder.d \
+	output/base/Src/ili/DefaultFonts.d \
+	output/base/Src/ili/UTFT.d \
+	output/base/Src/ili/float_to_string.d \
+	output/base/Src/ili/utf_font.d \
 	output/base/startup_stm32h750xx.d \
 	output/usb/usbd_core.d \
 	output/usb/usbd_ctlreq.d \
@@ -40,6 +45,7 @@ DEPS += \
 	output/hal/stm32h7xx_hal_exti.d \
 	output/hal/stm32h7xx_hal_eth.d \
 	output/hal/stm32h7xx_hal_eth_ex.d \
+	output/hal/stm32h7xx_hal_spi.d \
 	output/hal/stm32h7xx_hal_tim.d \
 	output/hal/stm32h7xx_hal_tim_ex.d \
 	output/hal/stm32h7xx_hal_uart.d \
@@ -56,7 +62,12 @@ OBJS += \
 	output/base/Src/usbd_cdc_if.o \
 	output/base/Src/usbd_conf.o \
 	output/base/Src/usbd_desc.o \
+	output/base/Src/hardware/hw_ili9341.o \
 	output/base/Src/hardware/quadrature_encoder.o \
+	output/base/Src/ili/DefaultFonts.o \
+	output/base/Src/ili/UTFT.o \
+	output/base/Src/ili/float_to_string.o \
+	output/base/Src/ili/utf_font.o \
 	output/base/startup_stm32h750xx.o \
 	output/usb/usbd_core.o \
 	output/usb/usbd_ctlreq.o \
@@ -83,6 +94,7 @@ OBJS += \
 	output/hal/stm32h7xx_hal_exti.o \
 	output/hal/stm32h7xx_hal_eth.o \
 	output/hal/stm32h7xx_hal_eth_ex.o \
+	output/hal/stm32h7xx_hal_spi.o \
 	output/hal/stm32h7xx_hal_tim.o \
 	output/hal/stm32h7xx_hal_tim_ex.o \
 	output/hal/stm32h7xx_hal_uart.o \
@@ -125,8 +137,28 @@ output/base/Src/usbd_desc.o: ./Src/usbd_desc.c
 	@echo 'Building target: usbd_desc.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
+output/base/Src/hardware/hw_ili9341.o: ./Src/hardware/hw_ili9341.c
+	@echo 'Building target: hw_ili9341.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
 output/base/Src/hardware/quadrature_encoder.o: ./Src/hardware/quadrature_encoder.c
 	@echo 'Building target: quadrature_encoder.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/ili/DefaultFonts.o: ./Src/ili/DefaultFonts.c
+	@echo 'Building target: DefaultFonts.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/ili/UTFT.o: ./Src/ili/UTFT.c
+	@echo 'Building target: UTFT.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/ili/float_to_string.o: ./Src/ili/float_to_string.c
+	@echo 'Building target: float_to_string.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/ili/utf_font.o: ./Src/ili/utf_font.c
+	@echo 'Building target: utf_font.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/startup_stm32h750xx.o: ./startup_stm32h750xx.s
@@ -231,6 +263,10 @@ output/hal/stm32h7xx_hal_eth.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_e
 
 output/hal/stm32h7xx_hal_eth_ex.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c
 	@echo 'Building target: stm32h7xx_hal_eth_ex.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/hal/stm32h7xx_hal_spi.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c
+	@echo 'Building target: stm32h7xx_hal_spi.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/hal/stm32h7xx_hal_tim.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c

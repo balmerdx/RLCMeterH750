@@ -31,16 +31,16 @@ void QuadEncInit()
     tim_init.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     tim_init.Init.RepetitionCounter = 0;
 
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    GPIO_InitTypeDef gpio = {};
 
     {//Codeur1
         // 2 Inputs for A and B Encoder Channels
-        GPIO_InitStruct.Pin = Codeur1_A|Codeur1_B;
-        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        GPIO_InitStruct.Alternate = Codeur1_AF;
-        HAL_GPIO_Init(Codeur1_GPIO, &GPIO_InitStruct);
+        gpio.Pin = Codeur1_A|Codeur1_B;
+        gpio.Mode = GPIO_MODE_AF_PP;
+        gpio.Speed = GPIO_SPEED_HIGH;
+        gpio.Pull = GPIO_NOPULL;
+        gpio.Alternate = Codeur1_AF;
+        HAL_GPIO_Init(Codeur1_GPIO, &gpio);
      
         encoder.EncoderMode = TIM_ENCODERMODE_TI12;
 
@@ -65,11 +65,11 @@ void QuadEncInit()
     }
 
     //button
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Pin = BUTTON_PIN1;
-    HAL_GPIO_Init(BUTTON_GPIO, &GPIO_InitStruct);
+    gpio.Mode = GPIO_MODE_INPUT;
+    gpio.Speed = GPIO_SPEED_LOW;
+    gpio.Pull = GPIO_NOPULL;
+    gpio.Pin = BUTTON_PIN1;
+    HAL_GPIO_Init(BUTTON_GPIO, &gpio);
 }
 
 int16_t QuadEncValue()

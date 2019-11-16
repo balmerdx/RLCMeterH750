@@ -20,6 +20,7 @@ sources = [
 		"Inc",
 		"Src",
 		"Src/hardware",
+		"Src/ili",
 		],
 	"files" : [
 		#"startup_stm32h743xx.s"
@@ -70,6 +71,7 @@ sources = [
 		"stm32h7xx_hal_exti.c",
 		"stm32h7xx_hal_eth.c",
 		"stm32h7xx_hal_eth_ex.c",
+		"stm32h7xx_hal_spi.c",
 		"stm32h7xx_hal_tim.c",
 		"stm32h7xx_hal_tim_ex.c",
 		"stm32h7xx_hal_uart.c",

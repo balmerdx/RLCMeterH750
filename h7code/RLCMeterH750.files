@@ -7,7 +7,12 @@ Src/usb_device.c
 Src/usbd_cdc_if.c
 Src/usbd_conf.c
 Src/usbd_desc.c
+Src/hardware/hw_ili9341.c
 Src/hardware/quadrature_encoder.c
+Src/ili/DefaultFonts.c
+Src/ili/UTFT.c
+Src/ili/float_to_string.c
+Src/ili/utf_font.c
 startup_stm32h750xx.s
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
@@ -34,6 +39,7 @@ Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c
@@ -46,7 +52,12 @@ Inc/usbd_cdc_if.h
 Inc/usbd_conf.h
 Inc/usbd_desc.h
 Src/test_loop_speed.h
+Src/hardware/hw_ili9341.h
 Src/hardware/quadrature_encoder.h
+Src/ili/DefaultFonts.h
+Src/ili/UTFT.h
+Src/ili/float_to_string.h
+Src/ili/utf_font.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32_assert_template.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc.h

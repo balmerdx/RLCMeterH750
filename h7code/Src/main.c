@@ -25,6 +25,7 @@
 #include "usbd_cdc_if.h"
 #include "test_loop_speed.h"
 #include "hardware/quadrature_encoder.h"
+#include "ili/UTFT.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -127,6 +128,11 @@ int main(void)
     //delta_ms = testSpeed();
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
+
+    UTFT_InitLCD(UTFT_PORTRAIT);
+    UTFT_fillScrW(VGA_RED);
+    UTFT_setColorW(VGA_GREEN);
+    UTFT_fillRect(10,10, 20,20);
 
     while (1)
     {
