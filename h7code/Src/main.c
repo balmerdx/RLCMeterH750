@@ -27,6 +27,7 @@
 #include "hardware/quadrature_encoder.h"
 #include "ili/UTFT.h"
 #include "ili/DefaultFonts.h"
+#include "hardware/AD9833_driver.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -127,8 +128,7 @@ int main(void)
     SCB_EnableICache();
     SCB_EnableDCache();
     //delta_ms = testSpeed();
-    uint16_t old_enc_value = 1234;
-    bool old_enc_button = false;
+
 
     UTFT_InitLCD(UTFT_LANDSCAPE2);
     UTFT_fillScrW(VGA_BLACK);
@@ -137,8 +137,13 @@ int main(void)
 
     UTFT_setFont(BigFont);
     UTFT_setColorW(VGA_WHITE);
-    UTFT_print("Hello ILI9341", 20, 30);
+    AD9833_Init();
+    UTFT_print("AD9833_Init", 20, 30);
+    //AD9833_SetFreqWorld(AD9833_CalcFreqWorld(1000));
+    //UTFT_print("Set complete", 20, 50);
 
+    uint16_t old_enc_value = 1234;
+    bool old_enc_button = false;
     while (1)
     {
         //int enc_a = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7);
@@ -156,9 +161,16 @@ int main(void)
             old_enc_value = enc_value;
             old_enc_button = enc_button;
 
-            int size_cdc = sprintf(buffer_cdc, "USB. enc=%i s=%i", (int)enc_value, enc_button?1:0);
+            int size_cdc = sprintf(buffer_cdc, "enc=%i s=%i    ", (int)enc_value, enc_button?1:0);
             received_bytes = 0;
             CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
+
+            UTFT_print(buffer_cdc, 20, 50);
+            uint32_t word = AD9833_CalcFreqWorld(enc_value*100);
+            //uint32_t word = (1<<enc_value)|4096;
+            sprintf(buffer_cdc, "W=%i      ", (int)word);
+            UTFT_print(buffer_cdc, 20, 70);
+            AD9833_SetFreqWorld(word);
         }
 
         HAL_Delay(50);

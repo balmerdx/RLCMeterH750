@@ -84,7 +84,7 @@ void HwLcdInit()
     SpiHandle.Init.NSS               = SPI_NSS_SOFT;
     SpiHandle.Init.NSSPMode          = SPI_NSS_PULSE_DISABLE;
     SpiHandle.Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_ENABLE;  /* Recommanded setting to avoid glitches */
-    SpiHandle.Init.Mode = SPI_MODE_MASTER;
+    SpiHandle.Init.Mode              = SPI_MODE_MASTER;
 
     if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
     {

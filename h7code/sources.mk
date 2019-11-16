@@ -13,6 +13,7 @@ DEPS += \
 	output/base/Src/usbd_cdc_if.d \
 	output/base/Src/usbd_conf.d \
 	output/base/Src/usbd_desc.d \
+	output/base/Src/hardware/AD9833_driver.d \
 	output/base/Src/hardware/hw_ili9341.d \
 	output/base/Src/hardware/quadrature_encoder.d \
 	output/base/Src/ili/DefaultFonts.d \
@@ -62,6 +63,7 @@ OBJS += \
 	output/base/Src/usbd_cdc_if.o \
 	output/base/Src/usbd_conf.o \
 	output/base/Src/usbd_desc.o \
+	output/base/Src/hardware/AD9833_driver.o \
 	output/base/Src/hardware/hw_ili9341.o \
 	output/base/Src/hardware/quadrature_encoder.o \
 	output/base/Src/ili/DefaultFonts.o \
@@ -135,6 +137,10 @@ output/base/Src/usbd_conf.o: ./Src/usbd_conf.c
 
 output/base/Src/usbd_desc.o: ./Src/usbd_desc.c
 	@echo 'Building target: usbd_desc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/hardware/AD9833_driver.o: ./Src/hardware/AD9833_driver.c
+	@echo 'Building target: AD9833_driver.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/hardware/hw_ili9341.o: ./Src/hardware/hw_ili9341.c
