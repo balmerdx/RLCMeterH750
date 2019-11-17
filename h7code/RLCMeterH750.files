@@ -8,6 +8,7 @@ Src/usbd_cdc_if.c
 Src/usbd_conf.c
 Src/usbd_desc.c
 Src/hardware/AD9833_driver.c
+Src/hardware/dual_adc.c
 Src/hardware/hw_ili9341.c
 Src/hardware/quadrature_encoder.c
 Src/ili/DefaultFonts.c
@@ -19,6 +20,8 @@ Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
 Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c
@@ -54,6 +57,7 @@ Inc/usbd_conf.h
 Inc/usbd_desc.h
 Src/test_loop_speed.h
 Src/hardware/AD9833_driver.h
+Src/hardware/dual_adc.h
 Src/hardware/hw_ili9341.h
 Src/hardware/quadrature_encoder.h
 Src/ili/DefaultFonts.h

@@ -21,45 +21,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32h7xx_it.h"
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN TD */
-
-/* USER CODE END TD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
- 
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
-
-/* Private function prototypes -----------------------------------------------*/
-/* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
+#include "hardware/dual_adc.h"
 
 /* External variables --------------------------------------------------------*/
 extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
-/* USER CODE BEGIN EV */
-
-/* USER CODE END EV */
+extern ADC_HandleTypeDef AdcHandle_master;
+extern ADC_HandleTypeDef AdcHandle_slave;
 
 /******************************************************************************/
 /*           Cortex Processor Interruption and Exception Handlers          */ 
@@ -211,7 +178,31 @@ void OTG_FS_IRQHandler(void)
   /* USER CODE END OTG_FS_IRQn 1 */
 }
 
-/* USER CODE BEGIN 1 */
+/**
+  * @brief  This function handles ADC interrupt request.
+  * @param  None
+  * @retval None
+  */
+/* Note: On STM32H7xx, ADC2 IRQ handler is the same as ADC1.                  */
+/*       Therefore, expected IRQ handler "ADCy_IRQHandler()" is not present   */
+/*       and managed by IRQ handler "ADCx_IRQHandler()".                      */
+void ADCx_IRQHandler(void)
+{
+    HAL_ADC_IRQHandler(&AdcHandle_master);
+    HAL_ADC_IRQHandler(&AdcHandle_slave);
+}
 
-/* USER CODE END 1 */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+/**
+* @brief  This function handles DMA interrupt request.
+* @param  None
+* @retval None
+*/
+void ADCx_DMA_IRQHandler(void)
+{
+    HAL_DMA_IRQHandler(AdcHandle_master.DMA_Handle);
+}
+
+void ADCy_DMA_IRQHandler(void)
+{
+    HAL_DMA_IRQHandler(AdcHandle_slave.DMA_Handle);
+}

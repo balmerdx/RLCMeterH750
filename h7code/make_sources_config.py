@@ -50,6 +50,8 @@ sources = [
 	"base" : "Drivers/STM32H7xx_HAL_Driver/Src",
 	"output" : "hal",
 	"files" : [
+		"stm32h7xx_hal_adc.c",
+		"stm32h7xx_hal_adc_ex.c",
 		"stm32h7xx_hal_pcd.c",
 		"stm32h7xx_hal_pcd_ex.c",
 		"stm32h7xx_ll_usb.c",

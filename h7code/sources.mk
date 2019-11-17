@@ -14,6 +14,7 @@ DEPS += \
 	output/base/Src/usbd_conf.d \
 	output/base/Src/usbd_desc.d \
 	output/base/Src/hardware/AD9833_driver.d \
+	output/base/Src/hardware/dual_adc.d \
 	output/base/Src/hardware/hw_ili9341.d \
 	output/base/Src/hardware/quadrature_encoder.d \
 	output/base/Src/ili/DefaultFonts.d \
@@ -25,6 +26,8 @@ DEPS += \
 	output/usb/usbd_ctlreq.d \
 	output/usb/usbd_ioreq.d \
 	output/usb_cdc/usbd_cdc.d \
+	output/hal/stm32h7xx_hal_adc.d \
+	output/hal/stm32h7xx_hal_adc_ex.d \
 	output/hal/stm32h7xx_hal_pcd.d \
 	output/hal/stm32h7xx_hal_pcd_ex.d \
 	output/hal/stm32h7xx_ll_usb.d \
@@ -64,6 +67,7 @@ OBJS += \
 	output/base/Src/usbd_conf.o \
 	output/base/Src/usbd_desc.o \
 	output/base/Src/hardware/AD9833_driver.o \
+	output/base/Src/hardware/dual_adc.o \
 	output/base/Src/hardware/hw_ili9341.o \
 	output/base/Src/hardware/quadrature_encoder.o \
 	output/base/Src/ili/DefaultFonts.o \
@@ -75,6 +79,8 @@ OBJS += \
 	output/usb/usbd_ctlreq.o \
 	output/usb/usbd_ioreq.o \
 	output/usb_cdc/usbd_cdc.o \
+	output/hal/stm32h7xx_hal_adc.o \
+	output/hal/stm32h7xx_hal_adc_ex.o \
 	output/hal/stm32h7xx_hal_pcd.o \
 	output/hal/stm32h7xx_hal_pcd_ex.o \
 	output/hal/stm32h7xx_ll_usb.o \
@@ -143,6 +149,10 @@ output/base/Src/hardware/AD9833_driver.o: ./Src/hardware/AD9833_driver.c
 	@echo 'Building target: AD9833_driver.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
+output/base/Src/hardware/dual_adc.o: ./Src/hardware/dual_adc.c
+	@echo 'Building target: dual_adc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
 output/base/Src/hardware/hw_ili9341.o: ./Src/hardware/hw_ili9341.c
 	@echo 'Building target: hw_ili9341.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
@@ -185,6 +195,14 @@ output/usb/usbd_ioreq.o: Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_i
 
 output/usb_cdc/usbd_cdc.o: Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
 	@echo 'Building target: usbd_cdc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/hal/stm32h7xx_hal_adc.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c
+	@echo 'Building target: stm32h7xx_hal_adc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/hal/stm32h7xx_hal_adc_ex.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c
+	@echo 'Building target: stm32h7xx_hal_adc_ex.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/hal/stm32h7xx_hal_pcd.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c
