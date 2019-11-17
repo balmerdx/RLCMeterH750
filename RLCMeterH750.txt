@@ -238,3 +238,7 @@ LVF808040-100M-NGR(10pcs) - слабенький, с трудом держит �
 
 
 /home/balmer/opt/gcc-arm-none-eabi-8-2019-q3-update/bin/arm-none-eabi-gdb --symbols=output/program_release.elf
+
+- ADC Dual mode 
+	- init --ok
+	- check data
