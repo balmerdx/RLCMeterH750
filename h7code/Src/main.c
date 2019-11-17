@@ -59,6 +59,46 @@ uint32_t testSpeed()
 	return end-start;
 }
 
+#define ADC1_DATA(x)   ((x) & 0x0000FFFF)
+#define ADC2_DATA(x)   ((x) >> 16)
+
+float d1_errf = 0;
+float d2_errf = 0;
+
+void AdcConvertDataCallback(uint32_t* data, uint32_t size)
+{
+    int32_t d1_mid = 0;
+    int32_t d2_mid = 0;
+    for(uint32_t i=0; i<size; i++)
+    {
+        uint32_t d = data[i];
+        d1_mid += ADC1_DATA(d);
+        d2_mid += ADC2_DATA(d);
+    }
+
+    d1_mid /= size;
+    d2_mid /= size;
+
+    int32_t d1_err = 0;
+    int32_t d2_err = 0;
+    for(uint32_t i=0; i<size; i++)
+    {
+        uint32_t d = data[i];
+        int32_t d1 = ADC1_DATA(d) - d1_mid;
+        int32_t d2 = ADC2_DATA(d) - d2_mid;
+        if(d1<0)
+            d1 = - d1;
+        if(d2<0)
+            d2 = - d2;
+
+        d1_err += d1;
+        d2_err += d2;
+    }
+
+    d1_errf = (float)d1_err/(float)size;
+    d2_errf = (float)d2_err/(float)size;
+}
+
 /**
   * @brief  The application entry point.
   * @retval int
@@ -100,13 +140,6 @@ int main(void)
     bool old_enc_button = false;
     while (1)
     {
-        //int enc_a = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7);
-        //int enc_b = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
-        //int enc_s = HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_4);
-        /* USER CODE END WHILE */
-        //int size_cdc = sprintf(buffer_cdc, "USB. Speed %i ms bytes = %li time=%li", (int)delta_ms, received_bytes, HAL_GetTick()/1000);
-        //int size_cdc = sprintf(buffer_cdc, "USB. a=%i b=%i s=%i", enc_a, enc_b, enc_s);
-
         uint16_t enc_value = QuadEncValue();
         bool enc_button = QuadEncButton();
 
@@ -123,17 +156,19 @@ int main(void)
             //uint32_t word = AD9833_CalcFreqWorld(enc_value*100);
             uint32_t word = AD9833_CalcFreqWorld(enc_value*10000);
             //uint32_t word = (1<<enc_value)|4096;
-            sprintf(buffer_cdc, "h=%i f=%i      ", half_conv, full_conv);
-            UTFT_print(buffer_cdc, 20, 70);
             AD9833_SetFreqWorld(word);
         }
 
-        HAL_Delay(50);
+        sprintf(buffer_cdc, "h=%i f=%i      ", half_conv, full_conv);
+        UTFT_print(buffer_cdc, 20, 70);
 
-        if(delta_ms==517)
-        {
-            testSpeed();
-        }
+        floatToString(buffer_cdc, 20, d1_errf, 4, 6, false);
+        UTFT_print(buffer_cdc, 20, 90);
+
+        floatToString(buffer_cdc, 20, d2_errf, 4, 6, false);
+        UTFT_print(buffer_cdc, 20, 110);
+
+        HAL_Delay(250);
     }
 }
 
@@ -243,70 +278,7 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOH_CLK_ENABLE();
-/*
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-    //Test Encoder
-    //PB6, PB7, PD4
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-
-    GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_4;
-    HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-*/
 }
-/*
-static void MX_GPIO_Init(void)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  // GPIO Ports Clock Enable
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOG_CLK_ENABLE();
-
-  //Configure GPIO pin Output Level
-  HAL_GPIO_WritePin(GPIOB, LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
-
-  //Configure GPIO pin Output Level
-  HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
-
-  //Configure GPIO pin : USER_Btn_Pin
-  GPIO_InitStruct.Pin = USER_Btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
-
-  //Configure GPIO pins : LD3_Pin LD2_Pin
-  GPIO_InitStruct.Pin = LD3_Pin|LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  //Configure GPIO pin : USB_PowerSwitchOn_Pin
-  GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(USB_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);
-
-  //Configure GPIO pin : USB_OverCurrent_Pin
-  GPIO_InitStruct.Pin = USB_OverCurrent_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
-
-}
-*/
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
 
 /**
   * @brief  This function is executed in case of error occurrence.

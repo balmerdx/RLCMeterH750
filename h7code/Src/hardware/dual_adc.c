@@ -19,6 +19,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
     //##-1- Enable peripherals and GPIO Clocks #################################
     // Enable clock of GPIO associated to the peripheral channels
     ADCx_CHANNELa_GPIO_CLK_ENABLE();
+    ADCy_CHANNELa_GPIO_CLK_ENABLE();
 
     // Enable clock of ADCx peripheral
     ADCx_CLK_ENABLE();
@@ -37,9 +38,10 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
         GPIO_InitStruct.Pull = GPIO_NOPULL;
         HAL_GPIO_Init(ADCx_CHANNELa_GPIO_PORT, &GPIO_InitStruct);
 
-        // Note: ADC slave does not need additional configuration, since it shares
-        //       the same clock domain, same GPIO pins (interleaved on the same
-        //       channel) and same DMA as ADC master.
+        GPIO_InitStruct.Pin = ADCy_CHANNELa_PIN;
+        GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        HAL_GPIO_Init(ADCy_CHANNELa_GPIO_PORT, &GPIO_InitStruct);
 
         //##-3- Configure the DMA ##################################################
         // Configure DMA parameters (ADC master)
@@ -94,6 +96,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef *hadc)
     //##-2- Disable peripherals and GPIO Clocks ################################
     // De-initialize GPIO pin of the selected ADC channel
     HAL_GPIO_DeInit(ADCx_CHANNELa_GPIO_PORT, ADCx_CHANNELa_PIN);
+    HAL_GPIO_DeInit(ADCy_CHANNELa_GPIO_PORT, ADCy_CHANNELa_PIN);
 
     //##-3- Disable the DMA ####################################################
     // De-Initialize the DMA associated to the peripheral
@@ -171,23 +174,19 @@ static void ADC_Config(void)
     //       "ADCCONVERTEDVALUES_BUFFER_SIZE" ADC conversions (IT by DMA end
     //       of transfer), select sampling time and ADC clock with sufficient
     //       duration to not create an overhead situation in IRQHandler.
-    sConfig.Channel      = ADCx_CHANNELa;               // Sampled channel number
     sConfig.Rank         = ADC_REGULAR_RANK_1;          // Rank of sampled channel number ADCx_CHANNEL
     sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;    // Minimum sampling time
     sConfig.SingleDiff   = ADC_SINGLE_ENDED;            // Single-ended input channel
     sConfig.OffsetNumber = ADC_OFFSET_NONE;             // No offset subtraction
     sConfig.Offset = 0;                                 // Parameter discarded because offset correction is disabled
 
+    sConfig.Channel      = ADCx_CHANNELa;               // Sampled channel number
     if (HAL_ADC_ConfigChannel(&AdcHandle_master, &sConfig) != HAL_OK)
     {
         Error_Handler();
     }
 
-    // Configuration of channel on ADC (slave) regular group on sequencer rank 1
-    // Same channel as ADCx for dual mode interleaved: both ADC are converting
-    // the same channel.
-    sConfig.Channel = ADCx_CHANNELa;
-
+    sConfig.Channel = ADCy_CHANNELa;
     if (HAL_ADC_ConfigChannel(&AdcHandle_slave, &sConfig) != HAL_OK)
     {
         Error_Handler();
@@ -207,7 +206,7 @@ static void ADC_Config(void)
     // Configuration of multimode
     // Multimode parameters settings and set ADCy (slave) under control of
     // ADCx (master).
-    MultiModeInit.Mode = ADC_DUALMODE_INTERL;
+    MultiModeInit.Mode = ADC_DUALMODE_REGSIMULT;
     MultiModeInit.DualModeData = ADC_DUALMODEDATAFORMAT_32_10_BITS;  // ADC and DMA configured in resolution 32 bits to match with both ADC master and slave resolution
     MultiModeInit.TwoSamplingDelay = ADC_TWOSAMPLINGDELAY_1CYCLE;
 
@@ -234,6 +233,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *AdcHandle)
     SCB_InvalidateDCache_by_Addr((uint32_t *) &aADCDualConvertedValues[ADCCONVERTEDVALUES_BUFFER_SIZE/2], 4*ADCCONVERTEDVALUES_BUFFER_SIZE/2);
 
     //Use aADCDualConvertedValues  for (tmp_index = (ADCCONVERTEDVALUES_BUFFER_SIZE/2); tmp_index < ADCCONVERTEDVALUES_BUFFER_SIZE; tmp_index++)
+    AdcConvertDataCallback((uint32_t *)aADCDualConvertedValues+ADCCONVERTEDVALUES_BUFFER_SIZE/2, ADCCONVERTEDVALUES_BUFFER_SIZE/2);
+
     full_conv++;
 }
 
@@ -252,6 +253,7 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc)
     SCB_InvalidateDCache_by_Addr((uint32_t *) &aADCDualConvertedValues[0], 4*ADCCONVERTEDVALUES_BUFFER_SIZE/2);
 
     //Use aADCDualConvertedValues for (tmp_index = 0; tmp_index < (ADCCONVERTEDVALUES_BUFFER_SIZE/2); tmp_index++)
+    AdcConvertDataCallback((uint32_t *)aADCDualConvertedValues, ADCCONVERTEDVALUES_BUFFER_SIZE/2);
 
     half_conv++;
 }

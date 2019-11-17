@@ -5,6 +5,8 @@
 
 void DualAdcInitAndStart();
 
+void AdcConvertDataCallback(uint32_t* data, uint32_t size);
+
 extern volatile int half_conv;
 extern volatile int full_conv;
 
