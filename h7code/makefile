@@ -29,7 +29,7 @@ endif
 
 ifeq ($(MAKECMDGOALS),release)
 C_DEFINES= -DNDEBUG
-C_FLAGS = -O3
+C_FLAGS = -O3 -g -gdwarf-2
 endif
 
 C_FLAGS += -fdata-sections -ffunction-sections
@@ -39,7 +39,7 @@ LDFLAGS += -Wl,--gc-sections
 #C_FLAGS += -funsigned-char
 C_DEFINES+= \
 -DUSE_HAL_DRIVER \
--DSTM32H743xx \
+-DSTM32H750xx \
 -DHSE_VALUE=25000000
 
 C_FLAGS+= -Wall -c -MMD $(C_INCLIDES) $(C_DEFINES) $(M_CPU)

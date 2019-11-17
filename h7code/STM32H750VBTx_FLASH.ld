@@ -177,6 +177,17 @@ SECTIONS
     . = ALIGN(8);
   } >DTCMRAM
 
+
+  .d1_data : 
+  {
+    . = ALIGN(4);
+    _s_d1_data = .;        /* create a global symbol at data start */
+    *(.d1_data)           /* .data sections */
+    *(.d1_data*)          /* .data* sections */
+
+    . = ALIGN(4);
+    _e_d1_data = .;        /* define a global symbol at data end */
+  } >RAM_D1 AT> FLASH
   
 
   /* Remove information from the standard libraries */

@@ -119,7 +119,7 @@ int main(void)
     SystemClock_Config();
 
     MX_GPIO_Init();
-    MX_ETH_Init();
+    //MX_ETH_Init();
     MX_USB_DEVICE_Init();
 
     QuadEncInit();
@@ -415,6 +415,10 @@ void Error_Handler(void)
   /* User can add his own implementation to report the HAL error return state */
 
   /* USER CODE END Error_Handler_Debug */
+  while(1)
+  {
+
+  }
 }
 
 #ifdef  USE_FULL_ASSERT

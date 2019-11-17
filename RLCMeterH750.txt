@@ -137,8 +137,6 @@ GCC_PATH = ${ARM_NONE_EABI}
 
 python ~/radio/stm32/tools/stm32_flash_0.py /home/balmer/radio/stm32/tmp/TestH743_USB_1/build/TestH743_USB.bin
 
-/home/balmer/opt/gcc-arm-none-eabi-8-2019-q3-update/bin/arm-none-eabi-gdb --symbols=build/TestH743_USB.elf
-
 - попробовать сделать Speed Test на STM32H7
 
 void speedLoop()
@@ -238,3 +236,5 @@ LVF808040-100M-NGR(10pcs) - слабенький, с трудом держит �
 
 - AD9833 --ok
 
+
+/home/balmer/opt/gcc-arm-none-eabi-8-2019-q3-update/bin/arm-none-eabi-gdb --symbols=output/program_release.elf

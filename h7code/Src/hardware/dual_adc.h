@@ -8,7 +8,7 @@ void DualAdcInitAndStart();
 extern volatile int half_conv;
 extern volatile int full_conv;
 
-#define ADCCONVERTEDVALUES_BUFFER_SIZE ((uint32_t)  256)    /* Size of array containing ADC converted values */
+#define ADCCONVERTEDVALUES_BUFFER_SIZE ((uint32_t)  2048)    /* Size of array containing ADC converted values */
 
 // User can use this section to tailor ADCx instance under use and associated
 //   resources

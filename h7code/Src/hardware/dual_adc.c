@@ -3,7 +3,7 @@
 void Error_Handler();
 
 // ADC dual mode interleaved conversion results (ADC master and ADC slave results concatenated on data register
-ALIGN_32BYTES(__IO uint32_t   aADCDualConvertedValues[ADCCONVERTEDVALUES_BUFFER_SIZE]);
+ALIGN_32BYTES(__IO uint32_t   aADCDualConvertedValues[ADCCONVERTEDVALUES_BUFFER_SIZE] __attribute__((section(".d1_data"))));
 ADC_HandleTypeDef    AdcHandle_master;
 ADC_HandleTypeDef    AdcHandle_slave;
 
