@@ -35,6 +35,8 @@
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
 
+volatile int64_t g_sum;
+
 /* USER CODE END PV */
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -55,8 +57,8 @@ uint32_t testSpeed()
 
 	uint32_t start = HAL_GetTick();
 	for(int i=0; i<loop_count; i++)
-        //speedLoopSinCos();
-        speedLoopMulAdd();
+        speedLoopSinCos();
+        //speedLoopMulAdd();
 	uint32_t end = HAL_GetTick();
 
 	return end-start;
@@ -143,7 +145,7 @@ int main(void)
 
     SCB_EnableICache();
     SCB_EnableDCache();
-    //delta_ms = testSpeed();
+    delta_ms = testSpeed();
 
 
     UTFT_InitLCD(UTFT_LANDSCAPE2);
@@ -160,6 +162,9 @@ int main(void)
 
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
+
+    sprintf(buffer_cdc, "st=%i ms   ", (int)delta_ms);
+    UTFT_print(buffer_cdc, 20, 30);
 
     bool enable_measure_freq = true;
 
@@ -180,11 +185,6 @@ int main(void)
         {
             old_enc_value = enc_value;
             old_enc_button = enc_button;
-
-            //int size_cdc = sprintf(buffer_cdc, "enc=%i s=%i    ", (int)enc_value, enc_button?1:0);
-            //int size_cdc = sprintf(buffer_cdc, "Time %i (ms)    ", (int)delta_ms);
-            //received_bytes = 0;
-
 
             int freq = enc_value*100;
             sprintf(buffer_cdc, "F=%i    ", freq);
@@ -225,11 +225,6 @@ int main(void)
         }
 
         HAL_Delay(250);
-
-        if(enc_value==1024)
-        {
-            speedLoopMulAdd();
-        }
 
         if(AdcBufferFillingComplete())
         {

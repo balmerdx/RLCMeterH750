@@ -45,11 +45,8 @@ C_DEFINES+= \
 -DARM_MATH_CM7
 
 C_FLAGS+= -Wall -c -MMD $(C_INCLIDES) $(C_DEFINES) $(M_CPU)
-#C_FLAGS+= -g -Wa,-adhls #asm listing
-#C_FLAGS+= -S
 
 LIBS = -lc -lm -lnosys
-#LDFLAGS += -TSTM32H743ZITx_FLASH.ld  $(LIBS)  -Wl,-Map=output/linker.map,--cref
 LDFLAGS += -TSTM32H750VBTx_FLASH.ld  $(LIBS)  -Wl,-Map=output/linker.map,--cref
 ASM_FLAGS = -x assembler-with-cpp -c $(M_CPU)
 

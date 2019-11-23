@@ -23,6 +23,7 @@ DEPS += \
 	output/base/Src/ili/float_to_string.d \
 	output/base/Src/ili/utf_font.d \
 	output/base/Src/measure/measure_freq.d \
+	output/base/Src/measure/sin_cos.d \
 	output/base/startup_stm32h750xx.d \
 	output/usb/usbd_core.d \
 	output/usb/usbd_ctlreq.d \
@@ -88,6 +89,7 @@ OBJS += \
 	output/base/Src/ili/float_to_string.o \
 	output/base/Src/ili/utf_font.o \
 	output/base/Src/measure/measure_freq.o \
+	output/base/Src/measure/sin_cos.o \
 	output/base/startup_stm32h750xx.o \
 	output/usb/usbd_core.o \
 	output/usb/usbd_ctlreq.o \
@@ -208,6 +210,10 @@ output/base/Src/ili/utf_font.o: ./Src/ili/utf_font.c
 output/base/Src/measure/measure_freq.o: ./Src/measure/measure_freq.c
 	@echo 'Building target: measure_freq.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/measure/sin_cos.o: ./Src/measure/sin_cos.c
+	@echo 'Building target: sin_cos.c'
+	@$(CC) $(C_FLAGS) -Wa,-a,-ad,-alms=output/base/Src/measure/sin_cos.lst -o "$@" "$<"
 
 output/base/startup_stm32h750xx.o: ./startup_stm32h750xx.s
 	@echo 'Building target: startup_stm32h750xx.s'

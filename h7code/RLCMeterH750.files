@@ -17,6 +17,7 @@ Src/ili/UTFT.c
 Src/ili/float_to_string.c
 Src/ili/utf_font.c
 Src/measure/measure_freq.c
+Src/measure/sin_cos.c
 startup_stm32h750xx.s
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
@@ -78,6 +79,7 @@ Src/ili/UTFT.h
 Src/ili/float_to_string.h
 Src/ili/utf_font.h
 Src/measure/measure_freq.h
+Src/measure/sin_cos.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32_assert_template.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc.h
