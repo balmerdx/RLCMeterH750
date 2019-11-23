@@ -145,7 +145,6 @@ int main(void)
 
     SCB_EnableICache();
     SCB_EnableDCache();
-    delta_ms = testSpeed();
 
 
     UTFT_InitLCD(UTFT_LANDSCAPE2);
@@ -161,17 +160,21 @@ int main(void)
     //UTFT_print("Set complete", 20, 50);
 
     DualAdcInitAndStart();
-    UTFT_print("ADC Started    ", 20, 30);
+    //UTFT_print("ADC Started    ", 20, 30);
 
-    sprintf(buffer_cdc, "st=%i ms   ", (int)delta_ms);
-    UTFT_print(buffer_cdc, 20, 30);
 
     bool enable_measure_freq = true;
 
+    if(true)
+        AdcStartConvolution();
+    else
     if(enable_measure_freq)
         AdcStartMeasureFreq();
     else
         AdcStartBufferFilling();
+    delta_ms = testSpeed();
+    sprintf(buffer_cdc, "st=%i ms   ", (int)delta_ms);
+    UTFT_print(buffer_cdc, 20, 30);
 
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
@@ -206,8 +209,8 @@ int main(void)
             }
         }
 
-        //sprintf(buffer_cdc, "h=%i f=%i      ", half_conv, full_conv);
-        //UTFT_print(buffer_cdc, 20, 70);
+        sprintf(buffer_cdc, "overrun=%i      ", adc_overrun);
+        UTFT_print(buffer_cdc, 20, 70);
 
         if(enable_measure_freq)
         {

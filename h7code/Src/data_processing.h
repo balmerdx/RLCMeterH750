@@ -12,3 +12,5 @@ bool AdcBufferFillingComplete();
 void AdcStartMeasureFreq();
 void AdcStopMeasureFreq();
 float AdcMeasureFreq();
+
+void AdcStartConvolution();

@@ -9,6 +9,7 @@ ADC_HandleTypeDef    AdcHandle_slave;
 
 volatile int half_conv = 0;
 volatile int full_conv = 0;
+volatile int adc_overrun = 0;
 
 uint32_t AdcSamplesPerSecond()
 {
@@ -278,6 +279,9 @@ void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
     if (HAL_IS_BIT_CLR(hadc->ErrorCode, HAL_ADC_ERROR_OVR))
     {
         Error_Handler();
+    } else {
+        hadc->ErrorCode = 0;
+        adc_overrun++;
     }
 }
 

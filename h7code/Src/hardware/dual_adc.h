@@ -11,6 +11,7 @@ uint32_t AdcSamplesPerSecond();
 
 extern volatile int half_conv;
 extern volatile int full_conv;
+extern volatile int adc_overrun;
 
 #define ADCCONVERTEDVALUES_BUFFER_SIZE ((uint32_t)  2048)    /* Size of array containing ADC converted values */
 
