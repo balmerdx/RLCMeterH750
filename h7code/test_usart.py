@@ -47,7 +47,11 @@ if __name__ == "__main__":
 				print("")
 			is_empty = False
 			#print("value=", hex(data[0]))
-			print("value=", data.decode("utf-8"))
+			#print("value=", data.decode("utf-8"))
+			if(len(data)>256):
+				print("len(data)=", len(data))
+			else:
+				print("value=", data)
 			time.sleep(0.1)
 			 
 		exit(1)

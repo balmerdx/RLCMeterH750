@@ -1,4 +1,5 @@
 #include "test_loop_speed.h"
+#include "arm_math.h"
 
 #include <math.h>
 
@@ -18,8 +19,7 @@ void initLoop()
     }
 }
 
-
-void speedLoop()
+void speedLoopMulAdd()
 {
     for(int i=0; i<ARRAY_SIZE; i++)
     {
@@ -31,3 +31,12 @@ void speedLoop()
     }
 }
 
+
+void speedLoopSinCos()
+{
+    for(int i=0; i<ARRAY_SIZE; i++)
+    {
+        float f = sinf(array_a[i])*cosf(array_b[i])+array_c[i];
+        array_c[i] = f;
+    }
+}

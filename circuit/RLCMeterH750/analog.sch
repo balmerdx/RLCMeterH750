@@ -41,7 +41,7 @@ L Amplifier_Instrumentation:AD8421BRMZ U14
 U 1 1 5DB5E4E9
 P 7900 3350
 F 0 "U14" H 8150 3650 50  0000 L CNN
-F 1 "AD8221BRMZ" H 7950 3550 50  0000 L CNN
+F 1 "AD8221" H 7950 3550 50  0000 L CNN
 F 2 "Package_SO:MSOP-8_3x3mm_P0.65mm" H 7700 3350 50  0001 C CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8421.pdf" H 8250 2950 50  0001 C CNN
 	1    7900 3350
@@ -875,7 +875,7 @@ L Amplifier_Instrumentation:AD8421BRMZ U13
 U 1 1 5DA5FE56
 P 7750 5100
 F 0 "U13" H 8000 5400 50  0000 L CNN
-F 1 "AD8221BRMZ" H 7800 5300 50  0000 L CNN
+F 1 "AD8221" H 7800 5300 50  0000 L CNN
 F 2 "Package_SO:MSOP-8_3x3mm_P0.65mm" H 7550 5100 50  0001 C CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8421.pdf" H 8100 4700 50  0001 C CNN
 	1    7750 5100

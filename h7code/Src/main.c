@@ -20,7 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "string.h"
+#include <string.h>
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
 #include "test_loop_speed.h"
@@ -29,6 +29,7 @@
 #include "ili/DefaultFonts.h"
 #include "hardware/AD9833_driver.h"
 #include "hardware/dual_adc.h"
+#include "data_processing.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -53,7 +54,8 @@ uint32_t testSpeed()
 
 	uint32_t start = HAL_GetTick();
 	for(int i=0; i<loop_count; i++)
-		speedLoop();
+        //speedLoopSinCos();
+        speedLoopMulAdd();
 	uint32_t end = HAL_GetTick();
 
 	return end-start;
@@ -65,7 +67,7 @@ uint32_t testSpeed()
 float d1_errf = 0;
 float d2_errf = 0;
 
-void AdcConvertDataCallback(uint32_t* data, uint32_t size)
+void ProcessAdcBuffer(uint32_t* data, uint32_t size)
 {
     int32_t d1_mid = 0;
     int32_t d2_mid = 0;
@@ -97,6 +99,28 @@ void AdcConvertDataCallback(uint32_t* data, uint32_t size)
 
     d1_errf = (float)d1_err/(float)size;
     d2_errf = (float)d2_err/(float)size;
+}
+
+void SendAdcBuffer()
+{
+    //const uint32_t packet_size_ints = 16;//128;
+    const uint32_t packet_size_ints = 500;
+
+    for(uint32_t pos = 0; pos<ADC_BUFFER_SIZE; pos += packet_size_ints)
+    {
+        uint32_t size = packet_size_ints;
+        if(pos+size > ADC_BUFFER_SIZE)
+            size = ADC_BUFFER_SIZE-pos;
+        uint8_t result;
+        do
+        {
+            result = CDC_Transmit_FS((uint8_t*)(adc_cpu_buffer+pos), size*sizeof(uint32_t));
+            HAL_Delay(1);
+        } while(result==USBD_BUSY);
+
+        if(result!=USBD_OK)
+            break;
+    }
 }
 
 /**
@@ -136,8 +160,11 @@ int main(void)
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
 
+    AdcStartBufferFilling();
+
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
+    bool first = true;
     while (1)
     {
         uint16_t enc_value = QuadEncValue();
@@ -148,9 +175,19 @@ int main(void)
             old_enc_value = enc_value;
             old_enc_button = enc_button;
 
-            int size_cdc = sprintf(buffer_cdc, "enc=%i s=%i    ", (int)enc_value, enc_button?1:0);
+            //int size_cdc = sprintf(buffer_cdc, "enc=%i s=%i    ", (int)enc_value, enc_button?1:0);
+            //int size_cdc = sprintf(buffer_cdc, "Time %i (ms)    ", (int)delta_ms);
             received_bytes = 0;
-            CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
+            //CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
+
+            if(first)
+            {
+                first = false;
+            } else
+            {
+                SendAdcBuffer();
+            }
+
 
             UTFT_print(buffer_cdc, 20, 50);
             //uint32_t word = AD9833_CalcFreqWorld(enc_value*100);
@@ -169,6 +206,17 @@ int main(void)
         UTFT_print(buffer_cdc, 20, 110);
 
         HAL_Delay(250);
+
+        if(enc_value==1024)
+        {
+            speedLoopMulAdd();
+        }
+
+        if(AdcBufferFillingComplete())
+        {
+            ProcessAdcBuffer(adc_cpu_buffer, ADC_BUFFER_SIZE);
+            AdcStartBufferFilling();
+        }
     }
 }
 
@@ -277,7 +325,20 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOB_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
     __HAL_RCC_GPIOH_CLK_ENABLE();
+
+    GPIO_InitTypeDef  gpio = {};
+
+    gpio.Mode      = GPIO_MODE_OUTPUT_PP;
+    gpio.Alternate = 0;
+    gpio.Pull      = GPIO_NOPULL;
+    gpio.Speed     = GPIO_SPEED_FREQ_HIGH;
+
+    gpio.Pin       = GPIO_PIN_7 | GPIO_PIN_8;
+    HAL_GPIO_Init(GPIOE, &gpio);
+
+    HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, 1);
 }
 
 /**

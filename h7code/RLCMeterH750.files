@@ -1,3 +1,4 @@
+Src/data_processing.c
 Src/main.c
 Src/stm32h7xx_hal_msp.c
 Src/stm32h7xx_it.c
@@ -41,13 +42,23 @@ Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c
-Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth.c
-Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_add_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_dot_prod_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_mult_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_negate_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_offset_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_scale_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_shift_q31.c
+Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_sub_q31.c
+Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_cos_q31.c
+Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_sin_q31.c
+Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_sqrt_q31.c
+Drivers/CMSIS/DSP/Source/CommonTables/arm_common_tables.c
 Inc/main.h
 Inc/stm32h7xx_hal_conf.h
 Inc/stm32h7xx_it.h
@@ -55,6 +66,7 @@ Inc/usb_device.h
 Inc/usbd_cdc_if.h
 Inc/usbd_conf.h
 Inc/usbd_desc.h
+Src/data_processing.h
 Src/test_loop_speed.h
 Src/hardware/AD9833_driver.h
 Src/hardware/dual_adc.h
@@ -183,3 +195,6 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usart.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_utils.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_wwdg.h
+Drivers/CMSIS/DSP/Include/arm_common_tables.h
+Drivers/CMSIS/DSP/Include/arm_const_structs.h
+Drivers/CMSIS/DSP/Include/arm_math.h
