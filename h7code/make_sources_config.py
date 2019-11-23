@@ -21,6 +21,7 @@ sources = [
 		"Src",
 		"Src/hardware",
 		"Src/ili",
+		"Src/measure",
 		],
 	"files" : [
 		#"startup_stm32h743xx.s"

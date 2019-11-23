@@ -302,3 +302,34 @@ R22 заменим на 1 Ом
 
 https://stackoverflow.com/questions/53163998/could-not-open-port-error-immediately-after-plugging-in-arduino-on-arch-linux
 pkill -STOP ModemManager
+
+Частота не та сэмплирования.
+2.5 цикла ожидания - 68681 Гц вместо 50000 Гц
+8.5 цикла ожидания - 106203 Гц
+
+8.5-2.5 = 6 
+
+(6+x)/106203 = x/68681
+6/106203 = x/68681-x/106203
+
+x = 6/106203/(1/68681-1/106203)
+
+Получается 11 тактов
+
+Но частота не та, прикинем на какой частоте у нас работает ADC
+Получается 16 МГц? Не успеваем чтоли обработать?
+
+При ADC_CLOCK_ASYNC_DIV8 (вместо ADC_CLOCK_ASYNC_DIV8) получается 137400
+
+1455400 SPS намеряли
+
+Умножаем на 11 тактов, получается опять 16 МГц, а должно быть 22 МГц!!!!
+
+Неверное clock source выбирали.
+__HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_CLKP); -> __HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_PLL2);
+
+
+freq = 400
+AD9833_MASTER_CLOCK = 25e6
+w = int((freq*(1<<28)+AD9833_MASTER_CLOCK/2)/AD9833_MASTER_CLOCK)
+

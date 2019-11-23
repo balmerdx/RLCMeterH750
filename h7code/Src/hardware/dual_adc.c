@@ -28,7 +28,6 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
     // Enable clock of ADCx peripheral
     ADCx_CLK_ENABLE();
     // ADC Periph interface clock configuration
-    //__HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_CLKP);
     __HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_PLL2);
 
     if (hadc->Instance == ADCx)

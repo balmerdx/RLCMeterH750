@@ -22,6 +22,7 @@ DEPS += \
 	output/base/Src/ili/UTFT.d \
 	output/base/Src/ili/float_to_string.d \
 	output/base/Src/ili/utf_font.d \
+	output/base/Src/measure/measure_freq.d \
 	output/base/startup_stm32h750xx.d \
 	output/usb/usbd_core.d \
 	output/usb/usbd_ctlreq.d \
@@ -86,6 +87,7 @@ OBJS += \
 	output/base/Src/ili/UTFT.o \
 	output/base/Src/ili/float_to_string.o \
 	output/base/Src/ili/utf_font.o \
+	output/base/Src/measure/measure_freq.o \
 	output/base/startup_stm32h750xx.o \
 	output/usb/usbd_core.o \
 	output/usb/usbd_ctlreq.o \
@@ -201,6 +203,10 @@ output/base/Src/ili/float_to_string.o: ./Src/ili/float_to_string.c
 
 output/base/Src/ili/utf_font.o: ./Src/ili/utf_font.c
 	@echo 'Building target: utf_font.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/measure/measure_freq.o: ./Src/measure/measure_freq.c
+	@echo 'Building target: measure_freq.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/startup_stm32h750xx.o: ./startup_stm32h750xx.s

@@ -30,6 +30,7 @@
 #include "hardware/AD9833_driver.h"
 #include "hardware/dual_adc.h"
 #include "data_processing.h"
+#include "measure/measure_freq.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -160,7 +161,12 @@ int main(void)
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
 
-    AdcStartBufferFilling();
+    bool enable_measure_freq = true;
+
+    if(enable_measure_freq)
+        AdcStartMeasureFreq();
+    else
+        AdcStartBufferFilling();
 
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
@@ -178,7 +184,15 @@ int main(void)
             //int size_cdc = sprintf(buffer_cdc, "enc=%i s=%i    ", (int)enc_value, enc_button?1:0);
             //int size_cdc = sprintf(buffer_cdc, "Time %i (ms)    ", (int)delta_ms);
             //received_bytes = 0;
-            //CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
+
+
+            int freq = enc_value*100;
+            sprintf(buffer_cdc, "F=%i    ", freq);
+            UTFT_print(buffer_cdc, 20, 50);
+            //uint32_t word = AD9833_CalcFreqWorld(enc_value*100);
+            uint32_t word = AD9833_CalcFreqWorld(freq);
+            //uint32_t word = (1<<enc_value)|4096;
+            AD9833_SetFreqWorld(word);
 
             if(first)
             {
@@ -186,24 +200,29 @@ int main(void)
             } else
             {
                 //SendAdcBuffer();
+                AdcStopMeasureFreq();
+                HAL_Delay(10);
+                AdcStartMeasureFreq();
             }
-
-
-            UTFT_print(buffer_cdc, 20, 50);
-            //uint32_t word = AD9833_CalcFreqWorld(enc_value*100);
-            uint32_t word = AD9833_CalcFreqWorld(enc_value*10000);
-            //uint32_t word = (1<<enc_value)|4096;
-            AD9833_SetFreqWorld(word);
         }
 
-        sprintf(buffer_cdc, "h=%i f=%i      ", half_conv, full_conv);
-        UTFT_print(buffer_cdc, 20, 70);
+        //sprintf(buffer_cdc, "h=%i f=%i      ", half_conv, full_conv);
+        //UTFT_print(buffer_cdc, 20, 70);
 
-        floatToString(buffer_cdc, 20, d1_errf, 4, 6, false);
-        UTFT_print(buffer_cdc, 20, 90);
+        if(enable_measure_freq)
+        {
+            strcpy(buffer_cdc, "F=");
+            floatToString(buffer_cdc+strlen(buffer_cdc), 20, AdcMeasureFreq(), 4, 10, false);
+            UTFT_print(buffer_cdc, 20, 90);
+        } else
+        {
 
-        floatToString(buffer_cdc, 20, d2_errf, 4, 6, false);
-        UTFT_print(buffer_cdc, 20, 110);
+            floatToString(buffer_cdc, 20, d1_errf, 4, 6, false);
+            UTFT_print(buffer_cdc, 20, 90);
+
+            floatToString(buffer_cdc, 20, d2_errf, 4, 6, false);
+            UTFT_print(buffer_cdc, 20, 110);
+        }
 
         HAL_Delay(250);
 
