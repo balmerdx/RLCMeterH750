@@ -177,7 +177,7 @@ int main(void)
 
             //int size_cdc = sprintf(buffer_cdc, "enc=%i s=%i    ", (int)enc_value, enc_button?1:0);
             //int size_cdc = sprintf(buffer_cdc, "Time %i (ms)    ", (int)delta_ms);
-            received_bytes = 0;
+            //received_bytes = 0;
             //CDC_Transmit_FS((uint8_t*)buffer_cdc, size_cdc);
 
             if(first)
@@ -185,7 +185,7 @@ int main(void)
                 first = false;
             } else
             {
-                SendAdcBuffer();
+                //SendAdcBuffer();
             }
 
 
@@ -215,6 +215,14 @@ int main(void)
         if(AdcBufferFillingComplete())
         {
             ProcessAdcBuffer(adc_cpu_buffer, ADC_BUFFER_SIZE);
+
+            if(received_bytes)
+            {
+                //По любым приходящем запросам - отсылаем в ответ буффер с данными.
+                received_bytes = 0;
+                SendAdcBuffer();
+            }
+
             AdcStartBufferFilling();
         }
     }
