@@ -10,6 +10,10 @@ ADC_HandleTypeDef    AdcHandle_slave;
 volatile int half_conv = 0;
 volatile int full_conv = 0;
 
+uint32_t AdcSamplesPerSecond()
+{
+    return 2000000;
+}
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
 {
@@ -24,7 +28,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
     // Enable clock of ADCx peripheral
     ADCx_CLK_ENABLE();
     // ADC Periph interface clock configuration
-    __HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_CLKP);
+    //__HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_CLKP);
+    __HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_PLL2);
 
     if (hadc->Instance == ADCx)
     {
