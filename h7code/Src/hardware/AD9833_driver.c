@@ -89,7 +89,7 @@ void AD9833_SetFreqWorld(uint32_t freq_reg)
     AD9833_SPISend16(COMMAND_FREQ0|msb);
 }
 
-uint32_t AD9833_CalcFreqWorld(float freq)
+uint32_t AD9833_CalcFreqWorld(double freq)
 {
     //freq = AD9833_MASTER_CLOCK*freq_reg/(1<<28)
     //freq_reg = (freq*(1<<28))/AD9833_MASTER_CLOCK
@@ -102,4 +102,9 @@ uint32_t AD9833_CalcFreqWorld(float freq)
         freq_reg = (1<<28)-1;
 
     return freq_reg;
+}
+
+double AD9833_CalcFreq(uint32_t freq_word)
+{
+    return (AD9833_MASTER_CLOCK*(double)freq_word)/(1<<28);
 }

@@ -3,8 +3,12 @@
 #include "data_processing.h"
 #include "measure/measure_freq.h"
 #include "measure/sin_cos.h"
+#include "hardware/AD9833_driver.h"
 
 #include <string.h>
+
+#define PHASE_ADDITIONAL_SHIFT 20
+#define CONVOLUTION_SIN_DIV_SHIFT 16
 
 uint32_t adc_cpu_buffer[ADC_BUFFER_SIZE];
 static bool start_buffer_filling = false;
@@ -16,17 +20,24 @@ static bool stop_measure_freq = false;
 static float measure_freq = 0;
 MeasureFreqData measure_data;
 
-static uint32_t phase_convolution = 0;
-static uint32_t delta_phase_convolution = 123456;
-static bool start_convolution = false;
-static bool stop_convolution = false;
-volatile uint64_t g_sum_a_sin = 0;
-volatile uint64_t g_sum_a_cos = 0;
-volatile uint64_t g_sum_b_sin = 0;
-volatile uint64_t g_sum_b_cos = 0;
+static uint64_t phase_convolution;
+static uint64_t delta_phase_convolution;
+static volatile bool start_convolution = false;
+static volatile bool stop_convolution = false;
+static volatile bool complete_covolution = false;
+static volatile uint32_t g_mid_samples, g_mid_count;
+static volatile uint32_t g_convolution_samples, g_convolution_count;
+static volatile uint64_t g_mid_a;
+static volatile uint64_t g_mid_b;
+static volatile int64_t g_sum_a_sin;
+static volatile int64_t g_sum_a_cos;
+static volatile int64_t g_sum_b_sin;
+static volatile int64_t g_sum_b_cos;
 
 #define ADC1_DATA(x)   ((x) & 0x0000FFFF)
 #define ADC2_DATA(x)   ((x) >> 16)
+
+void MakeConvolution(uint32_t* data, uint32_t size);
 
 void AdcConvertDataCallback(uint32_t* data, uint32_t size)
 {
@@ -61,43 +72,88 @@ void AdcConvertDataCallback(uint32_t* data, uint32_t size)
 
     if(start_convolution)
     {
-        uint32_t phase = phase_convolution;
-        uint32_t delta_phase = delta_phase_convolution;
+        MakeConvolution(data, size);
+
+        bool complete = (g_mid_count==0 && g_convolution_count==0);
+        if(stop_convolution || complete)
+        {
+            start_convolution = false;
+            stop_convolution = false;
+            complete_covolution = complete;
+        }
+    }
+}
+
+void MakeConvolution(uint32_t* data, uint32_t size)
+{
+    if(g_mid_count>0)
+    {
+        if(size > g_mid_count)
+            size = g_mid_count;
+
+        uint64_t mid_a = 0;
+        uint64_t mid_b = 0;
+        for(uint32_t i=0; i<size; i++)
+        {
+            uint32_t ab = data[i];
+            mid_a += ADC1_DATA(ab);
+            mid_b += ADC2_DATA(ab);
+        }
+
+        g_mid_a += mid_a;
+        g_mid_b += mid_b;
+        g_mid_count -= size;
+
+        if(g_mid_count==0)
+        {
+            g_mid_a = g_mid_a/g_mid_samples;
+            g_mid_b = g_mid_b/g_mid_samples;
+        }
+
+        return;
+    }
+
+    if(g_convolution_count>0)
+    {
+        if(size > g_convolution_count)
+            size = g_convolution_count;
+
+        uint64_t phase = phase_convolution;
+        uint64_t delta_phase = delta_phase_convolution;
         int64_t sum_a_sin = 0;
         int64_t sum_a_cos = 0;
         int64_t sum_b_sin = 0;
         int64_t sum_b_cos = 0;
+
+        int32_t mid_a = (int32_t)g_mid_a;
+        int32_t mid_b = (int32_t)g_mid_b;
+
         for(uint32_t i=0; i<size; i++)
         {
             int32_t ret_sin;
             int32_t ret_cos;
-            SinCosInt(phase, &ret_sin, &ret_cos);
+            SinCosInt(phase>>PHASE_ADDITIONAL_SHIFT, &ret_sin, &ret_cos);
 
             uint32_t ab = data[i];
-            uint32_t a = ADC1_DATA(ab);
-            uint32_t b = ADC2_DATA(ab);
-            sum_a_sin += (ret_sin*(int64_t)(a))>>16;
-            sum_a_cos += (ret_cos*(int64_t)(a))>>16;
-            sum_b_sin += (ret_sin*(int64_t)(b))>>16;
-            sum_b_cos += (ret_cos*(int64_t)(b))>>16;
+            int64_t a = ((int32_t)ADC1_DATA(ab))-mid_a;
+            int64_t b = ((int32_t)ADC2_DATA(ab))-mid_b;
+            sum_a_sin += (ret_sin*a)>>CONVOLUTION_SIN_DIV_SHIFT;
+            sum_a_cos += (ret_cos*a)>>CONVOLUTION_SIN_DIV_SHIFT;
+            sum_b_sin += (ret_sin*b)>>CONVOLUTION_SIN_DIV_SHIFT;
+            sum_b_cos += (ret_cos*b)>>CONVOLUTION_SIN_DIV_SHIFT;
 
             phase += delta_phase;
         }
+
+        g_convolution_count -= size;
 
         phase_convolution = phase;
         g_sum_a_sin += sum_a_sin;
         g_sum_a_cos += sum_a_cos;
         g_sum_b_sin += sum_b_sin;
         g_sum_b_cos += sum_b_cos;
-
-        if(stop_convolution)
-        {
-            start_convolution = false;
-            stop_convolution = false;
-        }
     }
 }
-
 
 #undef ADC1_DATA
 #undef ADC2_DATA
@@ -156,9 +212,53 @@ float AdcMeasureFreq()
     return measure_freq;
 }
 
-void AdcStartConvolution()
+void AdcStartConvolution(uint32_t freq_word, uint32_t time_ms)
 {
     AdcStopAll();
 
+    double freq = AD9833_CalcFreq(freq_word);
+    if(freq<1)//Error! Frequency too low!
+        return;
+
+    uint64_t sps = AdcSamplesPerSecond();
+
+    uint32_t required_samples = (AdcSamplesPerSecond()*time_ms)/1000;
+    double samples_per_cycle = sps/freq;
+    uint32_t mid_sample_divider = 10;
+
+    g_convolution_count = g_convolution_samples = (1+(uint32_t)(required_samples/samples_per_cycle))*samples_per_cycle;
+    g_mid_count = g_mid_samples = (1+(uint32_t)(required_samples/mid_sample_divider/samples_per_cycle))*samples_per_cycle;
+
+    g_mid_a = 0;
+    g_mid_b = 0;
+    g_sum_a_sin = 0;
+    g_sum_a_cos = 0;
+    g_sum_b_sin = 0;
+    g_sum_b_cos = 0;
+
+    phase_convolution = 0;
+    delta_phase_convolution = (1ull<<(SIN_PHASE_FRACTIONAL_SHIFT+PHASE_ADDITIONAL_SHIFT))/samples_per_cycle;
+
+    complete_covolution = false;
     start_convolution = true;
+}
+
+bool AdcConvolutionComplete()
+{
+    return complete_covolution;
+}
+
+ConvolutionResult AdcConvolutionResult()
+{
+    double mul = 1./(1<<(SIN_FRACTIONAL_SHIFT - CONVOLUTION_SIN_DIV_SHIFT));
+    ConvolutionResult r;
+    r.mid_a = g_mid_a;
+    r.mid_b = g_mid_b;
+    r.sum_samples = g_convolution_samples;
+
+    r.sum_a_sin = (mul*g_sum_a_sin)/r.sum_samples;
+    r.sum_a_cos = (mul*g_sum_a_cos)/r.sum_samples;
+    r.sum_b_sin = (mul*g_sum_b_sin)/r.sum_samples;
+    r.sum_b_cos = (mul*g_sum_b_cos)/r.sum_samples;
+    return r;
 }

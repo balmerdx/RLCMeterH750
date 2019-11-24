@@ -9,4 +9,6 @@ void AD9833_Init();
 void AD9833_SetFreqWorld(uint32_t freq_reg);
 
 //freq - частота (герц)
-uint32_t AD9833_CalcFreqWorld(float freq);
+uint32_t AD9833_CalcFreqWorld(double freq);
+
+double AD9833_CalcFreq(uint32_t freq_word);

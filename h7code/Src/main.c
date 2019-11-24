@@ -31,6 +31,7 @@
 #include "hardware/dual_adc.h"
 #include "data_processing.h"
 #include "measure/measure_freq.h"
+#include "measure/sin_cos.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -146,6 +147,7 @@ int main(void)
     SCB_EnableICache();
     SCB_EnableDCache();
 
+    SinCosInit();
 
     UTFT_InitLCD(UTFT_LANDSCAPE2);
     UTFT_fillScrW(VGA_BLACK);
@@ -160,21 +162,24 @@ int main(void)
     //UTFT_print("Set complete", 20, 50);
 
     DualAdcInitAndStart();
-    //UTFT_print("ADC Started    ", 20, 30);
+    UTFT_print("ADC Started    ", 20, 30);
 
+    if(0)
+    {
+        delta_ms = testSpeed();
+        sprintf(buffer_cdc, "st=%i ms   ", (int)delta_ms);
+        UTFT_print(buffer_cdc, 20, 30);
+    }
 
-    bool enable_measure_freq = true;
-
-    if(true)
-        AdcStartConvolution();
-    else
+    bool enable_measure_freq = false;
+    /*
     if(enable_measure_freq)
         AdcStartMeasureFreq();
     else
         AdcStartBufferFilling();
-    delta_ms = testSpeed();
-    sprintf(buffer_cdc, "st=%i ms   ", (int)delta_ms);
-    UTFT_print(buffer_cdc, 20, 30);
+        */
+
+    uint32_t freqWord = 0;
 
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
@@ -192,10 +197,8 @@ int main(void)
             int freq = enc_value*100;
             sprintf(buffer_cdc, "F=%i    ", freq);
             UTFT_print(buffer_cdc, 20, 50);
-            //uint32_t word = AD9833_CalcFreqWorld(enc_value*100);
-            uint32_t word = AD9833_CalcFreqWorld(freq);
-            //uint32_t word = (1<<enc_value)|4096;
-            AD9833_SetFreqWorld(word);
+            freqWord = AD9833_CalcFreqWorld(freq);
+            AD9833_SetFreqWorld(freqWord);
 
             if(first)
             {
@@ -203,9 +206,8 @@ int main(void)
             } else
             {
                 //SendAdcBuffer();
-                AdcStopMeasureFreq();
-                HAL_Delay(10);
-                AdcStartMeasureFreq();
+                HAL_Delay(2);
+                AdcStartConvolution(freqWord, 10);
             }
         }
 
@@ -219,12 +221,47 @@ int main(void)
             UTFT_print(buffer_cdc, 20, 90);
         } else
         {
-
+            /*
             floatToString(buffer_cdc, 20, d1_errf, 4, 6, false);
             UTFT_print(buffer_cdc, 20, 90);
 
             floatToString(buffer_cdc, 20, d2_errf, 4, 6, false);
             UTFT_print(buffer_cdc, 20, 110);
+            */
+
+            /*
+            sprintf(buffer_cdc, "mid=%li    ", g_mid_samples);
+            UTFT_print(buffer_cdc, 20, 90);
+
+            sprintf(buffer_cdc, "conv=%li    ", g_convolution_samples);
+            UTFT_print(buffer_cdc, 20, 110);
+            */
+
+            if(AdcConvolutionComplete())
+            {
+                static ConvolutionResult result;
+                result = AdcConvolutionResult();
+
+                if(1)
+                {
+                    strcpy(buffer_cdc, "abs(a)=");
+                    float abs_a = sqrtf(result.sum_a_sin*result.sum_a_sin+result.sum_a_cos*result.sum_a_cos);
+                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
+                    UTFT_print(buffer_cdc, 20, 90);
+
+                    strcpy(buffer_cdc, "abs(b)=");
+                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, sqrtf(result.sum_b_sin*result.sum_b_sin+result.sum_b_cos*result.sum_b_cos), 4, 10, false);
+                    UTFT_print(buffer_cdc, 20, 110);
+                } else {
+                    sprintf(buffer_cdc, "mid_a=%i    ", (int)result.mid_a);
+                    UTFT_print(buffer_cdc, 20, 90);
+
+                    sprintf(buffer_cdc, "mid_b=%i    ", (int)result.mid_b);
+                    UTFT_print(buffer_cdc, 20, 110);
+                }
+
+                AdcStartConvolution(freqWord, 10);
+            }
         }
 
         HAL_Delay(250);
