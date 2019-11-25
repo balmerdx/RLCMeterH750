@@ -29,9 +29,11 @@
 #include "ili/DefaultFonts.h"
 #include "hardware/AD9833_driver.h"
 #include "hardware/dual_adc.h"
+#include "hardware/select_resistor.h"
 #include "data_processing.h"
 #include "measure/measure_freq.h"
 #include "measure/sin_cos.h"
+#include "measure/calculate_rc.h"
 
 extern uint32_t received_bytes;
 volatile uint32_t delta_ms;
@@ -127,6 +129,34 @@ void SendAdcBuffer()
     }
 }
 
+void SwitchToResistor(ResistorSelectorEnum r)
+{
+    if(ResistorCurrent()==r)
+        return;
+    ResistorSelect(r);
+    HAL_Delay(20);
+}
+
+void SelectResistor(float measured_impedance)
+{
+    //Пока без гистерезиса, потом добавим
+
+    if(measured_impedance > 3000)
+    {
+        SwitchToResistor(Resistor_10_KOm);
+        return;
+    }
+
+    if(measured_impedance > 300)
+    {
+        SwitchToResistor(Resistor_1_KOm);
+        return;
+    }
+
+    SwitchToResistor(Resistor_100_Om);
+
+}
+
 /**
   * @brief  The application entry point.
   * @retval int
@@ -148,6 +178,7 @@ int main(void)
     SCB_EnableDCache();
 
     SinCosInit();
+    ResistorSelectorInit();
 
     UTFT_InitLCD(UTFT_LANDSCAPE2);
     UTFT_fillScrW(VGA_BLACK);
@@ -180,6 +211,7 @@ int main(void)
         */
 
     uint32_t freqWord = 0;
+    uint32_t convolution_time_ms = 50;
 
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
@@ -207,7 +239,7 @@ int main(void)
             {
                 //SendAdcBuffer();
                 HAL_Delay(2);
-                AdcStartConvolution(freqWord, 10);
+                AdcStartConvolution(freqWord, convolution_time_ms);
             }
         }
 
@@ -242,6 +274,9 @@ int main(void)
                 static ConvolutionResult result;
                 result = AdcConvolutionResult();
 
+                complexf Zx;
+                calculate(&result, &Zx);
+
                 if(1)
                 {
                     strcpy(buffer_cdc, "abs(a)=");
@@ -252,6 +287,22 @@ int main(void)
                     strcpy(buffer_cdc, "abs(b)=");
                     floatToString(buffer_cdc+strlen(buffer_cdc), 20, sqrtf(result.sum_b_sin*result.sum_b_sin+result.sum_b_cos*result.sum_b_cos), 4, 10, false);
                     UTFT_print(buffer_cdc, 20, 110);
+
+                    strcpy(buffer_cdc, "RE=");
+                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, creal(Zx), 4, 10, false);
+                    UTFT_print(buffer_cdc, 20, 130);
+
+                    strcpy(buffer_cdc, "IM=");
+                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cimag(Zx), 4, 10, false);
+                    UTFT_print(buffer_cdc, 20, 150);
+
+                    if(ResistorCurrent()==Resistor_100_Om)
+                        strcpy(buffer_cdc, "R=100 Om");
+                    if(ResistorCurrent()==Resistor_1_KOm)
+                        strcpy(buffer_cdc, "R=1 KOm");
+                    if(ResistorCurrent()==Resistor_10_KOm)
+                        strcpy(buffer_cdc, "R=10 KOm");
+                    UTFT_print(buffer_cdc, 20, 180);
                 } else {
                     sprintf(buffer_cdc, "mid_a=%i    ", (int)result.mid_a);
                     UTFT_print(buffer_cdc, 20, 90);
@@ -260,7 +311,9 @@ int main(void)
                     UTFT_print(buffer_cdc, 20, 110);
                 }
 
-                AdcStartConvolution(freqWord, 10);
+                SelectResistor(cabs(Zx));
+
+                AdcStartConvolution(freqWord, convolution_time_ms);
             }
         }
 
@@ -390,17 +443,6 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOE_CLK_ENABLE();
     __HAL_RCC_GPIOH_CLK_ENABLE();
 
-    GPIO_InitTypeDef  gpio = {};
-
-    gpio.Mode      = GPIO_MODE_OUTPUT_PP;
-    gpio.Alternate = 0;
-    gpio.Pull      = GPIO_NOPULL;
-    gpio.Speed     = GPIO_SPEED_FREQ_HIGH;
-
-    gpio.Pin       = GPIO_PIN_7 | GPIO_PIN_8;
-    HAL_GPIO_Init(GPIOE, &gpio);
-
-    HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, 1);
 }
 
 /**

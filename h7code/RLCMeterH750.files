@@ -12,10 +12,12 @@ Src/hardware/AD9833_driver.c
 Src/hardware/dual_adc.c
 Src/hardware/hw_ili9341.c
 Src/hardware/quadrature_encoder.c
+Src/hardware/select_resistor.c
 Src/ili/DefaultFonts.c
 Src/ili/UTFT.c
 Src/ili/float_to_string.c
 Src/ili/utf_font.c
+Src/measure/calculate_rc.c
 Src/measure/measure_freq.c
 Src/measure/sin_cos.c
 startup_stm32h750xx.s
@@ -74,10 +76,12 @@ Src/hardware/AD9833_driver.h
 Src/hardware/dual_adc.h
 Src/hardware/hw_ili9341.h
 Src/hardware/quadrature_encoder.h
+Src/hardware/select_resistor.h
 Src/ili/DefaultFonts.h
 Src/ili/UTFT.h
 Src/ili/float_to_string.h
 Src/ili/utf_font.h
+Src/measure/calculate_rc.h
 Src/measure/measure_freq.h
 Src/measure/sin_cos.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32_assert_template.h

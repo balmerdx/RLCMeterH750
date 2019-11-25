@@ -18,10 +18,12 @@ DEPS += \
 	output/base/Src/hardware/dual_adc.d \
 	output/base/Src/hardware/hw_ili9341.d \
 	output/base/Src/hardware/quadrature_encoder.d \
+	output/base/Src/hardware/select_resistor.d \
 	output/base/Src/ili/DefaultFonts.d \
 	output/base/Src/ili/UTFT.d \
 	output/base/Src/ili/float_to_string.d \
 	output/base/Src/ili/utf_font.d \
+	output/base/Src/measure/calculate_rc.d \
 	output/base/Src/measure/measure_freq.d \
 	output/base/Src/measure/sin_cos.d \
 	output/base/startup_stm32h750xx.d \
@@ -84,10 +86,12 @@ OBJS += \
 	output/base/Src/hardware/dual_adc.o \
 	output/base/Src/hardware/hw_ili9341.o \
 	output/base/Src/hardware/quadrature_encoder.o \
+	output/base/Src/hardware/select_resistor.o \
 	output/base/Src/ili/DefaultFonts.o \
 	output/base/Src/ili/UTFT.o \
 	output/base/Src/ili/float_to_string.o \
 	output/base/Src/ili/utf_font.o \
+	output/base/Src/measure/calculate_rc.o \
 	output/base/Src/measure/measure_freq.o \
 	output/base/Src/measure/sin_cos.o \
 	output/base/startup_stm32h750xx.o \
@@ -191,6 +195,10 @@ output/base/Src/hardware/quadrature_encoder.o: ./Src/hardware/quadrature_encoder
 	@echo 'Building target: quadrature_encoder.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
+output/base/Src/hardware/select_resistor.o: ./Src/hardware/select_resistor.c
+	@echo 'Building target: select_resistor.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
 output/base/Src/ili/DefaultFonts.o: ./Src/ili/DefaultFonts.c
 	@echo 'Building target: DefaultFonts.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
@@ -207,13 +215,17 @@ output/base/Src/ili/utf_font.o: ./Src/ili/utf_font.c
 	@echo 'Building target: utf_font.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
+output/base/Src/measure/calculate_rc.o: ./Src/measure/calculate_rc.c
+	@echo 'Building target: calculate_rc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
 output/base/Src/measure/measure_freq.o: ./Src/measure/measure_freq.c
 	@echo 'Building target: measure_freq.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/measure/sin_cos.o: ./Src/measure/sin_cos.c
 	@echo 'Building target: sin_cos.c'
-	@$(CC) $(C_FLAGS) -Wa,-a,-ad,-alms=output/base/Src/measure/sin_cos.lst -o "$@" "$<"
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/startup_stm32h750xx.o: ./startup_stm32h750xx.s
 	@echo 'Building target: startup_stm32h750xx.s'
