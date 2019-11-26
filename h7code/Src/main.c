@@ -226,7 +226,7 @@ int main(void)
             old_enc_value = enc_value;
             old_enc_button = enc_button;
 
-            int freq = enc_value*100;
+            int freq = enc_value*1000;
             sprintf(buffer_cdc, "F=%i    ", freq);
             UTFT_print(buffer_cdc, 20, 50);
             freqWord = AD9833_CalcFreqWorld(freq);
