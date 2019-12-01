@@ -2,7 +2,6 @@
 #include <string.h>
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
-#include "test_loop_speed.h"
 #include "hardware/quadrature_encoder.h"
 #include "ili/UTFT.h"
 #include "ili/DefaultFonts.h"
@@ -21,10 +20,7 @@ volatile int64_t g_sum;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 
-#define ADC1_DATA(x)   ((x) & 0x0000FFFF)
-#define ADC2_DATA(x)   ((x) >> 16)
-
-void SendAdcBuffer()
+bool SendAdcBuffer()
 {
     const uint32_t packet_size_ints = 500;
 
@@ -34,15 +30,19 @@ void SendAdcBuffer()
         if(pos+size > ADC_BUFFER_SIZE)
             size = ADC_BUFFER_SIZE-pos;
         uint8_t result;
-        do
+        for(int i=0; i<10; i++)
         {
             result = CDC_Transmit_FS((uint8_t*)(adc_cpu_buffer+pos), size*sizeof(uint32_t));
+            if(result!=USBD_BUSY)
+                break;
             HAL_Delay(1);
-        } while(result==USBD_BUSY);
+        }
 
         if(result!=USBD_OK)
-            break;
+            return false;
     }
+
+    return true;
 }
 
 void SwitchToResistor(ResistorSelectorEnum r)

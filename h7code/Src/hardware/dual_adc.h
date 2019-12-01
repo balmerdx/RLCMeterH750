@@ -4,6 +4,10 @@
 //2 MSps
 
 void DualAdcInitAndStart();
+
+#define ADC1_DATA(x)   ((x) & 0x0000FFFF)
+#define ADC2_DATA(x)   ((x) >> 16)
+//data - unsigned 16-bit ADC1&2 values. See ADC1_DATA, ADC2_DATA macros.
 void AdcConvertDataCallback(uint32_t* data, uint32_t size);
 
 //Количество сэмплов в секунду

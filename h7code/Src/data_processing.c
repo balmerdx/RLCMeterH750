@@ -4,6 +4,7 @@
 #include "measure/measure_freq.h"
 #include "measure/sin_cos.h"
 #include "hardware/AD9833_driver.h"
+#include "hardware/dual_adc.h"
 
 #include <string.h>
 
@@ -33,9 +34,6 @@ static volatile int64_t g_sum_a_sin;
 static volatile int64_t g_sum_a_cos;
 static volatile int64_t g_sum_b_sin;
 static volatile int64_t g_sum_b_cos;
-
-#define ADC1_DATA(x)   ((x) & 0x0000FFFF)
-#define ADC2_DATA(x)   ((x) >> 16)
 
 void MakeConvolution(uint32_t* data, uint32_t size);
 

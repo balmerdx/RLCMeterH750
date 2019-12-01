@@ -3,7 +3,6 @@ Src/main.c
 Src/stm32h7xx_hal_msp.c
 Src/stm32h7xx_it.c
 Src/system_stm32h7xx.c
-Src/test_loop_speed.c
 Src/usb_device.c
 Src/usbd_cdc_if.c
 Src/usbd_conf.c
@@ -71,7 +70,6 @@ Inc/usbd_cdc_if.h
 Inc/usbd_conf.h
 Inc/usbd_desc.h
 Src/data_processing.h
-Src/test_loop_speed.h
 Src/hardware/AD9833_driver.h
 Src/hardware/dual_adc.h
 Src/hardware/hw_ili9341.h
