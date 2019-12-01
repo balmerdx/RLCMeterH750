@@ -153,9 +153,6 @@ void MakeConvolution(uint32_t* data, uint32_t size)
     }
 }
 
-#undef ADC1_DATA
-#undef ADC2_DATA
-
 static void AdcStopAll()
 {
     if(start_convolution)

@@ -9,6 +9,7 @@ DEPS += \
 	output/base/Src/stm32h7xx_hal_msp.d \
 	output/base/Src/stm32h7xx_it.d \
 	output/base/Src/system_stm32h7xx.d \
+	output/base/Src/task.d \
 	output/base/Src/usb_device.d \
 	output/base/Src/usbd_cdc_if.d \
 	output/base/Src/usbd_conf.d \
@@ -76,6 +77,7 @@ OBJS += \
 	output/base/Src/stm32h7xx_hal_msp.o \
 	output/base/Src/stm32h7xx_it.o \
 	output/base/Src/system_stm32h7xx.o \
+	output/base/Src/task.o \
 	output/base/Src/usb_device.o \
 	output/base/Src/usbd_cdc_if.o \
 	output/base/Src/usbd_conf.o \
@@ -155,6 +157,10 @@ output/base/Src/stm32h7xx_it.o: ./Src/stm32h7xx_it.c
 
 output/base/Src/system_stm32h7xx.o: ./Src/system_stm32h7xx.c
 	@echo 'Building target: system_stm32h7xx.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/task.o: ./Src/task.c
+	@echo 'Building target: task.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/usb_device.o: ./Src/usb_device.c

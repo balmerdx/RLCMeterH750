@@ -11,78 +11,13 @@
 #include "data_processing.h"
 #include "measure/measure_freq.h"
 #include "measure/sin_cos.h"
-#include "measure/calculate_rc.h"
+#include "task.h"
 
-extern uint32_t received_bytes;
 
 volatile int64_t g_sum;
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-
-bool SendAdcBuffer()
-{
-    const uint32_t packet_size_ints = 500;
-
-    for(uint32_t pos = 0; pos<ADC_BUFFER_SIZE; pos += packet_size_ints)
-    {
-        uint32_t size = packet_size_ints;
-        if(pos+size > ADC_BUFFER_SIZE)
-            size = ADC_BUFFER_SIZE-pos;
-        uint8_t result;
-        for(int i=0; i<10; i++)
-        {
-            result = CDC_Transmit_FS((uint8_t*)(adc_cpu_buffer+pos), size*sizeof(uint32_t));
-            if(result!=USBD_BUSY)
-                break;
-            HAL_Delay(1);
-        }
-
-        if(result!=USBD_OK)
-            return false;
-    }
-
-    return true;
-}
-
-void SwitchToResistor(ResistorSelectorEnum r)
-{
-    if(ResistorCurrent()==r)
-        return;
-    ResistorSelect(r);
-    HAL_Delay(10);
-}
-
-void SelectResistor(const ConvolutionResult* result, float measured_impedance)
-{
-    float abs_b = cabs(result->sum_b);
-
-    //Слишком большая амплитуда, надо переключиться на резистор меньших значений.
-    ResistorSelectorEnum max_resistor = Resistor_10_KOm;
-    ResistorSelectorEnum select_resistor = Resistor_100_Om;
-    if(abs_b > 15000)
-    {
-        if(ResistorCurrent()==Resistor_10_KOm)
-            max_resistor = Resistor_1_KOm;
-        if(ResistorCurrent()==Resistor_1_KOm)
-            max_resistor = Resistor_100_Om;
-    }
-
-    if(measured_impedance > 3000)
-    {
-        select_resistor = Resistor_10_KOm;
-    } else
-    if(measured_impedance > 300)
-    {
-        select_resistor = Resistor_1_KOm;
-    }
-
-    if(select_resistor > max_resistor)
-        select_resistor = max_resistor;
-
-    SwitchToResistor(select_resistor);
-
-}
 
 int StandartFreq(int idx)
 {
@@ -114,8 +49,6 @@ int main(void)
 
     QuadEncInit();
 
-    static char buffer_cdc[128];
-
     SCB_EnableICache();
     SCB_EnableDCache();
 
@@ -135,12 +68,9 @@ int main(void)
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
 
-    uint32_t freqWord = 0;
-    uint32_t convolution_time_ms = 50;
 
     uint16_t old_enc_value = 1234;
     bool old_enc_button = false;
-    bool first = true;
     while (1)
     {
         uint16_t enc_value = QuadEncValue();
@@ -152,74 +82,11 @@ int main(void)
             old_enc_button = enc_button;
 
             int freq = StandartFreq((int16_t)enc_value);
-            sprintf(buffer_cdc, "F=%i    ", freq);
-            UTFT_print(buffer_cdc, 20, 50);
-            freqWord = AD9833_CalcFreqWorld(freq);
-            AD9833_SetFreqWorld(freqWord);
-
-            if(first)
-            {
-                first = false;
-            } else
-            {
-                HAL_Delay(2);
-                AdcStartConvolution(freqWord, convolution_time_ms);
-            }
+            TaskSetFreq(freq);
         }
 
-        if(AdcConvolutionComplete())
-        {
-            static ConvolutionResult result;
-            result = AdcConvolutionResult();
-
-            complex Zx;
-            calculate(&result, &Zx);
-
-            strcpy(buffer_cdc, "abs(a)=");
-            float abs_a = cabs(result.sum_a);
-            floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
-            UTFT_print(buffer_cdc, 20, 90);
-
-            strcpy(buffer_cdc, "abs(b)=");
-            floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result.sum_b), 4, 10, false);
-            UTFT_print(buffer_cdc, 20, 110);
-
-            strcpy(buffer_cdc, "RE=");
-            floatToString(buffer_cdc+strlen(buffer_cdc), 20, creal(Zx), 4, 10, false);
-            UTFT_print(buffer_cdc, 20, 130);
-
-            strcpy(buffer_cdc, "IM=");
-            floatToString(buffer_cdc+strlen(buffer_cdc), 20, cimag(Zx), 4, 10, false);
-            UTFT_print(buffer_cdc, 20, 150);
-
-            if(ResistorCurrent()==Resistor_100_Om)
-                strcpy(buffer_cdc, "R=100 Om");
-            if(ResistorCurrent()==Resistor_1_KOm)
-                strcpy(buffer_cdc, "R=1 KOm");
-            if(ResistorCurrent()==Resistor_10_KOm)
-                strcpy(buffer_cdc, "R=10 KOm");
-            UTFT_print(buffer_cdc, 20, 180);
-
-            SelectResistor(&result, cabs(Zx));
-
-            AdcStartConvolution(freqWord, convolution_time_ms);
-        }
-
-        HAL_Delay(250);
-
-        if(received_bytes)
-        {
-            received_bytes = 0;
-            //По любым приходящем запросам - отсылаем в ответ буффер с данными.
-            AdcStartBufferFilling();
-
-        }
-
-        if(AdcBufferFillingComplete())
-        {
-            AdcClearBufferFillingComplete();
-            SendAdcBuffer();
-        }
+        TaskQuant();
+        HAL_Delay(1);
     }
 }
 

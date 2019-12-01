@@ -1,3 +1,7 @@
+https://stackoverflow.com/questions/53163998/could-not-open-port-error-immediately-after-plugging-in-arduino-on-arch-linux
+pkill -STOP ModemManager
+pkill -CONT ModemManager
+
 
 ISL9204 - зарядка уккумулятора --ok
 SWD --ok
@@ -300,10 +304,6 @@ R22 заменим на 1 Ом
 Между ножками 4 и 1 усилителя U11 впаяем конденсатор емкостью 33 pF (это приблизительно 10 КОм на чатоте 500 КГц).
 
 
-https://stackoverflow.com/questions/53163998/could-not-open-port-error-immediately-after-plugging-in-arduino-on-arch-linux
-pkill -STOP ModemManager
-pkill -CONT ModemManager
-
 Частота не та сэмплирования.
 2.5 цикла ожидания - 68681 Гц вместо 50000 Гц
 8.5 цикла ожидания - 106203 Гц
@@ -369,4 +369,8 @@ https://fb2-epub.ru/load/1001/ostrov_sokrovishh/665-1-0-1237
 	- измерение Z и вывод результатов на экран (основной режим)
 	- сэмплирование буфера и передача результатов по USB
 	- установка частоты, ожидание результата (так как это происходит достаточно долго, то можно обойтись без пакетного режима)
-	любое движение энкодера приводит к переходу к первому варианту
+	
+	- если целую секунду не было никакой активности по USB, то переключаетмся в режим измерения.
+
+
+	пускай у нас команды будут разделены на 2 ва
