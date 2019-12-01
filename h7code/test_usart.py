@@ -27,6 +27,7 @@ def close():
 
 def ReceiveData():
 	ser.write([1])
+	print("Data query.")
 	f = open("data.bin", "wb")
 	sum_size = 0
 	is_empty = False

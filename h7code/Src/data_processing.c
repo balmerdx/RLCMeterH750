@@ -193,6 +193,11 @@ bool AdcBufferFillingComplete()
     return complete_buffer_filling;
 }
 
+void AdcClearBufferFillingComplete()
+{
+    complete_buffer_filling = false;
+}
+
 void AdcStartMeasureFreq()
 {
     AdcStopAll();
@@ -256,9 +261,12 @@ ConvolutionResult AdcConvolutionResult()
     r.mid_b = g_mid_b;
     r.sum_samples = g_convolution_samples;
 
-    r.sum_a_sin = (mul*g_sum_a_sin)/r.sum_samples;
-    r.sum_a_cos = (mul*g_sum_a_cos)/r.sum_samples;
-    r.sum_b_sin = (mul*g_sum_b_sin)/r.sum_samples;
-    r.sum_b_cos = (mul*g_sum_b_cos)/r.sum_samples;
+    double sum_a_sin = (mul*g_sum_a_sin)/r.sum_samples;
+    double sum_a_cos = (mul*g_sum_a_cos)/r.sum_samples;
+    double sum_b_sin = (mul*g_sum_b_sin)/r.sum_samples;
+    double sum_b_cos = (mul*g_sum_b_cos)/r.sum_samples;
+
+    r.sum_a = sum_a_sin + sum_a_cos * I;
+    r.sum_b = sum_b_sin + sum_b_cos * I;
     return r;
 }

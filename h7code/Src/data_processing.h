@@ -1,5 +1,7 @@
 #pragma once
 
+#include <complex.h>
+
 #define ADC_BUFFER_SIZE 10000
 extern uint32_t adc_cpu_buffer[ADC_BUFFER_SIZE];
 
@@ -8,16 +10,15 @@ typedef struct ConvolutionResult
     uint16_t mid_a;
     uint16_t mid_b;
     uint32_t sum_samples;
-    double sum_a_sin;
-    double sum_a_cos;
-    double sum_b_sin;
-    double sum_b_cos;
+    complex sum_a;
+    complex sum_b;
 } ConvolutionResult;
 
 //После того как AdcBufferFillingComplete()==true
 //В массиве adc_cpu_buffer будут отсэмплированные данные
 void AdcStartBufferFilling();
 bool AdcBufferFillingComplete();
+void AdcClearBufferFillingComplete();
 
 
 void AdcStartMeasureFreq();

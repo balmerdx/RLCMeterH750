@@ -1,24 +1,3 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include <string.h>
 #include "usb_device.h"
@@ -36,80 +15,17 @@
 #include "measure/calculate_rc.h"
 
 extern uint32_t received_bytes;
-volatile uint32_t delta_ms;
 
 volatile int64_t g_sum;
 
-/* USER CODE END PV */
-/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-/* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-uint32_t testSpeed()
-{
-	int loop_count = 10000;
-	initLoop();
-
-	uint32_t start = HAL_GetTick();
-	for(int i=0; i<loop_count; i++)
-        speedLoopSinCos();
-        //speedLoopMulAdd();
-	uint32_t end = HAL_GetTick();
-
-	return end-start;
-}
 
 #define ADC1_DATA(x)   ((x) & 0x0000FFFF)
 #define ADC2_DATA(x)   ((x) >> 16)
 
-float d1_errf = 0;
-float d2_errf = 0;
-
-void ProcessAdcBuffer(uint32_t* data, uint32_t size)
-{
-    int32_t d1_mid = 0;
-    int32_t d2_mid = 0;
-    for(uint32_t i=0; i<size; i++)
-    {
-        uint32_t d = data[i];
-        d1_mid += ADC1_DATA(d);
-        d2_mid += ADC2_DATA(d);
-    }
-
-    d1_mid /= size;
-    d2_mid /= size;
-
-    int32_t d1_err = 0;
-    int32_t d2_err = 0;
-    for(uint32_t i=0; i<size; i++)
-    {
-        uint32_t d = data[i];
-        int32_t d1 = ADC1_DATA(d) - d1_mid;
-        int32_t d2 = ADC2_DATA(d) - d2_mid;
-        if(d1<0)
-            d1 = - d1;
-        if(d2<0)
-            d2 = - d2;
-
-        d1_err += d1;
-        d2_err += d2;
-    }
-
-    d1_errf = (float)d1_err/(float)size;
-    d2_errf = (float)d2_err/(float)size;
-}
-
 void SendAdcBuffer()
 {
-    //const uint32_t packet_size_ints = 16;//128;
     const uint32_t packet_size_ints = 500;
 
     for(uint32_t pos = 0; pos<ADC_BUFFER_SIZE; pos += packet_size_ints)
@@ -134,27 +50,53 @@ void SwitchToResistor(ResistorSelectorEnum r)
     if(ResistorCurrent()==r)
         return;
     ResistorSelect(r);
-    HAL_Delay(20);
+    HAL_Delay(10);
 }
 
-void SelectResistor(float measured_impedance)
+void SelectResistor(const ConvolutionResult* result, float measured_impedance)
 {
-    //Пока без гистерезиса, потом добавим
+    float abs_b = cabs(result->sum_b);
+
+    //Слишком большая амплитуда, надо переключиться на резистор меньших значений.
+    ResistorSelectorEnum max_resistor = Resistor_10_KOm;
+    ResistorSelectorEnum select_resistor = Resistor_100_Om;
+    if(abs_b > 15000)
+    {
+        if(ResistorCurrent()==Resistor_10_KOm)
+            max_resistor = Resistor_1_KOm;
+        if(ResistorCurrent()==Resistor_1_KOm)
+            max_resistor = Resistor_100_Om;
+    }
 
     if(measured_impedance > 3000)
     {
-        SwitchToResistor(Resistor_10_KOm);
-        return;
-    }
-
+        select_resistor = Resistor_10_KOm;
+    } else
     if(measured_impedance > 300)
     {
-        SwitchToResistor(Resistor_1_KOm);
-        return;
+        select_resistor = Resistor_1_KOm;
     }
 
-    SwitchToResistor(Resistor_100_Om);
+    if(select_resistor > max_resistor)
+        select_resistor = max_resistor;
 
+    SwitchToResistor(select_resistor);
+
+}
+
+int StandartFreq(int idx)
+{
+//Сначала должны идти min_idx с меньшими значениями, а потом с большими.
+#define R(min_idx, mul_idx) if(idx<(min_idx)+10) return (idx+1-(min_idx))*(mul_idx)
+    if(idx<-20)
+        return 0;
+    R(-20, 10);
+    R(-10, 100);
+    R(0, 1000);
+    R(10, 10000);
+    R(20, 100000);
+#undef R
+    return idx*1000;
 }
 
 /**
@@ -189,26 +131,9 @@ int main(void)
     UTFT_setColorW(VGA_WHITE);
     AD9833_Init();
     UTFT_print("AD9833_Init", 20, 30);
-    //AD9833_SetFreqWorld(AD9833_CalcFreqWorld(1000));
-    //UTFT_print("Set complete", 20, 50);
 
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
-
-    if(0)
-    {
-        delta_ms = testSpeed();
-        sprintf(buffer_cdc, "st=%i ms   ", (int)delta_ms);
-        UTFT_print(buffer_cdc, 20, 30);
-    }
-
-    bool enable_measure_freq = false;
-    /*
-    if(enable_measure_freq)
-        AdcStartMeasureFreq();
-    else
-        AdcStartBufferFilling();
-        */
 
     uint32_t freqWord = 0;
     uint32_t convolution_time_ms = 50;
@@ -226,7 +151,7 @@ int main(void)
             old_enc_value = enc_value;
             old_enc_button = enc_button;
 
-            int freq = enc_value*1000;
+            int freq = StandartFreq((int16_t)enc_value);
             sprintf(buffer_cdc, "F=%i    ", freq);
             UTFT_print(buffer_cdc, 20, 50);
             freqWord = AD9833_CalcFreqWorld(freq);
@@ -237,100 +162,63 @@ int main(void)
                 first = false;
             } else
             {
-                //SendAdcBuffer();
                 HAL_Delay(2);
                 AdcStartConvolution(freqWord, convolution_time_ms);
             }
         }
 
-        sprintf(buffer_cdc, "overrun=%i      ", adc_overrun);
-        UTFT_print(buffer_cdc, 20, 70);
-
-        if(enable_measure_freq)
+        if(AdcConvolutionComplete())
         {
-            strcpy(buffer_cdc, "F=");
-            floatToString(buffer_cdc+strlen(buffer_cdc), 20, AdcMeasureFreq(), 4, 10, false);
-            UTFT_print(buffer_cdc, 20, 90);
-        } else
-        {
-            /*
-            floatToString(buffer_cdc, 20, d1_errf, 4, 6, false);
+            static ConvolutionResult result;
+            result = AdcConvolutionResult();
+
+            complex Zx;
+            calculate(&result, &Zx);
+
+            strcpy(buffer_cdc, "abs(a)=");
+            float abs_a = cabs(result.sum_a);
+            floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
             UTFT_print(buffer_cdc, 20, 90);
 
-            floatToString(buffer_cdc, 20, d2_errf, 4, 6, false);
+            strcpy(buffer_cdc, "abs(b)=");
+            floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result.sum_b), 4, 10, false);
             UTFT_print(buffer_cdc, 20, 110);
-            */
 
-            /*
-            sprintf(buffer_cdc, "mid=%li    ", g_mid_samples);
-            UTFT_print(buffer_cdc, 20, 90);
+            strcpy(buffer_cdc, "RE=");
+            floatToString(buffer_cdc+strlen(buffer_cdc), 20, creal(Zx), 4, 10, false);
+            UTFT_print(buffer_cdc, 20, 130);
 
-            sprintf(buffer_cdc, "conv=%li    ", g_convolution_samples);
-            UTFT_print(buffer_cdc, 20, 110);
-            */
+            strcpy(buffer_cdc, "IM=");
+            floatToString(buffer_cdc+strlen(buffer_cdc), 20, cimag(Zx), 4, 10, false);
+            UTFT_print(buffer_cdc, 20, 150);
 
-            if(AdcConvolutionComplete())
-            {
-                static ConvolutionResult result;
-                result = AdcConvolutionResult();
+            if(ResistorCurrent()==Resistor_100_Om)
+                strcpy(buffer_cdc, "R=100 Om");
+            if(ResistorCurrent()==Resistor_1_KOm)
+                strcpy(buffer_cdc, "R=1 KOm");
+            if(ResistorCurrent()==Resistor_10_KOm)
+                strcpy(buffer_cdc, "R=10 KOm");
+            UTFT_print(buffer_cdc, 20, 180);
 
-                complexf Zx;
-                calculate(&result, &Zx);
+            SelectResistor(&result, cabs(Zx));
 
-                if(1)
-                {
-                    strcpy(buffer_cdc, "abs(a)=");
-                    float abs_a = sqrtf(result.sum_a_sin*result.sum_a_sin+result.sum_a_cos*result.sum_a_cos);
-                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
-                    UTFT_print(buffer_cdc, 20, 90);
-
-                    strcpy(buffer_cdc, "abs(b)=");
-                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, sqrtf(result.sum_b_sin*result.sum_b_sin+result.sum_b_cos*result.sum_b_cos), 4, 10, false);
-                    UTFT_print(buffer_cdc, 20, 110);
-
-                    strcpy(buffer_cdc, "RE=");
-                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, creal(Zx), 4, 10, false);
-                    UTFT_print(buffer_cdc, 20, 130);
-
-                    strcpy(buffer_cdc, "IM=");
-                    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cimag(Zx), 4, 10, false);
-                    UTFT_print(buffer_cdc, 20, 150);
-
-                    if(ResistorCurrent()==Resistor_100_Om)
-                        strcpy(buffer_cdc, "R=100 Om");
-                    if(ResistorCurrent()==Resistor_1_KOm)
-                        strcpy(buffer_cdc, "R=1 KOm");
-                    if(ResistorCurrent()==Resistor_10_KOm)
-                        strcpy(buffer_cdc, "R=10 KOm");
-                    UTFT_print(buffer_cdc, 20, 180);
-                } else {
-                    sprintf(buffer_cdc, "mid_a=%i    ", (int)result.mid_a);
-                    UTFT_print(buffer_cdc, 20, 90);
-
-                    sprintf(buffer_cdc, "mid_b=%i    ", (int)result.mid_b);
-                    UTFT_print(buffer_cdc, 20, 110);
-                }
-
-                SelectResistor(cabs(Zx));
-
-                AdcStartConvolution(freqWord, convolution_time_ms);
-            }
+            AdcStartConvolution(freqWord, convolution_time_ms);
         }
 
         HAL_Delay(250);
 
+        if(received_bytes)
+        {
+            received_bytes = 0;
+            //По любым приходящем запросам - отсылаем в ответ буффер с данными.
+            AdcStartBufferFilling();
+
+        }
+
         if(AdcBufferFillingComplete())
         {
-            ProcessAdcBuffer(adc_cpu_buffer, ADC_BUFFER_SIZE);
-
-            if(received_bytes)
-            {
-                //По любым приходящем запросам - отсылаем в ответ буффер с данными.
-                received_bytes = 0;
-                SendAdcBuffer();
-            }
-
-            AdcStartBufferFilling();
+            AdcClearBufferFillingComplete();
+            SendAdcBuffer();
         }
     }
 }
@@ -451,13 +339,8 @@ static void MX_GPIO_Init(void)
   */
 void Error_Handler(void)
 {
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-
-  /* USER CODE END Error_Handler_Debug */
   while(1)
   {
-
   }
 }
 

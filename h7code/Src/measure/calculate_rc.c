@@ -1,7 +1,7 @@
 #include "calculate_rc.h"
 #include "hardware/select_resistor.h"
 
-void calculate(ConvolutionResult* result, complexf* Zx_result)
+void calculate(ConvolutionResult* result, complex* Zx_result)
 {
     float resistor = 100;
     float toVolts = 3.0f;
@@ -18,12 +18,12 @@ void calculate(ConvolutionResult* result, complexf* Zx_result)
 
     gain_V = gain_I = 5.1*3;
 
-    complexf zV = result->sum_a_sin + result->sum_a_cos*I;
-    complexf zI = result->sum_b_sin + result->sum_b_cos*I;
+    complex zV = result->sum_a;
+    complex zI = result->sum_b;
 
     zV *= toVolts/gain_V;
     zI *= toVolts/gain_I;
 
-    complexf Zx = (zV/zI)*resistor;
+    complex Zx = (zV/zI)*resistor;
     *Zx_result =Zx;
 }
