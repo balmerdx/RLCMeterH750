@@ -21,6 +21,7 @@ sources = [
 		"Src",
 		"Src/hardware",
 		"Src/ili",
+		"Src/interface",
 		"Src/measure",
 		],
 	"files" : [

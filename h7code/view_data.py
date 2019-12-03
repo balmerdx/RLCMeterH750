@@ -5,18 +5,27 @@ from struct import iter_unpack
 from scipy.fftpack import fft
 import scipy as np
 from sys import argv
+import xml.etree.ElementTree as ET
 
 TIME_STEP = 1/2e6
 
 def makeTimeList(readableData, xmin, xstep):
-	'''
-	xlist = []
-	for i in range(0, len(readableData)):
-		xlist.append(xmin+i*xstep)
-	return xlist
-	'''
 	N = len(readableData)
 	return np.linspace(start = xmin, stop = xstep*(N-1), num = N)
+
+def readXml(fileName):
+	tree = ET.parse(fileName)
+	root = tree.getroot()
+	f = []
+	re = []
+	im = []
+	for et_data in root.iter('data'):
+		for et_h in et_data.iter('c'):
+			a = et_h.attrib
+			f.append(float(a['f']))
+			re.append(float(a['re']))
+			im.append(float(a['im']))
+	return { 'f': f, 're': re, 'im': im}
 
 
 def readData(filename="data.bin"):
@@ -80,20 +89,39 @@ def plotFFT2(data1, data2):
 	plt.grid()
 	plt.show()
 
-filename="data.bin"
-if len(argv)>1:
-	filename = argv[1]
+def ViewDataBin():
+	filename="data.bin"
+	if len(argv)>1:
+		filename = argv[1]
 
-(data_x, data_y) = readData(filename)
+	(data_x, data_y) = readData(filename)
 
-print(len(data_x), len(data_y))
-#print(data_x[0], data_y[0])
+	print(len(data_x), len(data_y))
+	#print(data_x[0], data_y[0])
 
-data_x = removeAverage(data_x)
-data_y = removeAverage(data_y)
+	data_x = removeAverage(data_x)
+	data_y = removeAverage(data_y)
 
-#plotXY(data_x, data_y)
+	#plotXY(data_x, data_y)
 
-#plotFFT(data_x, color = 'red')
-plotFFT(data_y, color = 'blue')
-#plotFFT2(data_x, data_y)
+	#plotFFT(data_x, color = 'red')
+	plotFFT(data_y, color = 'blue')
+	#plotFFT2(data_x, data_y)
+
+def plotZ(f, re, im):
+	fig, ax = plt.subplots()
+	ax.set_xlabel('F (Hz)')
+	ax.set_ylabel('R (Om)')
+	ax.plot(f, re, color='red')
+	ax.plot(f, im, color='blue')
+	#plt.grid()
+	plt.show()
+
+
+def ViewZx():
+	filename="convolution.xml"	
+	data = readXml(filename)
+	plotZ(data['f'], data['re'], data['im'])
+
+#ViewDataBin()
+ViewZx()

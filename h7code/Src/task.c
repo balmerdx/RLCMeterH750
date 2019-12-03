@@ -20,13 +20,32 @@ uint32_t g_freqWord = 0;
 
 #define USB_RECEIVED_DATA_SIZE 32
 //Количество слов в буфере g_usb_received_data
-volatile uint32_t g_usb_received_words = 0;
+static volatile uint32_t g_usb_received_words = 0;
 //Смещение в буфере, до которого дочитали
-volatile uint32_t g_usb_received_offset = 0;
-uint32_t g_usb_received_data[USB_RECEIVED_DATA_SIZE];
+static volatile uint32_t g_usb_received_offset = 0;
+static uint32_t g_usb_received_data[USB_RECEIVED_DATA_SIZE];
 
-volatile bool force_next_task = false;
-uint32_t last_command = 0;
+static volatile bool force_next_task = false;
+static uint32_t last_command = 0;
+
+int g_freq = 0;
+int g_freq_index = 18;
+
+int StandartFreq(int idx)
+{
+//Сначала должны идти min_idx с меньшими значениями, а потом с большими.
+#define R(min_idx, mul_idx) if(idx<(min_idx)+10) return (idx+1-(min_idx))*(mul_idx)
+    if(idx<0)
+        return 0;
+    R(0, 10);
+    R(9, 100);
+    R(18, 1000);
+    R(27, 10000);
+    R(36, 100000);
+#undef R
+    return idx*1000;
+}
+
 
 void OnReceiveUsbData(uint8_t* Buf, uint32_t Len)
 {
@@ -109,8 +128,8 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
 
 static void SetFreq(int freq)
 {
-    sprintf(buffer_cdc, "F=%i    ", freq);
-    UTFT_print(buffer_cdc, 20, 50);
+    //sprintf(buffer_cdc, "F=%i    ", freq);
+    //UTFT_print(buffer_cdc, 20, 50);
     g_freqWord = AD9833_CalcFreqWorld(freq);
     AD9833_SetFreqWorld(g_freqWord);
     HAL_Delay(2);
@@ -124,8 +143,14 @@ static void StartConvolution()
 
 void TaskSetFreq(int freq)
 {
+    g_freq = freq;
     SetFreq(freq);
     StartConvolution();
+}
+
+int TaskGetFreq()
+{
+    return g_freq;
 }
 
 void DrawResult(ConvolutionResult* result, complex Zx)
@@ -216,12 +241,6 @@ void TaskQuant()
 
     if(force_next_task)
     {
-        //if(g_usb_received_words!=0)
-        {
-            sprintf(buffer_cdc, "RW=%li    of=%li   ", g_usb_received_words, g_usb_received_offset);
-            UTFT_print(buffer_cdc, 20, 00);
-        }
-
         force_next_task = false;
         NextTask();
     }

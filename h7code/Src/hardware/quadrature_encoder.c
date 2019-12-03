@@ -81,3 +81,60 @@ bool QuadEncButton()
 {
     return HAL_GPIO_ReadPin(BUTTON_GPIO, BUTTON_PIN1)==0;
 }
+
+/*
+    срабатывание кнопки
+    подавляем программный дребезг
+    если кнопка нажата, то второй раз не отсылаем, что нажата
+*/
+typedef struct EncButtonData
+{
+    //Время предыдущего нажатия кнопки.
+    uint16_t last_pressed_ms;
+    uint16_t last_unpressed_ms;
+    bool is_logical_pessed;
+    bool is_hardware_pessed;
+} EncButtonData;
+
+static EncButtonData button = {};
+
+static bool EncButtonPressedInternal(EncButtonData* data, bool hardware_pressed)
+{
+    uint16_t cur_time = HAL_GetTick();
+    uint16_t dt_pressed = cur_time-data->last_pressed_ms;
+    uint16_t dt_unpressed = cur_time-data->last_unpressed_ms;
+
+    if(hardware_pressed)
+    {
+        if(!data->is_hardware_pessed)
+        {
+            data->is_hardware_pessed = true;
+            data->last_pressed_ms = cur_time;
+        }
+
+        if(!data->is_logical_pessed)
+        {
+            data->is_logical_pessed = true;
+            return true;
+        }
+    } else
+    {
+        if(data->is_hardware_pessed)
+        {
+            data->is_hardware_pessed = false;
+            data->last_unpressed_ms = cur_time;
+        }
+
+        if(dt_pressed>200 && dt_unpressed>100)
+        {
+            data->is_logical_pessed = false;
+        }
+    }
+
+    return false;
+}
+
+bool EncButtonPressed()
+{
+    return EncButtonPressedInternal(&button, QuadEncButton());
+}

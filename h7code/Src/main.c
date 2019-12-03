@@ -12,27 +12,12 @@
 #include "measure/measure_freq.h"
 #include "measure/sin_cos.h"
 #include "task.h"
-
+#include "interface/scene_single_freq.h"
 
 volatile int64_t g_sum;
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-
-int StandartFreq(int idx)
-{
-//Сначала должны идти min_idx с меньшими значениями, а потом с большими.
-#define R(min_idx, mul_idx) if(idx<(min_idx)+10) return (idx+1-(min_idx))*(mul_idx)
-    if(idx<-20)
-        return 0;
-    R(-20, 10);
-    R(-10, 100);
-    R(0, 1000);
-    R(10, 10000);
-    R(20, 100000);
-#undef R
-    return idx*1000;
-}
 
 /**
   * @brief  The application entry point.
@@ -68,24 +53,14 @@ int main(void)
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
 
+    InterfaceStart();
+    TaskSetFreq(StandartFreq(g_freq_index));
+    SceneSingleFreqStart();
 
-    uint16_t old_enc_value = 1234;
-    bool old_enc_button = false;
     while (1)
     {
-        uint16_t enc_value = QuadEncValue();
-        bool enc_button = QuadEncButton();
-
-        if(enc_value!=old_enc_value || enc_button!=old_enc_button)
-        {
-            old_enc_value = enc_value;
-            old_enc_button = enc_button;
-
-            int freq = StandartFreq((int16_t)enc_value);
-            TaskSetFreq(freq);
-        }
-
         TaskQuant();
+        InterfaceQuant();
         HAL_Delay(1);
     }
 }

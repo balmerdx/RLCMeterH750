@@ -23,6 +23,15 @@ DEPS += \
 	output/base/Src/ili/UTFT.d \
 	output/base/Src/ili/float_to_string.d \
 	output/base/Src/ili/utf_font.d \
+	output/base/Src/interface/font_condensed30.d \
+	output/base/Src/interface/font_condensed59.d \
+	output/base/Src/interface/interface.d \
+	output/base/Src/interface/menu.d \
+	output/base/Src/interface/plot.d \
+	output/base/Src/interface/progress_bar.d \
+	output/base/Src/interface/scene_single_freq.d \
+	output/base/Src/interface/srlc_format.d \
+	output/base/Src/interface/statusbar.d \
 	output/base/Src/measure/calculate_rc.d \
 	output/base/Src/measure/measure_freq.d \
 	output/base/Src/measure/sin_cos.d \
@@ -91,6 +100,15 @@ OBJS += \
 	output/base/Src/ili/UTFT.o \
 	output/base/Src/ili/float_to_string.o \
 	output/base/Src/ili/utf_font.o \
+	output/base/Src/interface/font_condensed30.o \
+	output/base/Src/interface/font_condensed59.o \
+	output/base/Src/interface/interface.o \
+	output/base/Src/interface/menu.o \
+	output/base/Src/interface/plot.o \
+	output/base/Src/interface/progress_bar.o \
+	output/base/Src/interface/scene_single_freq.o \
+	output/base/Src/interface/srlc_format.o \
+	output/base/Src/interface/statusbar.o \
 	output/base/Src/measure/calculate_rc.o \
 	output/base/Src/measure/measure_freq.o \
 	output/base/Src/measure/sin_cos.o \
@@ -213,6 +231,42 @@ output/base/Src/ili/float_to_string.o: ./Src/ili/float_to_string.c
 
 output/base/Src/ili/utf_font.o: ./Src/ili/utf_font.c
 	@echo 'Building target: utf_font.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/font_condensed30.o: ./Src/interface/font_condensed30.c
+	@echo 'Building target: font_condensed30.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/font_condensed59.o: ./Src/interface/font_condensed59.c
+	@echo 'Building target: font_condensed59.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/interface.o: ./Src/interface/interface.c
+	@echo 'Building target: interface.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/menu.o: ./Src/interface/menu.c
+	@echo 'Building target: menu.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/plot.o: ./Src/interface/plot.c
+	@echo 'Building target: plot.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/progress_bar.o: ./Src/interface/progress_bar.c
+	@echo 'Building target: progress_bar.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/scene_single_freq.o: ./Src/interface/scene_single_freq.c
+	@echo 'Building target: scene_single_freq.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/srlc_format.o: ./Src/interface/srlc_format.c
+	@echo 'Building target: srlc_format.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/statusbar.o: ./Src/interface/statusbar.c
+	@echo 'Building target: statusbar.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/measure/calculate_rc.o: ./Src/measure/calculate_rc.c

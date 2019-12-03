@@ -5,9 +5,14 @@ extern "C" {
 #endif
 
 #include "stm32h7xx_hal.h"
+#include "interface/interface.h"
+#include "interface/colors.h"
+#include "interface/font_condensed30.h"
+#include "interface/font_condensed59.h"
 
 // Exported functions prototypes ---------------------------------------------
 void Error_Handler(void);
+
 
 // Private defines -----------------------------------------------------------
 #define STLK_RX_Pin GPIO_PIN_8

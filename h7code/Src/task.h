@@ -15,5 +15,12 @@ typedef enum TASK_ENUM
     TASK_USB_SET_FREQ_AND_RECEIVE_ADC,
 } TASK_ENUM;
 
+#define FREQ_INDEX_MAX 41
 void TaskSetFreq(int freq);
+int TaskGetFreq();
 void TaskQuant();
+
+//Индекс, для StandartFreq функции
+extern int g_freq_index;
+
+int StandartFreq(int idx);
