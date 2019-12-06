@@ -15,8 +15,10 @@ DEPS += \
 	output/base/Src/usbd_conf.d \
 	output/base/Src/usbd_desc.d \
 	output/base/Src/hardware/AD9833_driver.d \
+	output/base/Src/hardware/delay.d \
 	output/base/Src/hardware/dual_adc.d \
 	output/base/Src/hardware/hw_ili9341.d \
+	output/base/Src/hardware/m25p16.d \
 	output/base/Src/hardware/quadrature_encoder.d \
 	output/base/Src/hardware/select_resistor.d \
 	output/base/Src/ili/DefaultFonts.d \
@@ -92,8 +94,10 @@ OBJS += \
 	output/base/Src/usbd_conf.o \
 	output/base/Src/usbd_desc.o \
 	output/base/Src/hardware/AD9833_driver.o \
+	output/base/Src/hardware/delay.o \
 	output/base/Src/hardware/dual_adc.o \
 	output/base/Src/hardware/hw_ili9341.o \
+	output/base/Src/hardware/m25p16.o \
 	output/base/Src/hardware/quadrature_encoder.o \
 	output/base/Src/hardware/select_resistor.o \
 	output/base/Src/ili/DefaultFonts.o \
@@ -201,12 +205,20 @@ output/base/Src/hardware/AD9833_driver.o: ./Src/hardware/AD9833_driver.c
 	@echo 'Building target: AD9833_driver.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
+output/base/Src/hardware/delay.o: ./Src/hardware/delay.c
+	@echo 'Building target: delay.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
 output/base/Src/hardware/dual_adc.o: ./Src/hardware/dual_adc.c
 	@echo 'Building target: dual_adc.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/hardware/hw_ili9341.o: ./Src/hardware/hw_ili9341.c
 	@echo 'Building target: hw_ili9341.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/hardware/m25p16.o: ./Src/hardware/m25p16.c
+	@echo 'Building target: m25p16.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/hardware/quadrature_encoder.o: ./Src/hardware/quadrature_encoder.c

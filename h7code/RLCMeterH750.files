@@ -9,8 +9,10 @@ Src/usbd_cdc_if.c
 Src/usbd_conf.c
 Src/usbd_desc.c
 Src/hardware/AD9833_driver.c
+Src/hardware/delay.c
 Src/hardware/dual_adc.c
 Src/hardware/hw_ili9341.c
+Src/hardware/m25p16.c
 Src/hardware/quadrature_encoder.c
 Src/hardware/select_resistor.c
 Src/ili/DefaultFonts.c
@@ -82,8 +84,11 @@ Inc/usbd_desc.h
 Src/data_processing.h
 Src/task.h
 Src/hardware/AD9833_driver.h
+Src/hardware/delay.h
 Src/hardware/dual_adc.h
+Src/hardware/flash_spi.h
 Src/hardware/hw_ili9341.h
+Src/hardware/m25p16.h
 Src/hardware/quadrature_encoder.h
 Src/hardware/select_resistor.h
 Src/ili/DefaultFonts.h

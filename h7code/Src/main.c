@@ -8,6 +8,7 @@
 #include "hardware/AD9833_driver.h"
 #include "hardware/dual_adc.h"
 #include "hardware/select_resistor.h"
+#include "hardware/delay.h"
 #include "data_processing.h"
 #include "measure/measure_freq.h"
 #include "measure/sin_cos.h"
@@ -29,6 +30,7 @@ int main(void)
 
     SystemClock_Config();
 
+    DelayInit();
     MX_GPIO_Init();
     MX_USB_DEVICE_Init();
 
