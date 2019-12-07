@@ -218,7 +218,8 @@ void TaskQuant()
 
         complex Zx;
         calculate(&result, &Zx);
-        DrawResult(&result, Zx);
+
+        //DrawResult(&result, Zx);
         if(SelectResistor(&result, cabs(Zx)))
         {
             StartConvolution();
@@ -228,6 +229,7 @@ void TaskQuant()
             {
                 SendConvolutionResult(Zx);
             }
+            SceneSingleFreqZx(Zx);
             force_next_task = true;
         }
     }

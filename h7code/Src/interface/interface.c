@@ -67,6 +67,11 @@ void InterfaceGoto(SceneQuantHandler handler)
     g_quant_handler = handler;
 }
 
+bool InterfaceIsActive(SceneQuantHandler handler)
+{
+    return g_quant_handler == handler;
+}
+
 void EncClear()
 {
     if(EncValueChanged())

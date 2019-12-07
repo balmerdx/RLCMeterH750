@@ -21,6 +21,7 @@ bool EncValueChanged();
 int EncValueDelta();
 
 void InterfaceGoto(SceneQuantHandler handler);
+bool InterfaceIsActive(SceneQuantHandler handler);
 
 //Нажата ли кнопка?
 //Возвращает true только при первом вызове.
