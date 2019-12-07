@@ -8,6 +8,7 @@
 #include "hardware/AD9833_driver.h"
 #include "hardware/dual_adc.h"
 #include "hardware/select_resistor.h"
+#include "hardware/m25p16.h"
 #include "hardware/delay.h"
 #include "data_processing.h"
 #include "measure/measure_freq.h"
@@ -16,6 +17,7 @@
 #include "interface/scene_single_freq.h"
 
 volatile int64_t g_sum;
+extern volatile SPI_HandleTypeDef SpiHandle;
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -51,6 +53,45 @@ int main(void)
     UTFT_setColorW(VGA_WHITE);
     AD9833_Init();
     UTFT_print("AD9833_Init", 20, 30);
+
+    m25p16_init();
+
+
+    if(!m25p16_read_ram_id_and_check())
+    {
+        UTFT_print("Flash check FAIL", 20, 30);
+        Error_Handler();
+    }
+
+    if(0)
+    {
+        m25p16_ram_erase64k(0);
+
+        uint32_t offset = 12345;
+        uint16_t size = 128;
+        static char buffer[128];
+        for(int i=0; i<size; i++)
+            buffer[i] = i;
+
+        m25p16_write(offset, size, buffer);
+
+        sprintf(buffer, "Flash write complete");
+        UTFT_print(buffer, 20, 50);
+
+        m25p16_read(offset, size, buffer);
+
+        bool ok = true;
+        for(int i=0; i<size; i++)
+            if(buffer[i] != i)
+                ok = false;
+
+        if(ok)
+            sprintf(buffer, "Flash read OK      ");
+        else
+            sprintf(buffer, "Flash read FAIL      ");
+        UTFT_print(buffer, 20, 50);
+        while(1);
+    }
 
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
@@ -133,7 +174,7 @@ void SystemClock_Config(void)
         Error_Handler();
     }
 
-    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_USB;
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_USB|RCC_PERIPHCLK_SPI3;
     PeriphClkInitStruct.PLL2.PLL2M = 25;
     PeriphClkInitStruct.PLL2.PLL2N = 176;
     PeriphClkInitStruct.PLL2.PLL2P = 2;
@@ -152,6 +193,7 @@ void SystemClock_Config(void)
     PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
     PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_PLL3;
     PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
+    PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL2;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
         Error_Handler();

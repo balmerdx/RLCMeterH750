@@ -189,52 +189,27 @@ void m25p16_ram_erase4k(uint32_t addr)
 }
 
 void m25p16_read_write_flash_ram(M25P16_RW_TYPE rw_type, uint16_t bytes_to_readwrite, uint8_t flash_sector, uint8_t flash_page, uint8_t offset,
-                                 uint8_t* mem_ptr, m25p16_check_callback callback) {
+                                 uint8_t* mem_ptr)
+{
 
 // NB CAUTION page writes which cross page boundaries will wrap 
 
-
-// parameters 
-
-// one_read_zero_write = 1 for read, 0 for write 
-// bytes_to_readwrite to read or write 
-// flash sector within device 
-// flash page within device 
-// offset for first byte to transfer 
-// POINTER TO ram address for first byte to transfer 
-
-// for ram device, enter and leave with SCK low 
-
-
-    CS_ZERO
-    if (rw_type) {
-		xmit_spi(RAM_READ);
-	} else {
-		xmit_spi(RAM_WREN);				// write enable instruction 
+    if (rw_type==M25P16_RW_WRITE)
+    {
+        CS_ZERO
+        xmit_spi(RAM_WREN);				// write enable instruction
         CS_ONE
         DelayUs(2);
-        CS_ZERO
-		xmit_spi(RAM_PP);
 	}
-	xmit_spi(flash_sector);
-	xmit_spi(flash_page);
-	xmit_spi(offset);
-    for (uint16_t i=0;i<bytes_to_readwrite;i++) {
-        if (rw_type) {
-            uint8_t data = recv_spi();
 
-            if(callback)
-            {
-                callback(i, data, mem_ptr);
-            } else
-            {
-                mem_ptr[i] = data;
-            }
+    CS_ZERO
+    uint8_t pos[4] = {rw_type?RAM_READ:RAM_PP, flash_sector, flash_page, offset};
+    xmit_spi_buffer(pos, 4);
 
-		} else {
-			xmit_spi(mem_ptr[i]);
-		}
-	}	
+    if (rw_type)
+        recv_spi_buffer(mem_ptr, bytes_to_readwrite);
+    else
+        xmit_spi_buffer(mem_ptr, bytes_to_readwrite);
     CS_ONE
 
     if(rw_type==M25P16_RW_WRITE)
@@ -286,7 +261,7 @@ void m25p16_power_down_flash_ram(void) {
 }
 
 static void m25p16_read_or_write_flash(uint8_t one_read_zero_write, uint8_t flash_sector, uint16_t offset, uint16_t size,
-                                       uint8_t* mem_ptr, m25p16_check_callback callback)
+                                       uint8_t* mem_ptr)
 {
     if(size==0)
         return;
@@ -299,7 +274,7 @@ static void m25p16_read_or_write_flash(uint8_t one_read_zero_write, uint8_t flas
     bytes_to_readwrite = page_size-offset_first;
     if(bytes_to_readwrite>size)
         bytes_to_readwrite = size;
-    m25p16_read_write_flash_ram(one_read_zero_write, bytes_to_readwrite, flash_sector, flash_page, offset_first, mem_ptr, callback);
+    m25p16_read_write_flash_ram(one_read_zero_write, bytes_to_readwrite, flash_sector, flash_page, offset_first, mem_ptr);
     size -= bytes_to_readwrite;
     mem_ptr+= bytes_to_readwrite;
     flash_page++;
@@ -310,7 +285,7 @@ static void m25p16_read_or_write_flash(uint8_t one_read_zero_write, uint8_t flas
         bytes_to_readwrite = page_size;
         if(bytes_to_readwrite>size)
             bytes_to_readwrite = size;
-        m25p16_read_write_flash_ram(one_read_zero_write, bytes_to_readwrite, flash_sector, flash_page, 0, mem_ptr, callback);
+        m25p16_read_write_flash_ram(one_read_zero_write, bytes_to_readwrite, flash_sector, flash_page, 0, mem_ptr);
         size -= bytes_to_readwrite;
         mem_ptr+= bytes_to_readwrite;
         flash_page++;
@@ -329,7 +304,7 @@ void m25p16_read(uint32_t offset, uint16_t size, void* mem_ptr)
     uint8_t flash_sector;
     uint16_t flash_sector_offset;
     m25p16_offset_to_sector(offset, &flash_sector, &flash_sector_offset);
-    m25p16_read_or_write_flash(M25P16_RW_READ, flash_sector, flash_sector_offset, size, (uint8_t*)mem_ptr, 0);
+    m25p16_read_or_write_flash(M25P16_RW_READ, flash_sector, flash_sector_offset, size, (uint8_t*)mem_ptr);
 }
 
 void m25p16_write(uint32_t offset, uint16_t size, const void* mem_ptr)
@@ -337,13 +312,5 @@ void m25p16_write(uint32_t offset, uint16_t size, const void* mem_ptr)
     uint8_t flash_sector;
     uint16_t flash_sector_offset;
     m25p16_offset_to_sector(offset, &flash_sector, &flash_sector_offset);
-    m25p16_read_or_write_flash(M25P16_RW_WRITE, flash_sector, flash_sector_offset, size, (uint8_t*)mem_ptr, 0);
-}
-
-void m25p16_check(uint32_t offset, uint16_t size, void* mem_ptr, m25p16_check_callback callback)
-{
-    uint8_t flash_sector;
-    uint16_t flash_sector_offset;
-    m25p16_offset_to_sector(offset, &flash_sector, &flash_sector_offset);
-    m25p16_read_or_write_flash(M25P16_RW_READ, flash_sector, flash_sector_offset, size, mem_ptr, callback);
+    m25p16_read_or_write_flash(M25P16_RW_WRITE, flash_sector, flash_sector_offset, size, (uint8_t*)mem_ptr);
 }

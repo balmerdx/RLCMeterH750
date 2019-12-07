@@ -13,7 +13,6 @@ extern "C" {
 // Exported functions prototypes ---------------------------------------------
 void Error_Handler(void);
 
-
 // Private defines -----------------------------------------------------------
 #define STLK_RX_Pin GPIO_PIN_8
 #define STLK_RX_GPIO_Port GPIOD

@@ -9,12 +9,6 @@ typedef enum M25P16_RW_TYPE
     M25P16_RW_READ = 1,
 } M25P16_RW_TYPE;
 
-//callback для функции m25p16_check
-//idx - индекс читаемого элемента
-//flash_byte - байт, прочитанный из flash
-//mem_ptr - указатель, передаваемый в m25p16_check
-typedef void (*m25p16_check_callback)(uint16_t idx, uint8_t flash_byte, uint8_t* mem_ptr);
-
 void m25p16_init();
 
 
@@ -98,7 +92,7 @@ void m25p16_ram_erase4k(uint32_t addr);
  *								  will wrap back to the beginning of the page. This is unlikely to be what you want.
  */
 void m25p16_read_write_flash_ram(M25P16_RW_TYPE rw_type, uint16_t bytes_to_readwrite,uint8_t flash_sector,uint8_t flash_page,uint8_t offset,
-                                 uint8_t* mem_ptr, m25p16_check_callback callback);
+                                 uint8_t* mem_ptr);
 
 
 //Более удобный функции чтения/записи в сектор данных.
@@ -108,10 +102,6 @@ void m25p16_read_write_flash_ram(M25P16_RW_TYPE rw_type, uint16_t bytes_to_readw
 //Т.е. пересекать границу сектора нельзя.
 void m25p16_read(uint32_t offset, uint16_t size, void* mem_ptr);
 void m25p16_write(uint32_t offset, uint16_t size, const void *mem_ptr);
-
-//Вызывает для всех прочитанных байтов функцию m25p16_check_callback
-void m25p16_check(uint32_t offset, uint16_t size, void* mem_ptr, m25p16_check_callback callback);
-
 
 /** \brief		Write to the status register on the M25P16.
  *	\param		status		Value to write
