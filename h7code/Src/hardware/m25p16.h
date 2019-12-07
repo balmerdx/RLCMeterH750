@@ -64,8 +64,8 @@ void m25p16_ram_bulk_erase(void);
  */
 void m25p16_ram_erase64k(uint32_t addr);
 
-/** \brief		Erase 64 kb data
- *	\param      addr - must be align on 64 kb block
+/** \brief		Erase 4 kb data
+ *	\param      addr - must be align on 4 kb block
  * !!!!!Work only on Winbond memory!!!!! Not work on M25P16!!!!!
  */
 void m25p16_ram_erase4k(uint32_t addr);

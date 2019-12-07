@@ -65,9 +65,9 @@ int main(void)
 
     if(0)
     {
-        m25p16_ram_erase64k(0);
+        m25p16_ram_erase64k(0x10000);
 
-        uint32_t offset = 12345;
+        uint32_t offset = 0x10000;
         uint16_t size = 128;
         static char buffer[128];
         for(int i=0; i<size; i++)
