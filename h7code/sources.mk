@@ -36,6 +36,7 @@ DEPS += \
 	output/base/Src/interface/srlc_format.d \
 	output/base/Src/interface/statusbar.d \
 	output/base/Src/measure/calculate_rc.d \
+	output/base/Src/measure/corrector.d \
 	output/base/Src/measure/measure_freq.d \
 	output/base/Src/measure/sin_cos.d \
 	output/base/startup_stm32h750xx.d \
@@ -116,6 +117,7 @@ OBJS += \
 	output/base/Src/interface/srlc_format.o \
 	output/base/Src/interface/statusbar.o \
 	output/base/Src/measure/calculate_rc.o \
+	output/base/Src/measure/corrector.o \
 	output/base/Src/measure/measure_freq.o \
 	output/base/Src/measure/sin_cos.o \
 	output/base/startup_stm32h750xx.o \
@@ -289,6 +291,10 @@ output/base/Src/interface/statusbar.o: ./Src/interface/statusbar.c
 
 output/base/Src/measure/calculate_rc.o: ./Src/measure/calculate_rc.c
 	@echo 'Building target: calculate_rc.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/measure/corrector.o: ./Src/measure/corrector.c
+	@echo 'Building target: corrector.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/measure/measure_freq.o: ./Src/measure/measure_freq.c

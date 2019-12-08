@@ -32,21 +32,6 @@ static uint32_t last_command = 0;
 int g_freq = 0;
 int g_freq_index = 18;
 
-int StandartFreq(int idx)
-{
-//Сначала должны идти min_idx с меньшими значениями, а потом с большими.
-#define R(min_idx, mul_idx) if(idx<(min_idx)+10) return (idx+1-(min_idx))*(mul_idx)
-    if(idx<0)
-        return 0;
-    R(0, 10);
-    R(9, 100);
-    R(18, 1000);
-    R(27, 10000);
-    R(36, 100000);
-#undef R
-    return idx*1000;
-}
-
 
 void OnReceiveUsbData(uint8_t* Buf, uint32_t Len)
 {

@@ -10,7 +10,10 @@ typedef struct ConvolutionResult
     uint16_t mid_a;
     uint16_t mid_b;
     uint32_t sum_samples;
+
+    //measured voltage
     complex sum_a;
+    //measured current
     complex sum_b;
 } ConvolutionResult;
 
