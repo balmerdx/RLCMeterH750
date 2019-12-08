@@ -9,6 +9,7 @@
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
 #include "measure/calculate_rc.h"
+#include "interface/scene_single_freq.h"
 
 #define USB_COMMAND_CONVOLUTION 0xABDE0001u
 #define USB_COMMAND_ADC 0xABDE0002u

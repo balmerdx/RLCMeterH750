@@ -2,11 +2,14 @@
 #include "scene_single_freq.h"
 #include "task.h"
 #include "srlc_format.h"
+#include "scene_single_freq_menu.h"
+#include "hardware/select_resistor.h"
 
 static void SceneSingleFreqQuant();
 static void SceneSingleFreqDrawFreq();
 static void SceneSingleFreqDrawNames();
 static void SceneSingleFreqDrawValues();
+static void SceneSingleFreqDrawCurrentR();
 
 static int freq_x;
 static int freq_y;
@@ -28,8 +31,11 @@ static SingleFreqViewMode view_mode = VM_Z;
 static complex last_Zx;
 static bool last_Zx_changed;
 
-#define PB_BACKGROUND_RE UTFT_COLOR(0, 0, 0)
-#define PB_BACKGROUND_IM UTFT_COLOR(70, 70, 70)
+static int info_current_r_x;
+static int info_current_r_y;
+static int info_current_r_width;
+ResistorSelectorEnum last_current_r;
+
 
 //Предполагается, что str, это строчка у которой может быть - вначале
 //Если минуса нет, то оставляем под него пустое место.
@@ -128,8 +134,14 @@ void SceneSingleFreqStart()
     pb_param2_y = y;
     y += UTF_Height();
 
+    UTF_SetFont(font_condensed30);
+    info_current_r_x = 0;
+    info_current_r_y = UTFT_getDisplayYSize()-UTF_Height();
+    info_current_r_width = UTF_StringWidth("Rc=10 KOm");
+
     SceneSingleFreqDrawFreq();
     SceneSingleFreqDrawNames();
+    SceneSingleFreqDrawCurrentR();
     InterfaceGoto(SceneSingleFreqQuant);
 }
 
@@ -142,11 +154,20 @@ void SceneSingleFreqQuant()
         SceneSingleFreqDrawFreq();
     }
 
+    if(EncButtonPressed())
+    {
+        SceneSingleFreqMenuStart();
+        return;
+    }
+
     if(last_Zx_changed)
     {
         last_Zx_changed = false;
         SceneSingleFreqDrawValues();
     }
+
+    if(ResistorCurrent()!=last_current_r)
+        SceneSingleFreqDrawCurrentR();
 }
 
 void SceneSingleFreqZx(complex Zx)
@@ -196,4 +217,20 @@ void SceneSingleFreqDrawValues()
     UTFT_setBackColorW(VGA_BLACK);
     DrawNumberType(pb_param_x, pb_param1_y, str_re, str_re_type, pb_param_width);
     DrawNumberType(pb_param_x, pb_param2_y, str_im, str_im_type, pb_param_width);
+}
+
+void SceneSingleFreqDrawCurrentR()
+{
+    last_current_r = ResistorCurrent();
+
+    char* str_r = "Rc=100 Om";
+    if(last_current_r == Resistor_1_KOm)
+        str_r = "Rc=1 KOm";
+    if(last_current_r == Resistor_10_KOm)
+        str_r = "Rc=10 KOm";
+
+    UTF_SetFont(font_condensed30);
+    UTFT_setColorW(VGA_WHITE);
+    UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
+    UTF_DrawStringJustify(info_current_r_x, info_current_r_y, str_r, info_current_r_width, UTF_RIGHT);
 }

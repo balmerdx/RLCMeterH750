@@ -32,6 +32,7 @@ DEPS += \
 	output/base/Src/interface/plot.d \
 	output/base/Src/interface/progress_bar.d \
 	output/base/Src/interface/scene_single_freq.d \
+	output/base/Src/interface/scene_single_freq_menu.d \
 	output/base/Src/interface/srlc_format.d \
 	output/base/Src/interface/statusbar.d \
 	output/base/Src/measure/calculate_rc.d \
@@ -111,6 +112,7 @@ OBJS += \
 	output/base/Src/interface/plot.o \
 	output/base/Src/interface/progress_bar.o \
 	output/base/Src/interface/scene_single_freq.o \
+	output/base/Src/interface/scene_single_freq_menu.o \
 	output/base/Src/interface/srlc_format.o \
 	output/base/Src/interface/statusbar.o \
 	output/base/Src/measure/calculate_rc.o \
@@ -271,6 +273,10 @@ output/base/Src/interface/progress_bar.o: ./Src/interface/progress_bar.c
 
 output/base/Src/interface/scene_single_freq.o: ./Src/interface/scene_single_freq.c
 	@echo 'Building target: scene_single_freq.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/scene_single_freq_menu.o: ./Src/interface/scene_single_freq_menu.c
+	@echo 'Building target: scene_single_freq_menu.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/interface/srlc_format.o: ./Src/interface/srlc_format.c

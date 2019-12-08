@@ -133,7 +133,7 @@ void MenuQuant()
         return;
 
     int prev_menu_index = menu_index;
-    AddSaturated(&menu_index, -EncValueDelta(), menu_elem_count);
+    AddSaturated(&menu_index, EncValueDelta(), menu_elem_count);
     MenuRedrawElem(prev_menu_index);
     MenuRedrawElem(menu_index);
 
