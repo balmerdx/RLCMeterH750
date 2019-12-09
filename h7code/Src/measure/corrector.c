@@ -1,5 +1,6 @@
 #include "main.h"
 #include "corrector.h"
+#include "hardware/m25p16.h"
 
 //Число для CorrectionsAll::magic
 #define MAGIC_DATA 0x3740
@@ -44,7 +45,7 @@ static int iabs(int a)
     return (a<0)?-a:a;
 }
 
-complex makeCorrection(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency)
+complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency)
 {
     if(!correctionValid())
         return Zxm;
@@ -81,4 +82,17 @@ complex makeCorrection(complex Zxm, ResistorSelectorEnum resistor, int32_t frequ
     }
 
     return Zxm;
+}
+
+void correctionSave(uint32_t offset)
+{
+    g_corrections.magic = MAGIC_DATA;
+    g_corrections.size = sizeof(CorrectionsAll);
+    m25p16_write(offset, sizeof(g_corrections), &g_corrections);
+}
+
+
+void correctionLoad(uint32_t offset)
+{
+    m25p16_read(offset, sizeof(g_corrections), &g_corrections);
 }

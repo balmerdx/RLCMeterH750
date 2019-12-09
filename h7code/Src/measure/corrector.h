@@ -53,6 +53,8 @@ typedef struct CorrectionsAll
     CorrectionOneFreq freq[FREQ_INDEX_MAX];
 } CorrectionsAll;
 
+extern CorrectionsAll g_corrections;
+
 bool correctionValid();
 //Применяем коррекцию к Zxm и возвращаем результат.
-complex makeCorrection(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency);
+complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency);

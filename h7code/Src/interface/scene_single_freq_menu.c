@@ -3,6 +3,7 @@
 
 #include "scene_single_freq_menu.h"
 #include "scene_single_freq.h"
+#include "scene_calibration.h"
 
 enum SingleFreqMenuEnum
 {
@@ -33,6 +34,12 @@ void SceneSingleFreqMenuQuant()
     if(MenuData()==SFME_RETURN && pressed)
     {
         SceneSingleFreqStart();
+        return;
+    }
+
+    if(MenuData()==SFME_SELECT_CALIBRATION && pressed)
+    {
+        SceneCalibrarionStart();
         return;
     }
 }

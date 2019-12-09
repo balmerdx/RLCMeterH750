@@ -97,7 +97,7 @@ void MenuRedrawElem(int idx)
     int x, y, width, height;
     MenuElemPos(idx, &x, &y, &width, &height);
 
-    UTFT_fillRectBack(x, y, x+MENU_X_START-1, y+height);
+    UTFT_fillRectBack(x, y, x+MENU_X_START-1, y+height-1);
     UTF_DrawStringJustify(x+MENU_X_START, y, elems[idx].name, width-MENU_X_START, UTF_LEFT);
 }
 

@@ -10,6 +10,7 @@
 #include "usbd_cdc_if.h"
 #include "measure/calculate_rc.h"
 #include "interface/scene_single_freq.h"
+#include "interface/scene_calibration.h"
 
 #define USB_COMMAND_CONVOLUTION 0xABDE0001u
 #define USB_COMMAND_ADC 0xABDE0002u
@@ -216,6 +217,7 @@ void TaskQuant()
                 SendConvolutionResult(Zx);
             }
             SceneSingleFreqZx(Zx);
+            SceneCalibrarionZx(Zx);
             force_next_task = true;
         }
     }
