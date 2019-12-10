@@ -219,7 +219,7 @@ void TaskQuant()
         complex Zx;
         calculate(&result, &Zx);
 
-        DrawResult(&result, Zx);
+        //DrawResult(&result, Zx);
         if(SelectResistor(&result, cabs(Zx)))
         {
             TaskStartConvolution();
