@@ -30,8 +30,10 @@ static uint32_t g_usb_received_data[USB_RECEIVED_DATA_SIZE];
 static volatile bool force_next_task = false;
 static uint32_t last_command = 0;
 
-int g_freq = 0;
+static int g_freq = 0;
 int g_freq_index = 18;
+static ResistorSelectorEnum g_choose_resistor = Resistor_Auto;
+static bool g_changed_some = false;
 
 
 void OnReceiveUsbData(uint8_t* Buf, uint32_t Len)
@@ -80,6 +82,9 @@ void SendConvolutionResult(complex Zx)
 //return true if resistir changed
 bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
 {
+    if(g_choose_resistor != Resistor_Auto)
+        return false;
+
     float abs_b = cabs(result->sum_b);
 
     //Слишком большая амплитуда, надо переключиться на резистор меньших значений.
@@ -113,26 +118,34 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
     return true;
 }
 
-static void SetFreq(int freq)
+void TaskStartConvolution()
 {
-    //sprintf(buffer_cdc, "F=%i    ", freq);
-    //UTFT_print(buffer_cdc, 20, 50);
-    g_freqWord = AD9833_CalcFreqWorld(freq);
-    AD9833_SetFreqWorld(g_freqWord);
-    HAL_Delay(2);
+    if(g_changed_some)
+    {
+        g_changed_some = false;
+        HAL_Delay(2);
+    }
 
-}
-
-static void StartConvolution()
-{
     AdcStartConvolution(g_freqWord, last_command?convolution_time_ms_fast:convolution_time_ms_slow);
 }
+
+void TaskSetDefaultResistor(ResistorSelectorEnum r)
+{
+    g_choose_resistor = r;
+    if(r != Resistor_Auto)
+    {
+        g_changed_some = true;
+        ResistorSelect(r);
+    }
+}
+
 
 void TaskSetFreq(int freq)
 {
     g_freq = freq;
-    SetFreq(freq);
-    StartConvolution();
+    g_freqWord = AD9833_CalcFreqWorld(freq);
+    AD9833_SetFreqWorld(g_freqWord);
+    g_changed_some = true;
 }
 
 int TaskGetFreq()
@@ -179,21 +192,21 @@ void NextTask()
             uint32_t freq = g_usb_received_data[g_usb_received_offset+1];
             g_usb_received_offset += 2;
 
-            SetFreq(freq);
+            TaskSetFreq(freq);
             if(command==USB_COMMAND_ADC)
             {
                 AdcStartBufferFilling();
                 return;
             }
 
-            StartConvolution();
+            TaskStartConvolution();
             return;
         }
     }
 
     g_usb_received_offset = g_usb_received_words = 0;
     last_command = 0;
-    StartConvolution();
+    TaskStartConvolution();
 }
 
 void TaskQuant()
@@ -206,10 +219,10 @@ void TaskQuant()
         complex Zx;
         calculate(&result, &Zx);
 
-        //DrawResult(&result, Zx);
+        DrawResult(&result, Zx);
         if(SelectResistor(&result, cabs(Zx)))
         {
-            StartConvolution();
+            TaskStartConvolution();
         } else
         {
             if(last_command==USB_COMMAND_CONVOLUTION)

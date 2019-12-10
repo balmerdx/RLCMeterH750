@@ -98,6 +98,7 @@ int main(void)
 
     InterfaceStart();
     TaskSetFreq(StandartFreq(g_freq_index));
+    TaskStartConvolution();
     SceneSingleFreqStart();
 
     while (1)

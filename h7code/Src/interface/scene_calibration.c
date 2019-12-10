@@ -50,14 +50,9 @@ void SceneCalibrarionQuant()
     MenuQuant();
     bool pressed = EncButtonPressed();
 
-    if(MenuData()==CME_SAVE_AND_EXIT && pressed)
+    if((MenuData()==CME_SAVE_AND_EXIT || MenuData()==CME_DISCARD_AND_EXIT) && pressed)
     {
-        SceneSingleFreqMenuStart();
-        return;
-    }
-
-    if(MenuData()==CME_DISCARD_AND_EXIT && pressed)
-    {
+        TaskSetDefaultResistor(Resistor_Auto);
         SceneSingleFreqMenuStart();
         return;
     }
@@ -80,12 +75,15 @@ void SceneCalibrarionZx(complex Zx)
         of->freq = StandartFreq(current_freq_index);
 
         if(MenuIndex()==CME_SHORT)
+        {
             of->short_100_Om.Zsm = Zx;
+        }
     }
 
     current_freq_index++;
     if(current_freq_index>=FREQ_INDEX_MAX)
     {
+        TaskSetDefaultResistor(Resistor_Auto);
         ProgressSetVisible(false);
         if(MenuIndex()==CME_SHORT)
             MenuSetNameAndUpdate(MenuIndexByData(CME_SHORT), "Short --ok");
@@ -102,5 +100,16 @@ void SceneCalibrarionZx(complex Zx)
 
 
     ProgressSetPos(current_freq_index/(float)FREQ_INDEX_MAX);
+
+    if(MenuIndex()==CME_SHORT)
+        TaskSetDefaultResistor(Resistor_100_Om);
+    if(MenuIndex()==CME_100_Om)
+        TaskSetDefaultResistor(Resistor_100_Om);
+    if(MenuIndex()==CME_1_KOm)
+        TaskSetDefaultResistor(Resistor_1_KOm);
+    if(MenuIndex()==CME_10_KOm)
+        TaskSetDefaultResistor(Resistor_10_KOm);
+
+    TaskSetFreq(StandartFreq(current_freq_index));
 
 }

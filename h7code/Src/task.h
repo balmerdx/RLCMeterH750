@@ -17,8 +17,19 @@ typedef enum TASK_ENUM
     TASK_USB_SET_FREQ_AND_RECEIVE_ADC,
 } TASK_ENUM;
 
+//Устанавливает частоту генератора.
 void TaskSetFreq(int freq);
 int TaskGetFreq();
+
+//По умолчанию используется Resistor_Auto, чтобы автоматом
+//выбирался резистор. Но для калибровки надо его задавать явно.
+void TaskSetDefaultResistor(ResistorSelectorEnum r);
+
+//Запускает работу ADC
+//Как правило вызова этой функции не требуется,
+//Дальнейшие запуски происходят автоматически.
+void TaskStartConvolution();
+
 void TaskQuant();
 
 //Индекс, для StandartFreq функции
