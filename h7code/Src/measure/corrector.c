@@ -84,15 +84,18 @@ complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequ
     return Zxm;
 }
 
-void correctionSave(uint32_t offset)
+void correctionSave(uint32_t index)
 {
+    uint32_t offset = index*0x10000;
     g_corrections.magic = MAGIC_DATA;
     g_corrections.size = sizeof(CorrectionsAll);
+    m25p16_ram_erase64k(offset);
     m25p16_write(offset, sizeof(g_corrections), &g_corrections);
 }
 
 
-void correctionLoad(uint32_t offset)
+void correctionLoad(uint32_t index)
 {
+    uint32_t offset = index*0x10000;
     m25p16_read(offset, sizeof(g_corrections), &g_corrections);
 }

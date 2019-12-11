@@ -85,11 +85,16 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
     if(g_choose_resistor != Resistor_Auto)
         return false;
 
+    float abs_a = cabs(result->sum_a);
     float abs_b = cabs(result->sum_b);
 
     //Слишком большая амплитуда, надо переключиться на резистор меньших значений.
     ResistorSelectorEnum max_resistor = Resistor_10_KOm;
     ResistorSelectorEnum select_resistor = Resistor_100_Om;
+    if(abs_a < 2000 && abs_b < 2000)
+    {
+        max_resistor = Resistor_100_Om;
+    } else
     if(abs_b > 15000)
     {
         if(ResistorCurrent()==Resistor_10_KOm)
@@ -155,6 +160,7 @@ int TaskGetFreq()
 
 void DrawResult(ConvolutionResult* result, complex Zx)
 {
+/*
     strcpy(buffer_cdc, "abs(a)=");
     float abs_a = cabs(result->sum_a);
     floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
@@ -179,6 +185,16 @@ void DrawResult(ConvolutionResult* result, complex Zx)
     if(ResistorCurrent()==Resistor_10_KOm)
         strcpy(buffer_cdc, "R=10 KOm");
     UTFT_print(buffer_cdc, 20, 180);
+*/
+
+    strcpy(buffer_cdc, "a=");
+    float abs_a = cabs(result->sum_a);
+    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
+    UTFT_print(buffer_cdc, 0, 190);
+
+    strcpy(buffer_cdc, "b=");
+    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result->sum_b), 4, 10, false);
+    UTFT_print(buffer_cdc, 160, 190);
 }
 
 void NextTask()
@@ -216,21 +232,23 @@ void TaskQuant()
         static ConvolutionResult result;
         result = AdcConvolutionResult();
 
-        complex Zx;
-        calculate(&result, &Zx);
+        complex Zxm;
+        calculate(&result, &Zxm);
 
-        //DrawResult(&result, Zx);
-        if(SelectResistor(&result, cabs(Zx)))
+        DrawResult(&result, Zxm);
+        if(SelectResistor(&result, cabs(Zxm)))
         {
             TaskStartConvolution();
         } else
         {
+            complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
+
             if(last_command==USB_COMMAND_CONVOLUTION)
             {
                 SendConvolutionResult(Zx);
             }
             SceneSingleFreqZx(Zx);
-            SceneCalibrarionZx(Zx);
+            SceneCalibrarionZx(Zxm);
             force_next_task = true;
         }
     }

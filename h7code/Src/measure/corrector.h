@@ -58,3 +58,6 @@ extern CorrectionsAll g_corrections;
 bool correctionValid();
 //Применяем коррекцию к Zxm и возвращаем результат.
 complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency);
+
+void correctionSave(uint32_t index);
+void correctionLoad(uint32_t index);

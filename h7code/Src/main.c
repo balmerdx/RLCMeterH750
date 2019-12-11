@@ -96,6 +96,8 @@ int main(void)
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);
 
+    correctionLoad(0);
+
     InterfaceStart();
     TaskSetFreq(StandartFreq(g_freq_index));
     TaskStartConvolution();

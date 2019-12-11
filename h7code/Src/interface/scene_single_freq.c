@@ -139,6 +139,8 @@ void SceneSingleFreqStart()
     info_current_r_y = UTFT_getDisplayYSize()-UTF_Height();
     info_current_r_width = UTF_StringWidth("Rc=10 KOm");
 
+    UTF_DrawString(info_current_r_x + info_current_r_width+10, info_current_r_y, correctionValid()?"valid":"inval");
+
     SceneSingleFreqDrawFreq();
     SceneSingleFreqDrawNames();
     SceneSingleFreqDrawCurrentR();

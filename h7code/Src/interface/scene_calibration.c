@@ -28,6 +28,8 @@ void SceneCalibrarionQuant();
 
 void SceneCalibrarionStart()
 {
+    g_corrections.magic = 0;
+
     MenuReset("Calibration");
     MenuAdd("Short", CME_SHORT);
     MenuAdd("Open", CME_OPEN);
@@ -54,6 +56,17 @@ void SceneCalibrarionQuant()
 
     if((MenuData()==CME_SAVE_AND_EXIT || MenuData()==CME_DISCARD_AND_EXIT) && pressed)
     {
+        if(MenuData()==CME_SAVE_AND_EXIT)
+        {
+            bool all_calibrated = true;
+            for(int i=0; i<CME_COUNT; i++)
+                all_calibrated = all_calibrated || calibrated[i];
+            if(all_calibrated)
+            {
+                correctionSave(0);
+            }
+        }
+
         TaskSetDefaultResistor(Resistor_Auto);
         SceneSingleFreqMenuStart();
         return;
