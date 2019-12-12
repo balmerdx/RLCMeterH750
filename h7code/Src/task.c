@@ -189,11 +189,11 @@ void DrawResult(ConvolutionResult* result, complex Zx)
 
     strcpy(buffer_cdc, "a=");
     float abs_a = cabs(result->sum_a);
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
+    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 1, 7, false);
     UTFT_print(buffer_cdc, 0, 190);
 
     strcpy(buffer_cdc, "b=");
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result->sum_b), 4, 10, false);
+    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result->sum_b), 1, 7, false);
     UTFT_print(buffer_cdc, 160, 190);
 }
 

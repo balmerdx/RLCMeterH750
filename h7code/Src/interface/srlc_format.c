@@ -20,27 +20,13 @@ static void strcat2(char* str_number, char* str_type, const char* str)
 
 void formatR(char* str, float R)
 {
-    formatR2(str, 0, R);
+    formatR2(str, 0, R, fabsf(R));
 }
 
-void formatR2(char* str_number, char* str_type, float R)
+void formatR2(char* str_number, char* str_type, float R, float Rabs)
 {
-    float RA = fabsf(R);
-/*
-    if(RA<1e-2)
-    {
-        floatToStringHelper(str_number, R*1e3, 3);
-        strcat2(str_number, str_type, " mOm");
-        return;
-    }
+    float RA = Rabs;
 
-    if(RA<1)
-    {
-        floatToStringHelper(str_number, R*1e3, 2);
-        strcat2(str_number, str_type, " mOm");
-        return;
-    }
-*/
     if(RA<1)
     {//Более загрубленный вариант, точнее 1 mOhm все равно нет точночти
         floatToStringHelper(str_number, R*1e3, 0);
@@ -55,30 +41,30 @@ void formatR2(char* str_number, char* str_type, float R)
         return;
     }
 
-    if(RA<1e3)
+    if(RA<2e2)
     {
         floatToStringHelper(str_number, R, 2);
         strcat2(str_number, str_type, " Om");
         return;
     }
 
-    if(RA<8e3)
+    if(RA<2e3)
+    {
+        floatToStringHelper(str_number, R, 1);
+        strcat2(str_number, str_type, " Om");
+        return;
+    }
+
+    if(RA<2e4)
     {
         floatToStringHelper(str_number, R*1e-3, 3);
         strcat2(str_number, str_type, " KOm");
         return;
     }
 
-    if(RA<2e4)
-    {
-        floatToStringHelper(str_number, R*1e-3, 2);
-        strcat2(str_number, str_type, " KOm");
-        return;
-    }
-
     if(RA<1e6)
     {
-        floatToStringHelper(str_number, R*1e-3, 1);
+        floatToStringHelper(str_number, R*1e-3, 2);
         strcat2(str_number, str_type, " KOm");
         return;
     }

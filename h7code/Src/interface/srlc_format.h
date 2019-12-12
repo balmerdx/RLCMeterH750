@@ -7,7 +7,7 @@ void formatC(char* str, float C);
 void formatL(char* str, float L);
 
 //str_number = 12.3 str_type = mOhm, Ohm, KOhm
-void formatR2(char* str_number, char* str_type, float R);
+void formatR2(char* str_number, char* str_type, float R, float Rabs);
 void formatC2(char* str_number, char* str_type, float C);
 void formatL2(char* str_number, char* str_type, float L);
 
