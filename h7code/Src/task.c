@@ -232,8 +232,7 @@ void TaskQuant()
         static ConvolutionResult result;
         result = AdcConvolutionResult();
 
-        complex Zxm;
-        calculate(&result, &Zxm);
+        complex Zxm = calculateZxm(&result);
 
         DrawResult(&result, Zxm);
         if(SelectResistor(&result, cabs(Zxm)))

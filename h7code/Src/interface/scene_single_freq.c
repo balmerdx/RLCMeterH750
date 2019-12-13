@@ -4,6 +4,8 @@
 #include "srlc_format.h"
 #include "scene_single_freq_menu.h"
 #include "hardware/select_resistor.h"
+#include "measure/calculate_rc.h"
+#include <math.h>
 
 static void SceneSingleFreqQuant();
 static void SceneSingleFreqDrawFreq();
@@ -28,7 +30,9 @@ static int pb_param2_y;
 static int pb_param_x_type;
 static int pb_param_width_type;
 
-static SingleFreqViewMode view_mode = VM_Z;
+static bool view_parallel = false;
+static bool view_LC = true;
+
 static complex last_Zx;
 static bool last_Zx_changed;
 
@@ -184,7 +188,6 @@ void SceneSingleFreqDrawNames()
 
     UTF_DrawStringJustify(pb_name_x, pb_param1_y+FONT_OFFSET_30TO59, str_re, pb_name_width, UTF_RIGHT);
     UTF_DrawStringJustify(pb_name_x, pb_param2_y+FONT_OFFSET_30TO59, str_im, pb_name_width, UTF_RIGHT);
-
 }
 
 void SceneSingleFreqDrawValues()
@@ -198,9 +201,25 @@ void SceneSingleFreqDrawValues()
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
+    static VisualInfo info;
+    convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, &info);
+
     float Rabs = cabsf(last_Zx);
-    formatR2(str_re, str_re_type, crealf(last_Zx), Rabs);
-    formatR2(str_im, str_im_type, cimagf(last_Zx), Rabs);
+    formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
+
+    if(view_LC)
+    {
+        if(info.is_inductance)
+            formatL2(str_im, str_im_type, info.L);
+        else
+            formatC2(str_im, str_im_type, info.C);
+    } else
+    {
+        formatR2(str_im, str_im_type, info.Rim, view_parallel?fabsf(info.Rim):Rabs);
+    }
+
+    //formatR2(str_re, str_re_type, crealf(last_Zx), Rabs);
+    //formatR2(str_im, str_im_type, cimagf(last_Zx), Rabs);
 
     UTFT_setBackColorW(VGA_BLACK);
     DrawNumberType(pb_param_x, pb_param1_y, str_re, str_re_type);
