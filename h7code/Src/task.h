@@ -1,6 +1,7 @@
 #pragma once
 
 #include "measure/corrector.h"
+#include "data_processing.h"
 
 typedef enum TASK_ENUM
 {
@@ -34,3 +35,7 @@ void TaskQuant();
 
 //Индекс, для StandartFreq функции
 extern int g_freq_index;
+
+//Результат последней конверсии.
+extern ConvolutionResult g_result;
+extern complex g_Zxm;

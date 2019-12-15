@@ -1,4 +1,8 @@
 #pragma once
+#include <stdbool.h>
+#include <complex.h>
+#include <string.h>
+
 
 #ifdef __cplusplus
 extern "C" {

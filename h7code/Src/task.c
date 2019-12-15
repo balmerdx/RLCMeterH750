@@ -17,8 +17,9 @@
 
 uint32_t convolution_time_ms_slow = 200;
 uint32_t convolution_time_ms_fast = 50;
-static char buffer_cdc[128];
 uint32_t g_freqWord = 0;
+ConvolutionResult g_result;
+complex g_Zxm = 0;
 
 #define USB_RECEIVED_DATA_SIZE 32
 //Количество слов в буфере g_usb_received_data
@@ -103,11 +104,11 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
             max_resistor = Resistor_100_Om;
     }
 
-    if(measured_impedance > 3000)
+    if(measured_impedance > 9000)
     {
         select_resistor = Resistor_10_KOm;
     } else
-    if(measured_impedance > 300)
+    if(measured_impedance > 900)
     {
         select_resistor = Resistor_1_KOm;
     }
@@ -158,45 +159,6 @@ int TaskGetFreq()
     return g_freq;
 }
 
-void DrawResult(ConvolutionResult* result, complex Zx)
-{
-/*
-    strcpy(buffer_cdc, "abs(a)=");
-    float abs_a = cabs(result->sum_a);
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 4, 10, false);
-    UTFT_print(buffer_cdc, 20, 90);
-
-    strcpy(buffer_cdc, "abs(b)=");
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result->sum_b), 4, 10, false);
-    UTFT_print(buffer_cdc, 20, 110);
-
-    strcpy(buffer_cdc, "RE=");
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, creal(Zx), 4, 10, false);
-    UTFT_print(buffer_cdc, 20, 130);
-
-    strcpy(buffer_cdc, "IM=");
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cimag(Zx), 4, 10, false);
-    UTFT_print(buffer_cdc, 20, 150);
-
-    if(ResistorCurrent()==Resistor_100_Om)
-        strcpy(buffer_cdc, "R=100 Om");
-    if(ResistorCurrent()==Resistor_1_KOm)
-        strcpy(buffer_cdc, "R=1 KOm");
-    if(ResistorCurrent()==Resistor_10_KOm)
-        strcpy(buffer_cdc, "R=10 KOm");
-    UTFT_print(buffer_cdc, 20, 180);
-*/
-
-    strcpy(buffer_cdc, "a=");
-    float abs_a = cabs(result->sum_a);
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, abs_a, 1, 7, false);
-    UTFT_print(buffer_cdc, 0, 190);
-
-    strcpy(buffer_cdc, "b=");
-    floatToString(buffer_cdc+strlen(buffer_cdc), 20, cabs(result->sum_b), 1, 7, false);
-    UTFT_print(buffer_cdc, 160, 190);
-}
-
 void NextTask()
 {
     if(g_usb_received_offset<g_usb_received_words)
@@ -229,15 +191,16 @@ void TaskQuant()
 {
     if(AdcConvolutionComplete())
     {
-        static ConvolutionResult result;
-        result = AdcConvolutionResult();
+        g_result = AdcConvolutionResult();
 
-        complex Zxm = calculateZxm(&result);
-
-        DrawResult(&result, Zxm);
-        if(SelectResistor(&result, cabs(Zxm)))
+        complex Zxm = calculateZxm(&g_result);
+        g_Zxm = Zxm;
+        if(SelectResistor(&g_result, cabs(Zxm)))
         {
             TaskStartConvolution();
+
+            complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
+            SceneSingleFreqZx(Zx);
         } else
         {
             complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);

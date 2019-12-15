@@ -1,17 +1,17 @@
-#include "main.h"
 #include "scene_single_freq.h"
 #include "task.h"
 #include "srlc_format.h"
 #include "scene_single_freq_menu.h"
 #include "hardware/select_resistor.h"
 #include "measure/calculate_rc.h"
-#include <math.h>
+#include <stdio.h>
 
 static void SceneSingleFreqQuant();
 static void SceneSingleFreqDrawFreq();
 static void SceneSingleFreqDrawNames();
 static void SceneSingleFreqDrawValues();
 static void SceneSingleFreqDrawCurrentR();
+static void SceneSingleFreqDrawDebug();
 
 static int freq_x;
 static int freq_y;
@@ -21,17 +21,19 @@ static int freq_width;
 static const char* s_g_single_freq_khz = " Hz";
 #define FONT_OFFSET_30TO59 24
 
-static int pb_name_x;
 static int pb_name_width;
 static int pb_param_width;
 static int pb_param_x;
-static int pb_param1_y;
-static int pb_param2_y;
+static int pb_param1_name_y;
+static int pb_param2_name_y;
+static int pb_param1_value_y;
+static int pb_param2_value_y;
 static int pb_param_x_type;
 static int pb_param_width_type;
 
-static bool view_parallel = false;
-static bool view_LC = true;
+bool view_parallel = false;
+bool view_LC = true;
+bool view_debug = false;
 
 static complex last_Zx;
 static bool last_Zx_changed;
@@ -40,6 +42,9 @@ static int info_current_r_x;
 static int info_current_r_y;
 static int info_current_r_width;
 ResistorSelectorEnum last_current_r;
+
+static const uint16_t REAL_BACK_COLOR = VGA_MAROON;
+static const uint16_t IMAG_BACK_COLOR = VGA_TEAL;
 
 
 //Предполагается, что str, это строчка у которой может быть - вначале
@@ -82,7 +87,7 @@ void SceneSingleFreqStart()
     int y;
     UTFT_setColorW(VGA_WHITE);
     UTF_SetFont(font_condensed30);
-    y = 5;
+    y = 0;
     freq_y = y;
     y += UTF_Height();
     freq_y_max = y;
@@ -108,20 +113,29 @@ void SceneSingleFreqStart()
     UTF_DrawString(freq_x+freq_width, freq_y, s_g_single_freq_khz);
     UTF_DrawStringJustify(0, freq_y, "RLCMeterH7", freq_x, UTF_CENTER);
 
-    pb_name_x = 10;
-    pb_name_width = 54;
-    pb_param_x = pb_name_x+pb_name_width;
     UTF_SetFont(font_condensed59);
     pb_param_width = UTF_StringWidth("-00.000");
     UTF_SetFont(font_condensed30);
-    pb_param_x_type = pb_param_x+pb_param_width;
     pb_param_width_type = UTF_StringWidth(" MOm");
-    UTF_SetFont(font_condensed59);
 
-    pb_param1_y = y;
+    pb_name_width = pb_param_width+pb_param_width_type;
+    pb_param_x = (UTFT_getDisplayXSize()-pb_name_width)/2;
+
+    pb_param_x_type = pb_param_x+pb_param_width;
+
+    UTF_SetFont(font_condensed30);
+    pb_param1_name_y = y;
     y += UTF_Height();
-    pb_param2_y = y;
+    UTF_SetFont(font_condensed59);
+    pb_param1_value_y = y;
     y += UTF_Height();
+    UTF_SetFont(font_condensed30);
+    pb_param2_name_y = y;
+    y += UTF_Height();
+    UTF_SetFont(font_condensed59);
+    pb_param2_value_y = y;
+    y += UTF_Height();
+
 
     UTF_SetFont(font_condensed30);
     info_current_r_x = 0;
@@ -154,7 +168,10 @@ void SceneSingleFreqQuant()
     if(last_Zx_changed)
     {
         last_Zx_changed = false;
-        SceneSingleFreqDrawValues();
+        if(view_debug)
+            SceneSingleFreqDrawDebug();
+        else
+            SceneSingleFreqDrawValues();
     }
 
     if(ResistorCurrent()!=last_current_r)
@@ -181,13 +198,20 @@ void SceneSingleFreqDrawNames()
 {
     UTF_SetFont(font_condensed30);
     UTFT_setColorW(VGA_WHITE);
-    UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
-    char* str_re = "RE=";
-    char* str_im = "IM=";
+    char* str_re = "real(Z)";
+    char* str_im = "imag(Z)";
 
-    UTF_DrawStringJustify(pb_name_x, pb_param1_y+FONT_OFFSET_30TO59, str_re, pb_name_width, UTF_RIGHT);
-    UTF_DrawStringJustify(pb_name_x, pb_param2_y+FONT_OFFSET_30TO59, str_im, pb_name_width, UTF_RIGHT);
+    if(view_LC)
+    {
+        str_re = view_parallel?"EPR":"ESR";
+        str_im = "L/C";
+    }
+
+    UTFT_setBackColorW(REAL_BACK_COLOR);
+    UTF_DrawStringJustify(pb_param_x, pb_param1_name_y, str_re, pb_name_width, UTF_CENTER);
+    UTFT_setBackColorW(IMAG_BACK_COLOR);
+    UTF_DrawStringJustify(pb_param_x, pb_param2_name_y, str_im, pb_name_width, UTF_CENTER);
 }
 
 void SceneSingleFreqDrawValues()
@@ -221,9 +245,10 @@ void SceneSingleFreqDrawValues()
     //formatR2(str_re, str_re_type, crealf(last_Zx), Rabs);
     //formatR2(str_im, str_im_type, cimagf(last_Zx), Rabs);
 
-    UTFT_setBackColorW(VGA_BLACK);
-    DrawNumberType(pb_param_x, pb_param1_y, str_re, str_re_type);
-    DrawNumberType(pb_param_x, pb_param2_y, str_im, str_im_type);
+    UTFT_setBackColorW(REAL_BACK_COLOR);
+    DrawNumberType(pb_param_x, pb_param1_value_y, str_re, str_re_type);
+    UTFT_setBackColorW(IMAG_BACK_COLOR);
+    DrawNumberType(pb_param_x, pb_param2_value_y, str_im, str_im_type);
 }
 
 void SceneSingleFreqDrawCurrentR()
@@ -240,4 +265,40 @@ void SceneSingleFreqDrawCurrentR()
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
     UTF_DrawStringJustify(info_current_r_x, info_current_r_y, str_r, info_current_r_width, UTF_RIGHT);
+}
+
+void SceneSingleFreqDrawDebug()
+{
+    char buf[32];
+    UTF_SetFont(font_condensed30);
+    UTFT_setColorW(VGA_WHITE);
+    int y;
+
+    UTFT_setBackColorW(REAL_BACK_COLOR);
+
+    y = pb_param1_name_y;
+    strcpy(buf, "abs(a)=");
+    floatToString(buf+strlen(buf), 20, cabs(g_result.sum_a), 1, 7, false);
+    UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
+
+    y += UTF_Height();
+    sprintf(buf, "mid_a=%i", (int)g_result.mid_a);
+    UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
+
+    y += UTF_Height();
+    strcpy(buf, "abs(Zxm)=");
+    floatToString(buf+strlen(buf), 20, cabs(g_Zxm), 1, 7, false);
+    UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
+
+    UTFT_setBackColorW(IMAG_BACK_COLOR);
+
+    y = pb_param2_name_y;
+    strcpy(buf, "abs(b)=");
+    floatToString(buf+strlen(buf), 20, cabs(g_result.sum_b), 1, 7, false);
+    UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
+
+    y += UTF_Height();
+    sprintf(buf, "mid_b=%i", (int)g_result.mid_b);
+    UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
+
 }
