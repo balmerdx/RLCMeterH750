@@ -87,7 +87,7 @@ void SceneSingleFreqStart()
     int y;
     UTFT_setColorW(VGA_WHITE);
     UTF_SetFont(font_condensed30);
-    y = 0;
+    y = 2;
     freq_y = y;
     y += UTF_Height();
     freq_y_max = y;
@@ -136,12 +136,20 @@ void SceneSingleFreqStart()
     pb_param2_value_y = y;
     y += UTF_Height();
 
+    UTFT_setBackColorW(REAL_BACK_COLOR);
+    UTFT_fillRectBack(0, pb_param1_name_y, pb_param_x-1, pb_param2_name_y-1);
+    UTFT_fillRectBack(pb_param_x+pb_name_width, pb_param1_name_y, UTFT_getDisplayXSize()-1, pb_param2_name_y-1);
+
+    UTFT_setBackColorW(IMAG_BACK_COLOR);
+    UTFT_fillRectBack(0, pb_param2_name_y, pb_param_x-1, y-1);
+    UTFT_fillRectBack(pb_param_x+pb_name_width, pb_param2_name_y, UTFT_getDisplayXSize()-1, y-1);
 
     UTF_SetFont(font_condensed30);
     info_current_r_x = 0;
     info_current_r_y = UTFT_getDisplayYSize()-UTF_Height();
     info_current_r_width = UTF_StringWidth("Rc=10 KOm");
 
+    UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
     UTF_DrawString(info_current_r_x + info_current_r_width+10, info_current_r_y, correctionValid()?"valid":"inval");
 
     SceneSingleFreqDrawFreq();
