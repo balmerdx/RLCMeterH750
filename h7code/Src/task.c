@@ -20,6 +20,7 @@ uint32_t convolution_time_ms_fast = 50;
 uint32_t g_freqWord = 0;
 ConvolutionResult g_result;
 complex g_Zxm = 0;
+ErrorZx g_error = {};
 
 #define USB_RECEIVED_DATA_SIZE 32
 //Количество слов в буфере g_usb_received_data
@@ -193,14 +194,15 @@ void TaskQuant()
     {
         g_result = AdcConvolutionResult();
 
-        complex Zxm = calculateZxm(&g_result);
+        complex Zxm = calculateZxm(&g_result, &g_error);
         g_Zxm = Zxm;
         if(SelectResistor(&g_result, cabs(Zxm)))
         {
             TaskStartConvolution();
 
+            //Временный, отладочный кож
             complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
-            SceneSingleFreqZx(Zx);
+            SceneSingleFreqZx(Zx, &g_error);
         } else
         {
             complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
@@ -209,7 +211,7 @@ void TaskQuant()
             {
                 SendConvolutionResult(Zx);
             }
-            SceneSingleFreqZx(Zx);
+            SceneSingleFreqZx(Zx, &g_error);
             SceneCalibrarionZx(Zxm);
             force_next_task = true;
         }

@@ -3,7 +3,6 @@
 #include "srlc_format.h"
 #include "scene_single_freq_menu.h"
 #include "hardware/select_resistor.h"
-#include "measure/calculate_rc.h"
 #include <stdio.h>
 
 static void SceneSingleFreqQuant();
@@ -36,6 +35,7 @@ bool view_LC = true;
 bool view_debug = false;
 
 static complex last_Zx;
+static ErrorZx last_error;
 static bool last_Zx_changed;
 
 static int info_current_r_x;
@@ -186,11 +186,12 @@ void SceneSingleFreqQuant()
         SceneSingleFreqDrawCurrentR();
 }
 
-void SceneSingleFreqZx(complex Zx)
+void SceneSingleFreqZx(complex Zx, ErrorZx* err)
 {
     if(!InterfaceIsActive(SceneSingleFreqQuant))
         return;
     last_Zx = Zx;
+    last_error = *err;
     last_Zx_changed = true;
 }
 
@@ -234,7 +235,7 @@ void SceneSingleFreqDrawValues()
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
     static VisualInfo info;
-    convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, &info);
+    convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, last_error, &info);
 
     float Rabs = cabsf(last_Zx);
     formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
@@ -250,6 +251,13 @@ void SceneSingleFreqDrawValues()
         formatR2(str_im, str_im_type, info.Rim, view_parallel?fabsf(info.Rim):Rabs);
     }
 
+    if(info.is_inf)
+    {
+        str_re[0] = 0;
+        strcpy(str_re_type, "inf");
+        str_im[0] = 0;
+        strcpy(str_im_type, "inf");
+    }
     //formatR2(str_re, str_re_type, crealf(last_Zx), Rabs);
     //formatR2(str_im, str_im_type, cimagf(last_Zx), Rabs);
 
@@ -293,6 +301,7 @@ void SceneSingleFreqDrawDebug()
     sprintf(buf, "mid_a=%i", (int)g_result.mid_a);
     UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
 
+
     y += UTF_Height();
     strcpy(buf, "abs(Zxm)=");
     floatToString(buf+strlen(buf), 20, cabs(g_Zxm), 1, 7, false);
@@ -309,4 +318,8 @@ void SceneSingleFreqDrawDebug()
     sprintf(buf, "mid_b=%i", (int)g_result.mid_b);
     UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
 
+    y += UTF_Height();
+    strcpy(buf, "err(im)=");
+    floatToString(buf+strlen(buf), 20, g_error.err_R, 4, 7, false);
+    UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
 }

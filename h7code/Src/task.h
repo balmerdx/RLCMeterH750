@@ -2,6 +2,7 @@
 
 #include "measure/corrector.h"
 #include "data_processing.h"
+#include "measure/calculate_rc.h"
 
 typedef enum TASK_ENUM
 {
@@ -39,3 +40,4 @@ extern int g_freq_index;
 //Результат последней конверсии.
 extern ConvolutionResult g_result;
 extern complex g_Zxm;
+extern ErrorZx g_error;
