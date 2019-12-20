@@ -31,7 +31,7 @@ static int pb_param_x_type;
 static int pb_param_width_type;
 
 bool view_parallel = false;
-bool view_LC = true;
+VIEW_MODE view_mode = VM_LC;
 bool view_debug = false;
 
 static complex last_Zx;
@@ -208,13 +208,20 @@ void SceneSingleFreqDrawNames()
     UTF_SetFont(font_condensed30);
     UTFT_setColorW(VGA_WHITE);
 
+    //±
     char* str_re = "real(Z)";
     char* str_im = "imag(Z)";
 
-    if(view_LC)
+    if(view_mode == VM_LC)
     {
         str_re = view_parallel?"EPR":"ESR";
         str_im = "L/C";
+    }
+
+    if(view_mode == VM_Z_ABS_ARG)
+    {
+        str_re = "abs(Z)";
+        str_im = "arg(Z)°";
     }
 
     UTFT_setBackColorW(REAL_BACK_COLOR);
@@ -238,9 +245,21 @@ void SceneSingleFreqDrawValues()
     convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, last_error, &info);
 
     float Rabs = cabsf(last_Zx);
-    formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
+    if(view_mode == VM_Z_ABS_ARG)
+    {
+        formatR2(str_re, str_re_type, Rabs, Rabs);
+    } else
+    {
+        formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
+    }
 
-    if(view_LC)
+    if(view_mode == VM_Z_ABS_ARG)
+    {
+        float angle = cargf(last_Zx)*180/M_PI;
+        floatToString(str_im, 16, angle, 1, 3, true);
+        str_im_type[0] = 0;
+    } else
+    if(view_mode == VM_LC)
     {
         if(info.is_inductance)
             formatL2(str_im, str_im_type, info.L);
@@ -258,8 +277,6 @@ void SceneSingleFreqDrawValues()
         str_im[0] = 0;
         strcpy(str_im_type, "inf");
     }
-    //formatR2(str_re, str_re_type, crealf(last_Zx), Rabs);
-    //formatR2(str_im, str_im_type, cimagf(last_Zx), Rabs);
 
     UTFT_setBackColorW(REAL_BACK_COLOR);
     DrawNumberType(pb_param_x, pb_param1_value_y, str_re, str_re_type);
