@@ -1,431 +1,419 @@
-// family=Ubuntu Condensed size=20
+// family=Ubuntu Condensed size=19.5
 // height=30
-// bytes count=9352  bits_per_pixel=2
-const uint32_t font_condensed30[2338]= {
-0x202191e, 
+// bytes count=8584  bits_per_pixel=2
+const uint32_t font_condensed30[2146]= {
+0x203191e, 
 // start char =31 count=95
 0x5f001f, 
 // start char =1040 count=64
 0x400410, 
-// char infos count=159
-0x19000141, 0xc0000, 
-0x19000141, 0x50000, 
-0x6010141, 0x71305, 
-0x4010147, 0xa0808, 
-0x601014b, 0xf130e, 
-0x301015c, 0xc190a, 
-0x601016c, 0x111310, 
-0x601017f, 0xe130d, 
-0x401018f, 0x60804, 
-0x3020191, 0x81c06, 
-0x300019c, 0x81c06, 
-0x50001a7, 0xa090a, 
-0xb0101ad, 0xc0b0a, 
-0x160101b4, 0x60804, 
-0xf0001b6, 0x60306, 
-0x150101b8, 0x60404, 
-0x30001b9, 0x71b08, 
-0x60101c7, 0xc130a, 
-0x60101d3, 0xc1307, 
-0x60101dc, 0xc1309, 
-0x60101e7, 0xc1309, 
-0x60101f2, 0xc130a, 
-0x60101fe, 0xc1309, 
-0x6010209, 0xc130a, 
-0x6010215, 0xc130a, 
-0x6010221, 0xc130a, 
-0x601022d, 0xc130a, 
-0xa010239, 0x60f04, 
-0xa00023d, 0x61405, 
-0xa010244, 0xc0d0a, 
-0xc01024d, 0xc080a, 
-0xa010252, 0xc0d0a, 
-0x600025b, 0x91309, 
-0x6010266, 0x161714, 
-0x6000283, 0xe130e, 
-0x6020294, 0xe130b, 
-0x60102a2, 0xd130c, 
-0x60202b1, 0x10130d, 
-0x60202c1, 0xc130a, 
-0x60202cd, 0xc1309, 
-0x60102d8, 0xe130c, 
-0x60202e7, 0x10130c, 
-0x60202f6, 0x71303, 
-0x60002fa, 0xb1309, 
-0x6020305, 0xe130c, 
-0x6020314, 0xb1309, 
-0x601031f, 0x141311, 
-0x6020334, 0x10130c, 
-0x6010343, 0x10130e, 
-0x6020354, 0xd130b, 
-0x6010362, 0x10190e, 
-0x6020378, 0xe130c, 
-0x6000387, 0xb130b, 
-0x6000395, 0xc130c, 
-0x60203a4, 0xf130b, 
-0x60003b2, 0xd130d, 
-0x60103c2, 0x141313, 
-0x60003d9, 0xd130d, 
-0x60003e9, 0xc130d, 
-0x60003f9, 0xc130b, 
-0x3020407, 0x81b06, 
-0x3000412, 0x71b08, 
-0x3000420, 0x81b06, 
-0x600042b, 0xc0b0b, 
-0x1b000433, 0xa030b, 
-0x3000436, 0x80606, 
-0xa010439, 0xc0f09, 
-0x3020442, 0xd160a, 
-0xa010450, 0xa0f09, 
-0x3010459, 0xd160a, 
-0xa010467, 0xc0f0a, 
-0x3020471, 0x81607, 
-0xa01047b, 0xd140a, 
-0x3020488, 0xd160a, 
-0x4010496, 0x71504, 
-0x400049c, 0x71a05, 
-0x30204a5, 0xc160a, 
-0x30204b3, 0x71605, 
-0xa0204ba, 0x130f0f, 
-0xa0204c9, 0xd0f0a, 
-0xa0104d3, 0xd0f0b, 
-0xa0204de, 0xd140a, 
-0xa0104eb, 0xd140a, 
-0xa0204f8, 0x90f07, 
-0xa0004ff, 0x90f09, 
-0x5010508, 0x91408, 
-0xa010512, 0xd0f0a, 
-0xa00051c, 0xb0f0b, 
-0xa000527, 0xf0f0f, 
-0xa000536, 0xb0f0b, 
-0xa000541, 0xb140b, 
-0xa00054f, 0xa0f09, 
-0x3010558, 0x71b07, 
-0x3020564, 0x71b03, 
-0x300056a, 0x71b07, 
-0x6000576, 0xe130e, 
-0x6020587, 0xe130b, 
-0x6020595, 0xe130b, 
-0x60205a3, 0xb1309, 
-0x60005ae, 0x10180f, 
-0x60205c5, 0xc130a, 
-0x60005d1, 0x111312, 
-0x60005e7, 0xc130b, 
-0x60205f5, 0x10130c, 
-0xff020604, 0x101a0c, 
-0x6020618, 0xe130c, 
-0x6000627, 0x10130e, 
-0x6010638, 0x141311, 
-0x602064d, 0x10130c, 
-0x601065c, 0x10130e, 
-0x602066d, 0xf130b, 
-0x602067b, 0xd130b, 
-0x6010689, 0xd130c, 
-0x6000698, 0xc130c, 
-0x60006a7, 0xd130d, 
-0x40106b7, 0x121510, 
-0x60006cc, 0xd130d, 
-0x60206dc, 0xf180d, 
-0x60106f0, 0xe130b, 
-0x60206fe, 0x151311, 
-0x6020713, 0x151813, 
-0x6000730, 0xf130e, 
-0x6020741, 0x141310, 
-0x6020754, 0xd130b, 
-0x6000762, 0xd130c, 
-0x6020771, 0x161313, 
-0x6000788, 0xe130c, 
-0xa010797, 0xc0f09, 
-0x30107a0, 0xd160b, 
-0xa0207b0, 0xc0f0a, 
-0xa0207ba, 0x90f07, 
-0xa0007c1, 0xd140d, 
-0xa0107d2, 0xc0f0a, 
-0xa0007dc, 0xe0f0f, 
-0xa0007eb, 0xa0f09, 
-0xa0207f4, 0xd0f0a, 
-0x40207fe, 0xd150a, 
-0xa02080c, 0xc0f0a, 
-0xa000816, 0xd0f0c, 
-0xa010822, 0x100f0e, 
-0xa020830, 0xd0f0a, 
-0xa01083a, 0xd0f0b, 
-0xa020845, 0xd0f09, 
-0xa02084e, 0xd140a, 
-0xa01085b, 0xa0f09, 
-0xa000864, 0xa0f0a, 
-0xa00086e, 0xb140b, 
-0x301087c, 0x101b0e, 
-0xa000894, 0xb0f0b, 
-0xa02089f, 0xd140b, 
-0xa0108ad, 0xc0f0a, 
-0xa0208b7, 0x130f0f, 
-0xa0208c6, 0x121411, 
-0xa0008dc, 0xc0f0c, 
-0xa0208e8, 0x120f0f, 
-0xa0208f7, 0xc0f09, 
-0xa000900, 0xa0f0a, 
-0xa02090a, 0x120f0f, 
-0xa010919, 0xc0f09, 
-//char=' ' offset=(0, 25) width=0 height=0 xadvance=11.6094
+// start char =176 count=2
+0x200b0, 
+// char infos count=161
+0x19000146, 0xb0000, 
+0x19000146, 0x50000, 
+0x7010146, 0x71204, 
+0x501014b, 0xa0708, 
+0x701014f, 0xf120d, 
+0x501015e, 0xb1709, 
+0x701016b, 0x11120f, 
+0x701017c, 0xd120d, 
+0x501018b, 0x60703, 
+0x401018d, 0x71a07, 
+0x4000199, 0x71a06, 
+0x60001a3, 0xa090a, 
+0xc0101a9, 0xb0a0a, 
+0x160001b0, 0x60705, 
+0xf0001b3, 0x60306, 
+0x150101b5, 0x60404, 
+0x50001b6, 0x71908, 
+0x70101c3, 0xb1209, 
+0x70101ce, 0xb1207, 
+0x70101d6, 0xb1209, 
+0x70101e1, 0xb1209, 
+0x70101ec, 0xb120a, 
+0x70101f8, 0xb1209, 
+0x7010203, 0xb1209, 
+0x701020e, 0xb1209, 
+0x7010219, 0xb1209, 
+0x7010224, 0xb1209, 
+0xb01022f, 0x60e04, 
+0xb000233, 0x61305, 
+0xb010239, 0xb0c09, 
+0xe010240, 0xb070a, 
+0xb010245, 0xb0c09, 
+0x700024c, 0x91209, 
+0x7010257, 0x151513, 
+0x7000270, 0xd120d, 
+0x702027f, 0xe120b, 
+0x701028c, 0xc120b, 
+0x7020299, 0xf120c, 
+0x70202a7, 0xc1209, 
+0x70202b2, 0xb1209, 
+0x70102bd, 0xe120b, 
+0x70202ca, 0xf120b, 
+0x70202d7, 0x71203, 
+0x70002db, 0xa1209, 
+0x70202e6, 0xd120c, 
+0x70202f4, 0xb1209, 
+0x70102ff, 0x131211, 
+0x7020313, 0xf120b, 
+0x7010320, 0x10120e, 
+0x7020330, 0xd120a, 
+0x701033c, 0x10170e, 
+0x7020351, 0xd120b, 
+0x700035e, 0xa120a, 
+0x700036a, 0xb120b, 
+0x7020377, 0xe120b, 
+0x7000384, 0xd120d, 
+0x7010393, 0x141212, 
+0x70003a8, 0xc120c, 
+0x70003b6, 0xc120c, 
+0x70003c4, 0xb120b, 
+0x50203d1, 0x71906, 
+0x50003db, 0x71908, 
+0x50003e8, 0x71905, 
+0x70003f0, 0xb0a0b, 
+0x1c0003f7, 0xa020a, 
+0x40003f9, 0x80606, 
+0xb0103fc, 0xb0e09, 
+0x4020404, 0xc1509, 
+0xb010410, 0x90e08, 
+0x4010417, 0xc150a, 
+0xb010425, 0xb0e0a, 
+0x502042e, 0x81407, 
+0xb010437, 0xc130a, 
+0x4020443, 0xd1509, 
+0x601044f, 0x61304, 
+0x6000454, 0x61805, 
+0x402045c, 0xb1509, 
+0x4010468, 0x61505, 
+0xb02046f, 0x120e0f, 
+0xb02047d, 0xd0e09, 
+0xb010485, 0xc0e0a, 
+0xb02048e, 0xc1309, 
+0xb010499, 0xc130a, 
+0xb0204a5, 0x90e07, 
+0xb0004ac, 0x90e09, 
+0x60104b4, 0x81307, 
+0xb0104bd, 0xc0e0a, 
+0xb0004c6, 0xa0e0a, 
+0xb0004cf, 0xf0e0f, 
+0xb0004dd, 0xa0e0a, 
+0xb0004e6, 0xa130a, 
+0xb0004f2, 0x90e09, 
+0x50004fa, 0x71907, 
+0x5020505, 0x71903, 
+0x500050a, 0x71906, 
+0x7000514, 0xd120d, 
+0x7020523, 0xd120a, 
+0x702052f, 0xe120b, 
+0x702053c, 0xb1209, 
+0x7000547, 0xf170f, 
+0x702055d, 0xc1209, 
+0x7000568, 0x111211, 
+0x700057c, 0xb120a, 
+0x7020588, 0xf120b, 
+0x1020595, 0xf180b, 
+0x70205a6, 0xd120c, 
+0x70005b4, 0xf120d, 
+0x70105c3, 0x131211, 
+0x70205d7, 0xf120b, 
+0x70105e4, 0x10120e, 
+0x70205f4, 0xf120b, 
+0x7020601, 0xd120a, 
+0x701060d, 0xc120b, 
+0x700061a, 0xb120b, 
+0x7000627, 0xc120c, 
+0x5010635, 0x11140f, 
+0x7000648, 0xc120c, 
+0x7020656, 0xf170d, 
+0x7010669, 0xd120b, 
+0x7020676, 0x141210, 
+0x7020688, 0x141712, 
+0x70006a2, 0xe120e, 
+0x70206b2, 0x141210, 
+0x70206c4, 0xd120a, 
+0x70006d0, 0xc120b, 
+0x70206dd, 0x161213, 
+0x70006f3, 0xd120c, 
+0xb010701, 0xb0e09, 
+0x4010709, 0xc150b, 
+0xb020718, 0xc0e09, 
+0xb020720, 0x90e07, 
+0xb000727, 0xc120d, 
+0xb010736, 0xb0e0a, 
+0xb00073f, 0xe0e0e, 
+0xb00074c, 0xa0e09, 
+0xb020754, 0xd0e09, 
+0x502075c, 0xd1409, 
+0xb020768, 0xb0e09, 
+0xb000770, 0xd0e0b, 
+0xb01077a, 0x100e0d, 
+0xb020786, 0xd0e09, 
+0xb01078e, 0xc0e0a, 
+0xb020797, 0xc0e09, 
+0xb02079f, 0xc1309, 
+0xb0107aa, 0x90e08, 
+0xb0007b1, 0xa0e0a, 
+0xb0007ba, 0xa130a, 
+0x50107c6, 0xf190e, 
+0xb0007dc, 0xa0e0a, 
+0xb0207e5, 0xc120b, 
+0xb0107f2, 0xc0e09, 
+0xb0207fa, 0x120e0e, 
+0xb020807, 0x121210, 
+0xb000819, 0xc0e0c, 
+0xb020824, 0x110e0e, 
+0xb020831, 0xb0e09, 
+0xb000839, 0xa0e09, 
+0xb020841, 0x110e0e, 
+0xb01084e, 0xb0e09, 
+0x6000856, 0x70607, 
+0xc010859, 0xb0d0a, 
+//char=' ' offset=(0, 25) width=0 height=0 xadvance=11.1719
 
-//char=' ' offset=(0, 25) width=0 height=0 xadvance=5.25
+//char=' ' offset=(0, 25) width=0 height=0 xadvance=5.0625
 
-//char='!' offset=(1, 6) width=5 height=19 xadvance=7.09375
-//.OWW.
-//.OWW.
-//.OWW.
-//.OWW.
-//.OWW.
-//.OWW.
-//.OWW.
-//.OWO.
-//.OWO.
-//.OWO.
-//.oWO.
-//.oWo.
-//..Wo.
-//..o..
-//.....
-//..o..
-//.WWW.
-//.WWW.
-//.OWO.
-0xf83e0f8, 0x83e0f83e, 0xe0b82e0f, 0x701d0b42, 0x4000040, 0xb83f0fc, 
-//char='"' offset=(1, 4) width=8 height=8 xadvance=10.2031
-//.WW..WWo
-//.WW..WWo
-//.WW..WWo
-//.WW..WW.
-//.WW..OW.
-//.WW..OW.
-//.OO..oW.
-//........
-0x7c3c7c3c, 0x3c3c7c3c, 0x383c383c, 0x3428, 
-//char='#' offset=(1, 6) width=14 height=19 xadvance=15.2969
-//....OW...oWo..
-//....WW...OWo..
-//....WW...WW...
-//...oWO...WW...
-//OWWWWWWWWWWWW.
-//OWWWWWWWWWWWW.
-//...OWo..oWO...
-//...WW...OWo...
-//...WW...OWo...
-//...WW...OW....
-//...WO...WW....
-//..oWO...WW....
-//OWWWWWWWWWWWW.
-//OWWWWWWWWWWWW.
-//..OWo..oWO....
-//..OW...oWo....
-//..WW...OWo....
-//..WW...OW.....
-//..WO...WW.....
-0x740e00, 0x780f0, 0xb4003c0f, 0xfffe03c0, 0xffffe3ff, 0x2d07803f, 0x1e03c00, 0x1e03c0, 0xc000e03c, 0x2d000f02, 0xfffe00f0, 0xffffe3ff, 0xb41e03f, 0x740e00, 0x780f0, 0xb000380f, 0x3c0, 
-//char='$' offset=(1, 3) width=10 height=25 xadvance=11.6094
-//....WW....
-//....WW....
-//....WW....
-//...OWWOO..
-//..WWWWWWo.
-//.OWWo.oO..
-//.WWo......
-//.WW.......
-//.WWo......
-//.WWO......
-//.OWWO.....
-//..WWWW....
-//...OWWWo..
-//....oWWW..
-//.....oWWO.
-//......OWW.
-//......oWW.
-//......oWW.
-//.o....WWW.
-//oWWOOWWWo.
-//.WWWWWWo..
-//...OWW....
-//....WW....
-//....WW....
-//....WW....
-0xf0000f00, 0xf0000, 0xfff00af8, 0x7c091f81, 0x3c000, 0xbc0007c, 0x2f800, 0x7f8000ff, 0xfd000, 0x3e0002f4, 0x3d000, 0xd3f0043d, 0x7ffc1feb, 0xf800, 0xf0000f, 0xf00, 
-//char='%' offset=(1, 6) width=16 height=19 xadvance=17.4062
-//.oWWW.....WWo...
-//.WWWWW...oWW....
-//oWO.OWo..OWo....
-//OWo.oWO..WW.....
-//OWo.oWO.oWO.....
-//OWo.oWO.WWo.....
-//oWO.OWooWW......
-//.WWWWW.OWo......
-//.oWWW..WW.......
-//......oWO.OWWO..
-//......WWooWWWWo.
-//......WW.WW..WW.
-//.....OWo.WW..WW.
-//.....WW..WO..WW.
-//....oWO..WO..WW.
-//....WWo..WW..WW.
-//....WW...WW..WW.
-//...OWo...oWWWWo.
-//...WW.....OWWO..
-0x1f003f4, 0xf40ffc, 0x781e2d, 0x3c2d1e, 0x2d2d1e, 0x1f2d1e, 0xf5e2d, 0x78ffc, 0x3c3f4, 0xbe2d000, 0x1ff5f000, 0x3c3cf000, 0x3c3c7800, 0x3c2c3c00, 0x3c2c2d00, 0x3c3c1f00, 0x3c3c0f00, 0x1ff40780, 0xbe003c0, 
-//char='&' offset=(1, 6) width=13 height=19 xadvance=13.7969
-//...OWWWo.....
-//..OWWWWWo....
-//..WW..oWW....
-//.oWO...WW....
-//.oWO...WW....
-//.oWW..oWO....
-//..WWo.WWo....
-//..oWWWWO.....
-//...WWWo......
-//..OWWWO...OO.
-//.OWWoWWo..WW.
-//.WWo.OWW.oWO.
-//OWO...WWOOWO.
-//OWO....WWWW..
-//WWO....oWWW..
-//OWW.....WWW..
-//oWWO..oWWWWo.
-//.OWWWWWWOoWW.
-//..oOWWOo..WWo
-0x80007f80, 0xf0007ff, 0xf02d003d, 0x3c0b400, 0xb43d0, 0xf4001f1f, 0x1fc0002f, 0x80bf8000, 0xf07df82, 0x2e2d3e1f, 0xb8baf0, 0xf402f0ff, 0xfc00f83, 0xe07fd0bd, 0xf903dbff, 0x1f06, 
-//char=''' offset=(1, 4) width=4 height=8 xadvance=5.98438
-//.WW.
-//.WW.
-//.WW.
-//.WW.
-//.WW.
-//.WW.
-//.OO.
+//char='!' offset=(1, 7) width=4 height=18 xadvance=6.82813
+//.WWO
+//.WWO
+//.WWO
+//.WWO
+//.WWO
+//.WWO
+//.OWO
+//.OWO
+//.OWo
+//.OWo
+//.oWo
+//.oW.
+//..o.
 //....
-0x3c3c3c3c, 0x283c3c, 
-//char='(' offset=(2, 3) width=6 height=28 xadvance=7.6875
-//...oo.
-//...WWo
-//..OWW.
-//..WWo.
-//.oWW..
-//.OWO..
-//.WWo..
-//.WW...
-//oWW...
-//OWO...
-//OWO...
-//WWo...
-//WWo...
-//WWo...
-//WWo...
-//WWo...
-//OWO...
-//OWO...
-//oWW...
-//oWW...
-//.WWo..
-//.WWO..
-//.oWW..
-//..WWo.
-//..OWO.
-//...WWo
-//...OO.
+//....
+//.OWO
+//.WWW
+//.OWo
+0xbcbcbcbc, 0xb8b8bcbc, 0x34747878, 0xb8000010, 0x78fc, 
+//char='"' offset=(1, 5) width=8 height=7 xadvance=9.8125
+//.WW..WW.
+//.WW..WW.
+//.WW..WW.
+//.WW..WW.
+//.WO..WW.
+//.WO..WO.
+//.Oo..oo.
+0x3c3c3c3c, 0x3c3c3c3c, 0x2c2c3c2c, 0x1418, 
+//char='#' offset=(1, 7) width=13 height=18 xadvance=14.7344
+//....WW...WW..
+//....WO...WW..
+//...oWO...WO..
+//...oWo..oWo..
+//WWWWWWWWWWWWO
+//OOOWWOOOWWOOo
+//...WW...WW...
+//...WW...WW...
+//...WO...WW...
+//...WO...WO...
+//..oWo..oWO...
+//OOWWWOOWWWOOo
+//WWWWWWWWWWWWO
+//..OW...OW....
+//..WW...WW....
+//..WW...WW....
+//..WO...WW....
+//.oWO...WO....
+0x3c0f00, 0xb400f02c, 0x41d002c0, 0xffffff07, 0x6beafaa, 0xf000f03c, 0x2c003c0, 0x2c0b000f, 0x80b41d00, 0xff6bfafe, 0x382ffff, 0x3c0f000e, 0xf03c00, 0xd003c0b0, 0xb02, 
+//char='$' offset=(1, 5) width=9 height=23 xadvance=11.1719
+//...oWO...
+//...oWO...
+//...oWO...
+//..oWWWWO.
+//.oWWWWWW.
+//.WWO.....
+//oWW......
+//oWW......
+//.WWo.....
+//.OWWo....
+//..WWWO...
+//...OWWW..
+//....oWWW.
+//.....oWWo
+//......WWO
+//......OWO
+//......WWO
+//.WoooOWW.
+//oWWWWWWO.
+//..oWWW...
+//...oWO...
+//...oWO...
+//...oWO...
+0x2d000b40, 0xf400b400, 0xf0fff42f, 0x4003d002, 0x7c000f, 0xbf0007e0, 0xfe000, 0x7d000fd, 0xb8002f00, 0xe572f000, 0xf40bffd3, 0xb4003, 0xb4002d, 
+//char='%' offset=(1, 7) width=15 height=18 xadvance=16.7656
+//.oWWO....oWO...
+//.WWOWO...OWo...
+//OWo.WW...WW....
+//OW..OWo.oWO....
+//OW..OWo.WW.....
+//OW..OW.oWO.....
+//oWO.WW.OWo.....
+//.WWWWO.WW......
+//..OOo.oWO.oOo..
+//......WW.OWWWO.
+//.....oWO.WO.WW.
+//.....OWooWo.oWo
+//.....WW.OWo.oWo
+//....OWo.OWo.oWo
+//....WW..oWo.oWo
+//...oWO..oWO.OWo
+//...OWo...WWOWW.
+//...WW.....WWW..
+0xb402f4, 0xe01e02ef, 0x3803c0f1, 0xe00b478, 0x83800f1e, 0xf2d002d3, 0x2ff00078, 0xd1a0000f, 0x3c000192, 0xcb4002fe, 0x75e000f2, 0x1e3c0074, 0x4787801d, 0xd1d0f007, 0x78b42d01, 0xfbc0780, 0xfc00f0, 
+//char='&' offset=(1, 7) width=13 height=18 xadvance=13.2813
+//...OWWOo.....
+//..WWWWWW.....
+//.oWW..OWO....
+//.OWo..oWO....
+//.OWO..oWO....
+//.oWW..WWo....
+//..WWoOWO.....
+//..oWWWW......
+//...WWW.......
+//..WWWWO..oWo.
+//.WWooWWo.OWo.
+//oWW..OWW.WW..
+//OWO...OWOWW..
+//WWo....WWWo..
+//OWO....oWWo..
+//oWW....WWWO..
+//.OWWOOWWOWWo.
+//..oWWWOo.oWW.
+0xc0006f80, 0xf4003ff, 0xb41e002e, 0x2d0b800, 0x7c3d0, 0xf4000b9f, 0xfc0000f, 0xd0bfc000, 0x4787d7c1, 0x2e0f3e0f, 0x7c3ee0, 0xf402e07f, 0xbf00f41, 0x407efaf8, 0x3d1bf, 
+//char=''' offset=(1, 5) width=3 height=7 xadvance=5.76563
+//.WW
+//.WW
+//.WW
+//.WW
+//.WO
+//.WO
+//.Oo
+0x2cf3cf3c, 0x18b, 
+//char='(' offset=(1, 4) width=7 height=26 xadvance=7.40625
+//.......
+//....WW.
+//...OWW.
+//...WWo.
+//..oWW..
+//..WWO..
+//..WW...
+//.oWW...
+//.OWO...
+//.OWO...
+//.WWo...
+//.WWo...
+//.WWo...
+//.WWo...
+//.WWo...
+//.WWo...
+//.WWo...
+//.OWO...
+//.oWW...
+//..WW...
+//..WWo..
+//..OWO..
+//...WW..
+//...WWO.
+//...oWW.
+//....Oo.
+0x3c00000, 0xd01f00f8, 0xf00bc03, 0xb803d0, 0xf007c02e, 0x1f007c01, 0x1f007c0, 0x402e007c, 0xf003c00f, 0x3c00b801, 0xf402f00, 0x180, 
+//char=')' offset=(0, 4) width=6 height=26 xadvance=7.40625
 //......
-0xe07c0140, 0x80f41f03, 0x3c07c0b, 0x2e02e03d, 0xf01f01f0, 0x1f01f01, 0x3d02e02e, 0xc07c03d0, 0x1f00f40b, 0x807c02e0, 0x2, 
-//char=')' offset=(0, 3) width=6 height=28 xadvance=7.6875
-//.O....
-//OWO...
-//.WW...
-//.OWO..
+//OWo...
+//oWW...
+//.WWo..
 //.oWW..
-//..WWo.
-//..OWO.
-//..oWW.
-//...WW.
-//...WWo
-//...WWo
-//...WWo
-//...OWO
-//...OWO
-//...OWO
-//...WWO
-//...WWo
-//...WWo
-//...WW.
-//..oWW.
-//..OWO.
-//..WWO.
 //..WW..
-//.OWW..
-//.WWo..
-//OWW...
-//oWo...
-//......
-0x3c02e008, 0xf40b80, 0x3d02e01f, 0xc07c03c0, 0xb807c07, 0xbc0b80b8, 0xc07c07c0, 0x2e03d03, 0xf80f02f, 0x1d03e07c, 0x0, 
-//char='*' offset=(0, 5) width=10 height=9 xadvance=10.4375
-//....oO....
-//....WWo...
-//.oo.OW..O.
-//.OWOOWoWW.
-//.OWWWWWWWo
-//...oWWO...
-//..oWWOWO..
-//..WWo.WWo.
-//...O..Oo..
-0xf0000900, 0x820e1401, 0xfff83deb, 0xd002f407, 0x1f1f00bb, 0x6080, 
-//char='+' offset=(1, 11) width=10 height=11 xadvance=11.6094
+//..OWO.
+//..oWO.
+//..oWW.
+//...WW.
+//...WWo
+//...WWo
+//...WWo
+//...WWo
+//...WWo
+//...WWo
+//...WW.
+//...WW.
+//..oWW.
+//..OWO.
+//..WWo.
+//.oWW..
+//.OWO..
+//.WW...
+//OWO...
+//.O....
+0x3d01e000, 0xf407c0, 0x2d02e00f, 0xc03c03d0, 0x7c07c07, 0x7c07c07c, 0xd03c03c0, 0x41f02e03, 0x3c0b80f, 0x802e, 
+//char='*' offset=(0, 6) width=10 height=9 xadvance=10.0469
 //..........
 //....WW....
-//....WW....
-//....WW....
-//....WW....
-//WWWWWWWWWo
-//WWWWWWWWWo
-//....WW....
-//....WW....
-//....WW....
-//....WW....
-0xf0000000, 0xf0000, 0xf0000f0, 0xff7ffff0, 0xf007ff, 0xf0000f00, 0xf0000, 
-//char=',' offset=(1, 22) width=4 height=8 xadvance=6.25
-//.WWo
-//.WWo
-//.WWo
-//.WW.
-//.WW.
-//oWO.
-//WW..
-//.o..
-0x3c7c7c7c, 0x40f2d3c, 
-//char='-' offset=(0, 15) width=6 height=3 xadvance=6.28125
-//.oooo.
-//oWWWWO
-//oWWWWO
-0xfdbfd154, 0xb, 
-//char='.' offset=(1, 21) width=4 height=4 xadvance=6.25
+//.o..WW..o.
+//.OWOOOOWW.
+//.WWWWWWWW.
+//...oWWo...
+//..oWOOWo..
+//..WW.oWW..
+//...o..o...
+0xf0000000, 0x810f0400, 0xfffc3eab, 0xd001f403, 0xf4f007a, 0x1040, 
+//char='+' offset=(1, 12) width=10 height=10 xadvance=11.1719
+//....o.....
+//...oWO....
+//...oWO....
+//...oWO....
+//WWWWWWWWW.
+//WWWWWWWWW.
+//...oWO....
+//...oWO....
+//...oWO....
+//...oWO....
+0xb4000100, 0xb4000, 0xffff00b4, 0x403ffff3, 0xb4000b, 0xb4000b40, 0x0, 
+//char=',' offset=(0, 22) width=5 height=7 xadvance=6.03125
+//..WWo
+//..WWo
+//..WW.
+//..WW.
+//.oWO.
+//.OWo.
+//.OO..
+0xf07c1f0, 0x81e0b43c, 0x2, 
+//char='-' offset=(0, 15) width=6 height=3 xadvance=6.04688
+//......
+//oWWWWo
+//oWWWWo
+0xfd7fd000, 0x7, 
+//char='.' offset=(1, 21) width=4 height=4 xadvance=6.03125
 //....
-//.WWo
+//.WW.
 //oWWO
-//.WWo
-0x7cbd7c00, 
-//char='/' offset=(0, 3) width=8 height=27 xadvance=7.28125
-//.....oWW
+//.WW.
+0x3cbd3c00, 
+//char='/' offset=(0, 5) width=8 height=25 xadvance=7.01563
 //.....OWO
 //.....OWo
 //.....WW.
 //....oWW.
-//....oWO.
+//....OWO.
 //....OWo.
 //....WW..
-//....WW..
-//...oWO..
+//...oWW..
+//...OWO..
 //...OWo..
 //...WW...
-//...WW...
-//..oWO...
-//..OWo...
+//..oWW...
+//..OWO...
 //..WWo...
 //..WW....
-//.oWO....
+//.oWW....
 //.OWO....
 //.WWo....
 //.WW.....
@@ -435,34 +423,33 @@ const uint32_t font_condensed30[2338]= {
 //WW......
 //WW......
 //WO......
-0xb800f400, 0x3c007800, 0x2d003d00, 0xf001e00, 0xb400f00, 0x3c00780, 0x2d003c0, 0x1f001e0, 0xb400f0, 0x7c00b8, 0x3d003c, 0x1f002e, 0xf000f, 0xb, 
-//char='0' offset=(1, 6) width=10 height=19 xadvance=11.6094
-//..oWWWO...
-//..WWWWWW..
-//.OWW.oWWo.
-//.WWo..OWO.
-//oWW...OWW.
-//oWW...oWW.
-//oWW...oWW.
-//OWW...oWW.
-//OWW...oWW.
-//OWW....WW.
-//OWW...oWW.
-//OWW...oWW.
-//oWW...oWW.
-//oWW...oWW.
-//oWW...OWW.
-//.WWo..OWO.
-//.OWW.oWWo.
-//..WWWWWW..
-//..oWWWO...
-0xff002fd0, 0xc1f4f80f, 0xe03d2e07, 0x3d3d03d3, 0x3d03e3d0, 0x3e3d03e, 0xe3d03e3c, 0xd03d3d03, 0x3d3d03d3, 0x2e07c3e0, 0xff01f4f8, 0x2fd00f, 
-//char='1' offset=(1, 6) width=7 height=19 xadvance=11.6094
-//....OWo
-//...oWWo
-//..oWWWo
-//.OWWWWo
-//.OWoWWo
+0x7800b800, 0x3d003c00, 0x1e002e00, 0xf400f00, 0x7800b80, 0x3d003c0, 0x1f002e0, 0xf400f0, 0x7c00b8, 0x3d003c, 0x1f002e, 0xf000f, 0xb, 
+//char='0' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//..oWWWo..
+//.oWWWWWO.
+//.WWO.oWW.
+//.WW...WWo
+//oWW...OWO
+//oWW...OWO
+//OWO...OWO
+//OWO...OWW
+//OWO...OWW
+//OWO...OWW
+//OWO...OWW
+//OWO...OWO
+//oWW...OWO
+//oWW...OWO
+//.WW...WWo
+//.WWO.oWW.
+//.oWWWWWO.
+//..oWWWo..
+0xffd01fd0, 0xf0f4bc2, 0xf6e03d7c, 0xae02eb80, 0xe02ef80b, 0x2ef80bb, 0x3db80bbe, 0xcb80f6e0, 0x3d2f1f03, 0x7f40bff4, 0x0, 
+//char='1' offset=(1, 7) width=7 height=18 xadvance=11.1719
+//....WWo
+//...OWWo
+//..OWWWo
+//.WWWWWo
+//.OO.WWo
 //....WWo
 //....WWo
 //....WWo
@@ -476,842 +463,798 @@ const uint32_t font_condensed30[2338]= {
 //....WWo
 //....WWo
 //....WWo
-//....WWo
-0x7d01e00, 0x787fe1fd, 0xf007c01f, 0x1f007c01, 0x1f007c0, 0xc01f007c, 0x7c01f007, 0x7c01f00, 0x1f0, 
-//char='2' offset=(1, 6) width=9 height=19 xadvance=11.6094
-//.oOWWWo..
-//OWWWWWWO.
-//.Wo.oOWW.
-//......WWo
-//......WWO
-//......WWo
-//......WWo
+0x7e01f00, 0x287ff1fe, 0xf007c01f, 0x1f007c01, 0x1f007c0, 0xc01f007c, 0x7c01f007, 0x7c01f00, 
+//char='2' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//.oWWWOo..
+//OWWWWWWo.
+//.Wo..OWW.
+//.....oWW.
+//......WW.
+//......WW.
 //.....OWW.
 //.....WWo.
-//....OWO..
+//....OWW..
 //...oWW...
 //...WWo...
 //..OWO....
 //.oWW.....
 //.OWO.....
 //.WWo.....
-//.WWo.....
-//oWWWWWWWW
-//oWWWWWWWW
-0xfff81fe4, 0xf91c2, 0x2f0007c, 0x1f0007c0, 0x7c003e00, 0xf400b800, 0xe001f000, 0x8003d002, 0x1f000b, 0xfff4007c, 0x3fffdf, 
-//char='3' offset=(1, 6) width=9 height=19 xadvance=11.6094
-//.oWWWOo..
-//oWWWWWWo.
-//.Oo.oWWW.
-//.....oWW.
-//......WWo
-//.....oWW.
-//....oWWW.
-//..WWWWWo.
-//..WWWWo..
-//....oWW..
-//......WW.
-//......WWo
-//......OWO
-//......OWO
-//......OWO
-//......WWO
-//oOo.oWWW.
-//OWWWWWWo.
-//.OWWWOo..
-0xfff41bf4, 0xfd181, 0x1f0003d, 0xfd003d0, 0x1ff01ffc, 0xf400, 0x7c000f, 0xb8002e0, 0xbc002e00, 0xfff8fd19, 0x1bf81, 
-//char='4' offset=(1, 6) width=10 height=19 xadvance=11.6094
-//.....OWW..
-//.....WWW..
-//....OWWW..
-//....WOWW..
-//...OWoWW..
-//...WO.WW..
-//..OWo.WW..
-//..WW..WW..
-//.oWo..WW..
-//.WW...WW..
-//oWO...WW..
-//OWo...WW..
-//WWWWWWWWWW
-//WWWWWWWWWW
-//......WW..
-//......WW..
-//......WW..
-//......WW..
-//......WW..
-0xc000f800, 0xfe000f, 0xf7800fb0, 0xe00f2c00, 0xf0f00f1, 0x3c0f074, 0xe0f02d0f, 0xffff0f01, 0xffffff, 0xf0000f0, 0xf000, 0xf0000f, 
-//char='5' offset=(1, 6) width=9 height=19 xadvance=11.6094
-//..WWWWWWo
-//..WWWWWWo
-//..WW.....
-//..WW.....
-//..WW.....
-//..WW.....
-//..WW.....
-//.oWWOo...
-//.oWWWWW..
-//...oOWWW.
-//.....oWWo
-//......OWO
-//......OWO
-//......OWO
-//......OWO
-//......WWo
-//.Oo.oWWW.
-//oWWWWWW..
+//oWW......
+//oWWWWWWWO
+//oWWWWWWWO
+0xfff81bf4, 0xf81c1, 0xf0003d, 0xf8003c0, 0x3e001f00, 0x7c003d00, 0xf400b800, 0xc002e000, 0xf4007, 0xfff6fffd, 0xb, 
+//char='3' offset=(1, 7) width=9 height=18 xadvance=11.1719
 //.OWWWO...
-0xffc1fff0, 0x3c000f07, 0xc000f000, 0xf0003, 0x3ff401bd, 0x4003f900, 0xb8001f, 0xb8002e0, 0x7c002e00, 0xfff4fd18, 0xbf80, 
-//char='6' offset=(1, 6) width=10 height=19 xadvance=11.6094
-//.....oWW..
-//....WWWWo.
-//...WWWo...
-//..OWO.....
-//..WW......
-//.OWO......
-//.WWo......
-//.WWOWWWo..
-//.WWWWWWWo.
-//oWWo..WWW.
-//oWW...oWW.
-//oWW....WWo
-//oWW....WWo
-//.WW....WWo
-//.WWo...WWo
-//.WWo..oWW.
-//.oWW..OWO.
-//..WWWWWW..
-//...OWWOo..
-0xf000f400, 0x1fc01f, 0xf0002e, 0x7c000b80, 0x7fbc000, 0x7d1fffc, 0xd3d03d3f, 0xc03d7c03, 0x7c7c03c7, 0x3d07c7c0, 0xff02e0f4, 0x6f800f, 
-//char='7' offset=(1, 6) width=10 height=19 xadvance=11.6094
-//WWWWWWWWW.
-//WWWWWWWWW.
-//......OWW.
-//......WWo.
-//.....oWW..
-//.....WWo..
-//.....WW...
-//....OWO...
-//....WWo...
-//....WW....
-//...oWW....
-//...OWO....
-//...WWo....
-//...WW.....
-//..oWW.....
-//..oWW.....
-//..OWO.....
-//..OWO.....
-//..WWO.....
-0xfff3ffff, 0x3e0003f, 0xf4001f00, 0x7c000, 0x2e0003c, 0xf0001f00, 0xf4000, 0x7c000b8, 0xd0003c00, 0x3d0003, 0x2e0002e0, 0x2f000, 
-//char='8' offset=(1, 6) width=10 height=19 xadvance=11.6094
-//..oOWWO...
-//.oWWWWWW..
-//.WWO..WWO.
-//.WW...oWW.
-//oWW...oWW.
-//.WW...oWW.
-//.WWo..OWO.
-//.oWW..WW..
-//..OWWWWo..
-//..oWWWO...
-//.oWWoWWO..
-//.WWo..WWO.
-//oWW...oWW.
-//OWO....WW.
-//OWO....WWo
-//OWW....WW.
-//oWWo..OWO.
-//.OWWWWWW..
-//..oWWWO...
-0xff402f90, 0xc2f0bc0f, 0xd03d3d03, 0x7c3d03c3, 0xf0f42e0, 0xfd007fe0, 0xc0bdf402, 0xd03d2f07, 0x2e3c02e3, 0x3c03e7c0, 0xff82e07d, 0x2fd00f, 
-//char='9' offset=(1, 6) width=10 height=19 xadvance=11.6094
-//..oWWWO...
-//.oWWWWWW..
-//.WWO..WWo.
-//oWW...OWO.
-//oWW...oWW.
-//oWW....WW.
-//oWW....WW.
-//oWW....WW.
-//.WWO..oWW.
-//.oWWWWWWW.
-//..oWWWWWW.
-//......OWW.
-//......OWO.
-//......WWo.
-//.....OWW..
-//....oWWO..
-//..oOWWW...
-//.OWWWW....
-//.oWOo.....
-0xff402fd0, 0xd1f0bc0f, 0xd03d2e03, 0x3d3c03d3, 0x3c03d3c0, 0xff43d0bc, 0x3ffd03f, 0xe0003e00, 0x1f0002, 0xbd000f8, 0xff803f90, 0x1b400, 
-//char=':' offset=(1, 10) width=4 height=15 xadvance=6.25
-//.WWo
-//oWWO
-//.WWo
-//..o.
-//....
-//....
-//....
-//....
-//....
-//....
-//....
-//....
-//.WWo
-//oWWO
-//.WWo
-0x107cbd7c, 0x0, 0x0, 0x7cbd7c, 
-//char=';' offset=(0, 10) width=5 height=20 xadvance=6.25
-//..WWo
-//.oWWO
-//..WWo
-//...o.
-//.....
-//.....
-//.....
-//.....
-//.....
-//.....
-//.....
-//.....
-//..WW.
-//..WW.
-//.oWW.
-//.oWW.
-//.OWO.
-//.OW..
-//.WO..
-//.....
-0x1f0bd1f0, 0x10, 0x0, 0xf0000000, 0x3d0f43c0, 0x2c0e0b8, 0x0, 
-//char='<' offset=(1, 10) width=10 height=13 xadvance=11.6094
-//..........
-//.......OO.
-//.....oWWW.
-//....OWWO..
-//..oWWWo...
-//.WWWO.....
-//OWW.......
-//OWWO......
-//.oWWWo....
-//...OWWO...
-//....oWWWO.
-//......OWW.
-//.......oo.
-0x0, 0x3f40028, 0x1fd00be0, 0x3e002fc0, 0xbe000, 0xf80007f4, 0x2fd0002, 0x40003e00, 0x1, 
-//char='=' offset=(1, 12) width=10 height=8 xadvance=11.6094
-//..........
-//WWWWWWWWWo
-//WWWWWWWWWo
-//..........
-//..........
-//..........
-//WWWWWWWWWo
-//WWWWWWWWWo
-0xfff00000, 0x7ffff7f, 0x0, 0xff000000, 0x7ffff7ff, 
-//char='>' offset=(1, 10) width=10 height=13 xadvance=11.6094
-//..........
-//.Wo.......
-//OWWO......
-//.oWWWo....
-//...OWWWo..
-//.....WWWO.
-//......oWWo
-//......WWWo
-//....OWWW..
-//..oWWWo...
-//.OWWO.....
-//oWWo......
-//.O........
-0x1c00000, 0x4000be00, 0x7f80007f, 0x2fc000, 0x7f0007d0, 0xfd00fe00, 0xd002f801, 0x80007, 0x0, 
-//char='?' offset=(0, 6) width=9 height=19 xadvance=9.21875
-//.oOWWWo..
-//.WWWWWWO.
-//.Oo.oOWWo
-//......WWO
-//......WWO
-//......WWo
+//OWWWWWW..
+//.O..oWWO.
+//.....oWW.
+//.....oWW.
 //.....OWW.
 //....oWWo.
+//..WWWWO..
+//..WWWW...
+//....oWWo.
+//.....oWW.
+//......WWo
+//......WWo
+//......WWo
+//......WW.
+//oo..oWWW.
+//OWWWWWWo.
+//.OWWWO...
+0xfff80bf8, 0xbd080, 0xf4003d, 0x7d003e0, 0xff00bfc, 0x4001f400, 0x7c000f, 0x7c001f0, 0x3f414f00, 0x2fe07ffe, 0x0, 
+//char='4' offset=(1, 7) width=10 height=18 xadvance=11.1719
+//.....WWO..
+//....oWWO..
+//....WWWO..
+//...oWWWO..
+//...WWoWO..
+//..oWOoWO..
+//..OW.oWO..
+//..WO.oWO..
+//.OWo.oWO..
+//.WW..oWO..
+//oWo..oWO..
+//OW...oWO..
+//WWWWWWWWWo
+//OWWWWWWWWo
+//.....oWO..
+//.....oWO..
+//.....oWO..
+//.....oWO..
+0xd000bc00, 0xbf000b, 0xb7c00bf4, 0xe00b6d00, 0xb4b00b4, 0x43c0b478, 0xe0b41d0b, 0xffff0b40, 0x7fffe7, 0xb4000b4, 0x4000b400, 0xb, 
+//char='5' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//..WWWWWW.
+//..WWWWWW.
+//..WW.....
+//..WW.....
+//..WW.....
+//.oWO.....
+//.oWO.....
+//.oWWWO...
+//.oOWWWW..
+//.....WWW.
+//......WW.
+//......WWo
+//......WWo
+//......WWo
+//.....oWW.
+//.o..oWWO.
+//oWWWWWW..
+//.OWWWO...
+0xffc0fff0, 0x3c000f03, 0xd000f000, 0xb4002, 0x3fe402fd, 0x3f000, 0x7c000f, 0x7c001f0, 0x2f410f40, 0x2fe03ffd, 0x0, 
+//char='6' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//.....OWW.
+//...oWWWO.
+//..oWWo...
+//..WW.....
+//.oWO.....
+//.OWo.....
+//.WWOOOO..
+//.WWWWWWO.
+//oWWo.oWWo
+//oWW...OWO
+//oWW...oWW
+//oWW...oWW
+//oWW...oWW
+//.WW...oWW
+//.WWo..OWO
+//.OWO..WWo
+//..WWWWWW.
+//...OWWO..
+0xfd00f800, 0x3c007d02, 0xe000b400, 0x2abc001, 0xf47d2fff, 0x3db80f5, 0x3df40f7d, 0xcf40f3d0, 0x7c2e2e07, 0xbe00fff0, 0x0, 
+//char='7' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//WWWWWWWWW
+//WWWWWWWWW
+//......WWo
+//.....oWW.
+//.....WWo.
+//.....WW..
+//....OWO..
 //....WWo..
-//...WWO...
+//....WW...
+//...oWO...
+//...OWo...
+//...WWo...
+//...WW....
 //..oWW....
-//..oWW....
+//..OWO....
+//..OWo....
+//..WWo....
+//..WWo....
+0xffffffff, 0x1f000f, 0x7c003d, 0x2e000f0, 0xf0007c0, 0x78002d00, 0xc001f000, 0xf4003, 0x78002e, 0x7c001f0, 0x0, 
+//char='8' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//..oWWWO..
+//.oWWWWWW.
+//.WWo..WWo
+//oWW...OWO
+//oWW...OWO
+//oWW...OWo
+//.WWo..WW.
+//.oWWoOWo.
+//..oWWWO..
+//..WWWWW..
+//.WWo.OWW.
+//oWW...WWO
+//OWO...oWW
+//OWo...oWW
+//OWO...oWW
+//oWW...WWo
+//.OWWWWWW.
+//..oWWWO..
+0xffd02fd0, 0xf5f07c3, 0xf6e03db8, 0xf07c780, 0x2fd01e7d, 0x87c0ffc0, 0x2ebc0f4f, 0xef407bd0, 0x7c0f7d02, 0xbf40fff8, 0x0, 
+//char='9' offset=(1, 7) width=9 height=18 xadvance=11.1719
+//..oWWWo..
+//.oWWWWWO.
+//.WWo.oWW.
+//oWW...WWo
+//oWW...OWO
+//oWO...oWO
+//oWW...oWO
+//oWW...oWW
+//.WWO..OWW
+//.oWWWWWWO
+//..oWWWWWO
+//......WWo
+//......WW.
+//.....oWW.
+//.....WWo.
+//...oWWO..
+//.OWWWO...
+//.OWOo....
+0xffd01fd0, 0xf4f47c2, 0xb6e03d7c, 0x6d03db40, 0xe0bcf40f, 0xfd0bffd3, 0x7c002f, 0x3d000f0, 0xbd007c0, 0x6e00bf8, 0x0, 
+//char=':' offset=(1, 11) width=4 height=14 xadvance=6.03125
+//.WW.
+//oWWO
+//.WW.
+//....
+//....
+//....
+//....
+//....
+//....
+//....
+//....
+//.WW.
+//oWWO
+//.WW.
+0x3cbd3c, 0x0, 0x3c000000, 0x3cbd, 
+//char=';' offset=(0, 11) width=5 height=19 xadvance=6.03125
+//..WW.
+//.oWWO
+//..WW.
+//.....
+//.....
+//.....
+//.....
+//.....
+//.....
+//.....
+//.....
+//.oWW.
+//.oWW.
+//.oWW.
+//.oWO.
+//.OWo.
+//.WW..
+//.WO..
+//.....
+0xf0bd0f0, 0x0, 0x0, 0xf43d0000, 0x1e0b43d0, 0xb03c, 
+//char='<' offset=(1, 11) width=9 height=12 xadvance=11.1719
+//.........
+//......oWo
+//.....OWWO
+//...oWWWo.
+//.oWWWo...
+//OWWO.....
+//WWO......
+//oWWWo....
+//..OWWW...
+//....OWWO.
+//.....oWWO
+//.......Oo
+0x40000000, 0xd02f8007, 0xf807f41f, 0x4002f002, 0xfe0007f, 0x4002f800, 0x60002f, 
+//char='=' offset=(1, 14) width=10 height=7 xadvance=11.1719
+//WWWWWWWWW.
+//WWWWWWWWW.
+//..........
+//..........
+//..........
+//OWWWWWWWW.
+//WWWWWWWWW.
+0xfff3ffff, 0x3f, 0x0, 0xff3fffe0, 0x3ff, 
+//char='>' offset=(1, 11) width=9 height=12 xadvance=11.1719
+//.........
+//oWo......
+//oWWW.....
+//..WWWO...
+//...oWWWo.
+//.....OWWO
+//......OWW
+//....oWWWo
+//...OWWO..
+//.OWWWo...
+//OWWO.....
+//.O.......
+0x740000, 0xfc000fd0, 0x7f4002, 0x3e000be0, 0x2f807f40, 0xbe01fe0, 0x200, 
+//char='?' offset=(0, 7) width=9 height=18 xadvance=8.89063
+//.oWWWWo..
+//.WWWWWWO.
+//.o...WWW.
+//.....oWWo
+//.....oWWo
+//.....oWW.
+//.....WWo.
+//....WWO..
+//...OWW...
+//...WW....
+//..oWO....
 //..oWO....
 //.........
 //.........
-//...o.....
-//..OWW....
-//..OWWo...
+//.........
 //..oWW....
-0xfff01fe4, 0x1f9182, 0x2f000bc, 0xf8007c0, 0x1f001f40, 0x3d002f00, 0xd000f400, 0x2, 0x100000, 0x1f8003e0, 0x3d00, 
-//char='@' offset=(1, 6) width=20 height=23 xadvance=22.2344
-//.......OWWWWOo......
-//.....OWWWWWWWWWO....
-//....WWWO.....OWWO...
-//...WWW.........WWO..
-//..OWW...oWWWOO..WWo.
-//..WWo..OWWWWWW..oWO.
-//.OWO..oWWo.oWW...WW.
-//.WWo..WWO..oWW...WWo
-//.WW...WWo..oWW...OWo
-//.WW...WW...oWW...OWO
-//.WW..oWW...oWW...OWO
-//oWW...WWo..oWW...OWo
-//oWW...WWo..oWW...WWo
-//.WW...WWO...WW...WW.
-//.WW...OWWo.oWWo.OWW.
-//.WWo...WWWWWWWWWWWo.
-//.OWO....OWWO.OWWWo..
-//..WW................
-//..OWW...............
-//...WWO..............
-//...oWWWo....oo......
-//.....WWWWWWWWO......
-//......oOWWWWOo......
-0x6ff8000, 0xfff80000, 0xbf0000bf, 0xc002f800, 0xbc0000f, 0xafd03e0, 0xff81f01f, 0xd0b82d0f, 0x7c3c0f47, 0x7c0f42f0, 0xf41f03c, 0x40f03c78, 0xf43cb80f, 0x3db80f40, 0x780f41f0, 0xf41f03d, 0x2f03c7c, 0xe03c3c0f, 0x7c3e1f47, 0x1fffffc0, 0xf8be00b8, 0xf007, 0x3e00000, 0xc0000000, 0xb, 0x5007f40, 0xfffc0000, 0x9000000b, 0x6ff, 
-//char='A' offset=(0, 6) width=14 height=19 xadvance=13.5781
-//.....OWW......
-//.....WWWO.....
-//....oWWWW.....
-//....OWOWW.....
-//....WW.OWo....
-//....WW.oWO....
-//...oWO..WW....
-//...OWo..WWo...
-//...WW...OWO...
-//..oWW...oWW...
-//..OWO....WW...
-//..OWo....WWo..
-//..WWWWWWWWWO..
-//.oWWWWWWWWWW..
-//.oWO.....oWW..
-//.OWO......WWo.
-//.WWo......WWo.
-//.WW.......OWO.
-//oWW.......oWW.
-0xf800, 0x2fc0, 0xe00003fd, 0x8f00003e, 0xb4f00007, 0xf0b4000, 0x1f07800, 0x2e03c0, 0xe003d03d, 0x1e003c02, 0xfff007c0, 0xffff40bf, 0xf400b40f, 0x1f000b80, 0xc1f0007c, 0x3d2e0003, 0x3d000, 
-//char='B' offset=(2, 6) width=11 height=19 xadvance=14.0625
-//oOWWWWOo...
-//OWWWWWWWW..
-//OWO..oOWWO.
-//OWO....OWW.
-//OWO....oWW.
-//OWO....oWW.
-//OWO....OWW.
-//OWO...OWWo.
-//OWWWWWWWo..
-//OWWWWWWWO..
-//OWO...oWWW.
-//OWO.....WWo
-//OWO.....WWO
-//OWO.....OWW
-//OWO.....OWW
-//OWO.....WWO
-//OWO...oWWW.
-//OWWWWWWWWo.
-//oOWWWWWO...
-0xff806ff9, 0xbe42e0ff, 0x2e3e00b8, 0xd00b8f40, 0xb8f802e3, 0xfffe1f80, 0xe0bfff81, 0xb8fd02, 0xaf002e7c, 0x2ef800b, 0xbc00bbe0, 0xff8fd02e, 0xbff91ff, 0x0, 
-//char='C' offset=(1, 6) width=12 height=19 xadvance=12.6562
-//....oWWWWO..
-//...WWWWWWWW.
-//..WWWOo.oOo.
-//.oWWo.......
-//.WWW........
-//.WWo........
-//oWWo........
-//oWW.........
-//oWW.........
-//oWW.........
-//oWW.........
-//oWW.........
-//oWWo........
-//.WWO........
-//.OWW........
-//.oWWO.......
-//..WWWOo.oOO.
-//...WWWWWWWW.
-//....oOWWWOo.
-0xc00bfd00, 0x1bf03fff, 0x1f419, 0x7c0000fc, 0x7d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0xbc00007d, 0xf80000, 0x2f400, 0xc0291bf0, 0xf9003fff, 0x1b, 
-//char='D' offset=(2, 6) width=13 height=19 xadvance=15.5469
-//oOWWWWOo.....
-//OWWWWWWWW....
-//OWOoooOWWW...
-//OWO.....WWW..
-//OWO.....oWWo.
-//OWO......WWO.
-//OWO......OWW.
-//OWO......OWW.
-//OWO......OWW.
-//OWO......OWW.
-//OWO......OWW.
-//OWO......OWW.
-//OWO......OWW.
-//OWO......WWO.
-//OWO.....oWWo.
-//OWO.....WWW..
-//OWOoooOWWW...
-//OWWWWWWWW....
-//oOWWWWOo.....
-0xf8006ff9, 0x56e00fff, 0xc00b80fe, 0x7d002e0f, 0xe2f000b8, 0xb8f8002, 0x2e3e00, 0xe000b8f8, 0x8f8002e3, 0x2e3e000b, 0xb8f800, 0xd002e2f0, 0xfc00b87, 0xf80fe56e, 0xff900fff, 0x6, 
-//char='E' offset=(2, 6) width=10 height=19 xadvance=12.2969
-//OWWWWWWWO.
-//OWWWWWWWO.
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWWWWWWW..
-//OWWWWWWW..
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWWWWWWWW.
-//OWWWWWWWW.
-0xffe2fffe, 0xe0002e2f, 0x2e0002, 0x2e0002e0, 0x2e000, 0xffe0fffe, 0xe0002e0f, 0x2e0002, 0x2e0002e0, 0x2e000, 0xffe0002e, 0x3fffe3f, 
-//char='F' offset=(2, 6) width=9 height=19 xadvance=11.5
-//OWWWWWWWO
-//OWWWWWWWO
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWWWWWWW.
-//OWWWWWWW.
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-0xfffafffe, 0xb8002eb, 0xb8002e00, 0x8002e000, 0xfffe000b, 0x2e3fff8, 0x2e000b80, 0xe000b800, 0xb8002, 0xb8002e, 0x2e0, 
-//char='G' offset=(1, 6) width=12 height=19 xadvance=14.1719
-//....oOWWWOo.
-//...WWWWWWWW.
-//..WWWOo.oOO.
-//.oWWO.......
-//.WWW........
-//.WWO........
-//oWWo........
-//oWW.........
-//oWW.........
-//oWW......oo.
-//oWW......WWo
-//oWW......WWo
-//oWWo.....WWo
-//.WWO.....WWo
-//.OWW.....WWo
-//.oWWO....WWo
-//..OWWOo.oWWo
-//...OWWWWWWWo
-//....oOWWWOo.
-0xc01bf900, 0x1bf03fff, 0x2f429, 0xbc0000fc, 0x7d0000, 0x3d00, 0x3d00003d, 0x3d1400, 0x7c003d7c, 0xbc7c007d, 0xf87c00, 0x7c02f47c, 0x807d1be0, 0xf9007fff, 0x1b, 
-//char='H' offset=(2, 6) width=12 height=19 xadvance=15.5469
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO.....oWWo
-//OWWWWWWWWWWo
-//OWWWWWWWWWWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-0x2e7c002e, 0x2e7c00, 0x7c002e7c, 0x2e7c002e, 0x2e7c00, 0x7d002e7c, 0xfe7ffffe, 0x2e7fff, 0x7c002e7c, 0x2e7c002e, 0x2e7c00, 0x7c002e7c, 0x2e7c002e, 0x2e7c00, 0x7c, 
-//char='I' offset=(2, 6) width=3 height=19 xadvance=6.95312
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-//OWO
-0xaebaebae, 0xebaebaeb, 0xbaebaeba, 0x2ebae, 
-//char='J' offset=(0, 6) width=9 height=19 xadvance=10.6562
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWO
-//......WWo
-//......WWo
-//oWo.oWWW.
-//OWWWWWWo.
-//.OWWWOo..
-0xc002f000, 0x2f000b, 0x2f000bc, 0x2f000bc0, 0xf000bc00, 0xbc002, 0xbc002f, 0xbc002f0, 0x7c001f00, 0xfff8fd1d, 0x1bf81, 
-//char='K' offset=(2, 6) width=12 height=19 xadvance=13.8906
-//OWO.....WWO.
-//OWO....OWW..
-//OWO...oWWo..
-//OWO...WWO...
-//OWO..OWW....
-//OWO.oWWo....
-//OWO.WWO.....
-//OWOOWW......
-//OWWWWo......
-//OWWWWO......
-//OWOOWWo.....
-//OWO.OWW.....
-//OWO..WWW....
-//OWO..oWWO...
-//OWO...OWW...
-//OWO....WWW..
-//OWO....oWWo.
-//OWO.....WWW.
-//OWO.....oWWo
-0x2e2f002e, 0xd02e0f80, 0x2f02e07, 0x2e00f82e, 0x2f2e007d, 0xfae00, 0xfe0007fe, 0x1fae000b, 0x3e2e00, 0x2e00fc2e, 0xe02e02f4, 0xfc02e03, 0x2e1f402e, 0x2e3f00, 0x7d, 
-//char='L' offset=(2, 6) width=9 height=19 xadvance=11.25
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWWWWWWWO
-//OWWWWWWWO
-0xb8002e, 0xb8002e0, 0xb8002e00, 0x8002e000, 0x2e000b, 0x2e000b8, 0x2e000b80, 0xe000b800, 0xb8002, 0xfff8002e, 0x2fffeb, 
-//char='M' offset=(1, 6) width=17 height=19 xadvance=19.5938
-//..WWo........WWW.
-//.oWWW........WWW.
-//.oWWW.......OWWW.
-//.oWWWO......WWWW.
-//.OWOWW.....oWOWW.
-//.OWOOWo....OWoWW.
-//.OWOoWO....WW.WW.
-//.OWo.WW...oWO.WWo
-//.OWo.OWo..OWo.WWo
-//.WWo.oWO..WW..WWo
-//.WWo..WW.oWO..WWo
-//.WWo..OWoOWo..WWo
-//.WWo..oWOWW...OWO
-//.WWo...WWWO...OWO
-//.WWo...OWWo...OWO
-//.WWo...oWW....OWO
-//.WW.....oo....OWO
-//.WW...........OWO
-//.WW...........OWO
-0xfc0001f0, 0xf0000fd0, 0xe0003f43, 0xc002fd0f, 0x400fb83f, 0x7ae0fb, 0x2db83de, 0xf1e0f3c, 0x78787cb4, 0xd1f1f1e0, 0x7c7c3c2, 0x1f1f0b4f, 0x7c7c1e78, 0xf2e03ed0, 0xcb80bf01, 0x2e01f807, 0xb803d01f, 0xe005003c, 0x800000f2, 0x3cb, 0x2e, 
-//char='N' offset=(2, 6) width=12 height=19 xadvance=15.6719
-//OWO......WWo
-//OWW......WWo
-//OWWO.....WWo
-//OWWWo....WWo
-//OWWWW....WWo
-//OWOWWo...WWo
-//OWOoWW...WWo
-//OWO.WWo..WWo
-//OWO.oWW..WWo
-//OWO..WWo.WWo
-//OWO..oWO.WWo
-//OWO...WW.WWo
-//OWO...oWOWWo
-//OWO....WWWWo
-//OWO....oWWWo
-//OWO.....WWWo
-//OWO.....OWWo
-//OWO......WWo
-//OWO......OWo
-0x3e7c002e, 0xbe7c00, 0x7c01fe7c, 0xee7c03fe, 0xf6e7c07, 0x7c1f2e7c, 0x2e7c3d2e, 0xb42e7c7c, 0x7cf02e7c, 0x2e7ed02e, 0x402e7fc0, 0x7f002e7f, 0x2e7e002e, 0x2e7c00, 0x78, 
-//char='O' offset=(1, 6) width=14 height=19 xadvance=16.3281
-//....oOWWWO....
-//...OWWWWWWWo..
-//..OWWOoooWWW..
-//.oWWO.....WWO.
-//.OWW......OWW.
-//.WWO......oWWo
-//.WWo.......WWO
-//oWW........WWO
-//oWW........WWO
-//oWW........OWW
-//oWW........WWO
-//oWW........WWO
-//.WWo.......WWO
-//.WWO.......WWo
-//.OWW......OWW.
-//.oWWO.....WWO.
-//..OWWOoooWWW..
-//...OWWWWWWWo..
-//....oOWWWO....
-0xbf900, 0xe007fff8, 0x2f40fd5b, 0xf82f00, 0xbc3e0, 0xc0007c7d, 0xbc0003db, 0xdbc0003d, 0x3df80003, 0x3dbc000, 0x7cbc00, 0xbcbc0, 0xe000f87c, 0x2f002f43, 0xfd5be0, 0x7fff8, 0xbf9, 
-//char='P' offset=(2, 6) width=11 height=19 xadvance=13.0938
-//oOWWWWO....
-//OWWWWWWWO..
-//OWWoooWWWo.
-//OWO....WWW.
-//OWO....OWW.
-//OWO....oWW.
-//OWO....oWW.
-//OWO....OWW.
-//OWO....WWW.
-//OWO.ooWWWo.
-//OWWWWWWWO..
-//OWWWWWO....
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-0xff802ff9, 0x7f57e0bf, 0x2e3f00b8, 0xd00b8f80, 0xb8f402e3, 0xc02e3e00, 0xe1fd4b8f, 0xbff82fff, 0x80002e00, 0x2e0000b, 0xb800, 0xb80002e, 0x2e000, 0x0, 
-//char='Q' offset=(1, 6) width=14 height=25 xadvance=16.3281
-//....oOWWWO....
-//...OWWWWWWW...
-//..OWWOooOWWW..
-//..WWO....oWWO.
-//.OWW......OWW.
-//.WWO......oWWo
-//.WWo.......WWo
-//oWWo.......WWO
-//oWW........WWO
-//oWW........WWW
-//oWW........OWW
-//oWW........WWO
-//oWW........WWO
-//.WWo.......WWO
-//.WWO.......WWo
-//.OWW......OWW.
-//.oWWo.....WWO.
-//..WWWo...OWWo.
-//...WWWWWWWWO..
-//....OWWWWWo...
-//......OWW.....
-//......oWWo....
-//.......OWWOo..
-//........OWWWW.
-//..........oOo.
-0xbf900, 0xe003fff8, 0x2f00fe5b, 0xf82f40, 0xbc3e0, 0xc0007c7d, 0xbc0007d7, 0xdbc0003d, 0x3dfc0003, 0x3df8000, 0x3dbc00, 0x7cbc0, 0xc000bcbc, 0x3e000f87, 0x2f001f4, 0xc01f807f, 0xe000bfff, 0xe00001ff, 0x7d000003, 0x6f800000, 0x3fe00000, 0x1900000, 
-//char='R' offset=(2, 6) width=12 height=19 xadvance=13.875
-//oOWWWWOo....
-//OWWWWWWWO...
-//OWO.ooWWWo..
-//OWO....WWW..
-//OWO....OWW..
-//OWO....oWW..
-//OWO....OWW..
-//OWO....WWO..
-//OWO..oWWWo..
-//OWWWWWWWo...
-//OWWWWWWO....
-//OWO..OWW....
-//OWO...WWo...
-//OWO...OWW...
-//OWO....WWo..
-//OWO....OWO..
-//OWO....oWW..
-//OWO.....WWO.
-//OWO.....OWW.
-0xfe006ff9, 0xf52e02ff, 0xfc02e07, 0x2e0f802e, 0x802e0f40, 0xbc02e0f, 0xfe07f42e, 0xbffe01ff, 0xf82e00, 0x2e01f02e, 0xc02e03e0, 0xb802e07, 0x2e0f402e, 0x2e2f00, 0x3e, 
-//char='S' offset=(0, 6) width=11 height=19 xadvance=10.7969
-//...oOWWWO..
-//..OWWWWWWO.
-//.oWWOo.oO..
-//.WWW.......
+//..WWW....
+//..oWO....
+0xfff01ff4, 0xfc042, 0x1f4007d, 0x7c003d0, 0xf800bc0, 0x2d000f00, 0xb400, 0x0, 0xf40000, 0xb4003f0, 0x0, 
+//char='@' offset=(1, 7) width=19 height=21 xadvance=21.4219
+//......oOWWWWOo.....
+//....oWWWWWWWWWWo...
+//...OWWOo....oOWWo..
+//..oWWo........oWW..
+//..WWo...OWWWO..OWO.
+//.oWW...WWWWWWO..WW.
+//.WWo..OWO..OWO..OWo
+//.WW...WW...OWO..oWO
+//.WW..oWW...OWO..oWO
+//oWW..oWW...OWO..oWO
+//oWO..oWW...OWO..oWO
+//oWO..oWW...OWO..oWO
+//.WW...WW...OWO..OWo
+//.WW...WWO..OWO..WW.
+//.WWo..oWWWWWWWWWWO.
+//.OWO...oWWWooWWWO..
+//..WWo..............
+//..OWWo.............
+//...OWWO............
+//....OWWWWWWWW......
+//......oOWWWWO......
+0x6ff9000, 0xffff4000, 0x6f8001f, 0x1f401f90, 0xf00f4000, 0xb82fe01, 0xc2fff03d, 0xb82e07c3, 0x3c0f1e0, 0xf43cb42e, 0xf6d0b80, 0xdb42e03d, 0xd0b80f42, 0x2e03d0b6, 0x80f03cb4, 0xbc0f1e0b, 0x7c3c2e0, 0xe0bffffd, 0xbf5fd02, 0x1f0, 0x1f800, 0x2f80000, 0xf8000000, 0xfff, 0x2ff90, 
+//char='A' offset=(0, 7) width=13 height=18 xadvance=13.0625
+//.....WWW.....
+//.....WWWo....
+//....oWWWO....
+//....WWoWW....
+//....WW.WW....
+//...oWO.OWo...
+//...OWo.oWO...
+//...WW...WW...
+//..oWO...OWo..
+//..oWo...OWO..
+//..OWo...oWW..
+//..WWWWWWWWW..
+//.oWWWWWWWWWo.
+//.oWO.....OWO.
+//.OWo.....oWW.
+//.WW.......WW.
+//.WW.......WW.
+//oWW.......WWo
+0xfc00, 0xd00007f0, 0xf7c0002f, 0x3cf0000, 0x1e2d00, 0xf000b478, 0x2d003c0, 0xb807401e, 0x3d01e00, 0xf40ffffc, 0x2d07fff, 0x400782e0, 0x3c000f0f, 0xf4f0003c, 0x7c000, 
+//char='B' offset=(2, 7) width=11 height=18 xadvance=13.5313
+//OWWWWWOo...
+//WWWWWWWWO..
+//WWO...OWWo.
+//WWO....WWO.
+//WWO....OWO.
+//WWO....WWO.
+//WWO...OWW..
+//WWWWWWWWo..
+//WWWWWWWWo..
+//WWO...OWWo.
+//WWO....OWW.
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO....oWW.
+//WWO...oWWO.
+//WWWWWWWWW..
+//OOWWWWOo...
+0xffc06ffe, 0x7e02f0bf, 0x2f2f00bc, 0xf00bcb80, 0xfc3e02f2, 0xffff07ff, 0xf1f80bc1, 0xbcf802, 0xdf002f7c, 0x2f7c00b, 0x2f40bcf4, 0xfe83ffff, 0x1b, 
+//char='C' offset=(1, 7) width=11 height=18 xadvance=12.1875
+//....OWWWWo.
+//..oWWWWWWWo
+//..WWWo..oO.
+//.OWW.......
 //.WWO.......
+//oWW........
+//oWW........
+//oWW........
+//OWW........
+//OWW........
+//oWW........
+//oWW........
+//.WWo.......
 //.WWO.......
 //.OWW.......
-//..WWO......
-//..oWWWo....
-//...oWWWO...
-//.....OWWO..
-//......oWWo.
-//.......OWW.
-//.......oWW.
-//.......oWW.
-//.......WWW.
-//.OOo.oOWWO.
-//.WWWWWWWO..
-//.oOWWWOo...
-0xf802fe40, 0x246f42ff, 0xbc0003f0, 0x2f0000, 0xc0000f80, 0x1fd0000b, 0x2fd000, 0x40002f80, 0xf80001f, 0x3d000, 0x3f0000f4, 0xff0be468, 0x6fe40bf, 0x0, 
-//char='T' offset=(0, 6) width=12 height=19 xadvance=11.5
-//OWWWWWWWWWW.
-//OWWWWWWWWWW.
-//....OWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-0xfe3ffffe, 0x3e003fff, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d00003d, 0x0, 
-//char='U' offset=(2, 6) width=11 height=19 xadvance=14.8125
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....OWO
-//WWO.....WWO
-//OWO.....WWO
-//OWW....oWWo
-//.WWWo.oWWW.
-//.OWWWWWWWo.
-//..oOWWWO...
-0xbee002f, 0xe002fb80, 0x2fb800be, 0x800bee00, 0xbee002fb, 0x2fb800, 0xfb800bee, 0xbee002, 0xee002fb8, 0x2ebc00b, 0x7d00faf0, 0xfe0fd1fc, 0xbf901ff, 0x0, 
-//char='V' offset=(0, 6) width=13 height=19 xadvance=13.4062
-//oWW.......OWO
-//.WWo......WWO
-//.WWO......WWo
-//.OWO......WW.
-//.oWW.....oWW.
-//.oWW.....OWO.
-//..WWo....WWo.
-//..WWO....WW..
-//..OWW...oWW..
-//..oWW...OWO..
-//...WWo..WWo..
-//...WWO..WW...
-//...oWW.oWW...
-//....WW.OWO...
-//....WWoWWo...
-//....OWOWW....
-//....oWWWO....
-//.....WWWo....
-//.....OWW.....
-0xf2e0003d, 0xbcbc001, 0x2e1f00, 0xf400f43c, 0x2e003d0, 0xbc07c01f, 0x3e00f00, 0xb80f403d, 0x1f07c00, 0x4003c2f0, 0x3c000f4f, 0x7df0002e, 0xfb8000, 0x2fd00, 0x800007f0, 0xf, 
-//char='W' offset=(1, 6) width=19 height=19 xadvance=20.4062
-//WWO.............WWo
-//OWO.............WW.
-//OWO.....OOo....oWW.
-//oWW.....WWO....oWW.
-//oWW....oWWW....oWO.
-//.WW....OWWW....OWO.
-//.WW....WWOWo...OWo.
-//.WWo...WOoWO...WWo.
-//.OWo..oWO.WW...WW..
-//.OWO..OWo.WW...WW..
-//.oWO..WW..OWo.oWW..
-//.oWW..WW..oWO.oWO..
-//..WW.oWO...WW.OWo..
-//..WW.OWo...WW.OWo..
-//..OWoWW....OWoWW...
-//..OWOWO....oWOWW...
-//..oWWWo.....WWWO...
-//...WWW......OWWo...
-//...WWW......oWWo...
-0x2f, 0xb9f, 0xa002e3c0, 0xf4f401, 0x3d3d00bc, 0xb403f40, 0xe00fe00f, 0x7bc03c2, 0xdb01f078, 0xd0781f02, 0x2e03c0f2, 0x40f03c78, 0x3d1e0f0b, 0x4b43c3d0, 0xc0b4f00b, 0x1e3c01e3, 0xde0078f0, 0x800f7803, 0x3ed00bb, 0xbf001fd0, 0x8003f000, 0xfc001f, 0x7d0, 
-//char='X' offset=(0, 6) width=13 height=19 xadvance=12.7031
-//.WWo.....OWO.
-//.OWO.....WWo.
-//..WW....OWO..
-//..OWO...WWo..
-//..oWW..OWW...
-//...OWO.WWo...
-//...oWWoWW....
-//....WWWWo....
+//..WWWo...Oo
+//...WWWWWWWO
+//....OWWWWO.
+0xf407fe00, 0x907f07ff, 0xbc0003e0, 0xf4000, 0xf40003d0, 0x3e0000, 0xd0000f80, 0xf40003, 0x7c00, 0xf80002f, 0x601fc000, 0x802fffc0, 0x2ff, 
+//char='D' offset=(2, 7) width=12 height=18 xadvance=14.9688
+//oOWWWWOo....
+//WWWWWWWWO...
+//WWO..oOWWW..
+//WWo....oWWo.
+//WWo.....OWW.
+//WWo.....oWW.
+//WWo......WWo
+//WWo......WWo
+//WWo......WWO
+//WWo......WWO
+//WWo......WWo
+//WWo......WWo
+//WWo.....oWW.
+//WWo.....OWW.
+//WWo....oWWo.
+//WWO..oOWWW..
+//WWWWWWWWO...
+//OOWWWWOo....
+0xff006ff9, 0xe42f02ff, 0x1f401f0f, 0x1f3e001f, 0x1f3d00, 0x7c001f7c, 0x1fbc001f, 0x1fbc00, 0x7c001f7c, 0x1f3d001f, 0x401f3e00, 0xfe42f1f, 0xfa02ffff, 0x6f, 
+//char='E' offset=(2, 7) width=9 height=18 xadvance=11.8438
+//WWWWWWWWo
+//WWWWWWWWo
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWWWWWWO.
+//WWWWWWWO.
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWWWWWWWO
+//WWWWWWWWO
+0xfffdffff, 0xbc002f7, 0xbc002f00, 0xc002f000, 0xbfff000b, 0x2f2fffc, 0x2f000bc0, 0xf000bc00, 0xbc002, 0xfffeffff, 0xb, 
+//char='F' offset=(2, 7) width=9 height=18 xadvance=11.0625
+//WWWWWWWWo
+//WWWWWWWWo
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWWWWWWO.
+//WWWWWWWO.
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+0xfffdffff, 0xbc002f7, 0xbc002f00, 0xc002f000, 0xbfff000b, 0x2f2fffc, 0x2f000bc0, 0xf000bc00, 0xbc002, 0xbc002f, 0x0, 
+//char='G' offset=(1, 7) width=11 height=18 xadvance=13.6406
+//....OWWWWO.
+//..oWWWWWWWO
+//..WWWo..oOo
+//.OWW.......
+//.WWO.......
+//.WWo.......
+//oWW........
+//oWW........
+//OWW........
+//OWW.....oWO
+//oWW.....oWW
+//oWW.....oWW
+//.WWo....oWW
+//.WWO....oWW
+//.OWWo...oWW
+//..WWWo..OWW
+//...WWWWWWWW
+//....OWWWWOo
+0xf40bfe00, 0x907f0bff, 0xbc0003e1, 0x1f0000, 0xf40003d0, 0x3e0000, 0xdb400f80, 0xf7d003, 0x3d007cf4, 0x1f8f402f, 0xf81fc3d0, 0x803fffc0, 0x6ff, 
+//char='H' offset=(2, 7) width=11 height=18 xadvance=14.9688
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWWWWWWWWWW
+//WWWWWWWWWWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+0xbfe002f, 0xe002ff80, 0x2ff800bf, 0x800bfe00, 0xbfe002ff, 0xfffff800, 0xffffffff, 0xbfe002, 0xfe002ff8, 0x2ff800b, 0xf800bfe0, 0xbfe002f, 0xf80, 
+//char='I' offset=(2, 7) width=3 height=18 xadvance=6.70313
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+//WWO
+0xefbefbef, 0xfbefbefb, 0xbefbefbe, 0xbef, 
+//char='J' offset=(0, 7) width=9 height=18 xadvance=10.2656
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//......WW.
+//.....oWW.
+//oO..oWWW.
+//OWWWWWWo.
+//.OWWWO...
+0xc000f000, 0xf0003, 0xf0003c, 0xf0003c0, 0xf0003c00, 0x3c000, 0x3c000f, 0x3c000f0, 0x3f424f40, 0x2fe07ffe, 0x0, 
+//char='K' offset=(2, 7) width=12 height=18 xadvance=13.375
+//WWO....oWW..
+//WWO....WWo..
+//WWO...OWW...
+//WWO..oWW....
+//WWO..WWo....
+//WWO.OWO.....
+//WWOoWW......
+//WWOWWo......
+//WWWWW.......
+//WWWWWO......
+//WWOoWWO.....
+//WWO.OWWo....
+//WWO..OWW....
+//WWO...WWO...
+//WWO...oWWo..
+//WWO....WWW..
+//WWO....oWWo.
+//WWO.....OWW.
+0x2f0f402f, 0xe02f07c0, 0xf42f03, 0x2f007c2f, 0xf6f002e, 0x7ef00, 0xff0003ff, 0x2f6f000b, 0x7e2f00, 0x2f00f82f, 0xd02f02f0, 0xfc02f07, 0x2f1f402f, 0x3e00, 
+//char='L' offset=(2, 7) width=9 height=18 xadvance=10.8281
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWWWWWWW.
+//WWWWWWWW.
+0xbc002f, 0xbc002f0, 0xbc002f00, 0xc002f000, 0x2f000b, 0x2f000bc, 0x2f000bc0, 0xf000bc00, 0xbc002, 0xfffcffff, 0x3, 
+//char='M' offset=(1, 7) width=17 height=18 xadvance=18.875
+//.oWWo.......oWW..
+//.oWWO.......WWWo.
+//.oWWW.......WWWo.
+//.OWWWo.....OWWWo.
+//.OWOWW.....WWOWo.
+//.OWoWW....oWOOWO.
+//.OWooWO...OWooWO.
+//.WWo.WW...WW.oWO.
+//.WWo.OW..oWO.oWO.
+//.WWo.oWO.OWo.oWO.
+//.WW...WW.WW..oWW.
+//.WW...OWoWO..oWW.
+//.WW...oWWWo..oWW.
+//.WW....WWW...oWW.
+//.WW....WWO...oWW.
+//.WW....ooo....WW.
+//.WW...........WW.
+//.WW...........WW.
+0x3d0001f4, 0xfc000bd0, 0xf0003f41, 0xe001fe07, 0xc00fb81f, 0x403de07b, 0x2d782eb, 0xf1f0b5e, 0x387c2d3c, 0xd1f0b4b4, 0x3c2d1e2, 0xf0f43cf, 0x3c3d0b78, 0xf0f41fd0, 0xc3d03f00, 0xf40bc03, 0x3c01500f, 0xf000003c, 0xc00000f0, 0x3, 
+//char='N' offset=(2, 7) width=11 height=18 xadvance=15.0938
+//WWo.....oWW
+//WWW.....oWW
+//WWWO....oWW
+//WWWW....oWW
+//WWWWO...oWW
+//WWoWW...oWW
+//WWooWO..oWW
+//WWo.WW..oWW
+//WWo.oWO.oWW
+//WWo..WW.oWW
+//WWo..oWOoWW
+//WWo...WWoWW
+//WWo...oWWWW
+//WWo....WWWW
+//WWo....oWWW
+//WWo.....WWW
+//WWo.....OWW
+//WWo......WW
+0xffd001f, 0xd00bff40, 0xfff403ff, 0x40f7fd02, 0x7fd0b5ff, 0x2d1ff43c, 0xff4f07fd, 0xc07fdb41, 0xffd01ff7, 0x1fff007, 0xfc007ff4, 0x7fe001f, 0xf00, 
+//char='O' offset=(1, 7) width=14 height=18 xadvance=15.7188
+//....OWWWOo....
+//...WWWWWWWO...
+//..WWWo..OWWO..
+//.oWW.....oWWo.
+//.WWO......WWO.
+//.WWo......OWW.
+//oWW.......oWW.
+//oWW.......oWW.
+//OWW.......oWWo
+//OWW.......oWWo
+//oWW.......oWW.
+//oWW.......oWW.
+//.WWo......OWW.
+//.WWO......WWO.
+//.OWW.....oWWo.
+//..WWWo..oWWO..
+//...WWWWWWWO...
+//....OWWWWo....
+0x6fe00, 0xf002fffc, 0xf40be07, 0xbc1f40, 0x7c2f0, 0xd0003d3e, 0x3d0003d3, 0xe7d0003e, 0x3d7d0003, 0x3d3d000, 0x7c3d00, 0xbc3e0, 0xf400f82f, 0xbd07f01, 0x2fffc0, 0x7fe0, 
+//char='P' offset=(2, 7) width=10 height=18 xadvance=12.6094
+//OWWWWWO...
+//WWWWWWWWo.
+//WWO..oWWW.
+//WWO....WWo
+//WWO....WWO
+//WWO....OWO
+//WWO....WWO
+//WWO...oWWo
+//WWO..oWWW.
+//WWWWWWWWo.
+//WWWWWWO...
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+0xfff02ffe, 0xf3f42f1f, 0xc02f7c02, 0x2fb802fb, 0x7d02fbc0, 0xfff3f42f, 0xf02fff1f, 0x2f0002, 0x2f0002f0, 0x2f000, 0x2f0002f, 0x0, 
+//char='Q' offset=(1, 7) width=14 height=23 xadvance=15.7188
+//....oWWWOo....
+//...WWWWWWWO...
+//..WWWo..OWWO..
+//.oWWo....oWW..
+//.WWO......WWO.
+//.WWo......OWW.
+//oWW.......oWW.
+//oWW.......oWW.
+//oWW.......oWWo
+//OWW........WWo
+//oWW.......oWW.
+//oWW.......oWW.
+//oWW.......oWW.
+//.WWo......OWO.
+//.OWW......WWo.
+//.oWWO....OWW..
+//..OWWOoOWWWo..
+//...OWWWWWWo...
+//.....oWWO.....
+//......OWO.....
+//.......WWWo...
+//........WWWWo.
+//.........oOW..
+0x6fd00, 0xf002fffc, 0x1f40be07, 0xbc0f40, 0x7c2f0, 0xd0003d3e, 0x3d0003d3, 0xe7d0003d, 0x3d7c0003, 0x3d3d000, 0x3d3d00, 0x7c3d0, 0xf000f82e, 0xf802f41, 0x7f9be0, 0x1fff8, 0x2f4, 0xc000002e, 0xf000001f, 0xe400001f, 0x0, 
+//char='R' offset=(2, 7) width=11 height=18 xadvance=13.3594
+//OWWWWWO....
+//WWWWWWWWo..
+//WWO..oWWW..
+//WWo...oWWo.
+//WWo....WWO.
+//WWo....WWO.
+//WWo....WWO.
+//WWo...oWWo.
+//WWo..oWWW..
+//WWWWWWWW...
+//WWWWWWW....
+//WWo..OWO...
+//WWo..oWW...
+//WWo...OWO..
+//WWo...oWW..
+//WWo....WWO.
+//WWo....oWW.
+//WWo.....WWo
+0xffc02ffe, 0x3f42f07f, 0x1f1f407c, 0xf007cbc0, 0x7cbc01f2, 0xf41f1f40, 0xf03fffc3, 0xe07c03ff, 0xc0f41f02, 0x1f0b807, 0x2f007c3d, 0x7cf401f, 0x7c0, 
+//char='S' offset=(0, 7) width=10 height=18 xadvance=10.3906
+//...oWWWWO.
+//..WWWWWWW.
+//.OWWo...o.
+//.WWO......
+//.WWo......
+//.WWO......
+//.OWW......
+//..WWWo....
+//...WWWO...
+//....OWWW..
+//.....oWWW.
+//......oWWo
+//.......WWO
+//.......OWO
+//.......WWO
+//.Oo...OWWo
+//.WWWWWWWO.
+//.oOWWWOo..
+0xff02ff40, 0xc101f83f, 0x7c000b, 0xf8000bc0, 0x7f0000, 0xe0002fc0, 0x3f4000f, 0xc0007d00, 0xb8000b, 0x7e018bc0, 0xfe42fffc, 0x6, 
+//char='T' offset=(0, 7) width=11 height=18 xadvance=11.0625
+//OWWWWWWWWWO
+//OWWWWWWWWWO
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+0xffaffffe, 0x2e00bff, 0xb800, 0xb80002e, 0x2e000, 0x2e0000b8, 0xb8000, 0xb80002e0, 0x2e0000, 0xe0000b80, 0xb80002, 0x80002e00, 0xb, 
+//char='U' offset=(2, 7) width=11 height=18 xadvance=14.2656
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WWo
+//WWo.....WW.
+//WWO....oWW.
+//OWW....OWW.
+//oWWO..oWWO.
+//.OWWWWWWW..
+//..oWWWWO...
+0x7df001f, 0xf001f7c0, 0x1f7c007d, 0xc007df00, 0x7df001f7, 0x1f7c00, 0xf7c007df, 0x7df001, 0xcf001f7c, 0x3e3d00b, 0x2f42f4f8, 0xf403fff8, 0x2f, 
+//char='V' offset=(0, 7) width=13 height=18 xadvance=12.9219
+//oWW.......WWo
+//.WWo.....oWW.
+//.WWo.....oWW.
+//.OWO.....OWO.
+//.OWW.....WWo.
+//.oWW.....WW..
+//..WWo...oWW..
+//..WWo...oWO..
+//..OWO...OWo..
+//..oWW...WW...
+//...WW..oWW...
+//...OWo.oWO...
+//...oWO.OWo...
+//....WW.WW....
+//....WWOWO....
+//....OWWWo....
 //....oWWW.....
-//....oWWW.....
-//....WWWWo....
-//...oWWOWW....
-//...OWO.WWo...
-//...WW..OWW...
-//..OWO...WWo..
-//..WW....OWO..
-//.OWW.....WW..
-//.WWo.....OWO.
-//oWW......oWW.
-0xe0b8007c, 0xf01f002, 0xc0b802e0, 0xf83d007, 0x1f2e00, 0xc0003df4, 0xfd00007f, 0x3f40000, 0x1ff000, 0x8000fbd0, 0xf0007cb, 0xf02e003e, 0xb803c01, 0xf03c00f8, 0x3d2e001, 0xf40, 
-//char='Y' offset=(0, 6) width=13 height=19 xadvance=12.1719
-//OWW......OWW.
-//oWW......WWO.
-//.WWO....oWW..
-//.OWW....OWO..
-//..WWo...WWo..
-//..WWO..oWW...
-//..oWW..OWO...
-//...WWo.WW....
-//...OWWOWO....
-//....WWWWo....
-//....OWWW.....
-//.....WWo.....
-//.....WWo.....
-//.....WWo.....
-//.....WWo.....
-//.....WWo.....
-//.....WWo.....
-//.....WWo.....
-//.....WWo.....
-0xf4f8003e, 0xbc2f000, 0x803e03d0, 0x1f01f00b, 0x3d0bc0, 0xf000b83d, 0xef8000f1, 0x7fc0002, 0xfe000, 0x1f00, 0xf000007c, 0x7c00001, 0x1f0000, 0x7c00, 0xc00001f0, 0x7, 
-//char='Z' offset=(0, 6) width=11 height=19 xadvance=11.6562
-//.WWWWWWWWWO
-//.WWWWWWWWWO
-//.......oWWo
-//.......WWO.
-//......oWW..
-//......WWO..
-//.....oWW...
-//.....WWO...
-//....oWW....
+//.....WWW.....
+0xf1f0003d, 0x7c3d001, 0x2e0f40, 0x7c00f82e, 0xf003d0, 0x7c03d01f, 0x2e00b40, 0x3c0f401e, 0xf43c00, 0x4002d1e0, 0x3c00078b, 0x2ef0000f, 0x7f8000, 0xfd00, 0x3f0, 
+//char='W' offset=(1, 7) width=18 height=18 xadvance=19.6406
+//WWo............OWO
+//OWO............WWo
+//OWO....oWW.....WWo
+//OWO....OWWo....WW.
+//oWW....WWWO....WW.
+//oWW....WWWO...oWW.
+//.WW...oWOWW...oWO.
+//.WW...OWoOWo..oWO.
+//.WWo..OW.oWo..OWo.
+//.OWo..WW..WO..OWo.
+//.oWO.oWO..WW..WW..
+//.oWW.OWo..OWo.WW..
+//..WW.WW...oWO.WO..
+//..WW.WO....WWoWO..
+//..OWOWo....WWOWo..
+//..oWWW.....OWWW...
+//...WWW.....oWWW...
+//...WWO......WWO...
+0x8000001f, 0x2eb, 0xf402e7c, 0xf802e7c0, 0xc03d3c01, 0x3d3c02f, 0x3c3d02fc, 0xc2d03ed0, 0x2d079e03, 0xe074e07c, 0xb0f0781, 0xf0b4b41e, 0x78f40f0, 0x3cf00f1e, 0xcf00b2d0, 0xe00b7c02, 0x7bc01e, 0x3f800fd, 0x3f400fc0, 0xf000bc00, 0x2, 
+//char='X' offset=(0, 7) width=12 height=18 xadvance=12.2344
+//.WW......WWo
+//.OWO....OWO.
+//..WW....WWo.
+//..OWO..oWW..
+//..oWW..WWo..
+//...OWOoWW...
+//...oWWWWo...
+//....OWWW....
+//....oWWO....
+//....OWWW....
+//....WWWWo...
+//...OWOoWW...
+//...WW..WWo..
+//..OWO..oWW..
+//..WW....WWo.
+//.OWO....OWO.
+//.WWo.....WW.
+//oWW......OWO
+0xb87c003c, 0xf02e00, 0xf42e01f, 0x8007c3d0, 0xff4003db, 0xfe0001, 0xbd00, 0xff0000fe, 0x3db8001, 0xe007c3c0, 0xf00f42, 0x2e00b81f, 0x3d3c007c, 0xb800, 
+//char='Y' offset=(0, 7) width=12 height=18 xadvance=11.7188
+//OWO......WWo
+//oWW.....oWW.
+//.WWo....OWO.
+//.OWW....WWo.
+//..WW...oWW..
+//..OWO..WWo..
+//..oWW..WW...
+//...WWoOWO...
+//...oWWWW....
+//....WWWO....
+//....OWWo....
+//....oWW.....
+//....oWW.....
+//....oWW.....
+//....oWW.....
+//....oWW.....
+//....oWW.....
+//....oWW.....
+0x3d7c002e, 0x7c3d00, 0x1f00f82e, 0xe00f40f0, 0xc3d007c2, 0x2e7c003, 0xff40, 0x7e0000bf, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d, 
+//char='Z' offset=(0, 7) width=11 height=18 xadvance=11.2188
+//.WWWWWWWWW.
+//.WWWWWWWWW.
+//.......OWO.
+//.......WW..
+//......OWO..
+//......WW...
+//.....OWO...
+//.....WW....
 //....OWO....
 //....WW.....
 //...OWO.....
@@ -1319,40 +1262,38 @@ const uint32_t font_condensed30[2338]= {
 //..OWW......
 //..WWo......
 //.oWW.......
-//.WWO.......
-//.WWWWWWWWWO
-//.WWWWWWWWWO
-0xff2ffffc, 0xf4000bff, 0x2f0001, 0xbc0003d0, 0xf4000, 0x3d0002f0, 0xb8000, 0x2e0000f0, 0x7c000, 0x1f0000f8, 0x3d000, 0xff0000bc, 0xffffcbff, 0x2, 
-//char='[' offset=(2, 3) width=6 height=27 xadvance=7.57812
-//oWWWWo
-//oWWWWo
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWO...
-//oWWWWo
-//oWWWWo
-0x2d7fd7fd, 0xd02d02d0, 0x2d02d02, 0x2d02d02d, 0xd02d02d0, 0x2d02d02, 0x2d02d02d, 0xd02d02d0, 0x2d02d02, 0xfd7fd02d, 0x7, 
-//char='\' offset=(0, 3) width=8 height=27 xadvance=7.28125
+//.OWo.......
+//.WWWWWWWWWo
+//.WWWWWWWWWo
+0xff0ffffc, 0xb80003ff, 0xf0000, 0x3c0002e0, 0xb8000, 0x2e0000f0, 0x3c000, 0x1f0000b8, 0x3e000, 0xf40007c, 0x1e000, 0xff1ffffc, 0x7ff, 
+//char='[' offset=(2, 5) width=6 height=25 xadvance=7.29688
+//OWWWW.
+//OWWOO.
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWO...
+//OWWOO.
+//OWWWW.
+0x2e2be3fe, 0xe02e02e0, 0x2e02e02, 0x2e02e02e, 0xe02e02e0, 0x2e02e02, 0x2e02e02e, 0xe02e02e0, 0x2be02e02, 0x3fe, 
+//char='\' offset=(0, 5) width=8 height=25 xadvance=7.01563
 //WO......
 //WW......
 //WW......
@@ -1362,188 +1303,419 @@ const uint32_t font_condensed30[2338]= {
 //.WW.....
 //.WWo....
 //.OWO....
-//.oWO....
+//.oWW....
 //..WW....
 //..WWo...
-//..OWo...
-//..oWO...
-//...WW...
+//..OWO...
+//..oWW...
 //...WW...
 //...OWo..
-//...oWO..
-//....WW..
+//...OWO..
+//...oWW..
 //....WW..
 //....OWo.
-//....oWO.
+//....OWO.
 //....oWW.
 //.....WW.
 //.....OWo
 //.....OWO
-//.....oWW
-0xf000b, 0x1f000f, 0x3d002e, 0x7c003c, 0xb400b8, 0x1f000f0, 0x2d001e0, 0x3c003c0, 0xb400780, 0xf000f00, 0x2d001e00, 0x3c003d00, 0xb8007800, 0xf400, 
-//char=']' offset=(0, 3) width=6 height=27 xadvance=7.57812
-//WWWWW.
-//OWWWW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//...WW.
-//OWWWW.
-//WWWWW.
-0xc03fe3ff, 0x3c03c03, 0x3c03c03c, 0xc03c03c0, 0x3c03c03, 0x3c03c03c, 0xc03c03c0, 0x3c03c03, 0x3c03c03c, 0xff3fe3c0, 0x3, 
-//char='^' offset=(0, 6) width=11 height=11 xadvance=11.6094
+0xf000b, 0x1f000f, 0x3d002e, 0x7c003c, 0xf400b8, 0x1f000f0, 0x3d002e0, 0x78003c0, 0xf400b80, 0x1e000f00, 0x3d002e00, 0x78003c00, 0xb800, 
+//char=']' offset=(0, 5) width=5 height=25 xadvance=7.29688
+//WWWWW
+//OOWWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//..oWW
+//OOWWW
+//WWWWW
+0x3d0febff, 0xf43d0f4, 0x43d0f43d, 0xd0f43d0f, 0xf43d0f43, 0x3d0f43d0, 0xf43d0f4, 0x3fffebd, 
+//char='^' offset=(0, 7) width=11 height=10 xadvance=11.1719
 //....OWW....
-//....WWWO...
-//...oWWWW...
-//...OWOWWo..
-//...WW.oWO..
-//..oWO..WW..
-//..WWo..OWO.
-//.oWW...oWW.
-//.OWO....WWo
-//.WW.....OWO
-//..o......o.
-0xc0003e00, 0xff4002f, 0xc007ee00, 0xf0b402d3, 0xd0b81f00, 0xb83d03, 0xb800f1f, 0x4001, 
-//char='_' offset=(0, 27) width=11 height=3 xadvance=9.90625
-//...........
-//WWWWWWWWWW.
-//WWWWWWWWWW.
-0xffc00000, 0xfffff3ff, 0x0, 
-//char='`' offset=(0, 3) width=6 height=6 xadvance=8.46875
-//..o...
-//.WWo..
-//.OWW..
-//..OWO.
-//...OWo
+//....WWWo...
+//...OWWWO...
+//...WWoWW...
+//..oWW.OWO..
+//..OWo..WW..
+//..WW...WWo.
+//.OWO...oWO.
+//.WW.....WW.
+//.oO.....OO.
+0xc0003e00, 0xbf8001f, 0xd003df00, 0xf07802e3, 0xe07c0f00, 0x3c2d02, 0x280090f, 
+//char='_' offset=(0, 28) width=10 height=2 xadvance=9.53125
+//WWWWWWWWWO
+//WWWWWWWWWO
+0xfffbffff, 0xbf, 
+//char='`' offset=(0, 4) width=6 height=6 xadvance=8.15625
+//......
+//.OW...
+//.WWO..
+//..WWo.
+//...WW.
 //....O.
-0xf807c010, 0x7802e00, 0x20, 
-//char='a' offset=(1, 10) width=9 height=15 xadvance=11.7031
-//.oOWWWO..
-//.oWWWWWO.
-//..oo.OWWo
-//......OWO
-//......OWO
-//......oWW
-//..OWWWWWW
-//.WWWWWWWW
-//OWWo..OWW
-//WWO...oWW
+0xbc038000, 0x3c01f00, 0x20, 
+//char='a' offset=(1, 11) width=9 height=14 xadvance=11.2813
+//.oOWWWo..
+//.OWWWWWO.
+//.....OWW.
+//......WWo
+//......OWo
+//..oOWOWWo
+//.WWWWWWWo
+//OWWo..WWo
+//WWo...OWo
+//WWo...OWo
+//WWo...OWo
+//OWW...WWo
+//.WWWWWWWo
+//..OWWWWO.
+0xffe01fe4, 0xf8002, 0x41e0007c, 0x9fffc7ee, 0xe01f7c1f, 0x1f7807d, 0xfc7c0f9e, 0x2ff81ff, 
+//char='b' offset=(2, 4) width=9 height=21 xadvance=12.1406
+//.........
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWOWWWo..
+//WWWWWWWo.
+//WWo..OWW.
+//WWo...WWo
+//WWo...OWO
+//WWo...OWW
 //WWo...oWW
-//WWO...oWW
-//OWWo..OWW
-//.WWWWWWWW
-//..OWWWWOo
-0xffd02fe4, 0x1f8502, 0x2e000b8, 0x3ffe0f40, 0xe07effff, 0x1ff40bf, 0x7ef40bfd, 0xffff3e0, 0x1bfe, 
-//char='b' offset=(2, 3) width=10 height=22 xadvance=12.5938
-//ooo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWWWWWo...
-//WWWWWWWO..
-//WWO..OWWo.
-//WWo...OWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo...oWW.
-//WWo...oWW.
-//WWo...WWO.
-//WWO..OWWo.
-//WWWWWWWO..
-//oOWWWOo...
-0x1f00015, 0xf0001f00, 0x1f0001, 0x1f0001f0, 0x1fff000, 0x82f0bfff, 0xf3e01f1f, 0xd01f3d01, 0x1f7c01f3, 0x7c01f7c0, 0x1f3d01f, 0xf2f01f3d, 0xbfff1f82, 0x1bf90, 
-//char='c' offset=(1, 10) width=9 height=15 xadvance=9.51562
-//...OWWWO.
-//..WWWWWO.
-//.OWWo.oo.
-//.WWo.....
-//oWW......
-//OWW......
-//OWO......
-//OWO......
-//OWO......
-//OWW......
-//oWW......
-//.WWo.....
-//.OWWo.oo.
-//..WWWWWW.
-//...OWWWO.
-0xffc0bf80, 0x1f051f82, 0xf8003d00, 0x8002e000, 0x2e000b, 0x3d000f8, 0xf8001f00, 0x3ffc051, 0xbf8, 
-//char='d' offset=(1, 3) width=10 height=22 xadvance=12.5938
-//........oo
-//.......WWO
-//.......WWO
-//.......WWO
-//.......WWO
-//.......WWO
-//.......WWO
-//...OWWWWWO
-//..WWWWWWWO
-//.OWWo.oWWO
-//.WWo...WWO
-//oWW....WWO
-//OWW....WWO
-//OWO....WWO
-//OWO....WWO
-//OWO....WWO
-//OWW....WWO
-//oWW....WWO
-//.WWo...WWO
-//.OWWo..WWO
-//..WWWWWWWO
-//...OWWWWO.
-0x50000, 0xbc000bc, 0xc000bc00, 0xbc000b, 0xbff80bc0, 0x1f8bfff0, 0xdbc07cbd, 0xc03ebc03, 0x2ebc02eb, 0xbc02ebc0, 0x3dbc03e, 0x8bc07cbc, 0xfff0bc1f, 0x2ff80b, 
-//char='e' offset=(1, 10) width=10 height=15 xadvance=11.7656
-//...OWWOo..
-//..WWWWWWo.
-//.OWW..WWO.
-//.WWo..oWW.
-//oWW....WWo
-//OWW....WWo
-//OWWWWWWWWo
-//OWWWWWWWWo
-//OWO.......
-//OWW.......
-//oWW.......
-//.WWo......
-//.OWWo..oo.
-//..WWWWWWO.
+//WWo...oWW
+//WWo...OWW
+//WWo...OWO
+//WWo...WWo
+//WWo..OWW.
+//WWWWWWWo.
+//oOWWWOo..
+0x7c0000, 0x7c001f0, 0x7c001f00, 0xc001f000, 0x7fff07fb, 0x1f3e07c, 0x1fb807df, 0xff407fe0, 0xf807fd01, 0xc07ee01f, 0xffcf81f7, 0x1bf91f, 
+//char='c' offset=(1, 11) width=8 height=14 xadvance=9.17188
+//...OWWWo
+//..WWWWWo
+//.WWW....
+//oWW.....
+//OWW.....
+//OWO.....
+//OWO.....
+//OWO.....
+//OWO.....
+//OWW.....
+//oWW.....
+//.WWW....
+//.oWWWWWO
+//...OWWWo
+0x7ff07f80, 0x3d00fc, 0x2e003e, 0x2e002e, 0x3e002e, 0xfc003d, 0x7f80bff4, 
+//char='d' offset=(1, 4) width=10 height=21 xadvance=12.1406
+//..........
+//.......WW.
+//.......WW.
+//.......WW.
+//.......WW.
+//.......WW.
+//.......WW.
+//..oOWWOWW.
+//.oWWWWWWW.
+//.WWO..oWW.
+//oWW....WW.
+//OWW....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//OWW....WW.
+//oWW....WW.
+//.WWW...WW.
+//.oWWWWWWW.
 //...OWWWOo.
-0xff006f80, 0xc2f0f81f, 0xc03d3d07, 0xfe7c03e7, 0x7fffe7ff, 0x3e0002e, 0xc0003d00, 0x41f80007, 0x802fff01, 0x1bf, 
-//char='f' offset=(2, 3) width=7 height=22 xadvance=8.25
-//..OWWWo
-//.WWWWWo
-//oWWo...
+0x0, 0x3c0003c, 0xc0003c00, 0x3c0003, 0x3ef903c0, 0xbc3fff4, 0xe3c03d3d, 0xc02e3c03, 0x2e3c02e3, 0x3c02e3c0, 0x3d3c03e, 0x43c0fc3c, 0xbf803fff, 0x1, 
+//char='e' offset=(1, 11) width=10 height=14 xadvance=11.3281
+//..oOWWO...
+//.oWWWWWW..
+//.WWO..WWo.
+//oWW...OWO.
+//oWO...oWW.
+//OWO...oWW.
+//OWWWWWWWW.
+//OWWWWWWWW.
+//OWO.......
+//oWW.......
+//oWW.......
+//.WWW...o..
+//.oWWWWWWo.
+//...OWWWO..
+0xff402f90, 0xd1f0bc0f, 0xd02d2e03, 0xfe3d02e3, 0x3fffe3ff, 0x3d0002e, 0xc0003d00, 0xfff4040f, 0xbf801, 
+//char='f' offset=(2, 5) width=7 height=20 xadvance=7.95313
+//.oOWWO.
+//.WWWWW.
 //OWO....
 //WWo....
 //WWo....
 //WWo....
 //WWWWWW.
+//WWWWWO.
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+0xe3ff0be4, 0x1f007c02, 0xfff007c0, 0xc01f2ffc, 0x7c01f007, 0x7c01f00, 0x7c01f0, 0xf007c01f, 0x7c01, 
+//char='g' offset=(1, 11) width=10 height=19 xadvance=12.1406
+//...OWWWOo.
+//..WWWWWWW.
+//.WWW...WW.
+//.WW....WW.
+//oWW....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//oWW....WW.
+//.WWO..oWW.
+//.oWWWWWWW.
+//..oOWWOWW.
+//.......WW.
+//......oWW.
+//......WWO.
+//.OWWWWWW..
+//.oOWWWO...
+0xff01bf80, 0xc3c0fc3f, 0xc03d3c03, 0x2e3c02e3, 0x3c02e3c0, 0x2e3c02e, 0xc3c03d3c, 0xfff43d0b, 0x3ef903, 0x3d0003c0, 0xff82f000, 0x2fe40f, 
+//char='h' offset=(2, 4) width=9 height=21 xadvance=12.5313
+//.........
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWWWWWO..
+//WWWWWWWO.
+//WWo..OWW.
+//WWo...WWo
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+0x7c0000, 0x7c001f0, 0x7c001f00, 0xc001f000, 0xbfff0bff, 0x1f3e07c, 0x1fb807df, 0xfb807ee0, 0xb807ee01, 0x807ee01f, 0x7ee01fb, 0x2e01fb8, 
+//char='i' offset=(1, 6) width=4 height=19 xadvance=6.28125
+//.WW.
+//oWWO
+//.OW.
+//....
+//....
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+//.WWo
+0x38bd3c, 0x7c7c7c00, 0x7c7c7c7c, 0x7c7c7c7c, 0x7c7c7c, 
+//char='j' offset=(0, 6) width=5 height=24 xadvance=6.28125
+//..OW.
+//.oWWO
+//..WWo
+//.....
+//.....
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WWo
+//..WW.
+//.OWW.
+//WWWO.
+//WWo..
+0x1f0bd0e0, 0x7c00000, 0xc1f07c1f, 0xf07c1f07, 0x7c1f07c1, 0x1f07c1f0, 0xf3e0f07c, 0x7cb, 
+//char='k' offset=(2, 4) width=9 height=21 xadvance=11.0938
+//.o.......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo...WW.
+//WWo..OWO.
+//WWo.oWW..
+//WWo.WWo..
+//WWoOWO...
+//WWOWW....
+//WWWWO....
+//WWOWW....
+//WWoOWW...
+//WWo.WWO..
+//WWo.oWW..
+//WWo..WWO.
+//WWo..oWW.
+//WWo...OWO
+0x7c0004, 0x7c001f0, 0x7c001f00, 0xc001f000, 0xb81f3c07, 0xf1f0f47c, 0xef02e7c1, 0xf00bfc03, 0x3e7c03e, 0xf47c2f1f, 0x7cbc1f0, 0x2e01f3d, 
+//char='l' offset=(1, 4) width=5 height=21 xadvance=6.3125
+//..o..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WW..
+//.WWo.
+//.WWO.
+//.OWWO
+//..OWO
+0x3c0f010, 0xc0f03c0f, 0xf03c0f03, 0x3c0f03c0, 0xf03c0f0, 0xbc1f03c, 0x2e0be, 
+//char='m' offset=(2, 11) width=15 height=14 xadvance=18.1406
+//oOWWWOooOWWWo..
+//WWWWWWWWWWWWWo.
+//WWo..WWWo..OWW.
+//WWo..oWW....WW.
+//WWo...WW....WW.
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+//WWo...WWo...WWo
+0xc1fe5bf9, 0xf1ffffff, 0x7cf81fc1, 0x1f3c03d0, 0x7cf00f0, 0x1f7c07c, 0xc07df01f, 0xf01f7c07, 0x7c07df01, 0x1f01f7c0, 0x7c07df0, 0x1f01f7c, 0xc07c07df, 0x7, 
+//char='n' offset=(2, 11) width=9 height=14 xadvance=12.5313
+//oOWWWWo..
+//WWWWWWWO.
+//WWo..OWW.
+//WWo...WWo
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+0xfffc1ff9, 0x7cf81f2, 0x7ee01f7c, 0xee01fb80, 0xe01fb807, 0x1fb807e, 0x1fb807ee, 0xb807ee0, 
+//char='o' offset=(1, 11) width=10 height=14 xadvance=12.0313
+//...OWWOo..
+//.oWWWWWWo.
+//.WWO..OWW.
+//oWW....WWo
+//OWW....WWO
+//OWO....OWO
+//OWO....OWO
+//OWO....OWO
+//OWO....OWO
+//OWW....WWO
+//oWW....WWo
+//.WWO..OWW.
+//.oWWWWWWo.
+//...OWWOo..
+0xff406f80, 0xd3e0bc1f, 0xc03e7c03, 0x2eb802eb, 0xb802eb80, 0x3eb802e, 0xc7c03dbc, 0xfff43e0b, 0x6f801, 
+//char='p' offset=(2, 11) width=9 height=19 xadvance=12.1406
+//oOWWWO...
+//WWWWWWWo.
+//WWo..OWW.
+//WWo...WWo
+//WWo...OWO
+//WWo...OWW
+//WWo...oWW
+//WWo...oWW
+//WWo...OWW
+//WWo...OWO
+//WWo...WWo
+//WWo..OWW.
+//WWWWWWWO.
+//WWOWWWo..
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+0xfffc0bf9, 0x7cf81f1, 0x7ee01f7c, 0xfd01ff80, 0xe01ff407, 0x1fb807f, 0xff3e07df, 0xf07fbcbf, 0x7c001, 0x7c001f, 0x1f0, 
+//char='q' offset=(1, 11) width=10 height=19 xadvance=12.1406
+//...OWWWOo.
+//..WWWWWWW.
+//.WWW...WW.
+//oWW....WW.
+//OWW....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//OWO....WW.
+//OWW....WW.
+//oWW....WW.
+//.WWO..oWW.
+//.oWWWWWWW.
+//..oWWWOWW.
+//.......WW.
+//.......WW.
+//.......WW.
+//.......WW.
+//.......WW.
+0xff01bf80, 0xd3c0fc3f, 0xc03e3c03, 0x2e3c02e3, 0x3c02e3c0, 0x3e3c02e, 0xc3c03d3c, 0xfff43d0b, 0x3efd03, 0x3c0003c0, 0x3c000, 0x3c0003c, 
+//char='r' offset=(2, 11) width=7 height=14 xadvance=8.51563
+//oOWWWW.
 //WWWWWW.
 //WWo....
 //WWo....
@@ -1557,1786 +1729,1468 @@ const uint32_t font_condensed30[2338]= {
 //WWo....
 //WWo....
 //WWo....
-//WWo....
-0xd7ff1fe0, 0x1f00b807, 0x1f007c0, 0xcfff3ffc, 0x7c01f007, 0x7c01f00, 0x7c01f0, 0xf007c01f, 0x1f007c01, 0x7c0, 
-//char='g' offset=(1, 10) width=10 height=20 xadvance=12.5938
-//...OWWWWO.
-//..WWWWWWWO
-//.OWWo..WWO
-//.WWo...WWO
-//oWW....WWO
-//OWW....WWO
-//OWO....WWO
-//OWO....WWO
-//OWO....WWO
-//OWW....WWO
-//oWW....WWO
-//.WWW...WWO
-//.oWWWWWWWO
-//..oWWWWWWO
-//.......WWO
-//.......WWo
-//.......WWo
-//.oo..oWWW.
-//.OWWWWWWo.
-//.oOWWWO...
-0xff02ff80, 0xcbc1f8bf, 0xc03dbc07, 0x2ebc03eb, 0xbc02ebc0, 0x3ebc02e, 0xcbc03dbc, 0xfff4bc0f, 0xbffd0b, 0x7c000bc0, 0x4147c000, 0x41fff83f, 0x2fe, 
-//char='h' offset=(2, 3) width=10 height=22 xadvance=13
-//oOo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWWWWWO...
-//WWWWWWWW..
-//WWO..oWWo.
-//WWo...OWO.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-0x1f00019, 0xf0001f00, 0x1f0001, 0x1f0001f0, 0x2fff000, 0x42f0ffff, 0xf2e01f1f, 0xd01f3d01, 0x1f3d01f3, 0x3d01f3d0, 0x1f3d01f, 0xf3d01f3d, 0xd01f3d01, 0x3d01f3, 
-//char='i' offset=(1, 4) width=4 height=21 xadvance=6.53125
-//....
-//.WWo
-//.WWO
-//.OWo
-//....
-//....
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-//.WWo
-0x78bc7c00, 0x7c7c0000, 0x7c7c7c7c, 0x7c7c7c7c, 0x7c7c7c7c, 0x7c, 
-//char='j' offset=(0, 4) width=5 height=26 xadvance=6.53125
-//..OWo
-//..WWO
-//..WWo
-//.....
-//.....
-//.....
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//..WWo
-//.OWW.
-//WWWO.
-//WWO..
-0x1f0bc1e0, 0x0, 0xc1f07c1f, 0xf07c1f07, 0x7c1f07c1, 0x1f07c1f0, 0x7c1f07c, 0xbcbf3e1f, 0x0, 
-//char='k' offset=(2, 3) width=10 height=22 xadvance=11.5156
-//OWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo...WWO.
-//WWo..oWW..
-//WWo..WWo..
-//WWo.OWW...
-//WWooWW....
-//WWoWWO....
-//WWWWW.....
-//WWWWW.....
-//WWoWWO....
-//WWooWWo...
-//WWo.OWW...
-//WWo..WWO..
-//WWo..oWW..
-//WWo...WWO.
-//WWo...oWW.
-0x1f0001e, 0xf0001f00, 0x1f0001, 0x1f0001f0, 0x2f01f000, 0xc1f0f41f, 0xf03e1f07, 0xbdf00f5, 0xff003ff0, 0xbdf003, 0xe1f01f5f, 0xf0bc1f03, 0xf01f0f41, 0x3d01f2, 
-//char='l' offset=(2, 3) width=5 height=22 xadvance=6.54688
-//OOo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWo..
-//WWW..
-//oWWW.
-//.oWW.
-0xc1f07c1a, 0xf07c1f07, 0x7c1f07c1, 0x1f07c1f0, 0x7c1f07c, 0xc1f07c1f, 0x3d0fd0f, 
-//char='m' offset=(2, 10) width=15 height=15 xadvance=18.8438
-//oOWWWWo.OWWWO..
-//WWWWWWWWWWWWWW.
-//WWO..OWWOo.oWWo
-//WWo...WWo...OWO
-//WWo...OWO...OWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-//WWo...OWO...oWW
-0xc2fe1ff9, 0xf3ffffff, 0x7df46f82, 0x1fb807c0, 0x7fe02e0, 0x1ff40b8, 0x807fd02e, 0xe01ff40b, 0xb807fd02, 0x2e01ff40, 0xb807fd0, 0x2e01ff4, 0x40b807fd, 0xd02e01ff, 0x3, 
-//char='n' offset=(2, 10) width=10 height=15 xadvance=13
-//oOWWWWO...
-//WWWWWWWW..
-//WWO..oWWo.
-//WWo...OWO.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-//WWo...oWW.
-0xfff02ff9, 0xf1f42f0f, 0xd01f2e01, 0x1f3d01f3, 0x3d01f3d0, 0x1f3d01f, 0xf3d01f3d, 0xd01f3d01, 0x1f3d01f3, 0x3d0, 
-//char='o' offset=(1, 10) width=11 height=15 xadvance=12.5
-//...OWWWo...
-//..WWWWWWO..
-//.OWWo.OWW..
-//.WWo...WWO.
-//oWW....OWW.
-//OWW....oWW.
-//OWW....oWW.
-//OWO....oWW.
-//OWW....oWW.
-//OWW....oWW.
-//oWW....OWW.
-//.WWo...WWO.
-//.OWWo.OWW..
-//..WWWWWWO..
-//...OWWWo...
-0xfc007f80, 0x3e1f80bf, 0x3d2f01f0, 0xd00f8f80, 0xb8f403e3, 0x403e3d00, 0xd3d00f8f, 0x1f0f803, 0x3e1f82f, 0xf800bffc, 0x7, 
-//char='p' offset=(2, 10) width=10 height=20 xadvance=12.5938
-//oOWWWOo...
-//WWWWWWWO..
-//WWO..OWWo.
-//WWo...WWO.
-//WWo...oWW.
-//WWo...oWW.
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo...oWW.
-//WWo...oWW.
-//WWo...OWW.
-//WWO..OWWo.
-//WWWWWWWW..
-//WWWWWWO...
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-0xfff01bf9, 0xf1f82f0b, 0xd01f2f01, 0x1f3d01f3, 0x7c01f7c0, 0x1f7c01f, 0xf3d01f3d, 0xf82f3e01, 0xff0ffff1, 0x1f02f, 0x1f0001f, 0xf0001f00, 0x1, 
-//char='q' offset=(1, 10) width=10 height=20 xadvance=12.5938
-//...OWWWWO.
-//..WWWWWWWO
-//.OWWo..WWO
-//.WWo...WWO
-//oWW....WWO
-//OWW....WWO
-//OWO....WWO
-//OWO....WWO
-//OWO....WWO
-//OWW....WWO
-//oWW....WWO
-//.WWo...WWO
-//.WWWo.oWWO
-//.oWWWWWWWO
-//...OWWWWWO
-//.......WWO
-//.......WWO
-//.......WWO
-//.......WWO
-//.......WWO
-0xff02ff80, 0xcbc1f8bf, 0xc03dbc07, 0x2ebc03eb, 0xbc02ebc0, 0x3ebc02e, 0xcbc03dbc, 0xd1fcbc07, 0x80bfff4b, 0xbc000bff, 0xbc000, 0xbc000bc, 0xbc00, 
-//char='r' offset=(2, 10) width=7 height=15 xadvance=8.84375
-//.OWWWWo
-//WWWWWWo
-//WWO....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-0xf7ffdff8, 0x1f007c02, 0x1f007c0, 0xc01f007c, 0x7c01f007, 0x7c01f00, 0x1f0, 
-//char='s' offset=(0, 10) width=9 height=15 xadvance=9.20312
-//...OWWWo.
-//..WWWWWO.
-//.OWWo.oo.
+0xf3ffcff9, 0x1f007c01, 0x1f007c0, 0xc01f007c, 0x7c01f007, 0x7c01f00, 0x0, 
+//char='s' offset=(0, 11) width=9 height=14 xadvance=8.85938
+//...OWWOo.
+//..WWWWWo.
+//.OWW.....
+//.OWo.....
 //.OWO.....
-//.OWO.....
-//.oWW.....
-//..WWWo...
-//...WWWO..
-//....oWWO.
-//.....oWWo
-//......WWo
-//......WWo
-//.oo..OWW.
-//.WWWWWWO.
-//.oOWWWo..
-0xffc07f80, 0x2e051f82, 0xd000b800, 0x7f0003, 0xbd000bf0, 0x7d000, 0x147c001f, 0x42fff0f8, 0x1fe, 
-//char='t' offset=(1, 5) width=8 height=20 xadvance=8.65625
-//........
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWWWWW.
-//.WWWWWW.
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.WWo....
-//.OWWo.o.
-//.oWWWWW.
-//..oWWWO.
-0x7c0000, 0x7c007c, 0x3ffc007c, 0x7c3ffc, 0x7c007c, 0x7c007c, 0x7c007c, 0x7c007c, 0x11f8007c, 0x2fd03ff4, 
-//char='u' offset=(1, 10) width=10 height=15 xadvance=12.9531
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWo...oWW
-//.WWO...oWW
-//.OWWO..OWW
-//..WWWWWWWW
-//...OWWWWOo
-0x7cf407c, 0xcf407cf4, 0x407cf407, 0x7cf407cf, 0xf407cf40, 0x7cf407c, 0xcf407cf4, 0x82f8f40b, 0x80ffff0f, 0x6ff, 
-//char='v' offset=(0, 10) width=11 height=15 xadvance=10.7188
-//oWW.....WW.
-//oWW....oWW.
-//.WWo...oWW.
-//.WWO...OWO.
-//.OWO...WWo.
-//.oWW...WW..
-//..WW..oWW..
-//..WWo.OWO..
-//..OWO.OWo..
-//..oWW.WW...
-//...WWoWW...
-//...WWWWO...
-//...OWWWo...
-//...oWWW....
-//....WWO....
-0xf4f003d, 0xf407c3d0, 0xb82e02f0, 0xf03d07c0, 0xc03d0f00, 0xe2e00b87, 0x3cf401, 0xff000f7c, 0x7f8002, 0xf0000fd0, 0x2, 
-//char='w' offset=(0, 10) width=15 height=15 xadvance=15.4688
-//oWW....WW...oWW
-//.WW...oWW...oWO
-//.WW...OWWo..OWO
-//.WWo..OWWo..OWo
-//.OWo..WWWO..WWo
-//.OWO..WOWO..WW.
-//.oWO..WoOW..WW.
-//.oWW.oWoOW.oWO.
-//..WW.OW.oW.oWo.
-//..WW.OW.oWoOWo.
-//..OWoWO..WOOW..
-//..oWOWO..WOWW..
-//...WWWo..WWWO..
-//...WWW...OWWo..
-//...OWW...oWW...
-0x3d03c03d, 0xcb40f40f, 0xf2e07e03, 0x78781f81, 0x2e1f0bf0, 0xb43c2ec, 0xd3d0f0e7, 0x38f02d39, 0x4e3c074d, 0xc2de01e7, 0xb0bb403a, 0xfc1fc00f, 0x7e03f002, 0xf40f800, 0x0, 
-//char='x' offset=(0, 10) width=11 height=15 xadvance=10.5781
-//.WW....oWW.
-//.OWO...WWo.
-//.oWW..oWW..
-//..OWO.WWo..
-//..oWWoWW...
-//...OWWWo...
-//...oWWW....
-//....WWW....
-//...OWWWo...
-//...WWOWW...
-//..OWo.WWo..
-//..WW..OWO..
-//.OWO...WW..
-//.WW....OWO.
-//oWW....oWW.
-0x2e0f403c, 0x3d0f41f0, 0xd007cb80, 0x1fe000f7, 0x3f400, 0x7f8000fc, 0x3ef000, 0x83c01f1e, 0x3c0b80b, 0x3d2e00f, 0xf4, 
-//char='y' offset=(0, 10) width=11 height=20 xadvance=10.6875
-//oWW.....WW.
-//oWW....oWW.
-//.WWo...oWW.
-//.WWo...OWO.
-//.OWO...WWo.
-//.oWW...WW..
-//..WW..oWW..
-//..WWo.OWO..
-//..OWO.WWo..
-//..oWW.WW...
-//...WWoWO...
-//...WWWWo...
-//...OWWW....
-//....WWW....
-//....WWO....
-//....WW.....
-//...oWW.....
-//..oWWo.....
-//OWWWO......
-//OWWO.......
-0xf4f003d, 0xf407c3d0, 0xb82e01f0, 0xf03d07c0, 0xc03d0f00, 0xf2e00b87, 0x3cf401, 0xff000b7c, 0x3f8001, 0xf0000fc0, 0x3c0002, 0xf4000f40, 0x2fe001, 0x2f8, 
-//char='z' offset=(0, 10) width=9 height=15 xadvance=9.60938
-//.WWWWWWWO
-//.WWWWWWWO
+//.oWWo....
+//..OWWO...
+//...oWWW..
+//.....OWW.
 //......WW.
-//.....OWO.
-//.....WW..
+//......WW.
+//.o...OWW.
+//.WWWWWWo.
+//.oWWWWo..
+0xffc06f80, 0x1e000f81, 0xd000b800, 0xbe0007, 0xf8000fd0, 0x3c000, 0xfc3e010f, 0x7fd07f, 
+//char='t' offset=(1, 6) width=7 height=19 xadvance=8.34375
+//.......
+//.OW....
+//.WW....
+//.WW....
+//.WW....
+//.WWWWWO
+//.WWWWWO
+//.WW....
+//.WW....
+//.WW....
+//.WW....
+//.WW....
+//.WW....
+//.WW....
+//.WW....
+//.WW....
+//.WWO...
+//.oWWWWO
+//..oWWWO
+0xc00e0000, 0x3c00f003, 0xffcbff00, 0x3c00f2, 0xf003c00f, 0xf003c00, 0xf003c0, 0xbfd00bc, 0x2fd, 
+//char='u' offset=(1, 11) width=10 height=14 xadvance=12.4688
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WW....OWo
+//.WWo...OWo
+//.OWW...WWo
+//..WWWWWWWo
+//...OWWWWO.
+0x3c7803c, 0xc7803c78, 0x803c7803, 0x3c7803c7, 0x7803c780, 0x3c7803c, 0x87807c78, 0xfff07c0f, 0x2ff807, 
+//char='v' offset=(0, 11) width=10 height=14 xadvance=10.3125
+//oWW....oWW
+//oWW....OWO
+//.WW....OWo
+//.WWo...WW.
+//.OWO...WW.
+//.oWW..oWO.
+//..WW..OWo.
+//..WWo.WW..
+//..OWO.WW..
+//..oWOoWO..
+//...WWOWo..
+//...WWWW...
+//...oWWW...
+//....WWo...
+0x3df403d, 0xc7803cb8, 0xc0b83c07, 0xf02d0f43, 0xf1f01e0, 0x6d00f2e0, 0x7bc00b, 0x3f4003fc, 0x1f000, 
+//char='w' offset=(0, 11) width=15 height=14 xadvance=14.8906
+//oWO...oWO...WWo
+//oWW...OWW...WW.
+//.WW...WWW...WW.
+//.WW...WWW...WW.
+//.OWo..WOWo.oWO.
+//.OWo.oWoWo.oWo.
+//.oWO.OW.WO.OWo.
+//..WO.OW.WO.WW..
+//..WW.WO.OW.WW..
+//..OW.WO.OWoWO..
+//..OWOWo.oWOWo..
+//..oWWW...WWW...
+//...WWW...WWW...
+//...OWO...OWO...
+0x5f02d02d, 0xc3c0f80f, 0xf0f03f03, 0x783c0fc0, 0x1e0b47b0, 0x8b41d1dd, 0xe2c078b3, 0x2cf00f2c, 0x8b3803ce, 0xd1ee00b7, 0xf03f401e, 0xfc0fc003, 0x2e02e000, 0x0, 
+//char='x' offset=(0, 11) width=10 height=14 xadvance=10.1875
+//oWW....OWo
+//.OWO..oWW.
+//..WW..OWo.
+//..OWooWW..
+//...WWWWo..
+//...OWWW...
+//...oWWo...
+//...OWWW...
+//...WWWWo..
+//..OWooWW..
+//..WW..WWo.
+//.OWO..oWO.
+//.WW....WW.
+//oWO....OWO
+0xb87803d, 0x1e0f03d, 0x7fc00f5e, 0x4003f800, 0x3f8001f, 0x5e007fc0, 0x81f0f00f, 0xc03c2d0b, 0xb802d3, 
+//char='y' offset=(0, 11) width=10 height=19 xadvance=10.2813
+//OWW....oWW
+//oWW....OWO
+//.WW....OWo
+//.WWo...WW.
+//.OWO...WW.
+//.oWW..oWO.
+//..WW..OWo.
+//..WWo.WW..
+//..OWO.WW..
+//..oWWoWO..
+//...WWWWo..
+//...WWWW...
+//...oWWO...
+//....WWo...
+//....WW....
+//...oWO....
+//...WW.....
+//OWWWO.....
+//OWWO......
+0x3df403e, 0xc7803cb8, 0xc0b83c07, 0xf02d0f43, 0xf1f01e0, 0x7d00f2e0, 0x7fc00b, 0x2f4003fc, 0x1f000, 0xb4000f, 0x2fe003c0, 0xbe00, 
+//char='z' offset=(0, 11) width=9 height=14 xadvance=9.25
+//.WWWWWWWo
+//.OWWWWWWo
+//.....oWW.
+//.....WWo.
 //....OWO..
-//....WW...
+//....WWo..
 //...OWO...
-//...WW....
-//..OWO....
+//...WWo...
+//..oWO....
 //..WWo....
 //.oWW.....
-//.WWO.....
-//.WWWWWWWW
-//.WWWWWWWW
-0xfff2fffc, 0xf000b, 0x3c002e, 0xf000b8, 0x3c002e0, 0x1f000b80, 0xbc003d00, 0xcffff000, 0x3fff, 
-//char='{' offset=(1, 3) width=7 height=27 xadvance=7.17188
-//...oWW.
-//..OWWW.
-//..WWO..
-//..WW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.OWO...
-//OWW....
-//WWo....
-//OWW....
-//.OWO...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//.oWW...
-//..WW...
-//..WWO..
-//..OWWW.
-//...oWW.
-0x3f80f40, 0xf403c02f, 0xf403d00, 0xf403d0, 0xe00f403d, 0x7c03e02, 0x2e003e0, 0x403d00f4, 0xf403d00f, 0xf403d00, 0x2f003c0, 0xf403f8, 
-//char='|' offset=(2, 3) width=3 height=27 xadvance=7.25
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-//oWO
-0x6db6db6d, 0xdb6db6db, 0xb6db6db6, 0x6db6db6d, 0xdb6db6db, 0x2, 
-//char='}' offset=(0, 3) width=7 height=27 xadvance=7.17188
-//WWo....
-//WWWO...
-//.oWW...
-//..WWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//..OWo..
-//..OWO..
+//.WWo.....
+//.WWWWWWWo
+//.WWWWWWWo
+0xffe1fffc, 0xf4007, 0x2e001f, 0xb8007c, 0x2d001f0, 0xf4007c0, 0xfc001f00, 0x7fff1ff, 
+//char='{' offset=(0, 5) width=7 height=25 xadvance=6.90625
+//....OWO
+//...OWWO
+//...WW..
 //..oWW..
-//...WWO.
-//....WW.
-//...WWO.
 //..oWW..
-//..OWO..
+//..oWW..
+//..oWW..
+//..oWW..
+//..oWO..
+//..oWO..
 //..OWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//..WWo..
-//.oWW...
-//WWWO...
-//WWo....
-0x402fc01f, 0xf007c00f, 0x1f007c01, 0x1f007c0, 0x402e0078, 0xc00bc00f, 0xf40bc03, 0x7802e0, 0xf007c01f, 0x1f007c01, 0xc0f407c0, 0x1f02f, 
-//char='А' offset=(0, 6) width=14 height=19 xadvance=13.5781
-//.....OWW......
-//.....WWWO.....
-//....oWWWW.....
-//....OWOWW.....
-//....WW.OWo....
-//....WW.oWO....
-//...oWO..WW....
-//...OWo..WWo...
-//...WW...OWO...
-//..oWW...oWW...
-//..OWO....WW...
-//..OWo....WWo..
-//..WWWWWWWWWO..
-//.oWWWWWWWWWW..
-//.oWO.....oWW..
-//.OWO......WWo.
-//.WWo......WWo.
-//.WW.......OWO.
+//.OWW...
+//.WWo...
+//.OWW...
+//..OWo..
+//..oWO..
+//..oWO..
+//..oWW..
+//..oWW..
+//..oWW..
+//..oWW..
+//..oWW..
+//...WW..
+//...OWWO
+//....OWO
+0xbe02e00, 0xd00f403c, 0x3d00f403, 0x2d00f40, 0xe01e00b4, 0x3e007c03, 0xb401e00, 0xf402d0, 0xd00f403d, 0x3c00f403, 0x2e00be00, 
+//char='|' offset=(2, 5) width=3 height=25 xadvance=6.98438
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+//OWO
+0xaebaebae, 0xebaebaeb, 0xbaebaeba, 0xaebaebae, 0x2ebaeb, 
+//char='}' offset=(0, 5) width=6 height=25 xadvance=6.90625
+//WWo...
+//OWWO..
+//.oWW..
+//..WW..
+//..WWo.
+//..WWo.
+//..WWo.
+//..WWo.
+//..WWo.
+//..WWo.
+//..OWO.
+//...WWO
+//...oWW
+//...WWO
+//..OWO.
+//..WWo.
+//..WWo.
+//..WWo.
+//..WWo.
+//..WWo.
+//..WWo.
+//..WW..
+//.oWW..
+//OWWO..
+//WWo...
+0xf40be01f, 0x1f00f00, 0x1f01f01f, 0xe01f01f0, 0xf40bc02, 0x1f02e0bc, 0xf01f01f0, 0x1f01f01, 0xbe0f40f, 0x1f, 
+//char='А' offset=(0, 7) width=13 height=18 xadvance=13.0625
+//.....WWW.....
+//.....WWWo....
+//....oWWWO....
+//....WWoWW....
+//....WW.WW....
+//...oWO.OWo...
+//...OWo.oWO...
+//...WW...WW...
+//..oWO...OWo..
+//..oWo...OWO..
+//..OWo...oWW..
+//..WWWWWWWWW..
+//.oWWWWWWWWWo.
+//.oWO.....OWO.
+//.OWo.....oWW.
+//.WW.......WW.
+//.WW.......WW.
+//oWW.......WWo
+0xfc00, 0xd00007f0, 0xf7c0002f, 0x3cf0000, 0x1e2d00, 0xf000b478, 0x2d003c0, 0xb807401e, 0x3d01e00, 0xf40ffffc, 0x2d07fff, 0x400782e0, 0x3c000f0f, 0xf4f0003c, 0x7c000, 
+//char='Б' offset=(2, 7) width=10 height=18 xadvance=13.0156
+//WWWWWWWWo.
+//WWWWWWWWo.
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWWWWWO...
+//WWWWWWWWo.
+//WWO..oWWW.
+//WWO....WWo
+//WWO....OWO
+//WWO....OWW
+//WWO....OWW
+//WWO....OWO
+//WWO....WWo
+//WWO..oWWW.
+//WWWWWWWWo.
+//OWWWWWO...
+0xfff1ffff, 0xf0002f1f, 0x2f0002, 0xff0002f0, 0x1ffff02f, 0x2f3f42f, 0xfb802f7c, 0x802ff802, 0x2fb802ff, 0x3f42f7c0, 0xffe1ffff, 0x2, 
+//char='В' offset=(2, 7) width=11 height=18 xadvance=13.5313
+//OWWWWWOo...
+//WWWWWWWWO..
+//WWO...OWWo.
+//WWO....WWO.
+//WWO....OWO.
+//WWO....WWO.
+//WWO...OWW..
+//WWWWWWWWo..
+//WWWWWWWWo..
+//WWO...OWWo.
+//WWO....OWW.
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO....oWW.
+//WWO...oWWO.
+//WWWWWWWWW..
+//OOWWWWOo...
+0xffc06ffe, 0x7e02f0bf, 0x2f2f00bc, 0xf00bcb80, 0xfc3e02f2, 0xffff07ff, 0xf1f80bc1, 0xbcf802, 0xdf002f7c, 0x2f7c00b, 0x2f40bcf4, 0xfe83ffff, 0x1b, 
+//char='Г' offset=(2, 7) width=9 height=18 xadvance=10.6563
+//WWWWWWWW.
+//WWWWWWWW.
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+0xfffcffff, 0xbc002f3, 0xbc002f00, 0xc002f000, 0x2f000b, 0x2f000bc, 0x2f000bc0, 0xf000bc00, 0xbc002, 0xbc002f, 0x0, 
+//char='Д' offset=(0, 7) width=15 height=23 xadvance=15.0938
+//....OWWWWWWWO..
+//....OWWWWWWWO..
+//....OWO...OWO..
+//....OWO...OWO..
+//....OWO...OWO..
+//....WWO...OWO..
+//....WWo...OWO..
+//....WWo...OWO..
+//....WWo...OWO..
+//....WW....OWO..
+//...oWW....OWO..
+//...OWW....OWO..
+//...WWO....OWO..
+//...WWo....OWO..
+//..OWW.....OWO..
+//..WWO.....OWO..
+//WWWWWWWWWWWWWWo
+//WWWWWWWWWWWWWWo
+//WWo.........WWo
+//WWo.........WWo
+//WWo.........WWo
+//WWo.........WWo
+//WWo.........WWo
+0x2fffe00, 0xbfff80, 0x2e02e0, 0xb80b8, 0xc002e02e, 0xf000b80b, 0x7c002e01, 0x1f000b80, 0x3c002e0, 0xf400b8, 0x803e002e, 0xe00bc00b, 0xb801f002, 0x2e003e00, 0xb800bc0, 0xdfffffff, 0xf7ffffff, 0x7df00001, 0x1f7c0000, 0x7df0000, 0x1f7c000, 0x1f000, 
+//char='Е' offset=(2, 7) width=9 height=18 xadvance=11.8438
+//WWWWWWWWo
+//WWWWWWWWo
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWWWWWWO.
+//WWWWWWWO.
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWO......
+//WWWWWWWWO
+//WWWWWWWWO
+0xfffdffff, 0xbc002f7, 0xbc002f00, 0xc002f000, 0xbfff000b, 0x2f2fffc, 0x2f000bc0, 0xf000bc00, 0xbc002, 0xfffeffff, 0xb, 
+//char='Ж' offset=(0, 7) width=17 height=18 xadvance=16.7031
+//.WWo...OWo...OWO.
+//.OWO...OWo...WW..
+//..WWo..OWo..OWO..
+//..oWW..OWo..WW...
+//...WWo.OWo.OWO...
+//...oWW.OWo.WW....
+//....WWoOWoOWo....
+//....oWWWWOWW.....
+//.....WWWWWWO.....
+//....OWWWWWWWo....
+//....WWoOWoOWW....
+//...OWO.OWo.WWo...
+//..oWW..OWo.oWW...
+//..WWO..OWo..WWO..
+//.oWW...OWo..oWW..
+//.WWO...OWo...WWo.
+//.WW....OWo...OWW.
+//OWW....OWo....WWo
+0xb807807c, 0xf01e02e0, 0xe0781f00, 0xc1e0f402, 0x8787c003, 0x1e3d000b, 0x79f0000f, 0xff40001e, 0xfc00003e, 0xf80000bf, 0xf00007ff, 0xe0003e79, 0xd001f1e2, 0xc00f4783, 0x40bc1e0b, 0x3d0780f, 0x1f01e02f, 0xf807803c, 0xc01e00f8, 0x7, 
+//char='З' offset=(0, 7) width=10 height=18 xadvance=11.0938
+//.oOWWWO...
+//.WWWWWWWo.
+//.oo...OWW.
+//.......WWo
+//.......WWo
+//.......WWo
+//......WWW.
+//..oWWWWW..
+//..oWWWWo..
+//.....oWWO.
+//.......WWo
+//.......oWO
+//.......oWW
+//.......oWW
+//.......WWO
+//.Oo...OWWo
+//oWWWWWWWo.
+//.oOWWWO...
+0xffc02fe4, 0x3e0141f, 0xc0007c00, 0x7c0007, 0xffd03f0, 0x40007fd0, 0x7c0002f, 0x4000b400, 0xf4000f, 0x7e018bc0, 0xfe41fffd, 0x2, 
+//char='И' offset=(2, 7) width=11 height=18 xadvance=15.0938
+//WWo......WW
+//WWo.....WWW
+//WWo....oWWW
+//WWo....WWWW
+//WWo...OWWWW
+//WWo...WWoWW
+//WWo..OWooWW
+//WWo..WW.oWW
+//WWo.OWo.oWW
+//WWo.WW..oWW
+//WWoOWo..oWW
+//WWoWW...oWW
+//WWWWO...oWW
+//WWWW....oWW
+//WWWO....oWW
+//WWW.....oWW
+//WWO.....oWW
+//WWo.....oWW
+0x7fc001f, 0xf401ffc0, 0x1fff007f, 0x7c07ffe0, 0x7fd781ff, 0x1e1ff4f0, 0xff43c7fd, 0xf7fd079, 0xfd02fff4, 0xbff403f, 0xf400ffd0, 0x7fd002f, 0xf40, 
+//char='Й' offset=(2, 1) width=11 height=24 xadvance=15.0938
+//...o...oo..
+//..oWo..WW..
+//...WWOWWo..
+//....OWWo...
+//...........
+//...........
+//WWo......WW
+//WWo.....WWW
+//WWo....oWWW
+//WWo....WWWW
+//WWo...OWWWW
+//WWo...WWoWW
+//WWo..OWooWW
+//WWo..WW.oWW
+//WWo.OWo.oWW
+//WWo.WW..oWW
+//WWoOWo..oWW
+//WWoWW...oWW
+//WWWWO...oWW
+//WWWW....oWW
+//WWWO....oWW
+//WWW.....oWW
+//WWO.....oWW
+//WWo.....oWW
+0x74014040, 0x1fbc00f0, 0x1f800, 0x0, 0x7fc001f0, 0x401ffc00, 0xfff007ff, 0xc07ffe01, 0xfd781ff7, 0xe1ff4f07, 0xf43c7fd1, 0xf7fd079f, 0xd02fff40, 0xbff403ff, 0x400ffd00, 0x7fd002ff, 0xf400, 
+//char='К' offset=(2, 7) width=12 height=18 xadvance=13.375
+//WWO....oWW..
+//WWO....WWo..
+//WWO...OWW...
+//WWO..oWW....
+//WWO..WWo....
+//WWO.OWO.....
+//WWOoWW......
+//WWOWWo......
+//WWWWW.......
+//WWWWWO......
+//WWOoWWO.....
+//WWO.OWWo....
+//WWO..OWW....
+//WWO...WWO...
+//WWO...oWWo..
+//WWO....WWW..
+//WWO....oWWo.
+//WWO.....OWW.
+0x2f0f402f, 0xe02f07c0, 0xf42f03, 0x2f007c2f, 0xf6f002e, 0x7ef00, 0xff0003ff, 0x2f6f000b, 0x7e2f00, 0x2f00f82f, 0xd02f02f0, 0xfc02f07, 0x2f1f402f, 0x3e00, 
+//char='Л' offset=(0, 7) width=13 height=18 xadvance=15.0469
+//....OWWWWWWWW
+//....OWWWWWWWW
+//....OWO...oWW
+//....OWO...oWW
+//....OWO...oWW
+//....OWO...oWW
+//....OWO...oWW
+//....OWO...oWW
+//....OWO...oWW
+//....WWo...oWW
+//....WWo...oWW
+//....WW....oWW
+//...oWW....oWW
+//...OWO....oWW
+//..oWWo....oWW
+//.oWWW.....oWW
+//OWWW......oWW
+//OWO.......oWW
+0x3fffe00, 0xe00ffff8, 0xb803d02, 0xd02e00f4, 0xf40b803, 0x803d02e0, 0x2e00f40b, 0x407c03d0, 0x3d01f00f, 0x40f403c0, 0x2e03d00f, 0x7d0f40, 0xf400fd3d, 0xbbd000fe, 0xf4000, 
+//char='М' offset=(1, 7) width=17 height=18 xadvance=18.875
+//.oWWo.......oWW..
+//.oWWO.......WWWo.
+//.oWWW.......WWWo.
+//.OWWWo.....OWWWo.
+//.OWOWW.....WWOWo.
+//.OWoWW....oWOOWO.
+//.OWooWO...OWooWO.
+//.WWo.WW...WW.oWO.
+//.WWo.OW..oWO.oWO.
+//.WWo.oWO.OWo.oWO.
+//.WW...WW.WW..oWW.
+//.WW...OWoWO..oWW.
+//.WW...oWWWo..oWW.
+//.WW....WWW...oWW.
+//.WW....WWO...oWW.
+//.WW....ooo....WW.
+//.WW...........WW.
+//.WW...........WW.
+0x3d0001f4, 0xfc000bd0, 0xf0003f41, 0xe001fe07, 0xc00fb81f, 0x403de07b, 0x2d782eb, 0xf1f0b5e, 0x387c2d3c, 0xd1f0b4b4, 0x3c2d1e2, 0xf0f43cf, 0x3c3d0b78, 0xf0f41fd0, 0xc3d03f00, 0xf40bc03, 0x3c01500f, 0xf000003c, 0xc00000f0, 0x3, 
+//char='Н' offset=(2, 7) width=11 height=18 xadvance=14.9688
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWWWWWWWWWW
+//WWWWWWWWWWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+//WWO.....OWW
+0xbfe002f, 0xe002ff80, 0x2ff800bf, 0x800bfe00, 0xbfe002ff, 0xfffff800, 0xffffffff, 0xbfe002, 0xfe002ff8, 0x2ff800b, 0xf800bfe0, 0xbfe002f, 0xf80, 
+//char='О' offset=(1, 7) width=14 height=18 xadvance=15.7188
+//....OWWWOo....
+//...WWWWWWWO...
+//..WWWo..OWWO..
+//.oWW.....oWWo.
+//.WWO......WWO.
+//.WWo......OWW.
 //oWW.......oWW.
-0xf800, 0x2fc0, 0xe00003fd, 0x8f00003e, 0xb4f00007, 0xf0b4000, 0x1f07800, 0x2e03c0, 0xe003d03d, 0x1e003c02, 0xfff007c0, 0xffff40bf, 0xf400b40f, 0x1f000b80, 0xc1f0007c, 0x3d2e0003, 0x3d000, 
-//char='Б' offset=(2, 6) width=11 height=19 xadvance=13.5156
-//OWWWWWWWO..
-//OWWWWWWWO..
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWWWWWWo...
-//OWWWWWWWO..
-//OWO..oWWWO.
-//OWO....WWW.
+//oWW.......oWW.
+//OWW.......oWWo
+//OWW.......oWWo
+//oWW.......oWW.
+//oWW.......oWW.
+//.WWo......OWW.
+//.WWO......WWO.
+//.OWW.....oWWo.
+//..WWWo..oWWO..
+//...WWWWWWWO...
+//....OWWWWo....
+0x6fe00, 0xf002fffc, 0xf40be07, 0xbc1f40, 0x7c2f0, 0xd0003d3e, 0x3d0003d3, 0xe7d0003e, 0x3d7d0003, 0x3d3d000, 0x7c3d00, 0xbc3e0, 0xf400f82f, 0xbd07f01, 0x2fffc0, 0x7fe0, 
+//char='П' offset=(2, 7) width=11 height=18 xadvance=14.625
+//WWWWWWWWWWo
+//WWWWWWWWWWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+//WWO.....WWo
+0xffdfffff, 0xf002f7ff, 0x2f7c00bd, 0xc00bdf00, 0xbdf002f7, 0x2f7c00, 0xf7c00bdf, 0xbdf002, 0xdf002f7c, 0x2f7c00b, 0x7c00bdf0, 0xbdf002f, 0x7c0, 
+//char='Р' offset=(2, 7) width=10 height=18 xadvance=12.6094
+//OWWWWWO...
+//WWWWWWWWo.
+//WWO..oWWW.
+//WWO....WWo
+//WWO....WWO
+//WWO....OWO
+//WWO....WWO
+//WWO...oWWo
+//WWO..oWWW.
+//WWWWWWWWo.
+//WWWWWWO...
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+0xfff02ffe, 0xf3f42f1f, 0xc02f7c02, 0x2fb802fb, 0x7d02fbc0, 0xfff3f42f, 0xf02fff1f, 0x2f0002, 0x2f0002f0, 0x2f000, 0x2f0002f, 0x0, 
+//char='С' offset=(1, 7) width=11 height=18 xadvance=12.1875
+//....OWWWWo.
+//..oWWWWWWWo
+//..WWWo..oO.
+//.OWW.......
+//.WWO.......
+//oWW........
+//oWW........
+//oWW........
+//OWW........
+//OWW........
+//oWW........
+//oWW........
+//.WWo.......
+//.WWO.......
+//.OWW.......
+//..WWWo...Oo
+//...WWWWWWWO
+//....OWWWWO.
+0xf407fe00, 0x907f07ff, 0xbc0003e0, 0xf4000, 0xf40003d0, 0x3e0000, 0xd0000f80, 0xf40003, 0x7c00, 0xf80002f, 0x601fc000, 0x802fffc0, 0x2ff, 
+//char='Т' offset=(0, 7) width=11 height=18 xadvance=11.0625
+//OWWWWWWWWWO
+//OWWWWWWWWWO
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+//....OWO....
+0xffaffffe, 0x2e00bff, 0xb800, 0xb80002e, 0x2e000, 0x2e0000b8, 0xb8000, 0xb80002e0, 0x2e0000, 0xe0000b80, 0xb80002, 0x80002e00, 0xb, 
+//char='У' offset=(0, 7) width=12 height=18 xadvance=12.3438
+//.WWo.....OWO
+//.OWO.....WWo
+//.oWW.....WW.
+//..WW....oWW.
+//..WWo...OWO.
+//..oWW...WW..
+//...WW..oWW..
+//...OWO.OWO..
+//...oWW.WW...
+//....WWOWW...
+//....OWWWO...
+//.....WWW....
+//.....OWO....
+//.....WWo....
+//....oWW.....
+//...oWWO.....
+//.OWWWW......
+//.OWWO.......
+0xb8b8007c, 0xf47c00, 0x3d00f03c, 0xd02e01f0, 0x43c00f03, 0xb8b800f, 0x3cf40, 0xfe0003ef, 0xfc0002, 0xb800, 0x3d00007c, 0x2f4000, 0xf8000ff8, 0x2, 
+//char='Ф' offset=(1, 5) width=15 height=20 xadvance=17
+//...............
+//......OWO......
+//......OWO......
+//....OWWWWWO....
+//..oWWWWWWWWWo..
+//.oWWO.OWO.OWWo.
+//.WWO..OWO..OWW.
+//oWW...OWO...WWo
+//OWO...OWO...OWO
+//OWO...OWO...OWO
+//WWO...OWO...OWW
+//OWO...OWO...OWO
+//OWW...OWO...WWO
+//oWW...OWO...WWo
+//.WWO..OWO..OWW.
+//..WWWoOWOoWWW..
+//...WWWWWWWWW...
+//....oOWWWOo....
+//......OWO......
+//......OWO......
+0x0, 0xb800, 0x2e00, 0xd000bff8, 0xbd01ffff, 0xbc1f8b8, 0x80f4f82e, 0xe02e7c0b, 0xb80bae02, 0x2e02fb80, 0xb80bbe0, 0x2e03eb8, 0xc0b80f6f, 0xf82e0bc7, 0xfdb9fc0, 0xffffc0, 0x6fe40, 0x2e00, 0xb80, 
+//char='Х' offset=(0, 7) width=12 height=18 xadvance=12.2344
+//.WW......WWo
+//.OWO....OWO.
+//..WW....WWo.
+//..OWO..oWW..
+//..oWW..WWo..
+//...OWOoWW...
+//...oWWWWo...
+//....OWWW....
+//....oWWO....
+//....OWWW....
+//....WWWWo...
+//...OWOoWW...
+//...WW..WWo..
+//..OWO..oWW..
+//..WW....WWo.
+//.OWO....OWO.
+//.WWo.....WW.
+//oWW......OWO
+0xb87c003c, 0xf02e00, 0xf42e01f, 0x8007c3d0, 0xff4003db, 0xfe0001, 0xbd00, 0xff0000fe, 0x3db8001, 0xe007c3c0, 0xf00f42, 0x2e00b81f, 0x3d3c007c, 0xb800, 
+//char='Ц' offset=(2, 7) width=13 height=23 xadvance=14.8906
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWO.....WWo..
+//WWWWWWWWWWWW.
+//WWWWWWWWWWWW.
+//..........WW.
+//..........WW.
+//..........WW.
+//..........WW.
+//..........WW.
+0xbc1f002f, 0x2f07c00, 0xc00bc1f0, 0x1f002f07, 0xf07c00bc, 0xbc1f002, 0x2f07c0, 0x7c00bc1f, 0xc1f002f0, 0x2f07c00b, 0xbc1f00, 0xf002f07c, 0x7c00bc1, 0xfcffffff, 0x3ffff, 0xf00, 0xf000003c, 0x3c00000, 0xf0000, 
+//char='Ч' offset=(1, 7) width=11 height=18 xadvance=13.2813
 //OWO....oWW.
-//OWO....oWWo
-//OWO....oWWo
-//OWO....oWW.
-//OWO....WWW.
-//OWO.ooWWWo.
-//OWWWWWWWO..
-//oOWWWWOo...
-0xff82fffe, 0x2e0bf, 0x2e0000b8, 0xb8000, 0xf80002e0, 0xfffe01ff, 0xe2fd0b82, 0xb8fc02, 0x9f402e3d, 0x2e7d00b, 0x3f00b8f4, 0xff87f52e, 0x6ff90bf, 0x0, 
-//char='В' offset=(2, 6) width=11 height=19 xadvance=14.0625
-//oOWWWWOo...
-//OWWWWWWWW..
-//OWO..oOWWO.
-//OWO....OWW.
 //OWO....oWW.
 //OWO....oWW.
-//OWO....OWW.
-//OWO...OWWo.
-//OWWWWWWWo..
-//OWWWWWWWO..
-//OWO...oWWW.
-//OWO.....WWo
-//OWO.....WWO
-//OWO.....OWW
-//OWO.....OWW
-//OWO.....WWO
-//OWO...oWWW.
-//OWWWWWWWWo.
-//oOWWWWWO...
-0xff806ff9, 0xbe42e0ff, 0x2e3e00b8, 0xd00b8f40, 0xb8f802e3, 0xfffe1f80, 0xe0bfff81, 0xb8fd02, 0xaf002e7c, 0x2ef800b, 0xbc00bbe0, 0xff8fd02e, 0xbff91ff, 0x0, 
-//char='Г' offset=(2, 6) width=9 height=19 xadvance=11.0625
-//OWWWWWWWo
-//OWWWWWWWo
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-//OWO......
-0xfff9fffe, 0xb8002e7, 0xb8002e00, 0x8002e000, 0x2e000b, 0x2e000b8, 0x2e000b80, 0xe000b800, 0xb8002, 0xb8002e, 0x2e0, 
-//char='Д' offset=(0, 6) width=15 height=24 xadvance=15.6719
-//....OWWWWWWWW..
-//....OWWWWWWWW..
-//....OWW...oWW..
-//....OWW...oWW..
-//....OWW...oWW..
-//....OWW...oWW..
-//....OWO...oWW..
-//....OWO...oWW..
-//....WWO...oWW..
-//....WWo...oWW..
-//....WWo...oWW..
-//...oWW....oWW..
-//...oWW....oWW..
-//...OWO....oWW..
-//...WWo....oWW..
-//..oWW.....oWW..
-//..WWO.....oWW..
-//WWWWWWWWWWWWWWW
-//WWWWWWWWWWWWWWW
-//WWo.........oWW
-//WWo.........oWW
-//WWo.........oWW
-//WWo.........oWW
-//WWo.........oWW
-0x3fffe00, 0xffff80, 0x3d03e0, 0xf40f8, 0x8003d03e, 0xe000f40f, 0xb8003d02, 0x2f000f40, 0x7c003d0, 0x1f000f4, 0x403d003d, 0xd00f400f, 0xf402e003, 0x3d007c00, 0xf400f40, 0xc3d002f0, 0xffffffff, 0x7fffffff, 0x1ff40000, 0x7fd0000, 0x1ff4000, 0x7fd000, 0xf400, 
-//char='Е' offset=(2, 6) width=10 height=19 xadvance=12.2969
-//OWWWWWWWO.
-//OWWWWWWWO.
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWWWWWWW..
-//OWWWWWWW..
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWO.......
-//OWWWWWWWW.
-//OWWWWWWWW.
-0xffe2fffe, 0xe0002e2f, 0x2e0002, 0x2e0002e0, 0x2e000, 0xffe0fffe, 0xe0002e0f, 0x2e0002, 0x2e0002e0, 0x2e000, 0xffe0002e, 0x3fffe3f, 
-//char='Ж' offset=(0, 6) width=18 height=19 xadvance=17.3594
-//.WWo...oWW....WWo.
-//.oWW...oWW...OWW..
-//..WWo..oWW...WWo..
-//..oWW..oWW..OWW...
-//...WWo.oWW..WWo...
-//...oWW.oWW.OWO....
-//....WWooWW.WW.....
-//....oWWOWWOWO.....
-//.....OWWWWWW......
-//.....WWWWWWWo.....
-//....OWWOWWOWW.....
-//...oWWooWW.WWO....
-//...WWO.oWW.oWW....
-//..oWW..oWW..OWO...
-//..WWO..oWW..oWWo..
-//.oWW...oWW...WWO..
-//.WWO...oWW...oWW..
-//.WWo...oWW....WWO.
-//OWW....oWW....OWW.
-0xf00f407c, 0x80f40f41, 0xf41f00f, 0xf43d007c, 0x47c003e0, 0xf4001f0f, 0xb8f4, 0x3cf5f, 0x2efbd0, 0xfff800, 0x1fffc000, 0xefbe0000, 0xf5f40003, 0x4bc000bc, 0x3d000f4f, 0xf002e0f4, 0x407d0f42, 0xbc0f40f, 0xf40f40bc, 0xf407c0, 0xf403e2f, 0x3e0, 
-//char='З' offset=(0, 6) width=11 height=19 xadvance=11.5156
-//..OWWWOo...
-//.WWWWWWWO..
-//.ooo.oOWWo.
-//.......WWO.
-//.......OWO.
-//.......WWO.
-//......OWWo.
-//..oWWWWWW..
-//..oWWWWO...
-//.....oOWo..
-//.......OWo.
+//OWO....oWW.
+//OWO....oWW.
+//OWO....oWW.
+//OWO....oWW.
+//oWW....oWW.
+//oWW....oWW.
+//.WWO...oWW.
+//.oWWWWWWWW.
+//..oOWWWOWW.
 //.......oWW.
-//........WW.
-//........WWo
-//.......oWWo
+//.......oWW.
+//.......oWW.
+//.......oWW.
+//.......oWW.
+//.......oWW.
+0xb8f402e, 0xf402e3d0, 0x2e3d00b8, 0xd00b8f40, 0xf4f402e3, 0x403d3d00, 0x43d02f0f, 0xfe40ffff, 0xf40003e, 0x3d000, 0x3d0000f4, 0xf4000, 0x3d0, 
+//char='Ш' offset=(2, 7) width=16 height=18 xadvance=20.0938
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWO....WWo...oWW
+//WWWWWWWWWWWWWWWW
+//WWWWWWWWWWWWWWWW
+0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xf407c02f, 0xffffffff, 0xffffffff, 
+//char='Щ' offset=(2, 7) width=18 height=23 xadvance=20.4063
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWO....WWo...oWW..
+//WWWWWWWWWWWWWWWWWO
+//WWWWWWWWWWWWWWWWWO
+//...............OWO
+//...............OWO
+//...............OWO
+//...............OWO
+//...............OWO
+0xf407c02f, 0x407c02f0, 0x7c02f0f, 0x7c02f0f4, 0xc02f0f40, 0x2f0f407, 0x2f0f407c, 0xf0f407c0, 0xf407c02, 0xf407c02f, 0x407c02f0, 0x7c02f0f, 0x7c02f0f4, 0xc02f0f40, 0x2f0f407, 0x2f0f407c, 0xf0f407c0, 0xf407c02, 0xffffffff, 0xfffffffb, 0xbf, 0xb80, 0xb800, 0xb8000, 0xb80000, 0xb800000, 
+//char='Ъ' offset=(0, 7) width=14 height=18 xadvance=14.1563
+//OWWWWW........
+//OWWWWW........
+//...oWW........
+//...oWW........
+//...oWW........
+//...oWW........
+//...oWWWWWOo...
+//...oWWWWWWWO..
+//...oWW..oOWWo.
+//...oWW....OWW.
+//...oWW....oWW.
+//...oWW.....WWo
+//...oWW.....WWo
+//...oWW....oWW.
+//...oWW....OWW.
+//...oWW..oOWWo.
+//...oWWWWWWWO..
+//....OWWWWOo...
+0xe0000ffe, 0x400000ff, 0xf400000f, 0xf400000, 0xf40000, 0x1bff4000, 0xbfff400, 0x1f90f40, 0x403e00f4, 0xf403d00f, 0xf407c00, 0xf407c0, 0xe00f403d, 0x1f90f403, 0xbfff40, 0x1bfe0, 
+//char='Ы' offset=(2, 7) width=16 height=18 xadvance=19.5
+//WWO..........WWo
+//WWO..........WWo
+//WWO..........WWo
+//WWO..........WWo
+//WWO..........WWo
+//WWO..........WWo
+//WWWWWWO......WWo
+//WWWWWWWWo....WWo
+//WWO..oWWW....WWo
+//WWO....WWo...WWo
+//WWO....WWO...WWo
+//WWO....OWW...WWo
+//WWO....OWW...WWo
+//WWO....OWO...WWo
+//WWO....WWo...WWo
+//WWO..oWWW....WWo
+//WWWWWWWWo....WWo
+//OWWWWWO......WWo
+0x7c00002f, 0x7c00002f, 0x7c00002f, 0x7c00002f, 0x7c00002f, 0x7c00002f, 0x7c002fff, 0x7c01ffff, 0x7c03f42f, 0x7c07c02f, 0x7c0bc02f, 0x7c0f802f, 0x7c0f802f, 0x7c0b802f, 0x7c07c02f, 0x7c03f42f, 0x7c01ffff, 0x7c002ffe, 
+//char='Ь' offset=(2, 7) width=10 height=18 xadvance=12.7344
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWO.......
+//WWWWWWO...
+//WWWWWWWWo.
+//WWO..oWWW.
+//WWO....WWo
+//WWO....WWO
+//WWO....OWW
+//WWO....OWW
+//WWO....OWO
+//WWO....WWo
+//WWO..oWWW.
+//WWWWWWWWo.
+//OWWWWWO...
+0x2f0002f, 0xf0002f00, 0x2f0002, 0xff0002f0, 0x1ffff02f, 0x2f3f42f, 0xfbc02f7c, 0x802ff802, 0x2fb802ff, 0x3f42f7c0, 0xffe1ffff, 0x2, 
+//char='Э' offset=(0, 7) width=11 height=18 xadvance=12.4219
+//.oOWWWOo...
+//.WWWWWWWO..
+//.oo...OWWo.
 //.......OWW.
-//.Wo..oOWWO.
+//........WWo
+//........OWO
+//........OWW
+//...WWWWWWWW
+//...WWWWWWWW
+//........OWW
+//........OWW
+//........WWO
+//........WWO
+//.......oWWo
+//.......WWW.
+//.Oo..oWWWo.
 //oWWWWWWWO..
 //.oOWWWOo...
-0xff006fe0, 0x7e4540bf, 0x2f0000, 0xf0000b80, 0x407e0002, 0xbfd00fff, 0x790000, 0x7800, 0xf00003d, 0x7c000, 0x3e0001f4, 0xff4be41c, 0x6fe40bf, 0x0, 
-//char='И' offset=(2, 6) width=12 height=19 xadvance=15.6719
-//OWO......WWo
-//OWO.....oWWo
-//OWO.....WWWo
-//OWO....OWWWo
-//OWO....WWWWo
-//OWO...OWOWWo
-//OWO...WW.WWo
-//OWO..OWo.WWo
-//OWO..WW..WWo
-//OWO.OWO..WWo
-//OWO.WW...WWo
-//OWOOWO...WWo
-//OWOWW....WWo
-//OWWWO....WWo
-//OWWW.....WWo
-//OWWO.....WWo
-//OWWo.....WWo
-//OWW......WWo
-//OWo......WWo
-0x2e7c002e, 0x2e7d00, 0x7f802e7f, 0x2e7fc02e, 0xf02e7ee0, 0x7c782e7c, 0x2e7c3c2e, 0xf2e7c2e, 0x7c0bae7c, 0xfe7c03ee, 0xfe7c02, 0x7c00be7c, 0x3e7c007e, 0x1e7c00, 0x7c, 
-//char='Й' offset=(2, -1) width=12 height=26 xadvance=15.6719
-//............
-//...Wo..oWo..
-//...WW..WW...
-//...OWWWWO...
-//....oOOo....
-//............
-//............
-//OWO......WWo
-//OWO.....oWWo
-//OWO.....WWWo
-//OWO....OWWWo
-//OWO....WWWWo
-//OWO...OWOWWo
-//OWO...WW.WWo
-//OWO..OWo.WWo
-//OWO..WW..WWo
-//OWO.OWO..WWo
-//OWO.WW...WWo
-//OWOOWO...WWo
-//OWOWW....WWo
-//OWWWO....WWo
-//OWWW.....WWo
-//OWWO.....WWo
-//OWWo.....WWo
-//OWW......WWo
-//OWo......WWo
-0xc0000000, 0xc3c00741, 0x2ff8003, 0x6900, 0x0, 0x7c002e00, 0x2e7d002e, 0x802e7f00, 0x7fc02e7f, 0x2e7ee02e, 0x782e7cf0, 0x7c3c2e7c, 0x2e7c2e2e, 0xbae7c0f, 0x7c03ee7c, 0xfe7c02fe, 0xbe7c00, 0x7c007e7c, 0x1e7c003e, 0x7c00, 
-//char='К' offset=(2, 6) width=12 height=19 xadvance=13.8906
-//OWO.....WWO.
-//OWO....OWW..
-//OWO...oWWo..
-//OWO...WWO...
-//OWO..OWW....
-//OWO.oWWo....
-//OWO.WWO.....
-//OWOOWW......
-//OWWWWo......
-//OWWWWO......
-//OWOOWWo.....
-//OWO.OWW.....
-//OWO..WWW....
-//OWO..oWWO...
-//OWO...OWW...
-//OWO....WWW..
-//OWO....oWWo.
-//OWO.....WWW.
-//OWO.....oWWo
-0x2e2f002e, 0xd02e0f80, 0x2f02e07, 0x2e00f82e, 0x2f2e007d, 0xfae00, 0xfe0007fe, 0x1fae000b, 0x3e2e00, 0x2e00fc2e, 0xe02e02f4, 0xfc02e03, 0x2e1f402e, 0x2e3f00, 0x7d, 
-//char='Л' offset=(0, 6) width=14 height=19 xadvance=15.625
-//....oWWWWWWWWo
-//....oWWWWWWWWo
-//....oWW....WWo
-//....oWW....WWo
-//....oWW....WWo
-//....oWW....WWo
-//....oWW....WWo
-//....oWW....WWo
-//....oWW....WWo
-//....OWO....WWo
-//....OWO....WWo
-//....WWo....WWo
-//....WWo....WWo
-//...oWW.....WWo
-//...OWW.....WWo
-//..oWWo.....WWo
-//.oWWW......WWo
-//OWWWo......WWo
-//OWO........WWo
-0x7fffd00, 0x7fffd0, 0xd007c03d, 0x3d007c03, 0x3d007c0, 0xc03d007c, 0x7c03d007, 0x7c03d00, 0x7c02e0, 0xf007c02e, 0x1f007c01, 0xf407c0, 0xc00f807c, 0x7c007d07, 0xe7c003f4, 0x2e7c001f, 0x7c000, 
-//char='М' offset=(1, 6) width=17 height=19 xadvance=19.5938
-//..WWo........WWW.
-//.oWWW........WWW.
-//.oWWW.......OWWW.
-//.oWWWO......WWWW.
-//.OWOWW.....oWOWW.
-//.OWOOWo....OWoWW.
-//.OWOoWO....WW.WW.
-//.OWo.WW...oWO.WWo
-//.OWo.OWo..OWo.WWo
-//.WWo.oWO..WW..WWo
-//.WWo..WW.oWO..WWo
-//.WWo..OWoOWo..WWo
-//.WWo..oWOWW...OWO
-//.WWo...WWWO...OWO
-//.WWo...OWWo...OWO
-//.WWo...oWW....OWO
-//.WW.....oo....OWO
-//.WW...........OWO
-//.WW...........OWO
-0xfc0001f0, 0xf0000fd0, 0xe0003f43, 0xc002fd0f, 0x400fb83f, 0x7ae0fb, 0x2db83de, 0xf1e0f3c, 0x78787cb4, 0xd1f1f1e0, 0x7c7c3c2, 0x1f1f0b4f, 0x7c7c1e78, 0xf2e03ed0, 0xcb80bf01, 0x2e01f807, 0xb803d01f, 0xe005003c, 0x800000f2, 0x3cb, 0x2e, 
-//char='Н' offset=(2, 6) width=12 height=19 xadvance=15.5469
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO.....oWWo
-//OWWWWWWWWWWo
-//OWWWWWWWWWWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-//OWO......WWo
-0x2e7c002e, 0x2e7c00, 0x7c002e7c, 0x2e7c002e, 0x2e7c00, 0x7d002e7c, 0xfe7ffffe, 0x2e7fff, 0x7c002e7c, 0x2e7c002e, 0x2e7c00, 0x7c002e7c, 0x2e7c002e, 0x2e7c00, 0x7c, 
-//char='О' offset=(1, 6) width=14 height=19 xadvance=16.3281
-//....oOWWWO....
-//...OWWWWWWWo..
-//..OWWOoooWWW..
-//.oWWO.....WWO.
-//.OWW......OWW.
-//.WWO......oWWo
-//.WWo.......WWO
-//oWW........WWO
-//oWW........WWO
-//oWW........OWW
-//oWW........WWO
-//oWW........WWO
-//.WWo.......WWO
-//.WWO.......WWo
-//.OWW......OWW.
-//.oWWO.....WWO.
-//..OWWOoooWWW..
-//...OWWWWWWWo..
-//....oOWWWO....
-0xbf900, 0xe007fff8, 0x2f40fd5b, 0xf82f00, 0xbc3e0, 0xc0007c7d, 0xbc0003db, 0xdbc0003d, 0x3df80003, 0x3dbc000, 0x7cbc00, 0xbcbc0, 0xe000f87c, 0x2f002f43, 0xfd5be0, 0x7fff8, 0xbf9, 
-//char='П' offset=(2, 6) width=11 height=19 xadvance=15.1875
-//OWWWWWWWWWW
-//OWWWWWWWWWW
-//OWO.....OWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-//OWO.....oWW
-0xffbffffe, 0xe002efff, 0x2ef400bb, 0x400bbd00, 0xbbd002ef, 0x2ef400, 0xef400bbd, 0xbbd002, 0xbd002ef4, 0x2ef400b, 0xf400bbd0, 0xbbd002e, 0xd002ef40, 0x3, 
-//char='Р' offset=(2, 6) width=11 height=19 xadvance=13.0938
-//oOWWWWO....
-//OWWWWWWWO..
-//OWWoooWWWo.
-//OWO....WWW.
-//OWO....OWW.
-//OWO....oWW.
-//OWO....oWW.
-//OWO....OWW.
-//OWO....WWW.
-//OWO.ooWWWo.
-//OWWWWWWWO..
-//OWWWWWO....
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-0xff802ff9, 0x7f57e0bf, 0x2e3f00b8, 0xd00b8f80, 0xb8f402e3, 0xc02e3e00, 0xe1fd4b8f, 0xbff82fff, 0x80002e00, 0x2e0000b, 0xb800, 0xb80002e, 0x2e000, 0x0, 
-//char='С' offset=(1, 6) width=12 height=19 xadvance=12.6562
-//....oWWWWO..
-//...WWWWWWWW.
-//..WWWOo.oOo.
-//.oWWo.......
-//.WWW........
-//.WWo........
-//oWWo........
-//oWW.........
-//oWW.........
-//oWW.........
-//oWW.........
-//oWW.........
-//oWWo........
-//.WWO........
-//.OWW........
-//.oWWO.......
-//..WWWOo.oOO.
-//...WWWWWWWW.
-//....oOWWWOo.
-0xc00bfd00, 0x1bf03fff, 0x1f419, 0x7c0000fc, 0x7d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0xbc00007d, 0xf80000, 0x2f400, 0xc0291bf0, 0xf9003fff, 0x1b, 
-//char='Т' offset=(0, 6) width=12 height=19 xadvance=11.5
-//OWWWWWWWWWW.
-//OWWWWWWWWWW.
-//....OWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-//....oWW.....
-0xfe3ffffe, 0x3e003fff, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d00003d, 0x3d0000, 0x3d00, 0x3d00003d, 0x0, 
-//char='У' offset=(0, 6) width=13 height=19 xadvance=12.8125
-//.WWo.....oWW.
-//.OWO.....OWW.
-//.oWW.....OWO.
-//..WWo....WWo.
-//..WWO...oWW..
-//..oWW...OWO..
-//...WWo..WWo..
-//...OWO.oWW...
-//...oWW.OWO...
-//....WWoWWo...
-//....OWWWW....
-//.....WWWO....
-//.....WWWo....
-//.....oWW.....
-//.....WWO.....
-//....oWW......
-//...oWWO......
-//.OWWWW.......
-//.OWWO........
-0xe0f4007c, 0xf43e002, 0x7c0b80, 0x3d02f01f, 0xb80f40, 0xe001f07c, 0x8f4003d2, 0x1f7c000b, 0x3fe000, 0xbf00, 0xd00001fc, 0xbc00003, 0xf4000, 0xe0002f40, 0x2f80003f, 0x0, 
-//char='Ф' offset=(1, 4) width=16 height=21 xadvance=17.6562
-//.......OO.......
-//......oWW.......
-//......oWW.......
-//....OWWWWWWO....
-//..oWWWWWWWWWW...
-//.oWWO.oWW.oWWW..
-//.WWO..oWW...WWo.
-//oWWo..oWW...OWW.
-//OWW...oWW...oWW.
-//OWW...oWW....WWo
-//OWO...oWW....WWo
-//OWO...oWW....WWo
-//OWW...oWW....WWo
-//oWW...oWW...oWW.
-//.WWO..oWW...WWO.
-//.oWWo.oWW..OWW..
-//..OWWWOWWOWWWo..
-//...OWWWWWWWWo...
-//.....oOWWOo.....
-//......oWW.......
-//......oWW.......
-0x28000, 0x3d000, 0x3d000, 0xbffe00, 0x3ffffd0, 0xfd3d2f4, 0x1f03d0bc, 0x3e03d07d, 0x3d03d03e, 0x7c03d03e, 0x7c03d02e, 0x7c03d02e, 0x7c03d03e, 0x3d03d03d, 0x2f03d0bc, 0xf83d1f4, 0x7fbefe0, 0x1ffff80, 0x1be400, 0x3d000, 0x3d000, 
-//char='Х' offset=(0, 6) width=13 height=19 xadvance=12.7031
-//.WWo.....OWO.
-//.OWO.....WWo.
-//..WW....OWO..
-//..OWO...WWo..
-//..oWW..OWW...
-//...OWO.WWo...
-//...oWWoWW....
-//....WWWWo....
-//....oWWW.....
-//....oWWW.....
-//....WWWWo....
-//...oWWOWW....
-//...OWO.WWo...
-//...WW..OWW...
-//..OWO...WWo..
-//..WW....OWO..
-//.OWW.....WW..
-//.WWo.....OWO.
-//oWW......oWW.
-0xe0b8007c, 0xf01f002, 0xc0b802e0, 0xf83d007, 0x1f2e00, 0xc0003df4, 0xfd00007f, 0x3f40000, 0x1ff000, 0x8000fbd0, 0xf0007cb, 0xf02e003e, 0xb803c01, 0xf03c00f8, 0x3d2e001, 0xf40, 
-//char='Ц' offset=(2, 6) width=13 height=24 xadvance=15.4688
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWO.....OWW..
-//OWWWWWWWWWWWO
-//OWWWWWWWWWWWO
-//..........OWO
-//..........OWO
-//..........OWO
-//..........OWO
-//..........OWO
-0xb83e002e, 0x2e0f800, 0x800b83e0, 0x3e002e0f, 0xe0f800b8, 0xb83e002, 0x2e0f80, 0xf800b83e, 0x83e002e0, 0x2e0f800b, 0xb83e00, 0xe002e0f8, 0xf800b83, 0xf83e002e, 0xffebffff, 0x2fff, 0xe00000b8, 0xb800002, 0x2e0000, 0xb800, 
-//char='Ч' offset=(1, 6) width=11 height=19 xadvance=13.7969
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//oWW.....WWO
-//.WWWo...WWO
-//.oWWWWWWWWO
-//..oWWWWWWWO
-//........WWO
-//........WWO
-//........WWO
-//........WWO
-//........WWO
-//........WWO
-//........WWO
-0xf6f003d, 0xf003dbc0, 0x3dbc00f6, 0xc00f6f00, 0xf6f003db, 0x3dbc00, 0x4bc07f2f, 0xff42ffff, 0x2f0000bf, 0xbc000, 0xbc0002f0, 0x2f0000, 0xf0000bc0, 0x2, 
-//char='Ш' offset=(2, 6) width=17 height=19 xadvance=20.8594
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....OWO....WWO
-//OWO....WWO....WWO
-//OWWWWWWWWWWWWWWWO
-//OWWWWWWWWWWWWWWWO
-0xf00b802e, 0xc02e00ba, 0xb802eb, 0x2e00baf, 0xb802ebc, 0x2e00baf0, 0xb802ebc0, 0xe00baf00, 0x802ebc02, 0xbaf00b, 0x2ebc02e, 0xbaf00b8, 0x2ebc02e0, 0xbaf00b80, 0xebc02e00, 0xaf00b802, 0xbc02e00b, 0xf00bc02e, 0xfffffffa, 0xffffffeb, 0x2f, 
-//char='Щ' offset=(2, 6) width=19 height=24 xadvance=21.1875
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....OWO....WWO..
-//OWO....WWO....WWO..
-//OWWWWWWWWWWWWWWWWWo
-//OWWWWWWWWWWWWWWWWWo
-//................WWo
-//................WWo
-//................WWo
-//................WWo
-//................WWo
-0xf00b802e, 0x2e00b82, 0xb802e0bc, 0xb82f00, 0x2e0bc02e, 0x82f00b80, 0xbc02e00b, 0xb802e0, 0x2e00b82f, 0x802e0bc0, 0xb82f00b, 0xe0bc02e0, 0x2f00b802, 0xc02e00b8, 0xb802e0b, 0xe00b82f0, 0x2e0bc02, 0xb82f00b8, 0xbc02e00, 0xf00bc02e, 0xffffff82, 0xffffe7ff, 0x1ffff, 0x7c0000, 0x1f000000, 0xc0000000, 0x7, 0x1f0, 0x7c00, 
-//char='Ъ' offset=(0, 6) width=14 height=19 xadvance=14.7031
-//OWWWWW........
-//OWWWWW........
-//...oWW........
-//...oWW........
-//...oWW........
-//...oWW........
-//...oWWo.......
-//...oWWWWWWO...
-//...oWWWWWWWWo.
-//...oWW...oWWW.
-//...oWW....oWWo
-//...oWW.....WWO
-//...oWW.....OWW
-//...oWW.....OWW
-//...oWW.....WWO
-//...oWW....oWWo
-//...oWWo.oOWWW.
-//...oWWWWWWWW..
-//....OWWWWWo...
-0xe0000ffe, 0x400000ff, 0xf400000f, 0xf400000, 0xf40000, 0x1f4000, 0x2fff400, 0x1ffff40, 0x403f40f4, 0xf407d00f, 0xf40bc00, 0xf40f80, 0xc00f40f8, 0x7d00f40b, 0x3f91f40, 0xffff4, 0x1ffe, 
-//char='Ы' offset=(2, 6) width=16 height=19 xadvance=20.2344
-//OWO..........oWW
-//OWO..........oWW
-//OWO..........oWW
-//OWO..........oWW
-//OWO..........oWW
-//OWO..........oWW
-//OWO..........oWW
-//OWWWWWWo.....oWW
-//OWWWWWWWO....oWW
-//OWO..oOWWO...oWW
-//OWO....WWW...oWW
-//OWO....oWW...oWW
-//OWO....oWWo..oWW
-//OWO....oWWo..oWW
-//OWO....oWW...oWW
-//OWO....WWW...oWW
-//OWO.ooWWWo...oWW
-//OWWWWWWWO....oWW
-//oOWWWWOo.....oWW
-0xf400002e, 0xf400002e, 0xf400002e, 0xf400002e, 0xf400002e, 0xf400002e, 0xf400002e, 0xf4007ffe, 0xf402fffe, 0xf40be42e, 0xf40fc02e, 0xf40f402e, 0xf41f402e, 0xf41f402e, 0xf40f402e, 0xf40fc02e, 0xf407f52e, 0xf402fffe, 0xf4006ff9, 
-//char='Ь' offset=(2, 6) width=11 height=19 xadvance=13.2188
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWO........
-//OWWWWWWo...
-//OWWWWWWWO..
-//OWO..oOWWO.
-//OWO....WWW.
-//OWO....oWW.
-//OWO....oWWo
-//OWO....oWWo
-//OWO....oWW.
-//OWO....WWW.
-//OWO.ooWWWo.
-//OWWWWWWWO..
-//oOWWWWOo...
-0xb80002e, 0x2e000, 0x2e0000b8, 0xb8000, 0xf80002e0, 0xfffe01ff, 0xe2f90b82, 0xb8fc02, 0x9f402e3d, 0x2e7d00b, 0x3f00b8f4, 0xff87f52e, 0x6ff90bf, 0x0, 
-//char='Э' offset=(0, 6) width=12 height=19 xadvance=12.8906
-//..OWWWOo....
-//.WWWWWWWW...
-//.OOo.oOWWO..
-//.......oWWo.
-//........OWO.
-//........oWW.
-//........oWW.
-//...WWWWWWWWo
-//...WWWWWWWWo
-//........oWWo
-//........oWWo
-//........oWWo
-//........OWW.
-//........WWW.
-//........WWO.
-//.......WWWo.
-//.WOo.oWWWO..
-//oWWWWWWWO...
-//.oOWWWOo....
-0xfc006fe0, 0xe46803ff, 0x1f40000b, 0x2e0000, 0x3d00, 0x7fffc03d, 0x7fffc0, 0x7d00, 0x7d00007d, 0x3e0000, 0x3f00, 0x1fc0002f, 0xfd0bf46c, 0x6fe402ff, 0x0, 
-//char='Ю' offset=(2, 6) width=19 height=19 xadvance=22.3438
-//OWO......oOWWWO....
-//OWO.....OWWWWWWWo..
-//OWO....oWWOoooWWW..
-//OWO....WWO.....WWO.
-//OWO...oWW......OWW.
-//OWO...OWW.......WWo
-//OWO...WWO.......WWO
-//OWO..oWWo.......WWO
-//OWWWWWWWo.......WWW
-//OWWWWWWWo.......OWW
-//OWO...WWo.......WWW
-//OWO...WWo.......WWO
-//OWO...WWO.......WWO
-//OWO...OWW.......WWo
-//OWO...oWW......OWW.
-//OWO....WWO.....WWO.
-//OWO....oWWOoooWWW..
-//OWO.....OWWWWWWWo..
-//OWO......oOWWWO....
-0x2fe4002e, 0xff800b80, 0xf402e07f, 0xb83f56, 0x2e2f002f, 0x8f8003d0, 0xc000f80b, 0x2f02e7, 0x7d0baf0, 0xfffebc00, 0xffbf0001, 0xef80007f, 0xf0001f02, 0x7c0bb, 0x2f02ebc, 0xf80baf00, 0x2e7c000, 0xb8f8003d, 0x2f002f00, 0xf56f402e, 0xff800b83, 0x4002e07f, 0x2fe, 
-//char='Я' offset=(0, 6) width=12 height=19 xadvance=13.875
-//....oOWWWWOo
-//...OWWWWWWWO
-//..oWWWoooWWO
-//..WWW....OWO
-//..WWo....OWO
-//..WWo....OWO
-//..WWo....OWO
-//..WWO....OWO
-//..oWWOo..OWO
-//...OWWWWWWWO
-//....OWWWWWWO
-//....WWo..OWO
-//...OWW...OWO
-//...WWO...OWO
-//..oWW....OWO
-//..WWO....OWO
-//.oWW.....OWO
-//.OWW.....OWO
-//.WWo.....OWO
-0x806ff900, 0x5fd0bfff, 0xb803f0bd, 0xf0b801f0, 0x1f0b801, 0xb802f0b8, 0x80b81bd0, 0xfe00bfff, 0xb81f00bf, 0xc0b80f80, 0x3d0b80b, 0xb802f0b8, 0xf8b800f4, 0x7cb800, 0xb8, 
-//char='а' offset=(1, 10) width=9 height=15 xadvance=11.7031
-//.oOWWWO..
-//.oWWWWWO.
-//..oo.OWWo
-//......OWO
-//......OWO
-//......oWW
-//..OWWWWWW
-//.WWWWWWWW
-//OWWo..OWW
-//WWO...oWW
-//WWo...oWW
-//WWO...oWW
-//OWWo..OWW
-//.WWWWWWWW
-//..OWWWWOo
-0xffd02fe4, 0x1f8502, 0x2e000b8, 0x3ffe0f40, 0xe07effff, 0x1ff40bf, 0x7ef40bfd, 0xffff3e0, 0x1bfe, 
-//char='б' offset=(1, 3) width=11 height=22 xadvance=12.7344
-//......oOWo.
-//....OWWWWO.
-//...OWWWOo..
-//..OWWo.....
+0xff006fe4, 0x7e0140bf, 0x3e0000, 0x80001f00, 0x3e0000b, 0xffc0ffff, 0xf80003f, 0x3e000, 0x2f0000bc, 0x7d000, 0x1fd060fc, 0xf902fffd, 0x1b, 
+//char='Ю' offset=(2, 7) width=19 height=18 xadvance=21.5156
+//WWO......OWWWOo....
+//WWO....oWWWWWWWO...
+//WWO....WWWo..OWWO..
+//WWO...OWW.....OWW..
+//WWO...WWO......WWo.
+//WWO...WWo......WWO.
+//WWO..oWW.......OWW.
+//WWWWWWWW.......oWW.
+//WWWWWWWW.......oWW.
+//WWO..oWW.......oWW.
+//WWO..oWW.......oWW.
+//WWO...WW.......OWW.
+//WWO...WWo......WWO.
+//WWO...OWO......WWo.
+//WWO...oWW.....OWW..
+//WWO....OWWo..OWWO..
+//WWO.....WWWWWWWO...
+//WWO......oWWWOo....
+0x1bf8002f, 0xffd00bc0, 0xfc02f02f, 0x80bc2f81, 0x2f0f800f, 0xc7c002f0, 0xf0007c0b, 0xf42f2, 0x3fffcf8, 0xffff3d00, 0xbcf4000, 0xf3d0003d, 0xf4000f42, 0x3c0bc, 0x1f02f3e, 0xb80bcbc0, 0x2f1f000, 0xbc3e003d, 0xbe07e00, 0xbfff002f, 0xfd000bc0, 0x6, 
+//char='Я' offset=(0, 7) width=12 height=18 xadvance=13.3594
+//....oOWWWWO.
+//...OWWWWWWW.
+//..OWWO...WW.
+//..WWO....WW.
+//..WWo....WW.
+//.oWW.....WW.
+//..WWo....WW.
+//..WWO....WW.
+//..OWWO...WW.
+//...OWWWWWWW.
+//....WWWWWWW.
+//...oWW...WW.
+//...WWO...WW.
+//..oWW....WW.
+//..WWO....WW.
+//.oWW.....WW.
+//.OWO.....WW.
+//.WWo.....WW.
+0x802ff900, 0xbe03fff, 0x3c02f03c, 0xf43c01f0, 0x1f03c00, 0x3c02f03c, 0x803c0be0, 0xff003fff, 0x3c0f403f, 0xd03c0bc0, 0x2f03c03, 0x3c00f43c, 0x7c3c00b8, 0x3c00, 
+//char='а' offset=(1, 11) width=9 height=14 xadvance=11.2813
+//.oOWWWo..
+//.OWWWWWO.
+//.....OWW.
+//......WWo
+//......OWo
+//..oOWOWWo
+//.WWWWWWWo
+//OWWo..WWo
+//WWo...OWo
+//WWo...OWo
+//WWo...OWo
+//OWW...WWo
+//.WWWWWWWo
+//..OWWWWO.
+0xffe01fe4, 0xf8002, 0x41e0007c, 0x9fffc7ee, 0xe01f7c1f, 0x1f7807d, 0xfc7c0f9e, 0x2ff81ff, 
+//char='б' offset=(1, 4) width=11 height=21 xadvance=12.2656
+//........o..
+//.....OWWW..
+//...OWWWWO..
+//..oWWO.....
 //..WWo......
 //.oWW.......
-//.OWO.......
+//.WWo.......
 //.WWo.......
 //.WWOWWWO...
 //.WWWWWWWW..
-//.WWOo.oWWO.
-//.WW....oWW.
-//oWW.....WWo
-//oWW.....WWo
-//.WW.....WWo
-//.WWo....WWo
-//.WWo....WWo
-//.WWO....WW.
-//.OWW...oWW.
-//..WWO.oWWO.
-//..OWWWWWW..
-//...oWWWO...
-0x80079000, 0x1bf802ff, 0xf0001f80, 0x3d0001, 0xf0000b80, 0xbfbc0001, 0xc0ffff00, 0xf0bd1b, 0x5f003d3d, 0x3c7c00f, 0x7c01f1f0, 0x2f1f007c, 0xf40f83c0, 0xe02f4bc0, 0x2fd003ff, 0x0, 
-//char='в' offset=(2, 10) width=10 height=15 xadvance=12.3906
-//oOWWWWO...
-//WWWWWWWW..
-//WWo..oWWO.
-//WWo...OWW.
-//WWo...OWO.
-//WWo...WWo.
-//WWWWWWWO..
-//WWWWWWWO..
-//WWo..oWWO.
-//WWo...oWW.
-//WWo....WWo
-//WWo...oWW.
-//WWo...WWW.
-//WWWWWWWWo.
-//oOWWWWOo..
-0xfff02ff9, 0xf2f41f0f, 0xe01f3e01, 0xff1f01f2, 0xbfff0bf, 0x1f2f41f, 0xf7c01f3d, 0xf01f3d01, 0xf91ffff3, 0x6f, 
-//char='г' offset=(2, 10) width=7 height=15 xadvance=8.92188
-//WWWWWWO
-//WWWWWWO
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-//WWo....
-0xfbffefff, 0x1f007c01, 0x1f007c0, 0xc01f007c, 0x7c01f007, 0x7c01f00, 0x1f0, 
-//char='д' offset=(0, 10) width=13 height=20 xadvance=12.9531
-//...oWWWWWWW..
-//...oWWWWWWW..
-//...oWO..oWW..
-//...oWO..oWW..
-//...oWO..oWW..
-//...OWO..oWW..
-//...OWO..oWW..
-//...OWo..oWW..
-//...WWo..oWW..
-//...WW...oWW..
-//..oWW...oWW..
-//..OWO...oWW..
-//..WWo...oWW..
-//OWWWWWWWWWWWO
-//OWWWWWWWWWWWO
-//OWO.......OWO
-//OWO.......OWO
-//OWO.......OWO
-//OWO.......OWO
-//.............
-0x3fff40, 0xb400fffd, 0x42d003d0, 0x3d0b400f, 0xf42e00, 0xe003d0b8, 0x7c00f41, 0xf40f003d, 0x3d03d00, 0xf00f40b8, 0xfff83d01, 0xffffebff, 0xb8000baf, 0xbae0002e, 0x2eb8000, 0x2e00, 0x0, 
-//char='е' offset=(1, 10) width=10 height=15 xadvance=11.7656
-//...OWWOo..
-//..WWWWWWo.
-//.OWW..WWO.
-//.WWo..oWW.
-//oWW....WWo
-//OWW....WWo
-//OWWWWWWWWo
-//OWWWWWWWWo
-//OWO.......
-//OWW.......
-//oWW.......
-//.WWo......
-//.OWWo..oo.
-//..WWWWWWO.
-//...OWWWOo.
-0xff006f80, 0xc2f0f81f, 0xc03d3d07, 0xfe7c03e7, 0x7fffe7ff, 0x3e0002e, 0xc0003d00, 0x41f80007, 0x802fff01, 0x1bf, 
-//char='ж' offset=(0, 10) width=15 height=15 xadvance=14.3906
-//.WW...WWo..OWo.
-//.OWO..WWo..WW..
-//..WW..WWo.OWo..
-//..OWO.WWo.WW...
-//...WW.WWoOWo...
-//...OWOWWoWW....
-//....WWWWWWo....
-//....WWWWWWo....
-//...OWOWWoWW....
-//..oWW.WWoOWO...
-//..WWo.WWo.WW...
-//.oWW..WWo.OWO..
-//.WWo..WWo..WW..
-//.WW...WWo..OWO.
-//OWO...WWo..oWW.
-0x781f03c, 0xf07c2e, 0x801e1f0f, 0xc003c7cb, 0xe00079f3, 0xf0000f7e, 0xfc0001ff, 0xfb80007f, 0x7cf4003d, 0x1f1f002e, 0x87c3d00f, 0xc1f07c0b, 0xe07c0f03, 0xf41f02e2, 0x0, 
-//char='з' offset=(0, 10) width=9 height=15 xadvance=9.875
-//.oOWWWo..
-//.WWWWWWO.
-//.oo..OWW.
-//......WWo
-//......WWo
-//.....OWW.
-//..OWWWW..
-//..OWWWWo.
-//.....OWW.
-//......OWO
-//......oWW
-//......OWO
-//.Oo..oWWO
-//.WWWWWWW.
-//.oOWWWO..
-0xfff01fe4, 0xf8142, 0x1f0007c, 0x3fe03e0, 0xf8001ff8, 0xb8000, 0x18b8003d, 0x43fff2f4, 0x2fe, 
-//char='и' offset=(2, 10) width=10 height=15 xadvance=13.1875
-//WWo....WW.
-//WWo...OWW.
-//WWo...WWW.
-//WWo..OWWW.
-//WWo..WWWW.
-//WWo.OWoWW.
-//WWo.WO.WW.
-//WWoOWo.WW.
-//WWoWW..WW.
-//WWWWo..WW.
-//WWWW...WW.
-//WWWo...WW.
-//WWW....WW.
-//WWO....WW.
-//WW.....WW.
-0x1f3c01f, 0xf3f01f3e, 0xfc1f3f81, 0x1f3de1f3, 0x3c79f3cb, 0x1ff3c3df, 0xf3c0ff3c, 0xc03f3c07, 0xf3c02f3, 0x3c0, 
-//char='й' offset=(2, 4) width=10 height=21 xadvance=13.1875
-//.oO...Oo..
-//.OWo..WW..
-//..WWWWWo..
-//..oWWWo...
-//..........
-//..........
-//WWo....WW.
-//WWo...OWW.
-//WWo...WWW.
-//WWo..OWWW.
-//WWo..WWWW.
-//WWo.OWoWW.
-//WWo.WO.WW.
-//WWoOWo.WW.
-//WWoWW..WW.
-//WWWWo..WW.
-//WWWW...WW.
-//WWWo...WW.
-//WWW....WW.
-//WWO....WW.
-//WW.....WW.
-0x7806024, 0x7ff00f, 0x1fd, 0x1f000000, 0x3e01f3c0, 0x81f3f01f, 0xf3fc1f3f, 0xcb1f3de1, 0xdf3c79f3, 0x3c1ff3c3, 0x7f3c0ff, 0xf3c03f3c, 0xc00f3c02, 0x3, 
-//char='к' offset=(2, 10) width=10 height=15 xadvance=11.5156
-//WWo...WWO.
-//WWo..oWW..
-//WWo..WWo..
-//WWo.OWW...
-//WWooWW....
-//WWoWWO....
-//WWWWW.....
-//WWWWW.....
-//WWoWWO....
-//WWooWWo...
-//WWo.OWW...
-//WWo..WWO..
-//WWo..oWW..
-//WWo...WWO.
-//WWo...oWW.
-0x41f2f01f, 0xf07c1f0f, 0xf5f03e1, 0xff00bdf0, 0x3ff003, 0xf5f00bdf, 0xf03e1f01, 0xf41f0bc1, 0x1f2f01f0, 0x3d0, 
-//char='л' offset=(0, 10) width=12 height=15 xadvance=13.4062
-//....WWWWWWWo
-//....WWWWWWWo
-//....WW...WWo
-//....WW...WWo
-//...oWW...WWo
-//...oWW...WWo
-//...oWW...WWo
-//...oWW...WWo
-//...OWO...WWo
-//...WWO...WWo
-//...WWo...WWo
-//..OWW....WWo
-//.OWWo....WWo
-//OWWO.....WWo
-//OWO......WWo
-0x7fff00, 0xf007fff, 0x7c0f007c, 0x407c0f40, 0xf407c0f, 0x7c0f407c, 0xc07c0b80, 0x7c07c0b, 0x7c03e07c, 0xbe7c01f8, 0x2e7c00, 0x7c, 
-//char='м' offset=(1, 10) width=14 height=15 xadvance=16.4688
-//.oWWo.....WWW.
-//.oWWO....oWWW.
-//.oWWW....OWWW.
-//.OWWWo...WWWW.
-//.OWoWO..oWOWW.
-//.OWoOW..OW.WW.
-//.OWooWo.WW.WW.
-//.OWo.WO.WO.WW.
-//.WWo.WWoWo.WWo
-//.WWo.OWWW..OWo
-//.WW..oWWW..OWo
-//.WW...WWO..OWo
-//.WW...WWo..OWo
-//.WW........OWo
-//.WW........OWo
-0x43f001f4, 0xf43f402f, 0x7f83f803, 0xb783fc0, 0xe0e783ed, 0xcf1d783c, 0x3cb2c783, 0xc7c77c7c, 0x3c783f87, 0x3c783f4, 0xf03c782f, 0x3c781, 0x80003c78, 0x7, 
-//char='н' offset=(2, 10) width=10 height=15 xadvance=13.3281
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWWWWWWWWo
-//WWWWWWWWWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-0x1f7c01f, 0xf7c01f7c, 0xc01f7c01, 0xff7c01f7, 0x7ffff7ff, 0x1f7c01f, 0xf7c01f7c, 0xc01f7c01, 0x1f7c01f7, 0x7c0, 
-//char='о' offset=(1, 10) width=11 height=15 xadvance=12.5
-//...OWWWo...
-//..WWWWWWO..
-//.OWWo.OWW..
-//.WWo...WWO.
-//oWW....OWW.
-//OWW....oWW.
-//OWW....oWW.
-//OWO....oWW.
-//OWW....oWW.
-//OWW....oWW.
-//oWW....OWW.
-//.WWo...WWO.
-//.OWWo.OWW..
-//..WWWWWWO..
-//...OWWWo...
-0xfc007f80, 0x3e1f80bf, 0x3d2f01f0, 0xd00f8f80, 0xb8f403e3, 0x403e3d00, 0xd3d00f8f, 0x1f0f803, 0x3e1f82f, 0xf800bffc, 0x7, 
-//char='п' offset=(2, 10) width=9 height=15 xadvance=12.9219
-//WWWWWWWWW
-//WWWWWWWWW
-//WWo...OWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-//WWo...oWW
-0xffffffff, 0x7fe01ff, 0x7fd01ff4, 0xfd01ff40, 0xd01ff407, 0x1ff407f, 0x1ff407fd, 0xff407fd0, 0x3d01, 
-//char='р' offset=(2, 10) width=10 height=20 xadvance=12.5938
-//oOWWWOo...
-//WWWWWWWO..
-//WWO..OWWo.
-//WWo...WWO.
-//WWo...oWW.
-//WWo...oWW.
-//WWo....WWo
-//WWo....WWo
-//WWo....WWo
-//WWo...oWW.
-//WWo...oWW.
-//WWo...OWW.
-//WWO..OWWo.
-//WWWWWWWW..
-//WWWWWWO...
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-//WWo.......
-0xfff01bf9, 0xf1f82f0b, 0xd01f2f01, 0x1f3d01f3, 0x7c01f7c0, 0x1f7c01f, 0xf3d01f3d, 0xf82f3e01, 0xff0ffff1, 0x1f02f, 0x1f0001f, 0xf0001f00, 0x1, 
-//char='с' offset=(1, 10) width=9 height=15 xadvance=9.51562
-//...OWWWO.
-//..WWWWWO.
-//.OWWo.oo.
-//.WWo.....
-//oWW......
-//OWW......
-//OWO......
-//OWO......
-//OWO......
-//OWW......
-//oWW......
-//.WWo.....
-//.OWWo.oo.
-//..WWWWWW.
-//...OWWWO.
-0xffc0bf80, 0x1f051f82, 0xf8003d00, 0x8002e000, 0x2e000b, 0x3d000f8, 0xf8001f00, 0x3ffc051, 0xbf8, 
-//char='т' offset=(0, 10) width=10 height=15 xadvance=10.1406
-//OWWWWWWWWW
-//OWWWWWWWWW
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-//....WWo...
-0xffeffffe, 0x1f00ff, 0x1f0001f0, 0x1f000, 0x1f0001f, 0xf0001f00, 0x1f0001, 0x1f0001f0, 0x1f000, 0x1f, 
-//char='у' offset=(0, 10) width=11 height=20 xadvance=10.6875
-//oWW.....WW.
+//oWWo..oWWo.
+//oWW....OWO.
 //oWW....oWW.
+//oWW....oWW.
+//.WW....oWW.
+//.WW....oWW.
 //.WWo...oWW.
-//.WWo...OWO.
-//.OWO...WWo.
-//.oWW...WW..
-//..WW..oWW..
-//..WWo.OWO..
-//..OWO.WWo..
-//..oWW.WW...
-//...WWoWO...
-//...WWWWo...
-//...OWWW....
-//....WWW....
-//....WWO....
-//....WW.....
-//...oWW.....
-//..oWWo.....
-//OWWWO......
-//OWWO.......
-0xf4f003d, 0xf407c3d0, 0xb82e01f0, 0xf03d07c0, 0xc03d0f00, 0xf2e00b87, 0x3cf401, 0xff000b7c, 0x3f8001, 0xf0000fc0, 0x3c0002, 0xf4000f40, 0x2fe001, 0x2f8, 
-//char='ф' offset=(1, 3) width=14 height=27 xadvance=15.7812
-//......oO......
-//......WW......
-//......WW......
-//......WW......
-//......WW......
-//......WW......
-//......WW......
-//....oOWWOo....
-//..oWWWWWWWW...
-//.oWWWOWWoWWW..
-//.WWO..WW..WWO.
-//oWW...WW..oWW.
-//OWO...WW...WWo
-//WWO...WW...OWO
-//WWo...WW...OWO
-//WWO...WW...OWO
-//OWO...WW...WWO
-//oWW...WW..oWWo
-//.WWO..WW..OWW.
-//.oWWOoWWoOWWo.
-//..OWWWWWWWWo..
-//....OWWWWO....
-//......WW......
-//......WW......
-//......WW......
-//......WW......
-//......WW......
-0x9000, 0xf00, 0xf0, 0xf000000f, 0xf000000, 0xf00000, 0x6f9000, 0x403fffd0, 0xbc0fdfbf, 0x3d2f0f0, 0xf02e3d0f, 0xf02f7c0, 0x80f01fb8, 0xb80f02fb, 0xdbc0f02e, 0xbc7d0f03, 0x6f43e0f0, 0xffe01f9f, 0xbfe0007f, 0xf00000, 0xf0000, 0xf000, 0xf00, 0xf0, 
-//char='х' offset=(0, 10) width=11 height=15 xadvance=10.5781
-//.WW....oWW.
-//.OWO...WWo.
-//.oWW..oWW..
-//..OWO.WWo..
-//..oWWoWW...
-//...OWWWo...
-//...oWWW....
-//....WWW....
-//...OWWWo...
-//...WWOWW...
-//..OWo.WWo..
-//..WW..OWO..
-//.OWO...WW..
-//.WW....OWO.
-//oWW....oWW.
-0x2e0f403c, 0x3d0f41f0, 0xd007cb80, 0x1fe000f7, 0x3f400, 0x7f8000fc, 0x3ef000, 0x83c01f1e, 0x3c0b80b, 0x3d2e00f, 0xf4, 
-//char='ц' offset=(2, 10) width=11 height=20 xadvance=12.8125
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...oWW..
-//WWo...OWW..
-//WWWWWWWWWWO
-//WWWWWWWWWWO
-//........OWO
-//........OWO
-//........OWO
-//........OWO
-//...........
-0x7c3d01f, 0x3d01f0f4, 0x1f0f407c, 0xf407c3d0, 0x7c3d01f0, 0xd01f0f40, 0xf0f407c3, 0x407c3d01, 0xc3e01f0f, 0xfffbffff, 0xb80002ff, 0x2e0000, 0xe0000b80, 0x2, 
-//char='ч' offset=(1, 10) width=10 height=15 xadvance=12.1719
-//WWO....WW.
-//WWO....WW.
-//WWO....WW.
-//WWO....WW.
-//WWO....WW.
-//OWO....WW.
-//OWW....WW.
-//oWWO..oWW.
-//.WWWWWWWW.
-//..OWWWOWW.
-//.......WW.
-//.......WW.
-//.......WW.
-//.......WW.
-//.......WW.
-0x2f3c02f, 0xf3c02f3c, 0xc02f3c02, 0x3e3c02e3, 0x3d0bd3c0, 0xfe03fffc, 0x3c0003e, 0xc0003c00, 0x3c0003, 0x3c0, 
-//char='ш' offset=(2, 10) width=15 height=15 xadvance=18.5625
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWo...WWo...WWo
-//WWWWWWWWWWWWWWo
-//WWWWWWWWWWWWWWo
-0xdf01f01f, 0xf7c07c07, 0x7df01f01, 0x1f7c07c0, 0x7df01f0, 0x1f7c07c, 0xc07df01f, 0xf01f7c07, 0x7c07df01, 0x1f01f7c0, 0x7c07df0, 0x1f01f7c, 0xffffffdf, 0xfffffff7, 0x1, 
-//char='щ' offset=(2, 10) width=17 height=20 xadvance=18.4531
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWo...WWo...WWo..
-//WWWWWWWWWWWWWWWW.
-//WWWWWWWWWWWWWWWW.
-//..............WW.
-//..............WW.
-//..............WW.
-//..............WW.
-//.................
-0x1f01f01f, 0x7c07c07c, 0xf01f01f0, 0xc07c07c1, 0x1f01f07, 0x7c07c1f, 0x1f01f07c, 0x7c07c1f0, 0xf01f07c0, 0xc07c1f01, 0x1f07c07, 0x7c1f01f, 0x1f07c07c, 0xfc1f01f0, 0xf3ffffff, 0xfffffff, 0x3c000000, 0xf0000000, 0xc0000000, 0x3, 0xf, 0x0, 
-//char='ъ' offset=(0, 10) width=12 height=15 xadvance=12.3281
-//OWWWW.......
-//OWWWW.......
-//...WW.......
-//...WW.......
-//...WW.......
-//...WWWWWOo..
-//...WWWWWWWo.
-//...WWo..WWW.
-//...WW....WWo
-//...WW....WWO
-//...WW....WWO
-//...WW....WWo
-//...WWo.oWWW.
-//...WWWWWWWo.
-//...OWWWWOo..
-0xfe0003fe, 0x3c00003, 0x3c000, 0xc00003c0, 0xffc006ff, 0x3f07c01f, 0xc07c03c0, 0x3c0bc03, 0x7c03c0bc, 0xc03f47c0, 0xff801fff, 0x6, 
-//char='ы' offset=(2, 10) width=15 height=15 xadvance=18.1406
-//WWo........oWW.
-//WWo........oWW.
-//WWo........oWW.
-//WWo........oWW.
-//WWo........oWW.
-//WWWWWWo....oWW.
-//WWWWWWWO...oWW.
-//WWO..OWWo..oWW.
-//WWo...WWO..oWW.
-//WWo...OWW..oWW.
-//WWo...OWW..oWW.
-//WWo...WWO..oWW.
-//WWO..OWWo..oWW.
-//WWWWWWWO...oWW.
-//OWWWWWo....oWW.
-0xcf40001f, 0xf3d00007, 0x7cf40001, 0x1f3d0000, 0xffcf4000, 0xfff3d007, 0xe0bcf40b, 0xf01f3d07, 0xf807cf42, 0x3e01f3d0, 0xbc07cf4, 0x41f82f3d, 0xd02fffcf, 0xf401ffe3, 0x0, 
-//char='ь' offset=(2, 10) width=9 height=15 xadvance=11.6094
-//WWo......
-//WWo......
-//WWo......
-//WWo......
-//WWo......
-//WWWWWWo..
+//.OWO...OWO.
+//.oWWo.oWWo.
+//..OWWWWWO..
+//...OWWWO...
+0x10000, 0x2ff800fe, 0xf0002f40, 0x3d0001, 0xf00007c0, 0xbfbc0001, 0xd0ffff00, 0xf47d07, 0x4f403d2e, 0x3c3d00f, 0x3d00f0f4, 0x2e0f407c, 0x7d1f42e0, 0x800bff80, 0xbf, 
+//char='в' offset=(2, 11) width=9 height=14 xadvance=11.9219
+//OOWWWWo..
 //WWWWWWWO.
-//WWO..OWWo
+//WWo..oWWo
+//WWo...WWo
+//WWo...WWo
+//WWo..oWW.
+//WWWWWWW..
+//WWOOOWWO.
 //WWo...WWO
-//WWo...OWW
+//WWo...oWW
 //WWo...OWW
 //WWo...WWO
-//WWO..OWWo
+//WWWWWWWW.
+//OWWWWWO..
+0xfffc1ffa, 0x7df41f2, 0x7df01f7c, 0xc3fff3d0, 0xf01f2fab, 0x1ff407e, 0xffbc07fe, 0xbff8ff, 
+//char='г' offset=(2, 11) width=7 height=14 xadvance=8.59375
+//WWWWWWo
+//WWWWWW.
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+//WWo....
+0xf3ffdfff, 0x1f007c01, 0x1f007c0, 0xc01f007c, 0x7c01f007, 0x7c01f00, 0x0, 
+//char='д' offset=(0, 11) width=13 height=18 xadvance=12.4688
+//...OWWWWWWO..
+//...OWWWWWWO..
+//...OWO..OWO..
+//...OWO..OWO..
+//...OWo..OWO..
+//...OWo..OWO..
+//...WWo..OWO..
+//...WWo..OWO..
+//...WW...OWO..
+//..oWW...OWO..
+//..OWO...OWO..
+//..WW....OWO..
+//OWWWWWWWWWWW.
+//OWWWWWWWWWWW.
+//OWo.......WW.
+//OWo.......WW.
+//OWo.......WW.
+//OWo.......OW.
+0x2fff80, 0xb800bffe, 0x82e002e0, 0x2e07800b, 0xb81e00, 0xf002e07c, 0x3c00b81, 0xb80f402e, 0x2e02e00, 0xfe0b803c, 0xfff8ffff, 0x1e3ff, 0x3c00078f, 0x78f0001e, 0x38000, 
+//char='е' offset=(1, 11) width=10 height=14 xadvance=11.3281
+//..oOWWO...
+//.oWWWWWW..
+//.WWO..WWo.
+//oWW...OWO.
+//oWO...oWW.
+//OWO...oWW.
+//OWWWWWWWW.
+//OWWWWWWWW.
+//OWO.......
+//oWW.......
+//oWW.......
+//.WWW...o..
+//.oWWWWWWo.
+//...OWWWO..
+0xff402f90, 0xd1f0bc0f, 0xd02d2e03, 0xfe3d02e3, 0x3fffe3ff, 0x3d0002e, 0xc0003d00, 0xfff4040f, 0xbf801, 
+//char='ж' offset=(0, 11) width=14 height=14 xadvance=13.8438
+//.WW...WW...WW.
+//.OWo..WW..OWo.
+//..WW..WW..WW..
+//..OWo.WW.OWo..
+//...WW.WW.WW...
+//...oWOWWOWo...
+//....WWWWWW....
+//...OWOWWWWo...
+//...WW.WW.WW...
+//..OWo.WW.OWO..
+//.oWW..WW..WW..
+//.OWo..WW..OWO.
+//.WW...WW...WW.
+//OWo...WW...OWo
+0x83c0f03c, 0xf01e0f07, 0x1e00f0f0, 0xf3c0078f, 0xefb4003c, 0xfff0001, 0x1ffb800, 0x3cf3c0, 0xf40b8f1e, 0x780f0f0, 0xf03c2e0f, 0xf01e3c0, 0x78, 
+//char='з' offset=(0, 11) width=9 height=14 xadvance=9.51563
+//.oOWWOo..
+//.WWWWWWo.
+//.o...OWW.
+//......WW.
+//.....OWW.
+//..OWWWWo.
+//..WWWWO..
+//.....OWO.
+//......WW.
+//......OWo
+//......WWo
+//.o...oWWo
+//.WWWWWWO.
+//.oWWWWo..
+0xfff01be4, 0xf8041, 0x80f8003c, 0x2ff01ff, 0xf0002e00, 0x78000, 0xfc7d011f, 0x7fd0bf, 
+//char='и' offset=(2, 11) width=9 height=14 xadvance=12.7031
+//WW....oWO
+//WW....WWO
+//WW...OWWO
+//WW...WWWO
+//WW..OWOWO
+//WW..WOoWO
+//WW.OWooWO
+//WWoWO.oWO
+//WWOWo.oWO
+//WWWW..oWO
+//WWWo..oWO
+//WWW...oWO
+//WWo...oWO
+//WW....oWO
+0xc03ed00f, 0x3ef80fb, 0x3eee0fbf, 0xed78fb6c, 0xd1efb4b7, 0x7fb43fe, 0x1fb40fed, 0xb403ed0, 
+//char='й' offset=(2, 5) width=9 height=20 xadvance=12.7031
+//..o...o..
+//.OW..oWo.
+//.oWWOWW..
+//..oWWWo..
+//.........
+//.........
+//WW....oWO
+//WW....WWO
+//WW...OWWO
+//WW...WWWO
+//WW..OWOWO
+//WW..WOoWO
+//WW.OWooWO
+//WWoWO.oWO
+//WWOWo.oWO
+//WWWW..oWO
+//WWWo..oWO
+//WWW...oWO
+//WWo...oWO
+//WW....oWO
+0xd0e01010, 0xf403ef41, 0x7, 0xed00f000, 0xf80fbc03, 0xe0fbf03e, 0x8fb6c3ee, 0xfb4b7ed7, 0xb43fed1e, 0x40fed07f, 0x3ed01fb, 0xb4, 
+//char='к' offset=(2, 11) width=9 height=14 xadvance=11.0938
+//WWo...WW.
+//WWo..OWO.
+//WWo.oWW..
+//WWo.WWo..
+//WWoOWO...
+//WWOWW....
+//WWWWO....
+//WWOWW....
+//WWoOWW...
+//WWo.WWO..
+//WWo.oWW..
+//WWo..WWO.
+//WWo..oWW.
+//WWo...OWO
+0xe07cf01f, 0xc7c3d1f2, 0xbc0b9f07, 0xc02ff00f, 0xf9f00fb, 0xd1f0bc7c, 0x1f2f07c3, 0xb807cf4, 
+//char='л' offset=(0, 11) width=11 height=14 xadvance=12.9219
+//...oWWWWWWW
+//...oWWWWWWW
+//...oWW..oWW
+//...oWW..oWW
+//...oWW..oWW
+//...oWO..oWW
+//...OWO..oWW
+//...OWO..oWW
+//...WWo..oWW
+//...WW...oWW
+//..OWW...oWW
+//.OWWo...oWW
+//OWWO....oWW
+//OWo.....oWW
+0xd03fff40, 0xd0f40fff, 0x40f43d03, 0x42d03d0f, 0x3d0b80f, 0x7c0f42e, 0xf40f03d, 0x7e3d03e, 0xbd00bef4, 0xf4007, 
+//char='м' offset=(1, 11) width=13 height=14 xadvance=15.8594
+//.oWW.....oWWo
+//.oWWO....OWWo
+//.OWWW....WWWo
+//.OWOWo..oWOWo
+//.OWoWO..OWoWO
+//.OW.WW..WOoWO
+//.WW.OW.oWooWO
+//.WW.oWoOW.oWO
+//.WW..WWWW.oWO
+//.WW..OWWO..WW
+//.WW..oWWo..WW
+//.WW...WW...WW
+//.WW........WW
+//.WW........WW
+0xd1f400f4, 0x3f87e00b, 0x41ee1fc0, 0xde0b787b, 0xcb6c3ce2, 0x4f2d74e3, 0xfc3cb4e7, 0xbe0f2d3, 0x3c1f43cf, 0x3cf03c0f, 0xf3c000, 0xf00, 
+//char='н' offset=(2, 11) width=9 height=14 xadvance=12.8438
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWWWWWWWW
+//WWWWWWWWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+//WWo...oWW
+0x407fd01f, 0x7fd01ff, 0x7fd01ff4, 0xffffff40, 0xd01fffff, 0x1ff407f, 0x1ff407fd, 0xf407fd0, 
+//char='о' offset=(1, 11) width=10 height=14 xadvance=12.0313
+//...OWWOo..
+//.oWWWWWWo.
+//.WWO..OWW.
+//oWW....WWo
+//OWW....WWO
+//OWO....OWO
+//OWO....OWO
+//OWO....OWO
+//OWO....OWO
+//OWW....WWO
+//oWW....WWo
+//.WWO..OWW.
+//.oWWWWWWo.
+//...OWWOo..
+0xff406f80, 0xd3e0bc1f, 0xc03e7c03, 0x2eb802eb, 0xb802eb80, 0x3eb802e, 0xc7c03dbc, 0xfff43e0b, 0x6f801, 
+//char='п' offset=(2, 11) width=9 height=14 xadvance=12.4531
+//WWWWWWWWo
+//WWWWWWWWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+0xfffdffff, 0x7df01f7, 0x7df01f7c, 0xdf01f7c0, 0xf01f7c07, 0x1f7c07d, 0x1f7c07df, 0x7c07df0, 
+//char='р' offset=(2, 11) width=9 height=19 xadvance=12.1406
+//oOWWWO...
+//WWWWWWWo.
+//WWo..OWW.
+//WWo...WWo
+//WWo...OWO
+//WWo...OWW
+//WWo...oWW
+//WWo...oWW
+//WWo...OWW
+//WWo...OWO
+//WWo...WWo
+//WWo..OWW.
 //WWWWWWWO.
-//OWWWWWo..
-0x7c001f, 0x7c001f0, 0xfc001f00, 0xcbfff07f, 0xf01f7e0b, 0x1ff807e, 0x2fbc07fe, 0xe2fffdf8, 0x1ff, 
-//char='э' offset=(0, 10) width=10 height=15 xadvance=10.3125
-//.OWWWOo...
-//.WWWWWWo..
-//.oo.oWWW..
-//......WWo.
-//......OWO.
-//......oWW.
-//..WWWWWWW.
-//..WWWWWWW.
-//......oWW.
-//......OWW.
-//......WWO.
-//.....oWWo.
-//.oo.oWWW..
-//.WWWWWWo..
-//.OWWWO....
-0xffc01bf8, 0xfd1407, 0xe0001f00, 0xf03d0002, 0x3fff03ff, 0x3d000, 0x2f0003e, 0xfd141f40, 0xf807ffc0, 0xb, 
-//char='ю' offset=(2, 10) width=15 height=15 xadvance=17.7031
-//WWo....oWWWO...
-//WWo...OWWWWWO..
-//WWo..oWWO.oWWo.
-//WWo..OWO...OWW.
-//WWo..WWo...oWW.
-//WWo..WW.....WWo
-//WWWWWWW.....WWo
-//WWWWWWW.....WWo
-//WWOooWW.....WWo
-//WWo..WW.....WWo
-//WWo..WWo...oWW.
-//WWo..OWO...OWW.
-//WWo..oWWO.oWWo.
-//WWo...OWWWWWO..
-//WWo....oWWWO...
-0xc0bf401f, 0xf0bff807, 0x7c7d2f41, 0x1f3e02e0, 0x7cf407c, 0xfff7c00f, 0xfffdf003, 0x3d6f7c00, 0xf07df00, 0x7c1f7c0, 0x2e07cf4, 0xd2f41f3e, 0xbff807c7, 0xbf401f0, 0x0, 
-//char='я' offset=(1, 10) width=9 height=15 xadvance=11.9219
-//..oOWWWWo
-//.oWWWWWWW
-//.WWO..OWW
-//oWW...oWW
-//oWW...oWW
-//oWW...oWW
-//.WWO..oWW
-//.oWWWWWWW
-//..OWWWWWW
-//..WWo.OWW
-//.oWW..oWW
-//.OWO..oWW
-//.WWo..oWW
-//oWW...oWW
-//OWO...oWW
-0xffd1ff90, 0xf7e0bcf, 0xf7d03df4, 0x3d0bcf40, 0xffe0fffd, 0xf4f87c3, 0x7cf42e3d, 0xef40f7d0, 0x3d02, 
+//WWOWWWo..
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+0xfffc0bf9, 0x7cf81f1, 0x7ee01f7c, 0xfd01ff80, 0xe01ff407, 0x1fb807f, 0xff3e07df, 0xf07fbcbf, 0x7c001, 0x7c001f, 0x1f0, 
+//char='с' offset=(1, 11) width=8 height=14 xadvance=9.17188
+//...OWWWo
+//..WWWWWo
+//.WWW....
+//oWW.....
+//OWW.....
+//OWO.....
+//OWO.....
+//OWO.....
+//OWO.....
+//OWW.....
+//oWW.....
+//.WWW....
+//.oWWWWWO
+//...OWWWo
+0x7ff07f80, 0x3d00fc, 0x2e003e, 0x2e002e, 0x3e002e, 0xfc003d, 0x7f80bff4, 
+//char='т' offset=(0, 11) width=10 height=14 xadvance=9.76563
+//OWWWWWWWWo
+//OWWWWWWWWo
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+//...oWW....
+0xffe7fffe, 0xf407f, 0xf4000f4, 0x4000f400, 0xf4000f, 0xf4000f40, 0xf4000, 0xf4000f4, 0xf400, 
+//char='у' offset=(0, 11) width=10 height=19 xadvance=10.2813
+//OWW....oWW
+//oWW....OWO
+//.WW....OWo
+//.WWo...WW.
+//.OWO...WW.
+//.oWW..oWO.
+//..WW..OWo.
+//..WWo.WW..
+//..OWO.WW..
+//..oWWoWO..
+//...WWWWo..
+//...WWWW...
+//...oWWO...
+//....WWo...
+//....WW....
+//...oWO....
+//...WW.....
+//OWWWO.....
+//OWWO......
+0x3df403e, 0xc7803cb8, 0xc0b83c07, 0xf02d0f43, 0xf1f01e0, 0x7d00f2e0, 0x7fc00b, 0x2f4003fc, 0x1f000, 0xb4000f, 0x2fe003c0, 0xbe00, 
+//char='ф' offset=(1, 5) width=14 height=25 xadvance=15.2031
+//.....oOO......
+//.....oWO......
+//.....oWO......
+//.....oWO......
+//.....oWO......
+//.....oWO......
+//.....OWOo.....
+//...WWWWWWWo...
+//.oWWWOWWWWWo..
+//.WWO.oWO.oWW..
+//oWW..oWO..OWO.
+//OWO..oWO..oWW.
+//WWo..oWO...WW.
+//WWo..oWO...WW.
+//WWo..oWO...WW.
+//OWO..oWO..oWW.
+//oWW..oWO..WWO.
+//.WWW.oWO.OWW..
+//..WWWWWWWWWo..
+//...OWWWWWO....
+//.....OWO......
+//.....oWO......
+//.....oWO......
+//.....oWO......
+//.....oWO......
+0xa400, 0xb40, 0x400000b4, 0xb400000b, 0xb400000, 0x1b80000, 0x1fffc00, 0xc07ffbf4, 0x3d0f4b4b, 0x42e2e0b4, 0xb41f3d0b, 0xb41f3c0, 0xc0b41f3c, 0x3d0b42e3, 0xc2f0b43d, 0xf00f8b4f, 0xf8007fff, 0xb80000bf, 0xb400000, 0xb40000, 0xb4000, 0xb400, 
+//char='х' offset=(0, 11) width=10 height=14 xadvance=10.1875
+//oWW....OWo
+//.OWO..oWW.
+//..WW..OWo.
+//..OWooWW..
+//...WWWWo..
+//...OWWW...
+//...oWWo...
+//...OWWW...
+//...WWWWo..
+//..OWooWW..
+//..WW..WWo.
+//.OWO..oWO.
+//.WW....WW.
+//oWO....OWO
+0xb87803d, 0x1e0f03d, 0x7fc00f5e, 0x4003f800, 0x3f8001f, 0x5e007fc0, 0x81f0f00f, 0xc03c2d0b, 0xb802d3, 
+//char='ц' offset=(2, 11) width=11 height=18 xadvance=12.3438
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWo...WWo..
+//WWWWWWWWWW.
+//WWWWWWWWWW.
+//........WW.
+//........WW.
+//........WW.
+//........WW.
+0x7c1f01f, 0x1f01f07c, 0x1f07c07c, 0x7c07c1f0, 0x7c1f01f0, 0xf01f07c0, 0xf07c07c1, 0xc07c1f01, 0xcfffff07, 0x3ffff, 0x3c0000f0, 0xf0000, 0x3c0, 
+//char='ч' offset=(1, 11) width=9 height=14 xadvance=11.7188
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//WWo...OWO
+//OWO...OWO
+//oWWo..OWO
+//.WWWWWWWO
+//..OWWWWWO
+//......OWO
+//......OWO
+//......OWO
+//......OWO
+//......OWO
+0x807ee01f, 0x7ee01fb, 0xbae01fb8, 0x2e07db80, 0xffe0bfff, 0xb8002, 0xb8002e, 0xb8002e0, 
+//char='ш' offset=(2, 11) width=14 height=14 xadvance=17.875
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWo...WW...oWW
+//WWWWWWWWWWWWWW
+//WWWWWWWWWWWWWW
+0xff40f01f, 0x1ff40f01, 0x1ff40f0, 0xf01ff40f, 0xf01ff40, 0x40f01ff4, 0xf40f01ff, 0xff40f01f, 0x1ff40f01, 0x1ff40f0, 0xfffff40f, 0xffffffff, 0xff, 
+//char='щ' offset=(2, 11) width=16 height=18 xadvance=17.7813
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWo...WW...oWW..
+//WWWWWWWWWWWWWWWo
+//WWWWWWWWWWWWWWWO
+//.............OWO
+//.............OWO
+//.............OWO
+//.............OWo
+0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0xf40f01f, 0x7fffffff, 0xbfffffff, 0xb8000000, 0xb8000000, 0xb8000000, 0x78000000, 
+//char='ъ' offset=(0, 11) width=12 height=14 xadvance=11.875
+//OWWWW.......
+//OWWWW.......
+//..oWW.......
+//..oWW.......
+//..oWW.......
+//..oWWWWWO...
+//..oWWWWWWW..
+//..oWW...WWO.
+//..oWW...oWW.
+//..oWW....WW.
+//..oWW...oWW.
+//..oWW...WWW.
+//..oWWWWWWW..
+//...OWWWWO...
+0xfe0003fe, 0x3d00003, 0x3d000, 0xd00003d0, 0xffd002ff, 0x2f03d00f, 0xd03d03d0, 0x3d03c03, 0x3f03d03d, 0x800fffd0, 0x2ff, 
+//char='ы' offset=(2, 11) width=14 height=14 xadvance=17.4688
+//WWo........WWo
+//WWo........WWo
+//WWo........WWo
+//WWo........WWo
+//WWo........WWo
+//WWWWWOo....WWo
+//WWWWWWWo...WWo
+//WWo..OWW...WWo
+//WWo...WWo..WWo
+//WWo...WWo..WWo
+//WWo...WWo..WWo
+//WWo..OWW...WWo
+//WWWWWWWo...WWo
+//WWWWWOo....WWo
+0xf7c0001f, 0x1f7c0001, 0x1f7c000, 0x1f7c00, 0x1bff7c0, 0xc07fff7c, 0x7c0f81f7, 0xf7c1f01f, 0x1f7c1f01, 0x81f7c1f0, 0x7fff7c0f, 0x1bff7c0, 0x7c, 
+//char='ь' offset=(2, 11) width=9 height=14 xadvance=11.1719
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWo......
+//WWWWWOo..
+//WWWWWWWo.
+//WWo..OWW.
+//WWo...WWo
+//WWo...WWo
+//WWo...WWo
+//WWo..OWW.
+//WWWWWWWo.
+//OWWWWOo..
+0x7c001f, 0x7c001f0, 0xfc001f00, 0xc7fff06f, 0xf01f3e07, 0x1f7c07d, 0xff3e07df, 0x6ff87f, 
+//char='э' offset=(0, 11) width=9 height=14 xadvance=9.92188
+//.OWWWO...
+//.WWWWWW..
+//.....WWW.
+//......WWo
+//......WWo
+//......OWO
+//..WWWWWWO
+//..OWWWWWO
+//......OWO
+//......WWo
+//.....oWW.
+//.o..oWWO.
+//.WWWWWW..
+//.OWWWO...
+0xfff00bf8, 0xfc000, 0x1f0007c, 0x2fff0b80, 0xe000bff8, 0x4007c002, 0xfc2f410f, 0x2fe03f, 
+//char='ю' offset=(2, 11) width=14 height=14 xadvance=17.0469
+//WWo....OWWOo..
+//WWo...WWWWWWo.
+//WWo..OWW..OWW.
+//WWo..WWo...WWo
+//WWo.oWW....WWO
+//WWo.oWW....OWO
+//WWWWWWO....OWW
+//WWWWWWO....OWW
+//WWo.oWW....OWO
+//WWo.oWW....WWO
+//WWo..WWo...WWo
+//WWo..OWW..OWW.
+//WWo...WWWWWWo.
+//WWo....OWWOo..
+0xf06f801f, 0x1f1fff01, 0xc1f3e0f8, 0x3d1f7c07, 0x3d1fbc0, 0x802fffb8, 0xf802ffff, 0xfb803d1f, 0x1fbc03d1, 0x81f7c07c, 0xf01f3e0f, 0xf801f1ff, 0x6, 
+//char='я' offset=(1, 11) width=9 height=14 xadvance=11.4844
+//..oOWWWOo
+//.OWWWWWWo
+//.WWo..OWo
+//oWW...OWo
+//OWW...OWo
+//oWW...OWo
+//.WWO..OWo
+//.oWWWWWWo
+//..OWWWWWo
+//..WW..OWo
+//.OWO..OWo
+//.WWo..OWo
+//oWW...OWo
+//OWO...OWo
+0xffe1bf90, 0xf5e07c7, 0xf5e03e78, 0x1e0bc780, 0xffe07ffd, 0xb8783c1, 0x3d781f1e, 0x780b9e0, 
+//char='°' offset=(0, 6) width=7 height=6 xadvance=7.48438
+//..OWWo.
+//.WWOOWo
+//oWo..WW
+//oWo..WW
+//.WWOOWo
+//..OWWo.
+0xd7af07e0, 0xbcf077c1, 0x1f81e, 
+//char='±' offset=(1, 12) width=10 height=13 xadvance=11.1719
+//...oWO....
+//...oWO....
+//...oWO....
+//...oWO....
+//WWWWWWWWW.
+//WWWWWWWWW.
+//...oWO....
+//...oWO....
+//...oWO....
+//....o.....
+//..........
+//WWWWWWWWW.
+//WWWWWWWWW.
+0xb4000b40, 0xb4000, 0xffff00b4, 0x403ffff3, 0xb4000b, 0x10000b40, 0xf0000000, 0xffff3fff, 0x3, 
 };
