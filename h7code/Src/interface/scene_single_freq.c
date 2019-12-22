@@ -29,6 +29,8 @@ static int pb_param1_value_y;
 static int pb_param2_value_y;
 static int pb_param_x_type;
 static int pb_param_width_type;
+static int pb_error_x;
+static int pb_error_width;
 
 bool view_parallel = false;
 VIEW_MODE view_mode = VM_LC;
@@ -62,7 +64,11 @@ int DrawNumberMinus(int x, int y, const char* str, int width)
     return UTF_DrawStringJustify(x+minus_width, y, str, width-minus_width, UTF_LEFT);
 }
 
-float calcError(bool re)
+void calcError(float* error_abs,
+               float* error_real,
+               float* error_imag,
+               float* error_phase
+               )
 {
     float error_base;
     float Rabs = cabsf(last_Zx);
@@ -74,12 +80,15 @@ float calcError(bool re)
         error_base = last_error.err_R/Rabs*100;
     }
 
-    float R  = re?crealf(last_Zx):cimagf(last_Zx);
-    R = fabsf(R);
-    if(R<1e-4f)
-        return 100;
+    *error_abs = error_base;
 
-    return Rabs/R*error_base;
+    float R  = fabsf(crealf(last_Zx));
+    *error_real =  (R<1e-4f)?100:Rabs/R*error_base;
+
+    R  = fabsf(cimagf(last_Zx));
+    *error_imag =  (R<1e-4f)?100:Rabs/R*error_base;
+
+    *error_phase = (*error_real>*error_imag)?*error_real:*error_imag;
 }
 //
 void FillError(char* str, float error)
@@ -156,9 +165,11 @@ void SceneSingleFreqStart()
     pb_param_width = UTF_StringWidth("-00.000");
     UTF_SetFont(font_condensed30);
     pb_param_width_type = UTF_StringWidth(" MOm");
+    pb_error_width = UTF_StringWidth("±0.01%");
+    pb_error_x = UTFT_getDisplayXSize() - pb_error_width;
 
     pb_name_width = pb_param_width+pb_param_width_type;
-    pb_param_x = (UTFT_getDisplayXSize()-pb_name_width)/2;
+    pb_param_x = (UTFT_getDisplayXSize()-pb_name_width)/2-12;
 
     pb_param_x_type = pb_param_x+pb_param_width;
 
@@ -279,6 +290,20 @@ void SceneSingleFreqDrawValues()
     char err_re[outstr_size];
     char err_im[outstr_size];
 
+    float error_abs, error_real, error_imag, error_phase;
+
+    calcError(&error_abs, &error_real, &error_imag, &error_phase);
+
+    if(view_mode == VM_Z_ABS_ARG)
+    {
+        FillError(err_re, error_abs);
+        FillError(err_im, error_phase);
+    } else
+    {
+        FillError(err_re, error_real);
+        FillError(err_im, error_imag);
+    }
+
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
@@ -319,17 +344,14 @@ void SceneSingleFreqDrawValues()
         strcpy(str_im_type, "inf");
     }
 
-    FillError(err_re, calcError(true));
-    FillError(err_im, calcError(false));
 
     UTFT_setBackColorW(REAL_BACK_COLOR);
     DrawNumberType(pb_param_x, pb_param1_value_y, str_re, str_re_type);
-    UTF_DrawStringJustify(0, pb_param1_value_y, err_re, pb_param_x, UTF_LEFT);
+    UTF_DrawStringJustify(pb_error_x, pb_param1_value_y+FONT_OFFSET_30TO59, err_re, pb_error_width, UTF_LEFT);
 
     UTFT_setBackColorW(IMAG_BACK_COLOR);
     DrawNumberType(pb_param_x, pb_param2_value_y, str_im, str_im_type);
-
-    UTF_DrawStringJustify(0, pb_param2_value_y, err_im, pb_param_x, UTF_LEFT);
+    UTF_DrawStringJustify(pb_error_x, pb_param2_value_y+FONT_OFFSET_30TO59, err_im, pb_error_width, UTF_LEFT);
 }
 
 void SceneSingleFreqDrawCurrentR()
