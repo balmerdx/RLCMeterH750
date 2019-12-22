@@ -62,6 +62,45 @@ int DrawNumberMinus(int x, int y, const char* str, int width)
     return UTF_DrawStringJustify(x+minus_width, y, str, width-minus_width, UTF_LEFT);
 }
 
+float calcError(bool re)
+{
+    float error_base;
+    float Rabs = cabsf(last_Zx);
+
+    if(last_error.is_big)
+    {
+        error_base = last_error.err_Y*Rabs*100;
+    } else {
+        error_base = last_error.err_R/Rabs*100;
+    }
+
+    float R  = re?crealf(last_Zx):cimagf(last_Zx);
+    R = fabsf(R);
+    if(R<1e-4f)
+        return 100;
+
+    return Rabs/R*error_base;
+}
+//
+void FillError(char* str, float error)
+{
+    if(error>99)
+        error = 99;
+
+    int places = 2;
+    if(error>10)
+        places = 0;
+    else
+    if(error>1)
+        places = 1;
+
+    strcpy(str, "±");
+    str += strlen(str);
+    str += floatToString(str, 10, error, places, 0, false);
+    str[0] = '%';
+    str[1] = 0;
+}
+
 void DrawNumberType(int x, int y, const char* str_number, const char* str_type)
 {
     UTF_SetFont(font_condensed59);
@@ -237,12 +276,14 @@ void SceneSingleFreqDrawValues()
     char str_im[outstr_size];
     char str_re_type[outstr_size];
     char str_im_type[outstr_size];
+    char err_re[outstr_size];
+    char err_im[outstr_size];
 
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
     static VisualInfo info;
-    convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, last_error, &info);
+    convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, &last_error, &info);
 
     float Rabs = cabsf(last_Zx);
     if(view_mode == VM_Z_ABS_ARG)
@@ -278,10 +319,17 @@ void SceneSingleFreqDrawValues()
         strcpy(str_im_type, "inf");
     }
 
+    FillError(err_re, calcError(true));
+    FillError(err_im, calcError(false));
+
     UTFT_setBackColorW(REAL_BACK_COLOR);
     DrawNumberType(pb_param_x, pb_param1_value_y, str_re, str_re_type);
+    UTF_DrawStringJustify(0, pb_param1_value_y, err_re, pb_param_x, UTF_LEFT);
+
     UTFT_setBackColorW(IMAG_BACK_COLOR);
     DrawNumberType(pb_param_x, pb_param2_value_y, str_im, str_im_type);
+
+    UTF_DrawStringJustify(0, pb_param2_value_y, err_im, pb_param_x, UTF_LEFT);
 }
 
 void SceneSingleFreqDrawCurrentR()

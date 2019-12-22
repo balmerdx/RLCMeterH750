@@ -4,7 +4,7 @@
 #include <math.h>
 
 //Минимальная число, при котором мы считаем, что точность недостаточна.
-const float K_sum_min = 3;
+const float K_sum_min = 1;
 const float K_max_error = 0.1;
 
 complex calculateZxm(ConvolutionResult* result,
@@ -53,16 +53,12 @@ complex calculateZxm(ConvolutionResult* result,
 
     float err_relative = K_sum_min/sum_min;
     err->err_R = Rabs*err_relative;
+    err->err_Y = 1/Rabs*err_relative;
 
-    err->is_inf = false;
-    if(err->is_big)
-    {
-        err->is_inf = err_relative > K_max_error;
-    }
     return Zxm;
 }
 
-void convertZxmToVisualInfo(complex Zx, double F, bool parallel, ErrorZx error, VisualInfo* info)
+void convertZxmToVisualInfo(complex Zx, double F, bool parallel, ErrorZx* error, VisualInfo* info)
 {
     double W = 2*M_PI*F;
 
@@ -103,5 +99,17 @@ void convertZxmToVisualInfo(complex Zx, double F, bool parallel, ErrorZx error, 
         //    info->is_inductance = true;
     }
 
-    info->is_inf = error.is_inf;
+    info->is_inf = isIninity(Zx, error);
+}
+
+bool isIninity(complex Zx, ErrorZx* err)
+{
+    bool is_inf = false;
+    if(err->is_big)
+    {
+        float Y = 1/cabs(Zx);
+        is_inf =  Y < err->err_Y;
+    }
+
+    return is_inf;
 }

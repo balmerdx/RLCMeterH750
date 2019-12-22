@@ -200,7 +200,7 @@ void TaskQuant()
         {
             TaskStartConvolution();
 
-            //Временный, отладочный кож
+            //Временный, отладочный код
             complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
             SceneSingleFreqZx(Zx, &g_error);
         } else
