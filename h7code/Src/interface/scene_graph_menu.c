@@ -9,6 +9,7 @@
 
 enum SceneGraphMenuEnum
 {
+    SGME_START_SCAN,
     SGME_RETURN,
     SGME_TO_SINGLE,
     SGME_SET_FREQ_MIN,
@@ -30,6 +31,7 @@ void SceneGraphMenuStart()
 {
     UTFT_setFont(BigFont);
     MenuReset("Graph menu");
+    MenuAdd("Start scan", SGME_START_SCAN);
     MenuAdd1("..", SGME_RETURN, "Return to graph");
     MenuAdd("To single freq", SGME_TO_SINGLE);
     MenuAdd("Set freq", SGME_SET_FREQ_MIN);
@@ -47,6 +49,13 @@ void SceneGraphMenuQuant()
     if(MenuData()==SGME_RETURN)
     {
         SceneGraphStart();
+        return;
+    }
+
+    if(MenuData()==SGME_START_SCAN)
+    {
+        SceneGraphStart();
+        SceneGraphStartScan();
         return;
     }
 
@@ -107,6 +116,7 @@ void SceneSelectFreqQuant()
     } else {
         g_max_freq = g_default_frequencies[MenuData()];
         SceneGraphStart();
+        SceneGraphStartScan();
         return;
     }
 }

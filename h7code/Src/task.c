@@ -11,6 +11,7 @@
 #include "measure/calculate_rc.h"
 #include "interface/scene_single_freq.h"
 #include "interface/scene_calibration.h"
+#include "interface/scene_graph.h"
 
 #define USB_COMMAND_CONVOLUTION 0xABDE0001u
 #define USB_COMMAND_ADC 0xABDE0002u
@@ -147,7 +148,7 @@ void TaskSetDefaultResistor(ResistorSelectorEnum r)
 }
 
 
-void TaskSetFreq(int freq)
+void TaskSetFreq(double freq)
 {
     g_freq = freq;
     g_freqWord = AD9833_CalcFreqWorld(freq);
@@ -213,6 +214,7 @@ void TaskQuant()
             }
             SceneSingleFreqZx(Zx, &g_error);
             SceneCalibrarionZx(Zxm);
+            SceneGraphResultZx(Zxm);
             force_next_task = true;
         }
     }

@@ -20,7 +20,7 @@ typedef enum TASK_ENUM
 } TASK_ENUM;
 
 //Устанавливает частоту генератора.
-void TaskSetFreq(int freq);
+void TaskSetFreq(double freq);
 int TaskGetFreq();
 
 //По умолчанию используется Resistor_Auto, чтобы автоматом

@@ -91,6 +91,8 @@ void SceneCalibrarionQuant()
 
 void SceneCalibrarionZx(complex Zx)
 {
+    if(!InterfaceIsActive(SceneCalibrarionQuant))
+        return;
     if(!ProgressVisible())
         return;
 
@@ -158,5 +160,4 @@ void SceneCalibrarionZx(complex Zx)
 
     ProgressSetPos(current_index/(float)end_index);
     TaskSetFreq(StandartFreq(current_index%FREQ_INDEX_MAX));
-
 }
