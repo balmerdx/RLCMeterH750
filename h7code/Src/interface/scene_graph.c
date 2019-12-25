@@ -5,12 +5,14 @@
 #include "progress_bar.h"
 #include "task.h"
 
+#define SCAN_POINTS 51
+
 static void SceneGraphQuant();
 static void SceneGraphDrawFreq();
 static void StartNext();
 
-static Point g_points[PLOT_MAX_POINTS];
-static complex g_data[PLOT_MAX_POINTS];
+static Point g_points[SCAN_POINTS];
+static complex g_data[SCAN_POINTS];
 
 static bool scan_start_next = false;
 static int scan_cur;
@@ -116,7 +118,7 @@ void SceneGraphResultZx(complex Zxm)
     {
         scan_start_next = false;
         scan_cur = 0;
-        scan_points = 51;
+        scan_points = SCAN_POINTS;
         StartNext();
         return;
     }
@@ -131,10 +133,13 @@ void SceneGraphResultZx(complex Zxm)
     if(scan_cur==scan_points)
     {
         float ymin, ymax;
+        float mul_x = 1e-3;
+        if(g_max_freq <=1000)
+            mul_x = 1;
 
         for(int i=0; i<scan_points; i++)
         {
-            g_points[i].x = FreqFromIndex(i);
+            g_points[i].x = FreqFromIndex(i)*mul_x;
             g_points[i].y = cimag(g_data[i]);
         }
 
@@ -148,7 +153,7 @@ void SceneGraphResultZx(complex Zxm)
                 ymax = y;
         }
 
-        PlotSetAxis(g_min_freq, g_max_freq, ymin, ymax);
+        PlotSetAxis(g_min_freq*mul_x, g_max_freq*mul_x, ymin, ymax);
         PlotDrawGraph(0, g_points, scan_points, VGA_GREEN);
         return;
     }

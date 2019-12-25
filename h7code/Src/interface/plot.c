@@ -265,7 +265,7 @@ void PlotSetAxis(float xmin, float xmax, float ymin, float ymax)
         PlotCalcTicks(xmin, xmax, &tick_xmin, &tick_xmax,
                       &tick_delta, &tick_mul, &float_places);
 
-        float t_mul = 1;
+        float t_mul = tick_mul;
         float_places = 0;
         if(tick_mul>99e3)
         {

@@ -2,6 +2,7 @@
 #include <math.h>
 #include "sin_cos.h"
 
+/*
 int main()
 {
     SinCosInit();
@@ -47,4 +48,80 @@ int main()
     phase = phase>>ADDITIONAL_SHIFT;
 
     return 0;
+}
+
+*/
+
+
+//Предполагаем, что самое большое, что может встретиться -9999
+//Самое маленькое, что может встретиться -0.01
+void PlotCalcTicks(float xmin, float xmax,
+                   int* ptick_xmin, int* ptick_xmax, int* ptick_dx, float* ptick_mul, int* float_places)
+{
+    *ptick_xmin = 0;
+    *ptick_xmax = 10;
+    *ptick_dx = 1;
+    *ptick_mul = 1;
+    *float_places = 0;
+
+    float dx = xmax-xmin;
+    if(dx<0)
+        dx = -dx;
+
+    float ftick = 1;
+
+    float c = 3.f;
+    for(int i=-2; i<8; i++)
+    {
+        ftick = 1;
+        if(i<0)
+        {
+            for(int j=0; j<-i; j++)
+                ftick *= 0.1f;
+            *float_places = -i;
+        } else
+        {
+            for(int j=0; j<i; j++)
+                ftick *= 10.f;
+            *float_places = 0;
+        }
+
+        //if(dx>=c*ftick && dx<c*10*ftick)
+        if(dx<c*10*ftick)
+            break;
+    }
+
+    uint32_t count = lround(dx/ftick);
+
+    *ptick_dx = 1;
+    if(count>=c*5)
+        *ptick_dx = 5;
+    else
+    if(count>=c*2)
+        *ptick_dx = 2;
+
+    *ptick_xmin = floor(xmin/(ftick* *ptick_dx))* *ptick_dx;
+    *ptick_xmax = ceil(xmax/(ftick* *ptick_dx))* *ptick_dx;
+    *ptick_mul = ftick;
+}
+
+
+int main()
+{
+    float xmin = 10;
+    float xmax = 100;
+    int tick_xmin = 0;
+    int tick_xmax = 10;
+    int tick_delta = 2;
+    float tick_mul = 0.1f;
+    int float_places = 1;
+
+    PlotCalcTicks(xmin, xmax, &tick_xmin, &tick_xmax,
+                  &tick_delta, &tick_mul, &float_places);
+
+    float t_mul = tick_mul;
+    for(int t=tick_xmin+tick_delta; t<=tick_xmax-tick_delta; t+=tick_delta)
+    {
+        printf("%f\n", t*t_mul);
+    }
 }
