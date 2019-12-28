@@ -13,11 +13,15 @@ enum SceneGraphMenuEnum
     SGME_RETURN,
     SGME_TO_SINGLE,
     SGME_SET_FREQ_MIN,
+    SGME_GRAPH,
 };
 
 static void SceneGraphMenuQuant();
 static void SceneSelectFreqStart(bool min_freq);
 static void SceneSelectFreqQuant();
+
+static void SceneSelectGraphStart();
+static void SceneSelectGraphQuant();
 
 static int g_default_frequencies[] =
     {   10,   30,   100,   300,
@@ -31,10 +35,11 @@ void SceneGraphMenuStart()
 {
     UTFT_setFont(BigFont);
     MenuReset("Graph menu");
+    MenuAdd("Graphics", SGME_GRAPH);
     MenuAdd("Start scan", SGME_START_SCAN);
-    MenuAdd1("..", SGME_RETURN, "Return to graph");
     MenuAdd("To single freq", SGME_TO_SINGLE);
     MenuAdd("Set freq", SGME_SET_FREQ_MIN);
+    MenuAdd1("..", SGME_RETURN, "Return to graph");
 
     MenuRedraw();
     InterfaceGoto(SceneGraphMenuQuant);
@@ -70,6 +75,13 @@ void SceneGraphMenuQuant()
         SceneSelectFreqStart(true);
         return;
     }
+
+    if(MenuData()==SGME_GRAPH)
+    {
+        SceneSelectGraphStart();
+        return;
+    }
+
 }
 
 void SceneSelectFreqStart(bool min_freq)
@@ -119,4 +131,30 @@ void SceneSelectFreqQuant()
         SceneGraphStartScan();
         return;
     }
+}
+
+void SceneSelectGraphStart()
+{
+    UTFT_setFont(BigFont);
+    MenuReset("Select grpah");
+    MenuAdd("real(Z) Zre", GRAPH_Z_RE);
+    MenuAdd("imag(Z) Zim", GRAPH_Z_IM);
+    MenuAdd("Zre & Zim", GRAPH_Z_RE_Z_IM);
+    MenuAdd("phase(Z) Zarg", GRAPH_Z_PHASE);
+
+    MenuSetIndex(MenuIndexByData(g_graph_type));
+
+    MenuRedraw();
+    InterfaceGoto(SceneSelectGraphQuant);
+}
+
+void SceneSelectGraphQuant()
+{
+    MenuQuant();
+    if(!EncButtonPressed())
+        return;
+
+    g_graph_type = MenuData();
+
+    SceneGraphStart();
 }

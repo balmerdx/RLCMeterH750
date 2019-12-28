@@ -236,12 +236,12 @@ void SceneSingleFreqQuant()
         SceneSingleFreqDrawCurrentR();
 }
 
-void SceneSingleFreqZx(complex Zx, ErrorZx* err)
+void SceneSingleFreqZx()
 {
     if(!InterfaceIsActive(SceneSingleFreqQuant))
         return;
-    last_Zx = Zx;
-    last_error = *err;
+    last_Zx = g_Zx;
+    last_error = g_error;
     last_Zx_changed = true;
 }
 

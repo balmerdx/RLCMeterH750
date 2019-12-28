@@ -39,5 +39,11 @@ extern int g_freq_index;
 
 //Результат последней конверсии.
 extern ConvolutionResult g_result;
+//Результат получившийся при измерении (без коррекции)
 extern complex g_Zxm;
+
+//Приблизительная ошибка, получишаяся при последнем измерении.
 extern ErrorZx g_error;
+
+//Результат получившийся после применения коррекции
+extern complex g_Zx;

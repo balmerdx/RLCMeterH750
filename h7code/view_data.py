@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import array
 import math
 import matplotlib.pyplot as plt
@@ -103,7 +104,6 @@ def ViewDataBin():
 	data_y = removeAverage(data_y)
 
 	#plotXY(data_x, data_y)
-
 	#plotFFT(data_x, color = 'red')
 	plotFFT(data_y, color = 'blue')
 	#plotFFT2(data_x, data_y)
@@ -123,5 +123,5 @@ def ViewZx():
 	data = readXml(filename)
 	plotZ(data['f'], data['re'], data['im'])
 
-#ViewDataBin()
-ViewZx()
+ViewDataBin()
+#ViewZx()

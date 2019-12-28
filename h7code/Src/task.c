@@ -21,6 +21,7 @@ uint32_t convolution_time_ms_fast = 50;
 uint32_t g_freqWord = 0;
 ConvolutionResult g_result;
 complex g_Zxm = 0;
+complex g_Zx = 0;
 ErrorZx g_error = {};
 
 #define USB_RECEIVED_DATA_SIZE 32
@@ -175,6 +176,7 @@ void NextTask()
             TaskSetFreq(freq);
             if(command==USB_COMMAND_ADC)
             {
+                HAL_Delay(4);
                 AdcStartBufferFilling();
                 return;
             }
@@ -194,27 +196,24 @@ void TaskQuant()
     if(AdcConvolutionComplete())
     {
         g_result = AdcConvolutionResult();
+        g_Zxm = calculateZxm(&g_result, &g_error);
+        g_Zx = correctionMake(g_Zxm, ResistorCurrent(), g_freq);
 
-        complex Zxm = calculateZxm(&g_result, &g_error);
-        g_Zxm = Zxm;
-        if(SelectResistor(&g_result, cabs(Zxm)))
+        if(SelectResistor(&g_result, cabs(g_Zxm)))
         {
             TaskStartConvolution();
 
-            //Временный, отладочный код
-            complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
-            SceneSingleFreqZx(Zx, &g_error);
+            //Временный, отладочный код, для того, чтобы увидеть бесконечные переключения резистора.
+            SceneSingleFreqZx();
         } else
         {
-            complex Zx = correctionMake(Zxm, ResistorCurrent(), g_freq);
-
             if(last_command==USB_COMMAND_CONVOLUTION)
             {
-                SendConvolutionResult(Zx);
+                SendConvolutionResult(g_Zx);
             }
-            SceneSingleFreqZx(Zx, &g_error);
-            SceneCalibrarionZx(Zxm);
-            SceneGraphResultZx(Zxm);
+            SceneSingleFreqZx();
+            SceneCalibrarionZx(g_Zxm);
+            SceneGraphResultZx();
             force_next_task = true;
         }
     }

@@ -2,7 +2,7 @@
 #include "main.h"
 #include "measure/calculate_rc.h"
 void SceneSingleFreqStart();
-void SceneSingleFreqZx(complex Zx, ErrorZx* err);
+void SceneSingleFreqZx();
 
 typedef enum
 {
