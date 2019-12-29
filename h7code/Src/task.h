@@ -47,3 +47,5 @@ extern ErrorZx g_error;
 
 //Результат получившийся после применения коррекции
 extern complex g_Zx;
+
+extern bool g_enable_correction;

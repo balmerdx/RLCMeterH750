@@ -6,6 +6,7 @@
 #include "scene_calibration.h"
 #include "scene_graph.h"
 #include "ili/DefaultFonts.h"
+#include "task.h"
 
 enum SingleFreqMenuEnum
 {
@@ -18,6 +19,7 @@ enum SingleFreqMenuEnum
     SFME_SET_CALIBRATION,
     SFME_VIEW_DEBUG,
     SFME_TO_GRAPH,
+    SFME_ENABLE_CORRECTION,
 };
 
 void SceneSingleFreqMenuQuant();
@@ -34,6 +36,8 @@ void SceneSingleFreqMenuStart()
     MenuAdd(view_debug?"View normal":"View debug", SFME_VIEW_DEBUG);
     //MenuAdd("Select calibration", SFME_SELECT_CALIBRATION);
     MenuAdd("Set calibration", SFME_SET_CALIBRATION);
+    MenuAdd(g_enable_correction?"Correction - enabled":"Correction - disabled", SFME_ENABLE_CORRECTION);
+
     MenuAdd("Switch to graph", SFME_TO_GRAPH);
 
     MenuRedraw();
@@ -97,6 +101,13 @@ void SceneSingleFreqMenuQuant()
     if(MenuData()==SFME_TO_GRAPH)
     {
         SceneGraphStart();
+        return;
+    }
+
+    if(MenuData()==SFME_ENABLE_CORRECTION)
+    {
+        g_enable_correction = !g_enable_correction;
+        SceneSingleFreqStart();
         return;
     }
 }

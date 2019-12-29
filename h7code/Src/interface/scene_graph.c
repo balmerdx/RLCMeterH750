@@ -20,6 +20,7 @@ static complex g_data[SCAN_POINTS];
 static bool scan_start_next = false;
 static int scan_cur = -1;
 static int scan_points = -1;
+static int line_point_index = -1;
 
 static int pb_graph_y;
 static int pb_bottom_info_y;
@@ -91,6 +92,15 @@ void SceneGraphQuant()
         return;
     }
 
+    if(EncValueChanged())
+    {
+        if(line_point_index<0 && scan_points>0)
+            line_point_index = scan_points/2;
+
+        PlotLineSetVisible(true);
+        AddSaturated(&line_point_index, EncValueDelta(), scan_points);
+        PlotLineSetPosX(g_points1[line_point_index].x);
+    }
 }
 
 
@@ -113,6 +123,9 @@ void SceneGraphStartScan()
 {
     ProgressInit(0, pb_bottom_info_y, UTFT_getDisplayXSize(), UTFT_getDisplayYSize()-pb_bottom_info_y-1);
     ProgressSetVisible(true);
+
+    PlotLineSetVisible(false);
+    line_point_index = -1;
 
     scan_start_next = true;
 }

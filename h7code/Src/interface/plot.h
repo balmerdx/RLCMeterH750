@@ -20,19 +20,20 @@ void PlotSetAxis(float xmin, float xmax, float ymin, float ymax);
 
 void PlotDrawGraph(int graph_index, Point* points, int count, uint16_t colorW);
 
-//Ширина в пикселях области графика
-int PlotScreenDx();
-
 //Горизонтальная линия, которой можно задавать положение
 void PlotLineSetVisible(bool show);
 bool PlotLineVisible();
 
 //x = положение линии в пикселях
 //0 - начало графика
-//PlotScreenDx() - конец графика
+//dx из PlotInit - конец графика
 void PlotLineSetPos(int x);
+
+//x - значения от xmin до xmax в PlotSetAxis
+void PlotLineSetPosX(float x);
+
 // возвращает положение линии в пикселях
 int PlotLinePos();
-// возврвщает положение линии координатах графика
+// возвращает положение линии координатах графика
 float PlotLineX();
 uint64_t PlotLineXround();

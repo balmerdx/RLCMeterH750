@@ -103,9 +103,9 @@ def ViewDataBin():
 	data_x = removeAverage(data_x)
 	data_y = removeAverage(data_y)
 
-	#plotXY(data_x, data_y)
+	plotXY(data_x, data_y)
 	#plotFFT(data_x, color = 'red')
-	plotFFT(data_y, color = 'blue')
+	#plotFFT(data_y, color = 'blue')
 	#plotFFT2(data_x, data_y)
 
 def plotZ(f, re, im):

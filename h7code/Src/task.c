@@ -23,6 +23,7 @@ ConvolutionResult g_result;
 complex g_Zxm = 0;
 complex g_Zx = 0;
 ErrorZx g_error = {};
+bool g_enable_correction = true;
 
 #define USB_RECEIVED_DATA_SIZE 32
 //Количество слов в буфере g_usb_received_data
@@ -197,7 +198,10 @@ void TaskQuant()
     {
         g_result = AdcConvolutionResult();
         g_Zxm = calculateZxm(&g_result, &g_error);
-        g_Zx = correctionMake(g_Zxm, ResistorCurrent(), g_freq);
+        if(g_enable_correction)
+            g_Zx = correctionMake(g_Zxm, ResistorCurrent(), g_freq);
+        else
+            g_Zx = g_Zxm;
 
         if(SelectResistor(&g_result, cabs(g_Zxm)))
         {

@@ -479,6 +479,17 @@ static void PlotUpdateGraphs(int xmin, int xmax)
 
     UTFT_setColorW(g_outline_color);
     PlotUpdateLines(xmin, xmax, g_ticks, g_ticks_count);
+
+    if(xmin <= g_plot_x)
+        UTFT_drawLine(g_plot_x, g_plot_y, g_plot_x, g_plot_y+g_plot_dy);
+
+    if(xmax >= g_plot_x+g_plot_dx)
+        UTFT_drawLine(g_plot_x+g_plot_dx, g_plot_y, g_plot_x+g_plot_dx, g_plot_y+g_plot_dy);
+}
+
+void PlotLineSetPosX(float x)
+{
+    PlotLineSetPos(lroundf((x-g_xmin)*g_scale_x));
 }
 
 void PlotLineSetPos(int x)
@@ -533,9 +544,9 @@ int PlotLinePos()
 void PlotHideLine()
 {
     int x = g_plot_x + g_line_pos;
-    PlotUpdateGraphs(x, x);
     UTFT_setColorW(VGA_BLACK);
     UTFT_drawLine(x, g_plot_y+1, x, g_plot_y+g_plot_dy-1);
+    PlotUpdateGraphs(x, x);
 }
 
 void PlotDrawLine()
