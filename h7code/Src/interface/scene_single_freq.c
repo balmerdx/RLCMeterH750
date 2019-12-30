@@ -110,6 +110,52 @@ void FillError(char* str, float error)
     str[1] = 0;
 }
 
+void FormatReIm(complex Zx,
+                ErrorZx* error,
+                char* str_re,
+                char* str_im,
+                char* str_re_type,
+                char* str_im_type)
+{
+    static VisualInfo info;
+    convertZxmToVisualInfo(Zx, TaskGetFreq(), view_parallel, error, &info);
+
+    float Rabs = cabsf(Zx);
+    if(view_mode == VM_Z_ABS_ARG)
+    {
+        formatR2(str_re, str_re_type, Rabs, Rabs);
+    } else
+    {
+        formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
+    }
+
+    if(view_mode == VM_Z_ABS_ARG)
+    {
+        float angle = cargf(last_Zx)*180/M_PI;
+        floatToString(str_im, 16, angle, 1, 3, true);
+        str_im_type[0] = 0;
+    } else
+    if(view_mode == VM_LC)
+    {
+        if(info.is_inductance)
+            formatL2(str_im, str_im_type, info.L);
+        else
+            formatC2(str_im, str_im_type, info.C);
+    } else
+    {
+        formatR2(str_im, str_im_type, info.Rim, view_parallel?fabsf(info.Rim):Rabs);
+    }
+
+    if(info.is_inf)
+    {
+        str_re[0] = 0;
+        strcpy(str_re_type, "inf");
+        str_im[0] = 0;
+        strcpy(str_im_type, "inf");
+    }
+}
+
+
 void DrawNumberType(int x, int y, const char* str_number, const char* str_type)
 {
     UTF_SetFont(font_condensed59);
@@ -258,7 +304,6 @@ void SceneSingleFreqDrawNames()
     UTF_SetFont(font_condensed30);
     UTFT_setColorW(VGA_WHITE);
 
-    //±
     char* str_re = "real(Z)";
     char* str_im = "imag(Z)";
 
@@ -307,42 +352,9 @@ void SceneSingleFreqDrawValues()
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
-    static VisualInfo info;
-    convertZxmToVisualInfo(last_Zx, TaskGetFreq(), view_parallel, &last_error, &info);
-
-    float Rabs = cabsf(last_Zx);
-    if(view_mode == VM_Z_ABS_ARG)
-    {
-        formatR2(str_re, str_re_type, Rabs, Rabs);
-    } else
-    {
-        formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
-    }
-
-    if(view_mode == VM_Z_ABS_ARG)
-    {
-        float angle = cargf(last_Zx)*180/M_PI;
-        floatToString(str_im, 16, angle, 1, 3, true);
-        str_im_type[0] = 0;
-    } else
-    if(view_mode == VM_LC)
-    {
-        if(info.is_inductance)
-            formatL2(str_im, str_im_type, info.L);
-        else
-            formatC2(str_im, str_im_type, info.C);
-    } else
-    {
-        formatR2(str_im, str_im_type, info.Rim, view_parallel?fabsf(info.Rim):Rabs);
-    }
-
-    if(info.is_inf)
-    {
-        str_re[0] = 0;
-        strcpy(str_re_type, "inf");
-        str_im[0] = 0;
-        strcpy(str_im_type, "inf");
-    }
+    FormatReIm(last_Zx, &last_error,
+               str_re, str_im,
+               str_re_type, str_im_type);
 
 
     UTFT_setBackColorW(REAL_BACK_COLOR);

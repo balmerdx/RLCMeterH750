@@ -14,3 +14,10 @@ typedef enum
 extern bool view_parallel;
 extern VIEW_MODE view_mode;
 extern bool view_debug;
+
+void FormatReIm(complex Zx,
+                ErrorZx* error,
+                char* str_re,
+                char* str_im,
+                char* str_re_type,
+                char* str_im_type);
