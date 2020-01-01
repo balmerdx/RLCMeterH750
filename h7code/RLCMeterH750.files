@@ -67,18 +67,6 @@ Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_add_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_dot_prod_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_mult_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_negate_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_offset_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_scale_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_shift_q31.c
-Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_sub_q31.c
-Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_cos_q31.c
-Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_sin_q31.c
-Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_sqrt_q31.c
-Drivers/CMSIS/DSP/Source/CommonTables/arm_common_tables.c
 Inc/main.h
 Inc/stm32h7xx_hal_conf.h
 Inc/stm32h7xx_it.h
@@ -237,6 +225,3 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usart.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_utils.h
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_wwdg.h
-Drivers/CMSIS/DSP/Include/arm_common_tables.h
-Drivers/CMSIS/DSP/Include/arm_const_structs.h
-Drivers/CMSIS/DSP/Include/arm_math.h

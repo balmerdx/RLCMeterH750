@@ -6,7 +6,6 @@ Drivers/STM32H7xx_HAL_Driver/Inc
 Drivers/STM32H7xx_HAL_Driver/Inc/Legacy
 Drivers/CMSIS/Include
 Drivers/CMSIS/Device/ST/STM32H7xx/Include
-Drivers/CMSIS/DSP/Include
 Src
 Inc
 Middlewares/ST/STM32_USB_Device_Library/Core/Inc

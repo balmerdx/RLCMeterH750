@@ -17,6 +17,7 @@ extern bool view_debug;
 
 void FormatReIm(complex Zx,
                 ErrorZx* error,
+                double freq,
                 char* str_re,
                 char* str_im,
                 char* str_re_type,

@@ -314,7 +314,7 @@ void SceneGraphDrawBottom()
     char str_re_type[outstr_size];
     char str_im_type[outstr_size];
 
-    FormatReIm(g_data_array[line_point_index], g_error_array+line_point_index,
+    FormatReIm(g_data_array[line_point_index], g_error_array+line_point_index, freq,
                str_re, str_im,
                str_re_type, str_im_type);
 

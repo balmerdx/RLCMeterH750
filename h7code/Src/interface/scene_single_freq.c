@@ -38,6 +38,7 @@ bool view_debug = false;
 
 static complex last_Zx;
 static ErrorZx last_error;
+static double last_freq;
 static bool last_Zx_changed;
 
 static int info_current_r_x;
@@ -112,13 +113,14 @@ void FillError(char* str, float error)
 
 void FormatReIm(complex Zx,
                 ErrorZx* error,
+                double freq,
                 char* str_re,
                 char* str_im,
                 char* str_re_type,
                 char* str_im_type)
 {
     static VisualInfo info;
-    convertZxmToVisualInfo(Zx, TaskGetFreq(), view_parallel, error, &info);
+    convertZxmToVisualInfo(Zx, freq, view_parallel, error, &info);
 
     float Rabs = cabsf(Zx);
     if(view_mode == VM_Z_ABS_ARG)
@@ -288,6 +290,7 @@ void SceneSingleFreqZx()
         return;
     last_Zx = g_Zx;
     last_error = g_error;
+    last_freq = TaskGetFreq();
     last_Zx_changed = true;
 }
 
@@ -352,7 +355,7 @@ void SceneSingleFreqDrawValues()
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
 
-    FormatReIm(last_Zx, &last_error,
+    FormatReIm(last_Zx, &last_error, last_freq,
                str_re, str_im,
                str_re_type, str_im_type);
 

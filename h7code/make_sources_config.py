@@ -25,7 +25,6 @@ sources = [
 		"Src/measure",
 		],
 	"files" : [
-		#"startup_stm32h743xx.s"
 		"startup_stm32h750xx.s"
 		]
 },
@@ -73,8 +72,6 @@ sources = [
 		"stm32h7xx_hal_i2c.c",
 		"stm32h7xx_hal_i2c_ex.c",
 		"stm32h7xx_hal_exti.c",
-		#"stm32h7xx_hal_eth.c",
-		#"stm32h7xx_hal_eth_ex.c",
 		"stm32h7xx_hal_spi.c",
 		"stm32h7xx_hal_tim.c",
 		"stm32h7xx_hal_tim_ex.c",
@@ -88,43 +85,6 @@ sources = [
 	"output" : "hal",
 	"dirs" : [
 		"Inc"
-	]
-},
-{
-	"base" : "Drivers/CMSIS/DSP",
-	"output" : "cmsis_dsp",
-	"dirs" : [
-		"Include"
-	]
-},
-{
-	"base" : "Drivers/CMSIS/DSP/Source/BasicMathFunctions",
-	"output" : "cmsis_dsp",
-	"files" : [
-		"arm_add_q31.c",
-		"arm_dot_prod_q31.c",
-		"arm_mult_q31.c",
-		"arm_negate_q31.c",
-		"arm_offset_q31.c",
-		"arm_scale_q31.c",
-		"arm_shift_q31.c",
-		"arm_sub_q31.c",
-	]
-},
-{
-	"base" : "Drivers/CMSIS/DSP/Source/FastMathFunctions",
-	"output" : "cmsis_dsp",
-	"files" : [
-		"arm_cos_q31.c",
-		"arm_sin_q31.c",
-		"arm_sqrt_q31.c",
-	]
-},
-{
-	"base" : "Drivers/CMSIS/DSP/Source/CommonTables",
-	"output" : "cmsis_dsp",
-	"files" : [
-		"arm_common_tables.c",
 	]
 },
 

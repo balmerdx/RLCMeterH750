@@ -73,18 +73,6 @@ DEPS += \
 	output/hal/stm32h7xx_hal_tim_ex.d \
 	output/hal/stm32h7xx_hal_uart.d \
 	output/hal/stm32h7xx_hal_uart_ex.d \
-	output/cmsis_dsp/arm_add_q31.d \
-	output/cmsis_dsp/arm_dot_prod_q31.d \
-	output/cmsis_dsp/arm_mult_q31.d \
-	output/cmsis_dsp/arm_negate_q31.d \
-	output/cmsis_dsp/arm_offset_q31.d \
-	output/cmsis_dsp/arm_scale_q31.d \
-	output/cmsis_dsp/arm_shift_q31.d \
-	output/cmsis_dsp/arm_sub_q31.d \
-	output/cmsis_dsp/arm_cos_q31.d \
-	output/cmsis_dsp/arm_sin_q31.d \
-	output/cmsis_dsp/arm_sqrt_q31.d \
-	output/cmsis_dsp/arm_common_tables.d \
 
 
 OBJS += \
@@ -157,18 +145,6 @@ OBJS += \
 	output/hal/stm32h7xx_hal_tim_ex.o \
 	output/hal/stm32h7xx_hal_uart.o \
 	output/hal/stm32h7xx_hal_uart_ex.o \
-	output/cmsis_dsp/arm_add_q31.o \
-	output/cmsis_dsp/arm_dot_prod_q31.o \
-	output/cmsis_dsp/arm_mult_q31.o \
-	output/cmsis_dsp/arm_negate_q31.o \
-	output/cmsis_dsp/arm_offset_q31.o \
-	output/cmsis_dsp/arm_scale_q31.o \
-	output/cmsis_dsp/arm_shift_q31.o \
-	output/cmsis_dsp/arm_sub_q31.o \
-	output/cmsis_dsp/arm_cos_q31.o \
-	output/cmsis_dsp/arm_sin_q31.o \
-	output/cmsis_dsp/arm_sqrt_q31.o \
-	output/cmsis_dsp/arm_common_tables.o \
 
 
 output/base/Src/data_processing.o: ./Src/data_processing.c
@@ -445,54 +421,6 @@ output/hal/stm32h7xx_hal_uart.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_
 
 output/hal/stm32h7xx_hal_uart_ex.o: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c
 	@echo 'Building target: stm32h7xx_hal_uart_ex.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_add_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_add_q31.c
-	@echo 'Building target: arm_add_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_dot_prod_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_dot_prod_q31.c
-	@echo 'Building target: arm_dot_prod_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_mult_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_mult_q31.c
-	@echo 'Building target: arm_mult_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_negate_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_negate_q31.c
-	@echo 'Building target: arm_negate_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_offset_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_offset_q31.c
-	@echo 'Building target: arm_offset_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_scale_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_scale_q31.c
-	@echo 'Building target: arm_scale_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_shift_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_shift_q31.c
-	@echo 'Building target: arm_shift_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_sub_q31.o: Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_sub_q31.c
-	@echo 'Building target: arm_sub_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_cos_q31.o: Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_cos_q31.c
-	@echo 'Building target: arm_cos_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_sin_q31.o: Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_sin_q31.c
-	@echo 'Building target: arm_sin_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_sqrt_q31.o: Drivers/CMSIS/DSP/Source/FastMathFunctions/arm_sqrt_q31.c
-	@echo 'Building target: arm_sqrt_q31.c'
-	@$(CC) $(C_FLAGS) -o "$@" "$<"
-
-output/cmsis_dsp/arm_common_tables.o: Drivers/CMSIS/DSP/Source/CommonTables/arm_common_tables.c
-	@echo 'Building target: arm_common_tables.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 

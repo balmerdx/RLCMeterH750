@@ -12,7 +12,6 @@ C_INCLIDES= \
 -I$(STM_LIB_DIR)/STM32H7xx_HAL_Driver/Inc/Legacy \
 -I$(STM_LIB_DIR)/CMSIS/Include \
 -I$(STM_LIB_DIR)/CMSIS/Device/ST/STM32H7xx/Include \
--I$(STM_LIB_DIR)/CMSIS/DSP/Include \
 -ISrc \
 -IInc \
 -IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
