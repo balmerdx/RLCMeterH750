@@ -21,6 +21,7 @@ DEPS += \
 	output/base/Src/hardware/m25p16.d \
 	output/base/Src/hardware/quadrature_encoder.d \
 	output/base/Src/hardware/select_resistor.d \
+	output/base/Src/hardware/store_to_spi_flash.d \
 	output/base/Src/ili/DefaultFonts.d \
 	output/base/Src/ili/UTFT.d \
 	output/base/Src/ili/float_to_string.d \
@@ -93,6 +94,7 @@ OBJS += \
 	output/base/Src/hardware/m25p16.o \
 	output/base/Src/hardware/quadrature_encoder.o \
 	output/base/Src/hardware/select_resistor.o \
+	output/base/Src/hardware/store_to_spi_flash.o \
 	output/base/Src/ili/DefaultFonts.o \
 	output/base/Src/ili/UTFT.o \
 	output/base/Src/ili/float_to_string.o \
@@ -213,6 +215,10 @@ output/base/Src/hardware/quadrature_encoder.o: ./Src/hardware/quadrature_encoder
 
 output/base/Src/hardware/select_resistor.o: ./Src/hardware/select_resistor.c
 	@echo 'Building target: select_resistor.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/hardware/store_to_spi_flash.o: ./Src/hardware/store_to_spi_flash.c
+	@echo 'Building target: store_to_spi_flash.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/ili/DefaultFonts.o: ./Src/ili/DefaultFonts.c

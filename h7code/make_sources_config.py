@@ -47,7 +47,6 @@ sources = [
 
 },
 {
-	"label" : "hal_src",
 	"base" : "Drivers/STM32H7xx_HAL_Driver/Src",
 	"output" : "hal",
 	"files" : [
@@ -90,20 +89,5 @@ sources = [
 
 ]
 
-#include hal .h files
-'''
-for source in sources:
-	if "label" not in source:
-		continue
-	if source["label"]=="hal_src":
-		sourceh = copy.deepcopy(source)
-		del sourceh["label"]
-		sourceh["base"] = "Drivers/STM32H7xx_HAL_Driver/Inc"
-		files = sourceh["files"]
-		for i in range(len(files)):
-			files[i] = files[i].replace(".c", ".h")
-		sources.append(sourceh)
-		break
-'''
 if __name__ == "__main__":
 	make_sources.makeProject(sources, QT_PROJECT_NAME)

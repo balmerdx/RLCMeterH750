@@ -15,6 +15,7 @@ Src/hardware/hw_ili9341.c
 Src/hardware/m25p16.c
 Src/hardware/quadrature_encoder.c
 Src/hardware/select_resistor.c
+Src/hardware/store_to_spi_flash.c
 Src/ili/DefaultFonts.c
 Src/ili/UTFT.c
 Src/ili/float_to_string.c
@@ -84,6 +85,7 @@ Src/hardware/hw_ili9341.h
 Src/hardware/m25p16.h
 Src/hardware/quadrature_encoder.h
 Src/hardware/select_resistor.h
+Src/hardware/store_to_spi_flash.h
 Src/ili/DefaultFonts.h
 Src/ili/UTFT.h
 Src/ili/float_to_string.h
