@@ -23,6 +23,7 @@ sources = [
 		"Src/ili",
 		"Src/interface",
 		"Src/measure",
+		"Src/test",
 		],
 	"files" : [
 		"startup_stm32h750xx.s"

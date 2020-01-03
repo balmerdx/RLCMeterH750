@@ -16,6 +16,8 @@
 #include "task.h"
 #include "interface/scene_single_freq.h"
 
+#include "test/test_store_to_flash.h"
+
 volatile int64_t g_sum;
 extern volatile SPI_HandleTypeDef SpiHandle;
 
@@ -63,35 +65,7 @@ int main(void)
         Error_Handler();
     }
 
-    if(0)
-    {
-        m25p16_ram_erase64k(0x10000);
-
-        uint32_t offset = 0x10000;
-        uint16_t size = 128;
-        static char buffer[128];
-        for(int i=0; i<size; i++)
-            buffer[i] = i;
-
-        m25p16_write(offset, size, buffer);
-
-        sprintf(buffer, "Flash write complete");
-        UTFT_print(buffer, 20, 50);
-
-        m25p16_read(offset, size, buffer);
-
-        bool ok = true;
-        for(int i=0; i<size; i++)
-            if(buffer[i] != i)
-                ok = false;
-
-        if(ok)
-            sprintf(buffer, "Flash read OK      ");
-        else
-            sprintf(buffer, "Flash read FAIL      ");
-        UTFT_print(buffer, 20, 50);
-        while(1);
-    }
+    //TestStoreToFlash();
 
     DualAdcInitAndStart();
     UTFT_print("ADC Started    ", 20, 30);

@@ -117,7 +117,6 @@ bool SpiFlashWriteToFlash(uint16_t flash_sector, uint16_t struct_size, void* voi
         if(SpiCheckEqual(flash_offset+parts_offset, struct_size, void_data))
         {
             return true;
-            struct_idx--;
         }
     }
 
