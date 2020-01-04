@@ -29,7 +29,7 @@ void SceneSingleFreqMenuStart()
     UTFT_setFont(BigFont);
     MenuReset("Single freq menu");
     MenuAdd1("..", SFME_RETURN, "Return to scene");
-    MenuAdd(view_parallel?"View serial":"View parallel", SFME_SERIAL_PARALLEL);
+    MenuAdd(g_settings.view_parallel?"View serial":"View parallel", SFME_SERIAL_PARALLEL);
     MenuAdd("View LC", SFME_LC);
     MenuAdd("View Z real & imag", SFME_Z_REAL_IMAG);
     MenuAdd("View Z abs & arg", SFME_Z_ABS_ARG);
@@ -59,28 +59,28 @@ void SceneSingleFreqMenuQuant()
 
     if(MenuData()==SFME_SERIAL_PARALLEL)
     {
-        view_parallel = !view_parallel;
+        g_settings.view_parallel = !g_settings.view_parallel;
         SceneSingleFreqStart();
         return;
     }
 
     if(MenuData()==SFME_LC)
     {
-        view_mode = VM_LC;
+        g_settings.view_mode = VM_LC;
         SceneSingleFreqStart();
         return;
     }
 
     if(MenuData()==SFME_Z_REAL_IMAG)
     {
-        view_mode = VM_Z_REAL_IMAG;
+        g_settings.view_mode = VM_Z_REAL_IMAG;
         SceneSingleFreqStart();
         return;
     }
 
     if(MenuData()==SFME_Z_ABS_ARG)
     {
-        view_mode = VM_Z_ABS_ARG;
+        g_settings.view_mode = VM_Z_ABS_ARG;
         SceneSingleFreqStart();
         return;
     }

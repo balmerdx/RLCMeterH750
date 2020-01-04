@@ -13,6 +13,7 @@ extern "C" {
 #include "interface/colors.h"
 #include "interface/font_condensed30.h"
 #include "interface/font_condensed59.h"
+#include "settings.h"
 
 // Exported functions prototypes ---------------------------------------------
 void Error_Handler(void);

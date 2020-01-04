@@ -32,8 +32,6 @@ static int pb_param_width_type;
 static int pb_error_x;
 static int pb_error_width;
 
-bool view_parallel = false;
-VIEW_MODE view_mode = VM_LC;
 bool view_debug = false;
 
 static complex last_Zx;
@@ -120,24 +118,24 @@ void FormatReIm(complex Zx,
                 char* str_im_type)
 {
     static VisualInfo info;
-    convertZxmToVisualInfo(Zx, freq, view_parallel, error, &info);
+    convertZxmToVisualInfo(Zx, freq, g_settings.view_parallel, error, &info);
 
     float Rabs = cabsf(Zx);
-    if(view_mode == VM_Z_ABS_ARG)
+    if(g_settings.view_mode == VM_Z_ABS_ARG)
     {
         formatR2(str_re, str_re_type, Rabs, Rabs);
     } else
     {
-        formatR2(str_re, str_re_type, info.Rre, view_parallel?fabsf(info.Rre):Rabs);
+        formatR2(str_re, str_re_type, info.Rre, g_settings.view_parallel?fabsf(info.Rre):Rabs);
     }
 
-    if(view_mode == VM_Z_ABS_ARG)
+    if(g_settings.view_mode == VM_Z_ABS_ARG)
     {
         float angle = cargf(last_Zx)*180/M_PI;
         floatToString(str_im, 16, angle, 1, 3, true);
         str_im_type[0] = 0;
     } else
-    if(view_mode == VM_LC)
+    if(g_settings.view_mode == VM_LC)
     {
         if(info.is_inductance)
             formatL2(str_im, str_im_type, info.L);
@@ -145,7 +143,7 @@ void FormatReIm(complex Zx,
             formatC2(str_im, str_im_type, info.C);
     } else
     {
-        formatR2(str_im, str_im_type, info.Rim, view_parallel?fabsf(info.Rim):Rabs);
+        formatR2(str_im, str_im_type, info.Rim, g_settings.view_parallel?fabsf(info.Rim):Rabs);
     }
 
     if(info.is_inf)
@@ -260,8 +258,8 @@ void SceneSingleFreqQuant()
 {
     if(EncValueChanged())
     {
-        AddSaturated(&g_freq_index, EncValueDelta(), FREQ_INDEX_MAX);
-        TaskSetFreq(StandartFreq(g_freq_index));
+        AddSaturated(&g_settings.single_freq_index, EncValueDelta(), FREQ_INDEX_MAX);
+        TaskSetFreq(StandartFreq(g_settings.single_freq_index));
         SceneSingleFreqDrawFreq();
     }
 
@@ -310,13 +308,13 @@ void SceneSingleFreqDrawNames()
     char* str_re = "real(Z)";
     char* str_im = "imag(Z)";
 
-    if(view_mode == VM_LC)
+    if(g_settings.view_mode == VM_LC)
     {
-        str_re = view_parallel?"EPR":"ESR";
+        str_re = g_settings.view_parallel?"EPR":"ESR";
         str_im = "L/C";
     }
 
-    if(view_mode == VM_Z_ABS_ARG)
+    if(g_settings.view_mode == VM_Z_ABS_ARG)
     {
         str_re = "abs(Z)";
         str_im = "arg(Z)°";
@@ -342,7 +340,7 @@ void SceneSingleFreqDrawValues()
 
     calcError(&error_abs, &error_real, &error_imag, &error_phase);
 
-    if(view_mode == VM_Z_ABS_ARG)
+    if(g_settings.view_mode == VM_Z_ABS_ARG)
     {
         FillError(err_re, error_abs);
         FillError(err_im, error_phase);

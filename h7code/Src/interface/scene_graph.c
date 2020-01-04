@@ -38,13 +38,9 @@ static int pb_bottom_re_width;
 static int pb_bottom_im_x;
 static int pb_bottom_im_width;
 
-int g_min_freq = 100;
-int g_max_freq = 10000;
 
 //Scale для графика
 float g_x_to_freq = 1.f;
-
-GraphType g_graph_type = GRAPH_Z_RE_Z_IM;
 
 //Если частота больше или равна 1 KHz, то пишем в килогерцах без дробной части
 int printEvenFreq(char* str, int freq, int length)
@@ -130,9 +126,9 @@ void SceneGraphDrawFreq()
     char freq_str[30];
 
     char* p = freq_str;
-    p+=printEvenFreq(p, g_min_freq, 1);
+    p+=printEvenFreq(p, g_settings.graph_min_freq, 1);
     *p++='-';
-    printEvenFreq(p, g_max_freq, 1);
+    printEvenFreq(p, g_settings.graph_max_freq, 1);
 
     UTF_SetFont(font_condensed30);
     UTFT_setColorW(VGA_BLACK);
@@ -153,7 +149,7 @@ void SceneGraphStartScan()
 
 static float FreqFromIndex(int idx)
 {
-    return g_min_freq + (g_max_freq-g_min_freq)*idx/(float)(scan_points-1);
+    return g_settings.graph_min_freq + (g_settings.graph_max_freq-g_settings.graph_min_freq)*idx/(float)(scan_points-1);
 }
 
 void SceneGraphResultZx()
@@ -214,7 +210,7 @@ static void AddMinMax(float* ymin, float* ymax,
 void SceneGraphDrawGraphName()
 {
     char* str = "NONE";
-    switch(g_graph_type)
+    switch(g_settings.graph_type)
     {
     case GRAPH_Z_RE: str = "Zreal"; break;
     case GRAPH_Z_IM: str = "Zimag"; break;
@@ -232,7 +228,7 @@ void SceneGraphDrawGraph()
 {
     float ymin = 0, ymax = 0;
     float mul_x = 1e-3;
-    if(g_max_freq <=1000)
+    if(g_settings.graph_max_freq <=1000)
         mul_x = 1;
     g_x_to_freq = 1/mul_x;
 
@@ -243,21 +239,21 @@ void SceneGraphDrawGraph()
         g_points1[i].y = 0;
         g_points2[i].y = 0;
 
-        if(g_graph_type==GRAPH_Z_RE || g_graph_type==GRAPH_Z_IM || g_graph_type==GRAPH_Z_RE_Z_IM)
+        if(g_settings.graph_type==GRAPH_Z_RE || g_settings.graph_type==GRAPH_Z_IM || g_settings.graph_type==GRAPH_Z_RE_Z_IM)
         {
             g_points1[i].y = creal(g_data_array[i]);
             g_points2[i].y = cimag(g_data_array[i]);
         }
 
-        if(g_graph_type==GRAPH_Z_PHASE)
+        if(g_settings.graph_type==GRAPH_Z_PHASE)
         {
             g_points1[i].y = carg(g_data_array[i])*(180/M_PI);
         }
 
-        if(g_graph_type==GRAPH_Z_RE || g_graph_type==GRAPH_Z_RE_Z_IM || g_graph_type==GRAPH_Z_PHASE)
+        if(g_settings.graph_type==GRAPH_Z_RE || g_settings.graph_type==GRAPH_Z_RE_Z_IM || g_settings.graph_type==GRAPH_Z_PHASE)
             AddMinMax(&ymin, &ymax, g_points1[i].y, i==0);
 
-        if(g_graph_type==GRAPH_Z_IM || g_graph_type==GRAPH_Z_RE_Z_IM)
+        if(g_settings.graph_type==GRAPH_Z_IM || g_settings.graph_type==GRAPH_Z_RE_Z_IM)
             AddMinMax(&ymin, &ymax, g_points2[i].y, i==0);
     }
 
@@ -269,20 +265,20 @@ void SceneGraphDrawGraph()
 
     ymin *= mul_y;
     ymax *= mul_y;
-    PlotSetAxis(g_min_freq*mul_x, g_max_freq*mul_x, ymin, ymax);
+    PlotSetAxis(g_settings.graph_min_freq*mul_x, g_settings.graph_max_freq*mul_x, ymin, ymax);
     for(int i=0; i<scan_points; i++)
     {
         g_points1[i].y *= mul_y;
         g_points2[i].y *= mul_y;
     }
 
-    if(g_graph_type==GRAPH_Z_RE || g_graph_type==GRAPH_Z_RE_Z_IM )
+    if(g_settings.graph_type==GRAPH_Z_RE || g_settings.graph_type==GRAPH_Z_RE_Z_IM )
         PlotDrawGraph(0, g_points1, scan_points, VGA_RED);
 
-    if(g_graph_type==GRAPH_Z_IM || g_graph_type==GRAPH_Z_RE_Z_IM )
+    if(g_settings.graph_type==GRAPH_Z_IM || g_settings.graph_type==GRAPH_Z_RE_Z_IM )
         PlotDrawGraph(1, g_points2, scan_points, VGA_GREEN);
 
-    if(g_graph_type==GRAPH_Z_PHASE)
+    if(g_settings.graph_type==GRAPH_Z_PHASE)
         PlotDrawGraph(0, g_points1, scan_points, VGA_AQUA);
 }
 

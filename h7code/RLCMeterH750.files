@@ -1,5 +1,6 @@
 Src/data_processing.c
 Src/main.c
+Src/settings.c
 Src/stm32h7xx_hal_msp.c
 Src/stm32h7xx_it.c
 Src/system_stm32h7xx.c
@@ -77,6 +78,7 @@ Inc/usbd_cdc_if.h
 Inc/usbd_conf.h
 Inc/usbd_desc.h
 Src/data_processing.h
+Src/settings.h
 Src/task.h
 Src/hardware/AD9833_driver.h
 Src/hardware/delay.h

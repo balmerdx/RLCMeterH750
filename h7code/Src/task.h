@@ -34,9 +34,6 @@ void TaskStartConvolution();
 
 void TaskQuant();
 
-//Индекс, для StandartFreq функции
-extern int g_freq_index;
-
 //Результат последней конверсии.
 extern ConvolutionResult g_result;
 //Результат получившийся при измерении (без коррекции)

@@ -36,7 +36,6 @@ static volatile bool force_next_task = false;
 static uint32_t last_command = 0;
 
 static int g_freq = 0;
-int g_freq_index = 18;
 static ResistorSelectorEnum g_choose_resistor = Resistor_Auto;
 static bool g_changed_some = false;
 

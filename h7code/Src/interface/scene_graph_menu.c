@@ -121,12 +121,12 @@ void SceneSelectFreqQuant()
 
     if(g_current_is_min_freq)
     {
-        g_min_freq = g_default_frequencies[MenuData()];
+        g_settings.graph_min_freq = g_default_frequencies[MenuData()];
         g_current_selected_min_freq_index = MenuData()+1;
         SceneSelectFreqStart(false);
         return;
     } else {
-        g_max_freq = g_default_frequencies[MenuData()];
+        g_settings.graph_max_freq = g_default_frequencies[MenuData()];
         SceneGraphStart();
         SceneGraphStartScan();
         return;
@@ -142,7 +142,7 @@ void SceneSelectGraphStart()
     MenuAdd("Zre & Zim", GRAPH_Z_RE_Z_IM);
     MenuAdd("phase(Z) Zarg", GRAPH_Z_PHASE);
 
-    MenuSetIndex(MenuIndexByData(g_graph_type));
+    MenuSetIndex(MenuIndexByData(g_settings.graph_type));
 
     MenuRedraw();
     InterfaceGoto(SceneSelectGraphQuant);
@@ -154,7 +154,7 @@ void SceneSelectGraphQuant()
     if(!EncButtonPressed())
         return;
 
-    g_graph_type = MenuData();
+    g_settings.graph_type = MenuData();
 
     SceneGraphStart();
 }

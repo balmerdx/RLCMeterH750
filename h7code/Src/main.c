@@ -57,8 +57,6 @@ int main(void)
     UTFT_print("AD9833_Init", 20, 30);
 
     m25p16_init();
-
-
     if(!m25p16_read_ram_id_and_check())
     {
         UTFT_print("Flash check FAIL", 20, 30);
@@ -68,12 +66,13 @@ int main(void)
     //TestStoreToFlash();
 
     DualAdcInitAndStart();
-    UTFT_print("ADC Started    ", 20, 30);
+    //UTFT_print("ADC Started    ", 20, 30);
 
+    LoadSettings();
     correctionLoad(0);
 
     InterfaceStart();
-    TaskSetFreq(StandartFreq(g_freq_index));
+    TaskSetFreq(StandartFreq(g_settings.single_freq_index));
     TaskStartConvolution();
     SceneSingleFreqStart();
 
@@ -81,6 +80,15 @@ int main(void)
     {
         TaskQuant();
         InterfaceQuant();
+
+        if(SaveSettingsIfChangedAndTimeUp())
+        {
+            UTFT_setFont(FONT8x15);
+            UTFT_print("Settings Saved", 20, 30);
+            HAL_Delay(500);
+            UTFT_print("              ", 20, 30);
+        }
+
         HAL_Delay(1);
     }
 }

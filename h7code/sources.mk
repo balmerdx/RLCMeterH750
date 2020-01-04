@@ -6,6 +6,7 @@
 DEPS += \
 	output/base/Src/data_processing.d \
 	output/base/Src/main.d \
+	output/base/Src/settings.d \
 	output/base/Src/stm32h7xx_hal_msp.d \
 	output/base/Src/stm32h7xx_it.d \
 	output/base/Src/system_stm32h7xx.d \
@@ -80,6 +81,7 @@ DEPS += \
 OBJS += \
 	output/base/Src/data_processing.o \
 	output/base/Src/main.o \
+	output/base/Src/settings.o \
 	output/base/Src/stm32h7xx_hal_msp.o \
 	output/base/Src/stm32h7xx_it.o \
 	output/base/Src/system_stm32h7xx.o \
@@ -157,6 +159,10 @@ output/base/Src/data_processing.o: ./Src/data_processing.c
 
 output/base/Src/main.o: ./Src/main.c
 	@echo 'Building target: main.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/settings.o: ./Src/settings.c
+	@echo 'Building target: settings.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/stm32h7xx_hal_msp.o: ./Src/stm32h7xx_hal_msp.c
