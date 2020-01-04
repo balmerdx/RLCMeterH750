@@ -63,7 +63,7 @@ void SceneCalibrarionQuant()
                 all_calibrated = all_calibrated || calibrated[i];
             if(all_calibrated)
             {
-                correctionSave(0);
+                CorrectionSave(g_settings.correction_index);
             }
         }
 

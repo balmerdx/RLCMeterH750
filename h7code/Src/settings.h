@@ -1,5 +1,10 @@
 #pragma once
 
+#define FLASH_SECTOR_SETTINGS 0
+#define FLASH_SECTOR_CORRECTION 1
+
+#define CORRECTION_COUNT 3
+
 typedef enum GraphType
 {
     GRAPH_Z_RE,
@@ -26,9 +31,13 @@ typedef struct Settings
     int32_t graph_min_freq;
     int32_t graph_max_freq;
     GraphType graph_type;
+
+    int correction_index;
 } Settings;
 
 extern Settings g_settings;
+
+extern char* g_correction_names[CORRECTION_COUNT];
 
 void LoadSettings();
 bool SaveSettingsIfChangedAndTimeUp();

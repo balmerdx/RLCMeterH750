@@ -28,6 +28,7 @@ Src/interface/menu.c
 Src/interface/plot.c
 Src/interface/progress_bar.c
 Src/interface/scene_calibration.c
+Src/interface/scene_calibration_menu.c
 Src/interface/scene_graph.c
 Src/interface/scene_graph_menu.c
 Src/interface/scene_single_freq.c
@@ -101,6 +102,7 @@ Src/interface/menu.h
 Src/interface/plot.h
 Src/interface/progress_bar.h
 Src/interface/scene_calibration.h
+Src/interface/scene_calibration_menu.h
 Src/interface/scene_graph.h
 Src/interface/scene_graph_menu.h
 Src/interface/scene_single_freq.h

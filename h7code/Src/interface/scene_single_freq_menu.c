@@ -3,7 +3,7 @@
 
 #include "scene_single_freq_menu.h"
 #include "scene_single_freq.h"
-#include "scene_calibration.h"
+#include "scene_calibration_menu.h"
 #include "scene_graph.h"
 #include "ili/DefaultFonts.h"
 #include "task.h"
@@ -15,11 +15,9 @@ enum SingleFreqMenuEnum
     SFME_LC,
     SFME_Z_REAL_IMAG,
     SFME_Z_ABS_ARG,
-    SFME_SELECT_CALIBRATION,
-    SFME_SET_CALIBRATION,
+    SFME_CALIBRATION,
     SFME_VIEW_DEBUG,
     SFME_TO_GRAPH,
-    SFME_ENABLE_CORRECTION,
 };
 
 void SceneSingleFreqMenuQuant();
@@ -34,9 +32,7 @@ void SceneSingleFreqMenuStart()
     MenuAdd("View Z real & imag", SFME_Z_REAL_IMAG);
     MenuAdd("View Z abs & arg", SFME_Z_ABS_ARG);
     MenuAdd(view_debug?"View normal":"View debug", SFME_VIEW_DEBUG);
-    //MenuAdd("Select calibration", SFME_SELECT_CALIBRATION);
-    MenuAdd("Set calibration", SFME_SET_CALIBRATION);
-    MenuAdd(g_enable_correction?"Correction - enabled":"Correction - disabled", SFME_ENABLE_CORRECTION);
+    MenuAdd("Calibration", SFME_CALIBRATION);
 
     MenuAdd("Switch to graph", SFME_TO_GRAPH);
 
@@ -92,22 +88,15 @@ void SceneSingleFreqMenuQuant()
         return;
     }
 
-    if(MenuData()==SFME_SET_CALIBRATION)
+    if(MenuData()==SFME_CALIBRATION)
     {
-        SceneCalibrarionStart();
+        SceneCalibrationMenuStart();
         return;
     }
 
     if(MenuData()==SFME_TO_GRAPH)
     {
         SceneGraphStart();
-        return;
-    }
-
-    if(MenuData()==SFME_ENABLE_CORRECTION)
-    {
-        g_enable_correction = !g_enable_correction;
-        SceneSingleFreqStart();
         return;
     }
 }

@@ -69,7 +69,7 @@ int main(void)
     //UTFT_print("ADC Started    ", 20, 30);
 
     LoadSettings();
-    correctionLoad(0);
+    CorrectionLoad(g_settings.correction_index);
 
     InterfaceStart();
     TaskSetFreq(StandartFreq(g_settings.single_freq_index));
@@ -83,10 +83,12 @@ int main(void)
 
         if(SaveSettingsIfChangedAndTimeUp())
         {
+            /*
             UTFT_setFont(FONT8x15);
             UTFT_print("Settings Saved", 20, 30);
             HAL_Delay(500);
             UTFT_print("              ", 20, 30);
+            */
         }
 
         HAL_Delay(1);

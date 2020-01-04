@@ -246,7 +246,20 @@ void SceneSingleFreqStart()
     info_current_r_width = UTF_StringWidth("Rc=10 KOm");
 
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
-    UTF_DrawString(info_current_r_x + info_current_r_width+10, info_current_r_y, correctionValid()?"valid":"inval");
+    char buf[30];
+    strcpy(buf, "cor=");
+    if(!g_enable_correction)
+        strncat(buf, "disabl", sizeof(buf)-1);
+    else
+    if(CorrectionValid())
+        strncat(buf, g_correction_names[g_settings.correction_index], sizeof(buf)-1);
+    else
+    {
+        UTFT_setColorW(VGA_RED);
+        strncat(buf, "inval", sizeof(buf)-1);
+    }
+    UTF_DrawString(info_current_r_x + info_current_r_width+10, info_current_r_y, buf);
+    UTFT_setColorW(VGA_WHITE);
 
     SceneSingleFreqDrawFreq();
     SceneSingleFreqDrawNames();

@@ -34,6 +34,7 @@ DEPS += \
 	output/base/Src/interface/plot.d \
 	output/base/Src/interface/progress_bar.d \
 	output/base/Src/interface/scene_calibration.d \
+	output/base/Src/interface/scene_calibration_menu.d \
 	output/base/Src/interface/scene_graph.d \
 	output/base/Src/interface/scene_graph_menu.d \
 	output/base/Src/interface/scene_single_freq.d \
@@ -109,6 +110,7 @@ OBJS += \
 	output/base/Src/interface/plot.o \
 	output/base/Src/interface/progress_bar.o \
 	output/base/Src/interface/scene_calibration.o \
+	output/base/Src/interface/scene_calibration_menu.o \
 	output/base/Src/interface/scene_graph.o \
 	output/base/Src/interface/scene_graph_menu.o \
 	output/base/Src/interface/scene_single_freq.o \
@@ -271,6 +273,10 @@ output/base/Src/interface/progress_bar.o: ./Src/interface/progress_bar.c
 
 output/base/Src/interface/scene_calibration.o: ./Src/interface/scene_calibration.c
 	@echo 'Building target: scene_calibration.c'
+	@$(CC) $(C_FLAGS) -o "$@" "$<"
+
+output/base/Src/interface/scene_calibration_menu.o: ./Src/interface/scene_calibration_menu.c
+	@echo 'Building target: scene_calibration_menu.c'
 	@$(CC) $(C_FLAGS) -o "$@" "$<"
 
 output/base/Src/interface/scene_graph.o: ./Src/interface/scene_graph.c

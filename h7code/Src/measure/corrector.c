@@ -1,6 +1,6 @@
 #include "main.h"
 #include "corrector.h"
-#include "hardware/m25p16.h"
+#include "hardware/store_to_spi_flash.h"
 
 //Число для CorrectionsAll::magic
 #define MAGIC_DATA 0x3740
@@ -35,7 +35,7 @@ complex CorrectorOpen(complex Zxm, complex Zstd, ZmOpen* c)
 }
 
 
-bool correctionValid()
+bool CorrectionValid()
 {
     return g_corrections.magic == MAGIC_DATA && g_corrections.size == sizeof(CorrectionsAll);
 }
@@ -116,9 +116,9 @@ CorrectionOneFreq CalibrationInterpolate(int32_t freq)
     return data;
 }
 
-complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency)
+complex CorrectionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency)
 {
-    if(!correctionValid())
+    if(!CorrectionValid())
         return Zxm;
 
     CorrectionOneFreq cf = CalibrationInterpolate(frequency);
@@ -144,18 +144,17 @@ complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequ
     return Zxm;
 }
 
-void correctionSave(uint32_t index)
+void CorrectionSave(uint32_t index)
 {
-    uint32_t offset = index*0x10000;
     g_corrections.magic = MAGIC_DATA;
     g_corrections.size = sizeof(CorrectionsAll);
-    m25p16_ram_erase64k(offset);
-    m25p16_write(offset, sizeof(g_corrections), &g_corrections);
+    SpiFlashWriteToFlash(FLASH_SECTOR_CORRECTION+index, sizeof(CorrectionsAll), &g_corrections);
 }
 
 
-void correctionLoad(uint32_t index)
+void CorrectionLoad(uint32_t index)
 {
-    uint32_t offset = index*0x10000;
-    m25p16_read(offset, sizeof(g_corrections), &g_corrections);
+    g_corrections.magic = 0;
+    g_corrections.size = 0;
+    SpiFlashReadFromFlash(FLASH_SECTOR_CORRECTION+index, sizeof(CorrectionsAll), &g_corrections);
 }

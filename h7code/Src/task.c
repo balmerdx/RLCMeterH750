@@ -198,7 +198,7 @@ void TaskQuant()
         g_result = AdcConvolutionResult();
         g_Zxm = calculateZxm(&g_result, &g_error);
         if(g_enable_correction)
-            g_Zx = correctionMake(g_Zxm, ResistorCurrent(), g_freq);
+            g_Zx = CorrectionMake(g_Zxm, ResistorCurrent(), g_freq);
         else
             g_Zx = g_Zxm;
 

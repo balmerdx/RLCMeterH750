@@ -55,9 +55,9 @@ typedef struct CorrectionsAll
 
 extern CorrectionsAll g_corrections;
 
-bool correctionValid();
+bool CorrectionValid();
 //Применяем коррекцию к Zxm и возвращаем результат.
-complex correctionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency);
+complex CorrectionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequency);
 
-void correctionSave(uint32_t index);
-void correctionLoad(uint32_t index);
+void CorrectionSave(uint32_t index);
+void CorrectionLoad(uint32_t index);
