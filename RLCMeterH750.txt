@@ -594,3 +594,15 @@ https://github.com/Squonk42/V3s_Documentation
 
 - выбор текущей correction --ok
 
+- графики L,C
+
+- blender
+	https://all3dp.com/2/blender-3d-printing-tutorial-16-easy-steps-for-beginners/
+
+	https://formlabs.com/blog/designing-3d-printed-snap-fit-enclosures/
+
+	solidify - инструмент, чтобы из односторонних полигонов сделать двусторонние (с указанием толщины)
+
+	пример как сделать простую коробочку
+	https://www.youtube.com/watch?v=Db6wQN5M6X8
+	
