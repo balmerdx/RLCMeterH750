@@ -71,7 +71,7 @@ void SceneGraphStart()
     pb_graph_y = UTF_Height();
     pb_bottom_info_y = UTFT_getDisplayYSize() - UTF_Height();
 
-    pb_freq_width = UTF_StringWidth("300 KHz-500 KHz");
+    pb_freq_width = UTF_StringWidth("300 KHz-500 KHz")+2;
     pb_freq_x = UTFT_getDisplayXSize()-pb_freq_width;
     pb_graph_name_width = pb_freq_x;
 

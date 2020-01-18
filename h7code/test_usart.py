@@ -116,7 +116,7 @@ if __name__ == "__main__":
 		exit(1)
 
 	if 1:
-		ReceiveData(freq=400)
+		ReceiveData(freq=370)
 		#ReceiveConvolution(list(range(100, 1010, 10)))
 		#ser.write([i+0x10 for i in range(16)])
 		is_empty = False
