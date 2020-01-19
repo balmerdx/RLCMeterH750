@@ -43,6 +43,8 @@ C_DEFINES+= \
 -DHSE_VALUE=25000000 \
 -DARM_MATH_CM7
 
+C_DEFINES+= -DPCB_V3
+
 C_FLAGS+= -Wall -c -MMD $(C_INCLIDES) $(C_DEFINES) $(M_CPU)
 
 LIBS = -lc -lm -lnosys

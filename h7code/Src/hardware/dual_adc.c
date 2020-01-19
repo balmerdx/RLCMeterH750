@@ -1,6 +1,7 @@
 #include "stm32h7xx_hal.h"
 #include "dual_adc.h"
 void Error_Handler();
+void ADC_InitVREFBUF();
 
 // ADC dual mode interleaved conversion results (ADC master and ADC slave results concatenated on data register
 ALIGN_32BYTES(__IO uint32_t   aADCDualConvertedValues[ADCCONVERTEDVALUES_BUFFER_SIZE] __attribute__((section(".d1_data"))));
@@ -20,6 +21,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
 {
     GPIO_InitTypeDef          GPIO_InitStruct;
     static DMA_HandleTypeDef  DmaHandle;
+
+    ADC_InitVREFBUF();
 
     //##-1- Enable peripherals and GPIO Clocks #################################
     // Enable clock of GPIO associated to the peripheral channels
@@ -302,4 +305,17 @@ void DualAdcInitAndStart()
 {
     ADC_Config();
     ADC_Start();
+}
+
+void ADC_InitVREFBUF()
+{
+    __HAL_RCC_VREF_CLK_ENABLE();
+    HAL_SYSCFG_VREFBUF_VoltageScalingConfig(SYSCFG_VREFBUF_VOLTAGE_SCALE1);
+    HAL_SYSCFG_VREFBUF_HighImpedanceConfig(SYSCFG_VREFBUF_HIGH_IMPEDANCE_DISABLE);
+    if (HAL_SYSCFG_EnableVREFBUF() != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    HAL_Delay(20);
 }

@@ -379,13 +379,13 @@ Wire Wire Line
 	2300 1250 2250 1250
 Connection ~ 2300 1250
 Text Notes 1600 1950 0    50   ~ 0
-Reference 3.3V/2 = 1.65V
+Reference 3.3V/2 = 1.25V
 $Comp
 L Device:R R42
 U 1 1 5DBB6DFD
 P 1050 1500
 F 0 "R42" H 1120 1546 50  0000 L CNN
-F 1 "10k" H 1120 1455 50  0000 L CNN
+F 1 "6.1k" H 1120 1455 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 980 1500 50  0001 C CNN
 F 3 "~" H 1050 1500 50  0001 C CNN
 	1    1050 1500
@@ -1343,23 +1343,10 @@ F 3 "" H 4100 2700 50  0001 C CNN
 	1    4100 2700
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+1V5 #PWR0181
-U 1 1 5DBA7330
-P 4500 2750
-F 0 "#PWR0181" H 4500 2600 50  0001 C CNN
-F 1 "+1V5" H 4515 2923 50  0000 C CNN
-F 2 "" H 4500 2750 50  0001 C CNN
-F 3 "" H 4500 2750 50  0001 C CNN
-	1    4500 2750
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3800 2750 3800 2850
 Wire Wire Line
 	3800 2850 4500 2850
-Wire Wire Line
-	4500 2850 4500 2750
 $Comp
 L Amplifier_Operational:MCP6001-OT U11
 U 1 1 5DBB7CB3
@@ -2216,11 +2203,9 @@ F 3 "" H 1300 6200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 700  1150 0    50   ~ 0
-+1.65V0
++1.25V0
 Wire Wire Line
 	3000 3850 3350 3850
-Text Label 3000 3850 0    50   ~ 0
-+1.65V0
 $Comp
 L Amplifier_Operational:NE5532 U?
 U 2 1 5E2045D7
@@ -2309,16 +2294,16 @@ Wire Wire Line
 Wire Wire Line
 	3250 850  2900 850 
 Text Label 2900 850  0    50   ~ 0
-+1.65V0
++1.25V0
 Wire Wire Line
 	2300 1250 2450 1250
 Wire Wire Line
 	2450 1250 2650 1250
 Connection ~ 2450 1250
 Text Label 2350 1250 0    50   ~ 0
-+1.65V1
++1.25V1
 Text Label 4450 950  0    50   ~ 0
-+1.65V2
++1.25V2
 Connection ~ 4350 950 
 $Comp
 L Device:C C?
@@ -2350,9 +2335,9 @@ Connection ~ 4500 950
 Wire Wire Line
 	4500 950  4750 950 
 Text Label 8650 2100 0    50   ~ 0
-+1.65V2
++1.25V2
 Text Label 8400 4700 0    50   ~ 0
-+1.65V1
++1.25V1
 $Comp
 L Device:C C?
 U 1 1 5E2D6EC3
@@ -2390,4 +2375,8 @@ Text Notes 5550 3350 0    50   ~ 0
 shuld be termostable,\neg 0.1% precise\nR15, R16, R17, R33, R36,\nR44, R46, R48, R56, R57,\nR58
 Text Notes 5550 3650 0    50   ~ 0
 should be NP0\nC43, C44, C51, C52
+Text Label 3000 3850 0    50   ~ 0
++1.25V0
+Text Label 4200 2850 0    50   ~ 0
++1.25V1
 $EndSCHEMATC

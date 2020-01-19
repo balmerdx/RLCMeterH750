@@ -10,21 +10,10 @@ const float K_max_error = 0.1;
 complex calculateZxm(ConvolutionResult* result,
                      ErrorZx* err)
 {
-    float resistor = 100;
-    float toVolts = 3.0f;
-    float gain_V;
-    float gain_I;
-
-    ResistorSelectorEnum r = ResistorCurrent();
-    switch(r)
-    {
-    default:
-    case Resistor_100_Om: resistor = 1e2; break;
-    case Resistor_1_KOm: resistor = 1e3; break;
-    case Resistor_10_KOm: resistor = 1e4; break;
-    }
-
-    gain_V = gain_I = 5.1*3;
+    float resistor = ResistorValue();
+    float toVolts = ADC_MaxVoltage();
+    float gain_V = GetAmplifyI();
+    float gain_I = GetAmplifyV();
 
     complex zV = result->sum_a;
     complex zI = result->sum_b;
