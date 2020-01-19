@@ -5,9 +5,18 @@ typedef enum
     //Resistor_Auto нельзя передавать в ResistorSelect
     Resistor_Auto = 0,
 
-    Resistor_100_Om = 1,
-    Resistor_1_KOm = 2,
-    Resistor_10_KOm = 3,
+    //Очень низкие сопротивления измеряем
+    //с повышенным коэффициентом усиления по напряжению
+    Resistor_100_Om_Voltage_Boost,
+
+    Resistor_100_Om,
+    Resistor_1_KOm,
+    Resistor_10_KOm,
+
+    //Очень высокие сопротивления измеряем
+    //с повышенным коэффициентом усиления по току
+    Resistor_10_KOm_Current_Boost,
+
 } ResistorSelectorEnum;
 
 //Заодно эта функция инициалищирует и другие вещи
@@ -27,8 +36,5 @@ float GetAmplifyV();
 
 bool BoostAmplifyI();
 bool BoostAmplifyV();
-
-void SetBoostAmplifyI(bool boost);
-void SetBoostAmplifyV(bool boost);
 
 float ADC_MaxVoltage();

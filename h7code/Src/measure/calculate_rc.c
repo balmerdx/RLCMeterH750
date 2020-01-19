@@ -23,8 +23,8 @@ complex calculateZxm(ConvolutionResult* result,
     if(cabs(zI)<min_zI)
         zI = min_zI;
 
-    zV *= toVolts/gain_V;
-    zI *= toVolts/gain_I;
+    zV *= toVolts*gain_V;
+    zI *= toVolts*gain_I;
 
     complex Zxm = (zV/zI)*resistor;
 

@@ -18,6 +18,9 @@ static ResistorSelectorEnum res;
 static bool boost_amplify_I;
 static bool boost_amplify_V;
 
+void SetBoostAmplifyI(bool boost);
+void SetBoostAmplifyV(bool boost);
+
 void ResistorSelectorInit()
 {
     __HAL_RCC_GPIOE_CLK_ENABLE();
@@ -62,14 +65,18 @@ void ResistorSelect(ResistorSelectorEnum r)
     {
     default:
         r = Resistor_100_Om;
+    case Resistor_100_Om_Voltage_Boost:
     case Resistor_100_Om:
         s1 = 1;
         s2 = 0;
         break;
+
     case Resistor_1_KOm:
         s1 = 0;
         s2 = 1;
         break;
+
+    case Resistor_10_KOm_Current_Boost:
     case Resistor_10_KOm:
         s1 = 1;
         s2 = 1;
@@ -78,6 +85,9 @@ void ResistorSelect(ResistorSelectorEnum r)
     HAL_GPIO_WritePin(S1_PORT, S1_PIN, s1);
     HAL_GPIO_WritePin(S2_PORT, S2_PIN, s2);
     res = r;
+
+    SetBoostAmplifyV(r==Resistor_100_Om_Voltage_Boost);
+    SetBoostAmplifyI(r==Resistor_10_KOm_Current_Boost);
 }
 
 float ResistorValue()
@@ -87,8 +97,11 @@ float ResistorValue()
     switch(r)
     {
     default:
+    case Resistor_100_Om_Voltage_Boost:
     case Resistor_100_Om: resistor = 1e2; break;
     case Resistor_1_KOm: resistor = 1e3; break;
+
+    case Resistor_10_KOm_Current_Boost:
     case Resistor_10_KOm: resistor = 1e4; break;
     }
 

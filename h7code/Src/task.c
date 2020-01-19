@@ -93,7 +93,7 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
     float abs_b = cabs(result->sum_b);
 
     //Слишком большая амплитуда, надо переключиться на резистор меньших значений.
-    ResistorSelectorEnum max_resistor = Resistor_10_KOm;
+    ResistorSelectorEnum max_resistor = Resistor_10_KOm_Current_Boost;
     ResistorSelectorEnum select_resistor = Resistor_100_Om;
     if(abs_a < 2000 && abs_b < 2000)
     {
@@ -107,6 +107,14 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
             max_resistor = Resistor_100_Om;
     }
 
+    if(measured_impedance < 15)
+    {
+        select_resistor = Resistor_100_Om_Voltage_Boost;
+    } else
+    if(measured_impedance > 90000)
+    {
+        select_resistor = Resistor_10_KOm_Current_Boost;
+    } else
     if(measured_impedance > 9000)
     {
         select_resistor = Resistor_10_KOm;

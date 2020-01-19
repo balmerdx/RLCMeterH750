@@ -73,6 +73,7 @@ int main(void)
 
     InterfaceStart();
     TaskSetFreq(StandartFreq(g_settings.single_freq_index));
+    //TaskSetFreq(370);
     TaskStartConvolution();
     SceneSingleFreqStart();
 

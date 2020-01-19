@@ -243,7 +243,7 @@ void SceneSingleFreqStart()
     UTF_SetFont(font_condensed30);
     info_current_r_x = 0;
     info_current_r_y = UTFT_getDisplayYSize()-UTF_Height();
-    info_current_r_width = UTF_StringWidth("Rc=10 KOm");
+    info_current_r_width = UTF_StringWidth("Rc=10 KOm+");
 
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
     char buf[30];
@@ -389,6 +389,12 @@ void SceneSingleFreqDrawCurrentR()
         str_r = "Rc=1 KOm";
     if(last_current_r == Resistor_10_KOm)
         str_r = "Rc=10 KOm";
+    if(last_current_r == Resistor_100_Om_Voltage_Boost)
+        str_r = "Rc=100 Om+";
+    if(last_current_r == Resistor_10_KOm_Current_Boost)
+        str_r = "Rc=10 KOm+";
+
+
 
     UTF_SetFont(font_condensed30);
     UTFT_setColorW(VGA_WHITE);
