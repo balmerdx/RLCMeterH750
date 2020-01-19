@@ -6,7 +6,7 @@
 typedef complex float complexf;
 
 //Стандартные частоты, на которых будем производить измерения корректирующих коэффициентов
-#define FREQ_INDEX_MAX 41
+#define FREQ_INDEX_MAX 45
 int32_t StandartFreq(int idx);
 
 
@@ -33,6 +33,8 @@ typedef struct ZmShort
 typedef struct CorrectionOneFreq
 {
     int32_t freq;
+    //Применяется для интервала менее 15 Ом
+    ZmShort short_100_Om_Voltage_Boost;
     //Применяется для интервала менее 100 Ом
     ZmShort short_100_Om;
     //Применяется для интервала от 100 Ом до 1 КОм
@@ -41,6 +43,8 @@ typedef struct CorrectionOneFreq
     ZmOpen open_1_KOm;
     //Применяется для интервала от 10 КОм и выше
     ZmOpen open_10_KOm;
+    //Применяется для интервала от 100 КОм и выше
+    ZmOpen open_10_KOm_Current_Boost;
 } CorrectionOneFreq;
 
 //Размер около 3-х килобайт
@@ -49,6 +53,12 @@ typedef struct CorrectionsAll
 {
     uint16_t magic; //Магическое значение, которое будет меняться при смене формата
     uint16_t size; //sizeof(CorrectionAll)
+
+    float r_10_Ohm;
+    float r_100_Ohm;
+    float r_1_KOhm;
+    float r_10_KOhm;
+    float r_100_KOhm;
 
     CorrectionOneFreq freq[FREQ_INDEX_MAX];
 } CorrectionsAll;

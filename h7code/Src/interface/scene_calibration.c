@@ -10,16 +10,22 @@ enum CalibrationMenuEnum
 {
     CME_SHORT = 0,
     CME_OPEN,
+    CME_10_Om,
     CME_100_Om,
     CME_1_KOm,
     CME_10_KOm,
+    CME_100_KOm,
     CME_COUNT, //Это не пункт меню, а конец калибровочной части меню
 
     CME_SAVE_AND_EXIT,
     CME_DISCARD_AND_EXIT,
 };
 
-#define COUNT_OPEN_PASS 3
+//10 Om, 100 Om
+#define COUNT_SHORT_PASS 2
+
+//100 Om, 1 KOm, 10 KOm, 10 KOm+
+#define COUNT_OPEN_PASS 4
 
 static bool calibrated[CME_COUNT];
 static int current_index;
@@ -29,13 +35,20 @@ void SceneCalibrarionQuant();
 void SceneCalibrarionStart()
 {
     g_corrections.magic = 0;
+    g_corrections.r_10_Ohm = 10.f;
+    g_corrections.r_100_Ohm = 100.f;
+    g_corrections.r_1_KOhm = 1e3f;
+    g_corrections.r_10_KOhm = 10e3f;
+    g_corrections.r_100_KOhm = 100e3f;
 
     MenuReset("Calibration");
     MenuAdd("Short", CME_SHORT);
     MenuAdd("Open", CME_OPEN);
+    MenuAdd("10 Om", CME_10_Om);
     MenuAdd("100 Om", CME_100_Om);
     MenuAdd("1 KOm", CME_1_KOm);
     MenuAdd("10 KOm", CME_10_KOm);
+    MenuAdd("100 KOm", CME_100_KOm);
     MenuAdd("Save & Exit", CME_SAVE_AND_EXIT);
     MenuAdd("Discard & Exit", CME_DISCARD_AND_EXIT);
     MenuRedraw();
@@ -84,6 +97,8 @@ void SceneCalibrarionQuant()
             TaskSetDefaultResistor(Resistor_1_KOm);
         if(MenuIndex()==CME_10_KOm)
             TaskSetDefaultResistor(Resistor_10_KOm);
+        if(MenuIndex()==CME_100_KOm)
+            TaskSetDefaultResistor(Resistor_10_KOm_Current_Boost);
         if(MenuIndex()==CME_OPEN)
             TaskSetDefaultResistor(Resistor_100_Om);
     }
@@ -96,7 +111,11 @@ void SceneCalibrarionZx(complex Zx)
     if(!ProgressVisible())
         return;
 
-    int end_index = (MenuData()==CME_OPEN)?(FREQ_INDEX_MAX*COUNT_OPEN_PASS):FREQ_INDEX_MAX;
+    int end_index = FREQ_INDEX_MAX;
+    if(MenuData()==CME_SHORT)
+        end_index = FREQ_INDEX_MAX*COUNT_SHORT_PASS;
+    if(MenuData()==CME_OPEN)
+        end_index = FREQ_INDEX_MAX*COUNT_OPEN_PASS;
 
     if(current_index>=0)
     {
@@ -105,7 +124,18 @@ void SceneCalibrarionZx(complex Zx)
         of->freq = StandartFreq(current_freq_index);
 
         if(MenuData()==CME_SHORT)
-            of->short_100_Om.Zsm = Zx;
+        {
+            if(ResistorCurrent()==Resistor_100_Om_Voltage_Boost)
+                of->short_100_Om_Voltage_Boost.Zsm = Zx;
+            if(ResistorCurrent()==Resistor_100_Om)
+                of->short_100_Om.Zsm = Zx;
+        }
+
+        if(MenuData()==CME_10_Om)
+        {
+            of->short_100_Om_Voltage_Boost.Zstdm = Zx;
+        }
+
         if(MenuData()==CME_100_Om)
         {
             of->short_100_Om.Zstdm = Zx;
@@ -116,6 +146,8 @@ void SceneCalibrarionZx(complex Zx)
             of->open_1_KOm.Zstdm = Zx;
         if(MenuData()==CME_10_KOm)
             of->open_10_KOm.Zstdm = Zx;
+        if(MenuData()==CME_100_KOm)
+            of->open_10_KOm_Current_Boost.Zstdm = Zx;
 
         if(MenuData()==CME_OPEN)
         {
@@ -125,10 +157,21 @@ void SceneCalibrarionZx(complex Zx)
                 of->open_1_KOm.Zom = Zx;
             if(ResistorCurrent()==Resistor_10_KOm)
                 of->open_10_KOm.Zom = Zx;
+            if(ResistorCurrent()==Resistor_10_KOm_Current_Boost)
+                of->open_10_KOm_Current_Boost.Zom = Zx;
         }
     }
 
     current_index++;
+    if(current_index%FREQ_INDEX_MAX==0 && MenuIndex()==CME_SHORT)
+    {
+        int r = current_index/FREQ_INDEX_MAX;
+        if(r==0)
+            TaskSetDefaultResistor(Resistor_100_Om);
+        if(r==1)
+            TaskSetDefaultResistor(Resistor_100_Om_Voltage_Boost);
+    }
+
     if(current_index%FREQ_INDEX_MAX==0 && MenuIndex()==CME_OPEN)
     {
         int r = current_index/FREQ_INDEX_MAX;
@@ -138,6 +181,8 @@ void SceneCalibrarionZx(complex Zx)
             TaskSetDefaultResistor(Resistor_1_KOm);
         if(r==2)
             TaskSetDefaultResistor(Resistor_10_KOm);
+        if(r==3)
+            TaskSetDefaultResistor(Resistor_10_KOm_Current_Boost);
     }
 
     if(current_index>=end_index)
@@ -148,12 +193,16 @@ void SceneCalibrarionZx(complex Zx)
             MenuSetNameAndUpdate(MenuIndexByData(CME_SHORT), "Short --ok");
         if(MenuData()==CME_OPEN)
             MenuSetNameAndUpdate(MenuIndexByData(CME_OPEN), "Open --ok");
+        if(MenuData()==CME_10_Om)
+            MenuSetNameAndUpdate(MenuIndexByData(CME_10_Om), "10 Om --ok");
         if(MenuData()==CME_100_Om)
             MenuSetNameAndUpdate(MenuIndexByData(CME_100_Om), "100 Om --ok");
         if(MenuData()==CME_1_KOm)
             MenuSetNameAndUpdate(MenuIndexByData(CME_1_KOm), "1 KOm --ok");
         if(MenuData()==CME_10_KOm)
             MenuSetNameAndUpdate(MenuIndexByData(CME_10_KOm), "10 KOm --ok");
+        if(MenuData()==CME_100_KOm)
+            MenuSetNameAndUpdate(MenuIndexByData(CME_100_KOm), "100 KOm --ok");
         calibrated[MenuData()] = true;
         return;
     }

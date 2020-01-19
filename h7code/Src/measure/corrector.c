@@ -7,19 +7,23 @@
 
 CorrectionsAll g_corrections;
 
+static int32_t g_standart_freq[FREQ_INDEX_MAX] =
+{
+    //По 9 значений в каждой строке
+    10, 20, 30, 40, 50, 60, 70, 80, 90,
+    100, 200, 300, 400, 500, 600, 700, 800, 900,
+    1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000,
+    10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000,
+    100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000
+};
+
 int32_t StandartFreq(int idx)
 {
-//Сначала должны идти min_idx с меньшими значениями, а потом с большими.
-#define R(min_idx, mul_idx) if(idx<(min_idx)+10) return (idx+1-(min_idx))*(mul_idx)
     if(idx<0)
         return 0;
-    R(0, 10);
-    R(9, 100);
-    R(18, 1000);
-    R(27, 10000);
-    R(36, 100000);
-#undef R
-    return idx*1000;
+    if(idx>=FREQ_INDEX_MAX)
+        idx = FREQ_INDEX_MAX-1;
+    return g_standart_freq[idx];
 }
 
 static complex CorrectorShort(complex Zxm, complex Zstd, ZmShort* c)
@@ -108,10 +112,12 @@ CorrectionOneFreq CalibrationInterpolate(int32_t freq)
 
     float a = (freq - p0->freq)/(float)(p1->freq - p0->freq);
 
+    data.short_100_Om_Voltage_Boost = lerp_ZmShort(&p0->short_100_Om_Voltage_Boost, &p1->short_100_Om_Voltage_Boost, a);
     data.short_100_Om = lerp_ZmShort(&p0->short_100_Om, &p1->short_100_Om, a);
     data.open_100_Om = lerp_ZmOpen(&p0->open_100_Om, &p1->open_100_Om, a);
     data.open_1_KOm = lerp_ZmOpen(&p0->open_1_KOm, &p1->open_1_KOm, a);
     data.open_10_KOm = lerp_ZmOpen(&p0->open_10_KOm, &p1->open_10_KOm, a);
+    data.open_10_KOm_Current_Boost = lerp_ZmOpen(&p0->open_10_KOm_Current_Boost, &p1->open_10_KOm_Current_Boost, a);
 
     return data;
 }
@@ -124,21 +130,31 @@ complex CorrectionMake(complex Zxm, ResistorSelectorEnum resistor, int32_t frequ
     CorrectionOneFreq cf = CalibrationInterpolate(frequency);
 
     float Rxm = cabs(Zxm);
+    if(resistor==Resistor_100_Om_Voltage_Boost)
+    {
+        return CorrectorShort(Zxm, g_corrections.r_10_Ohm, &cf.short_100_Om_Voltage_Boost);
+    }
+
     if(resistor==Resistor_100_Om)
     {
         if(Rxm<100)
-            return CorrectorShort(Zxm, 100, &cf.short_100_Om);
-        return CorrectorOpen(Zxm, 100, &cf.open_100_Om);
+            return CorrectorShort(Zxm, g_corrections.r_100_Ohm, &cf.short_100_Om);
+        return CorrectorOpen(Zxm, g_corrections.r_100_Ohm, &cf.open_100_Om);
     }
 
     if(resistor==Resistor_1_KOm)
     {
-        return CorrectorOpen(Zxm, 1000, &cf.open_1_KOm);
+        return CorrectorOpen(Zxm, g_corrections.r_1_KOhm, &cf.open_1_KOm);
     }
 
     if(resistor==Resistor_10_KOm)
     {
-        return CorrectorOpen(Zxm, 10000, &cf.open_10_KOm);
+        return CorrectorOpen(Zxm, g_corrections.r_10_KOhm, &cf.open_10_KOm);
+    }
+
+    if(resistor==Resistor_10_KOm_Current_Boost)
+    {
+        return CorrectorOpen(Zxm, g_corrections.r_100_KOhm, &cf.open_10_KOm_Current_Boost);
     }
 
     return Zxm;
