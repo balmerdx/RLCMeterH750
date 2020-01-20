@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "scene_calibration.h"
 #include "scene_single_freq_menu.h"
+#include "scene_get_float.h"
 #include "progress_bar.h"
 #include "task.h"
 #include "measure/corrector.h"
@@ -30,27 +31,59 @@ enum CalibrationMenuEnum
 static bool calibrated[CME_COUNT];
 static int current_index;
 
+//Индекс меню после получения float
+//Может быть равен только пунктам с резистором
+static int g_menu_data_last = -1;
+
+static char* menu_names[CME_COUNT] =
+{
+    "Short",
+    "Open",
+    "10 Om",
+    "100 Om",
+    "1 KOm",
+    "10 KOm",
+    "100 KOm",
+};
+
+static char* menu_names_ok[CME_COUNT] =
+{
+    "Short --ok",
+    "Open --ok",
+    "10 Om --ok",
+    "100 Om --ok",
+    "1 KOm --ok",
+    "10 KOm --ok",
+    "100 KOm --ok",
+};
+
 void SceneCalibrarionQuant();
 
 void SceneCalibrarionStart()
 {
-    g_corrections.magic = 0;
-    g_corrections.r_10_Ohm = 10.f;
-    g_corrections.r_100_Ohm = 100.f;
-    g_corrections.r_1_KOhm = 1e3f;
-    g_corrections.r_10_KOhm = 10e3f;
-    g_corrections.r_100_KOhm = 100e3f;
+    if(g_menu_data_last==-1)
+    {
+        g_corrections.magic = 0;
+        g_corrections.r_10_Ohm = 10.f;
+        g_corrections.r_100_Ohm = 100.f;
+        g_corrections.r_1_KOhm = 1e3f;
+        g_corrections.r_10_KOhm = 10e3f;
+        g_corrections.r_100_KOhm = 100e3f;
+        for(int i=0; i<CME_COUNT; i++)
+            calibrated[i] = false;
+    }
 
     MenuReset("Calibration");
-    MenuAdd("Short", CME_SHORT);
-    MenuAdd("Open", CME_OPEN);
-    MenuAdd("10 Om", CME_10_Om);
-    MenuAdd("100 Om", CME_100_Om);
-    MenuAdd("1 KOm", CME_1_KOm);
-    MenuAdd("10 KOm", CME_10_KOm);
-    MenuAdd("100 KOm", CME_100_KOm);
+
+    for(int i=0; i<CME_COUNT; i++)
+        MenuAdd(calibrated[i]?menu_names_ok[i]:menu_names[i], i);
+
     MenuAdd("Save & Exit", CME_SAVE_AND_EXIT);
     MenuAdd("Discard & Exit", CME_DISCARD_AND_EXIT);
+
+    if(g_menu_data_last>=0)
+        MenuSetIndex(MenuIndexByData(g_menu_data_last));
+
     MenuRedraw();
 
     UTF_SetFont(g_default_font);
@@ -58,8 +91,49 @@ void SceneCalibrarionStart()
 
     InterfaceGoto(SceneCalibrarionQuant);
 
-    for(int i=0; i<CME_COUNT; i++)
-        calibrated[i] = false;
+    if(g_menu_data_last>=0)
+    {
+        if(SceneGetFloatOk())
+        {
+            ProgressSetVisible(true);
+            if(g_menu_data_last==CME_10_Om)
+            {
+                current_index = -1;
+                g_corrections.r_10_Ohm = SceneGetFloat();
+                TaskSetDefaultResistor(Resistor_100_Om_Voltage_Boost);
+            }
+
+            if(g_menu_data_last==CME_100_Om)
+            {
+                current_index = -1;
+                g_corrections.r_100_Ohm = SceneGetFloat();
+                TaskSetDefaultResistor(Resistor_100_Om);
+            }
+
+            if(g_menu_data_last==CME_1_KOm)
+            {
+                current_index = -1;
+                g_corrections.r_1_KOhm = SceneGetFloat();
+                TaskSetDefaultResistor(Resistor_1_KOm);
+            }
+
+            if(g_menu_data_last==CME_10_KOm)
+            {
+                current_index = -1;
+                g_corrections.r_10_KOhm = SceneGetFloat();
+                TaskSetDefaultResistor(Resistor_10_KOm);
+            }
+
+            if(g_menu_data_last==CME_100_KOm)
+            {
+                current_index = -1;
+                g_corrections.r_100_KOhm = SceneGetFloat();
+                TaskSetDefaultResistor(Resistor_10_KOm_Current_Boost);
+            }
+        }
+
+        g_menu_data_last = -1;
+    }
 }
 
 void SceneCalibrarionQuant()
@@ -88,19 +162,57 @@ void SceneCalibrarionQuant()
     if(MenuData()<CME_COUNT && pressed)
     {
         current_index = -1;
-        ProgressSetVisible(true);
-        if(MenuIndex()==CME_SHORT)
+        if(MenuData()==CME_SHORT)
+        {
+            ProgressSetVisible(true);
             TaskSetDefaultResistor(Resistor_100_Om);
-        if(MenuIndex()==CME_100_Om)
+        }
+
+        if(MenuData()==CME_10_Om)
+        {
+            g_menu_data_last = MenuData();
+            SceneGetFloatStart("Precise 10 Ohm",
+                        0, 1, 5, 1, SceneCalibrarionStart);
+            return;
+        }
+
+        if(MenuData()==CME_100_Om)
+        {
+            g_menu_data_last = MenuData();
+            SceneGetFloatStart("Precise 100 Ohm",
+                        0, 1, 5, 2, SceneCalibrarionStart);
+            return;
+        }
+
+        if(MenuData()==CME_1_KOm)
+        {
+            g_menu_data_last = MenuData();
+            SceneGetFloatStart("Precise 1 KOhm",
+                        0, 1, 5, 3, SceneCalibrarionStart);
+            return;
+        }
+
+        if(MenuData()==CME_10_KOm)
+        {
+            g_menu_data_last = MenuData();
+            SceneGetFloatStart("Precise 10 KOhm",
+                        0, 1, 5, 4, SceneCalibrarionStart);
+            return;
+        }
+
+        if(MenuData()==CME_100_KOm)
+        {
+            g_menu_data_last = MenuData();
+            SceneGetFloatStart("Precise 100 KOhm",
+                        0, 1, 5, 5, SceneCalibrarionStart);
+            return;
+        }
+
+        if(MenuData()==CME_OPEN)
+        {
+            ProgressSetVisible(true);
             TaskSetDefaultResistor(Resistor_100_Om);
-        if(MenuIndex()==CME_1_KOm)
-            TaskSetDefaultResistor(Resistor_1_KOm);
-        if(MenuIndex()==CME_10_KOm)
-            TaskSetDefaultResistor(Resistor_10_KOm);
-        if(MenuIndex()==CME_100_KOm)
-            TaskSetDefaultResistor(Resistor_10_KOm_Current_Boost);
-        if(MenuIndex()==CME_OPEN)
-            TaskSetDefaultResistor(Resistor_100_Om);
+        }
     }
 }
 
@@ -190,19 +302,19 @@ void SceneCalibrarionZx(complex Zx)
         TaskSetDefaultResistor(Resistor_Auto);
         ProgressSetVisible(false);
         if(MenuData()==CME_SHORT)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_SHORT), "Short --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_SHORT), menu_names_ok[CME_SHORT]);
         if(MenuData()==CME_OPEN)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_OPEN), "Open --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_OPEN), menu_names_ok[CME_OPEN]);
         if(MenuData()==CME_10_Om)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_10_Om), "10 Om --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_10_Om), menu_names_ok[CME_10_Om]);
         if(MenuData()==CME_100_Om)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_100_Om), "100 Om --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_100_Om), menu_names_ok[CME_100_Om]);
         if(MenuData()==CME_1_KOm)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_1_KOm), "1 KOm --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_1_KOm), menu_names_ok[CME_1_KOm]);
         if(MenuData()==CME_10_KOm)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_10_KOm), "10 KOm --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_10_KOm), menu_names_ok[CME_10_KOm]);
         if(MenuData()==CME_100_KOm)
-            MenuSetNameAndUpdate(MenuIndexByData(CME_100_KOm), "100 KOm --ok");
+            MenuSetNameAndUpdate(MenuIndexByData(CME_100_KOm), menu_names_ok[CME_100_KOm]);
         calibrated[MenuData()] = true;
         return;
     }

@@ -11,6 +11,7 @@ static int g_places;
 static int g_cur_digit;
 static int g_pow10;
 static SceneStartHandler g_prev_scene;
+static char g_menu_name[STATUSBAR_STR_LEN];
 
 static void SceneGetFloatQuant();
 
@@ -37,7 +38,7 @@ static void InitMenu(int top_min, int top_max, int digits, int pow10)
     g_mul_factor = mul_factor;
 
     char data[30];
-    MenuReset("Enter float");
+    MenuReset(g_menu_name);
     for(int i=top_min; i<=top_max; i++)
     {
         floatToString(data, sizeof(data), g_value+i*mul_factor, g_places, digits+1, true);
@@ -50,8 +51,9 @@ static void InitMenu(int top_min, int top_max, int digits, int pow10)
     MenuRedraw();
 }
 
-void SceneGetFloatStart(int top_min, int top_max, int digits, int pow10, SceneStartHandler prev_scene)
+void SceneGetFloatStart(const char* menu_name, int top_min, int top_max, int digits, int pow10, SceneStartHandler prev_scene)
 {
+    strncpy(g_menu_name, menu_name, STATUSBAR_STR_LEN-1);
     g_ok = false;
     g_value = 0;
     g_digits = digits;

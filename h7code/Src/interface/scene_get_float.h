@@ -8,7 +8,7 @@
 // pow10==1 - значит старший разряд это десятки.
 // pow10==-1 - значит старший разряд это десятые доли.
 
-void SceneGetFloatStart(int top_min, int top_max, int digits, int pow10, SceneStartHandler prev_scene);
+void SceneGetFloatStart(const char* menu_name, int top_min, int top_max, int digits, int pow10, SceneStartHandler prev_scene);
 
 //Возвращает true если введено корректное число.
 bool SceneGetFloatOk();
