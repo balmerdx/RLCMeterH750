@@ -19,7 +19,6 @@ enum SingleFreqMenuEnum
     SFME_CALIBRATION,
     SFME_VIEW_DEBUG,
     SFME_TO_GRAPH,
-    SFME_GET_FLOAT,
 };
 
 void SceneSingleFreqMenuQuant();
@@ -36,9 +35,6 @@ void SceneSingleFreqMenuStart()
     MenuAdd(view_debug?"View normal":"View debug", SFME_VIEW_DEBUG);
     MenuAdd("Calibration", SFME_CALIBRATION);
     MenuAdd("Switch to graph", SFME_TO_GRAPH);
-
-    MenuAdd("get float", SFME_GET_FLOAT);
-
     MenuRedraw();
 
     InterfaceGoto(SceneSingleFreqMenuQuant);
@@ -100,13 +96,6 @@ void SceneSingleFreqMenuQuant()
     if(MenuData()==SFME_TO_GRAPH)
     {
         SceneGraphStart();
-        return;
-    }
-
-    if(MenuData()==SFME_GET_FLOAT)
-    {
-        SceneGetFloatStart("Precise 10 Ohm",
-                    0, 1, 5, 1, SceneSingleFreqMenuStart);
         return;
     }
 }

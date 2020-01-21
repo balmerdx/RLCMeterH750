@@ -11,6 +11,8 @@ typedef enum GraphType
     GRAPH_Z_IM,
     GRAPH_Z_RE_Z_IM,
     GRAPH_Z_PHASE,
+    GRAPH_Z_L,
+    GRAPH_Z_C,
 } GraphType;
 
 typedef enum

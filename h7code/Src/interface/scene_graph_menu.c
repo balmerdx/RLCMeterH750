@@ -141,6 +141,8 @@ void SceneSelectGraphStart()
     MenuAdd("imag(Z) Zim", GRAPH_Z_IM);
     MenuAdd("Zre & Zim", GRAPH_Z_RE_Z_IM);
     MenuAdd("phase(Z) Zarg", GRAPH_Z_PHASE);
+    MenuAdd("L indictance", GRAPH_Z_L);
+    MenuAdd("C capacitance", GRAPH_Z_C);
 
     MenuSetIndex(MenuIndexByData(g_settings.graph_type));
 

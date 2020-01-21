@@ -34,7 +34,7 @@ void formatR2(char* str_number, char* str_type, float R, float Rabs)
         return;
     }
 
-    if(RA<1e1)
+    if(RA<2e1)
     {
         floatToStringHelper(str_number, R, 3);
         strcat2(str_number, str_type, " Om");
@@ -76,8 +76,11 @@ void formatR2(char* str_number, char* str_type, float R, float Rabs)
         return;
     }
 
+    if(RA>2e7)
+        R = 19.9e6;
+
     {
-        floatToStringHelper(str_number, R*1e-6, 2);
+        floatToStringHelper(str_number, R*1e-6, 1);
         strcat2(str_number, str_type, " MOm");
         return;
     }
@@ -154,12 +157,15 @@ void formatC2(char* str_number, char* str_type, float C)
         return;
     }
 
-    if(CA<1e1)
+    if(CA<1e2)
     {
         floatToStringHelper(str_number, C, 2);
         strcat2(str_number, str_type, " F");
         return;
     }
+
+    if(CA>99.9f)
+        C = 99.9f;
 
     {
         floatToStringHelper(str_number, C, 1);
@@ -218,12 +224,15 @@ void formatL2(char* str_number, char* str_type, float L)
         return;
     }
 
-    if(LA<1e1)
+    if(LA<1e2)
     {
         floatToStringHelper(str_number, L, 2);
         strcat2(str_number, str_type, " H");
         return;
     }
+
+    if(LA>999.9f)
+        L = 999.9f;
 
     {
         floatToStringHelper(str_number, L, 1);
