@@ -25,6 +25,9 @@ static int scan_cur = -1;
 static int scan_points = -1;
 static int line_point_index = -1;
 
+//Уровень сигнала ymul = pow(10e3, last_mul_y_pow10e3_level)
+static int last_mul_y_pow10e3_level = 0;
+
 static int pb_graph_y;
 static int pb_bottom_info_y;
 static int pb_freq_x;
@@ -89,10 +92,10 @@ void SceneGraphStart()
     PlotInit(0, pb_graph_y, UTFT_getDisplayXSize(), pb_bottom_info_y-pb_graph_y);
 
     SceneGraphDrawFreq();
-    SceneGraphDrawGraphName();
 
     if(IsGraphData())
         SceneGraphDrawGraph();
+    SceneGraphDrawGraphName();
 
     SceneGraphDrawBottom();
 
@@ -177,6 +180,7 @@ void SceneGraphResultZx()
     if(scan_cur==scan_points)
     {
         SceneGraphDrawGraph();
+        SceneGraphDrawGraphName();
         SceneGraphDrawBottom();
         return;
     }
@@ -216,8 +220,30 @@ void SceneGraphDrawGraphName()
     case GRAPH_Z_IM: str = "Zimag"; break;
     case GRAPH_Z_RE_Z_IM: str = "Zreal & Zimag"; break;
     case GRAPH_Z_PHASE: str = "Zphase"; break;
-    case GRAPH_Z_L: str = "L"; break;
-    case GRAPH_Z_C: str = "C"; break;
+    case GRAPH_Z_L:
+        switch(last_mul_y_pow10e3_level)
+        {
+        default:
+        case 0: str = "L (H)"; break;
+        case -1: str = "L (KH)"; break;
+        case 1: str = "L (mH)"; break;
+        case 2: str = "L (uH)"; break;
+        case 3: str = "L (nH)"; break;
+        case 4: str = "L (pH)"; break;
+        }
+        break;
+    case GRAPH_Z_C:
+        switch(last_mul_y_pow10e3_level)
+        {
+        default:
+        case 0: str = "C (F)"; break;
+        case -1: str = "C (KF)"; break;
+        case 1: str = "C (mF)"; break;
+        case 2: str = "C (uF)"; break;
+        case 3: str = "C (nF)"; break;
+        case 4: str = "C (pF)"; break;
+        }
+        break;
     }
 
     UTFT_setColorW(VGA_WHITE);
@@ -277,8 +303,36 @@ void SceneGraphDrawGraph()
 
     float ybig = fmaxf(fabsf(ymin), fabsf(ymax));
     float mul_y = 1.f;
+    last_mul_y_pow10e3_level = 0;
     if(ybig>1e3)
+    {
+        last_mul_y_pow10e3_level = -1;
         mul_y = 1e-3f;
+    }
+
+    if(ybig<1)
+    {
+        last_mul_y_pow10e3_level = 1;
+        mul_y = 1e3f;
+    }
+
+    if(ybig<1e-3)
+    {
+        last_mul_y_pow10e3_level = 2;
+        mul_y = 1e6f;
+    }
+
+    if(ybig<1e-6)
+    {
+        last_mul_y_pow10e3_level = 3;
+        mul_y = 1e9f;
+    }
+
+    if(ybig<1e-9)
+    {
+        last_mul_y_pow10e3_level = 4;
+        mul_y = 1e12f;
+    }
 
     ymin *= mul_y;
     ymax *= mul_y;
