@@ -72,8 +72,8 @@ int main(void)
     CorrectionLoad(g_settings.correction_index);
 
     InterfaceStart();
-    TaskSetFreq(StandartFreq(g_settings.single_freq_index));
-    //TaskSetFreq(370);
+    //TaskSetFreq(StandartFreq(g_settings.single_freq_index));
+    TaskSetFreq(320);
     TaskStartConvolution();
     SceneSingleFreqStart();
 

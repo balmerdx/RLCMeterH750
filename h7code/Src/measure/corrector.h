@@ -6,7 +6,7 @@
 typedef complex float complexf;
 
 //Стандартные частоты, на которых будем производить измерения корректирующих коэффициентов
-#define FREQ_INDEX_MAX 45
+#define FREQ_INDEX_MAX 58
 int32_t StandartFreq(int idx);
 
 

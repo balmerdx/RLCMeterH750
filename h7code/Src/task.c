@@ -17,7 +17,6 @@
 #define USB_COMMAND_ADC 0xABDE0002u
 
 uint32_t convolution_time_ms_slow = 200;
-uint32_t convolution_time_ms_fast = 50;
 uint32_t g_freqWord = 0;
 ConvolutionResult g_result;
 complex g_Zxm = 0;
@@ -143,7 +142,7 @@ void TaskStartConvolution()
         HAL_Delay(2);
     }
 
-    AdcStartConvolution(g_freqWord, last_command?convolution_time_ms_fast:convolution_time_ms_slow);
+    AdcStartConvolution(g_freqWord, convolution_time_ms_slow);
 }
 
 void TaskSetDefaultResistor(ResistorSelectorEnum r)
