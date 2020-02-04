@@ -26,6 +26,7 @@ int TaskGetFreq();
 //По умолчанию используется Resistor_Auto, чтобы автоматом
 //выбирался резистор. Но для калибровки надо его задавать явно.
 void TaskSetDefaultResistor(ResistorSelectorEnum r);
+ResistorSelectorEnum TaskGetDefaultResistor();
 
 //Запускает работу ADC
 //Как правило вызова этой функции не требуется,
@@ -33,6 +34,8 @@ void TaskSetDefaultResistor(ResistorSelectorEnum r);
 void TaskStartConvolution();
 
 void TaskQuant();
+
+bool IsUsbCommand();
 
 //Результат последней конверсии.
 extern ConvolutionResult g_result;

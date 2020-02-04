@@ -220,7 +220,7 @@ void AdcStartConvolution(uint32_t freq_word, uint32_t time_ms)
     if(freq<1)//Error! Frequency too low!
         return;
 
-    uint64_t sps = AdcSamplesPerSecond();
+    double sps = AdcSamplesPerSecond();
 
     uint32_t required_samples = (AdcSamplesPerSecond()*time_ms)/1000;
     double samples_per_cycle = sps/freq;

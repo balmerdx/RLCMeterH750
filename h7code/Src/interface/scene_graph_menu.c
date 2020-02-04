@@ -24,8 +24,8 @@ static void SceneSelectGraphStart();
 static void SceneSelectGraphQuant();
 
 static int g_default_frequencies[] =
-    {   10,   30,   100,   300,
-      1000, 3000, 10000, 30000,
+    {   10,   30,   100,   200,
+      600, 3000, 10000, 30000,
       100000, 300000, 500000
     };
 static bool g_current_is_min_freq;

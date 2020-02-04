@@ -17,6 +17,7 @@ typedef enum
     //с повышенным коэффициентом усиления по току
     Resistor_10_KOm_Current_Boost,
 
+    Resistor_Last = Resistor_10_KOm_Current_Boost,
 } ResistorSelectorEnum;
 
 //Заодно эта функция инициалищирует и другие вещи
@@ -25,6 +26,9 @@ void ResistorSelectorInit();
 ResistorSelectorEnum ResistorCurrent();
 
 void ResistorSelect(ResistorSelectorEnum r);
+
+//Max 10 chars!!!!
+const char* GetResistorName(ResistorSelectorEnum r);
 
 //Текущее сопротивление резистора в омах
 float ResistorValue();

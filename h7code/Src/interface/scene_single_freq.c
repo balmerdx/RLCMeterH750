@@ -38,6 +38,7 @@ static complex last_Zx;
 static ErrorZx last_error;
 static double last_freq;
 static bool last_Zx_changed;
+static int last_visible_freq;
 
 static int info_current_r_x;
 static int info_current_r_y;
@@ -132,7 +133,7 @@ void FormatReIm(complex Zx,
     if(g_settings.view_mode == VM_Z_ABS_ARG)
     {
         float angle = cargf(last_Zx)*180/M_PI;
-        floatToString(str_im, 16, angle, 1, 3, true);
+        floatToString(str_im, 16, angle, 2, 3, true);
         str_im_type[0] = 0;
     } else
     if(g_settings.view_mode == VM_LC)
@@ -273,8 +274,10 @@ void SceneSingleFreqQuant()
     {
         AddSaturated(&g_settings.single_freq_index, EncValueDelta(), FREQ_INDEX_MAX);
         TaskSetFreq(StandartFreq(g_settings.single_freq_index));
-        SceneSingleFreqDrawFreq();
     }
+
+    if(last_visible_freq != TaskGetFreq())
+        SceneSingleFreqDrawFreq();
 
     if(EncButtonPressed())
     {
@@ -311,6 +314,8 @@ void SceneSingleFreqDrawFreq()
     UTFT_setColorW(VGA_WHITE);
     UTFT_setBackColorW(COLOR_BACKGROUND_BLUE);
     UTF_printNumI(TaskGetFreq(), freq_x, freq_y, freq_width, UTF_RIGHT);
+
+    last_visible_freq = TaskGetFreq();
 }
 
 void SceneSingleFreqDrawNames()
@@ -384,17 +389,8 @@ void SceneSingleFreqDrawCurrentR()
 {
     last_current_r = ResistorCurrent();
 
-    char* str_r = "Rc=100 Om";
-    if(last_current_r == Resistor_1_KOm)
-        str_r = "Rc=1 KOm";
-    if(last_current_r == Resistor_10_KOm)
-        str_r = "Rc=10 KOm";
-    if(last_current_r == Resistor_100_Om_Voltage_Boost)
-        str_r = "Rc=100 Om+";
-    if(last_current_r == Resistor_10_KOm_Current_Boost)
-        str_r = "Rc=10 KOm+";
-
-
+    char str_r[15] = "Rc=";
+    strncat(str_r, GetResistorName(last_current_r), sizeof(str_r)-1);
 
     UTF_SetFont(font_condensed30);
     UTFT_setColorW(VGA_WHITE);

@@ -35,6 +35,7 @@ static volatile bool force_next_task = false;
 static uint32_t last_command = 0;
 
 static int g_freq = 0;
+static double g_freq_real = 0;
 static ResistorSelectorEnum g_choose_resistor = Resistor_Auto;
 static bool g_changed_some = false;
 
@@ -76,9 +77,13 @@ bool SendAdcBuffer()
     return true;
 }
 
-void SendConvolutionResult(complex Zx)
+static void SendConvolutionResult()
 {
-    double x[] = {creal(Zx), cimag(Zx)};
+    float x[] = {g_freq_real,
+                 creal(g_Zx), cimag(g_Zx),
+                 creal(g_result.sum_a), cimag(g_result.sum_a),
+                 creal(g_result.sum_b), cimag(g_result.sum_b),
+                };
     CDC_Transmit_FS((uint8_t*)(x), sizeof(x));
 }
 
@@ -87,13 +92,13 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
 {
     if(g_choose_resistor != Resistor_Auto)
         return false;
-
-    float abs_a = cabs(result->sum_a);
-    float abs_b = cabs(result->sum_b);
-
     //Слишком большая амплитуда, надо переключиться на резистор меньших значений.
     ResistorSelectorEnum max_resistor = Resistor_10_KOm_Current_Boost;
     ResistorSelectorEnum select_resistor = Resistor_100_Om;
+
+
+    float abs_a = cabs(result->sum_a);
+    float abs_b = cabs(result->sum_b);
     if(abs_a < 2000 && abs_b < 2000)
     {
         max_resistor = Resistor_100_Om;
@@ -106,25 +111,28 @@ bool SelectResistor(const ConvolutionResult* result, float measured_impedance)
             max_resistor = Resistor_100_Om;
     }
 
+    float c = 0.9f;
     if(measured_impedance < 15)
     {
         select_resistor = Resistor_100_Om_Voltage_Boost;
     } else
-    if(measured_impedance > 90000)
+    if(measured_impedance > c*100e3)
     {
         select_resistor = Resistor_10_KOm_Current_Boost;
     } else
-    if(measured_impedance > 9000)
+    if(measured_impedance > c*10e3)
     {
         select_resistor = Resistor_10_KOm;
     } else
-    if(measured_impedance > 900)
+    if(measured_impedance > c*1e3)
     {
         select_resistor = Resistor_1_KOm;
     }
 
     if(select_resistor > max_resistor)
         select_resistor = max_resistor;
+
+    //select_resistor = Resistor_1_KOm; //test code
 
     if(ResistorCurrent()==select_resistor)
         return false;
@@ -139,7 +147,7 @@ void TaskStartConvolution()
     if(g_changed_some)
     {
         g_changed_some = false;
-        HAL_Delay(2);
+        HAL_Delay(10);
     }
 
     AdcStartConvolution(g_freqWord, convolution_time_ms_slow);
@@ -155,11 +163,16 @@ void TaskSetDefaultResistor(ResistorSelectorEnum r)
     }
 }
 
+ResistorSelectorEnum TaskGetDefaultResistor()
+{
+    return g_choose_resistor;
+}
 
 void TaskSetFreq(double freq)
 {
     g_freq = freq;
     g_freqWord = AD9833_CalcFreqWorld(freq);
+    g_freq_real = AD9833_CalcFreq(g_freqWord);
     AD9833_SetFreqWorld(g_freqWord);
     g_changed_some = true;
 }
@@ -168,6 +181,16 @@ int TaskGetFreq()
 {
     return g_freq;
 }
+
+
+bool IsUsbCommand()
+{
+    if(g_usb_received_offset<g_usb_received_words)
+        return true;
+    return last_command!=0;
+}
+
+static int g_skip_count;
 
 void NextTask()
 {
@@ -189,6 +212,8 @@ void NextTask()
             }
 
             TaskStartConvolution();
+            //g_skip_count = 1; //Пробуем медленно, вдруг точнее результаты станут
+            g_skip_count = 0;
             return;
         }
     }
@@ -205,25 +230,36 @@ void TaskQuant()
         g_result = AdcConvolutionResult();
         g_Zxm = calculateZxm(&g_result, &g_error);
         if(g_enable_correction)
-            g_Zx = CorrectionMake(g_Zxm, ResistorCurrent(), g_freq);
+            g_Zx = CorrectionMake(g_Zxm, ResistorCurrent(), g_freq_real);
         else
             g_Zx = g_Zxm;
+
+        if(g_skip_count>0)
+        {
+            g_skip_count--;
+            TaskStartConvolution();
+            return;
+        }
 
         if(SelectResistor(&g_result, cabs(g_Zxm)))
         {
             TaskStartConvolution();
+            g_skip_count = 1;
 
             //Временный, отладочный код, для того, чтобы увидеть бесконечные переключения резистора.
-            SceneSingleFreqZx();
+            //SceneSingleFreqZx();
         } else
         {
             if(last_command==USB_COMMAND_CONVOLUTION)
             {
                 SendConvolutionResult(g_Zx);
+            } else
+            {
+                SceneCalibrarionZx(g_Zxm);
+                SceneGraphResultZx();
+                SceneSingleFreqZx();
             }
-            SceneSingleFreqZx();
-            SceneCalibrarionZx(g_Zxm);
-            SceneGraphResultZx();
+
             force_next_task = true;
         }
     }

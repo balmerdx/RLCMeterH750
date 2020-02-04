@@ -63,23 +63,31 @@ int main(void)
         Error_Handler();
     }
 
+    UTFT_print("Flash OK", 20, 30);
+
     //TestStoreToFlash();
 
     DualAdcInitAndStart();
-    //UTFT_print("ADC Started    ", 20, 30);
+    UTFT_print("ADC Started    ", 20, 30);
 
     LoadSettings();
     CorrectionLoad(g_settings.correction_index);
 
     InterfaceStart();
-    //TaskSetFreq(StandartFreq(g_settings.single_freq_index));
-    TaskSetFreq(320);
+    TaskSetFreq(StandartFreq(g_settings.single_freq_index));
+    //TaskSetFreq(320);
     TaskStartConvolution();
     SceneSingleFreqStart();
 
     while (1)
     {
+        HAL_Delay(1);
         TaskQuant();
+        if(IsUsbCommand())
+        {
+            continue;
+        }
+
         InterfaceQuant();
 
         if(SaveSettingsIfChangedAndTimeUp())
@@ -91,8 +99,6 @@ int main(void)
             UTFT_print("              ", 20, 30);
             */
         }
-
-        HAL_Delay(1);
     }
 }
 

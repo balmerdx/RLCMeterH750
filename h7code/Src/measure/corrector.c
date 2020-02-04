@@ -78,11 +78,21 @@ static ZmShort lerp_ZmShort(ZmShort* p1, ZmShort* p2, float a)
     return out;
 }
 
+static complexf lerp_Y(complexf Z1, complexf Z2, float a)
+{
+    complexf Y1 = 1/Z1, Y2 = 1/Z2;
+    complexf Y = Y1*(1-a)+Y2*a;
+    return 1/Y;
+}
+
 static ZmOpen lerp_ZmOpen(ZmOpen* p1, ZmOpen* p2, float a)
 {
     ZmOpen out;
-    out.Zstdm = p1->Zstdm*(1-a)+p2->Zstdm*a;
-    out.Zom = p1->Zom*(1-a)+p2->Zom*a;
+    //out.Zstdm = p1->Zstdm*(1-a)+p2->Zstdm*a;
+    //out.Zom = p1->Zom*(1-a)+p2->Zom*a;
+
+    out.Zstdm = lerp_Y(p1->Zstdm, p2->Zstdm, a);
+    out.Zom = lerp_Y(p1->Zom, p2->Zom, a);
     return out;
 }
 

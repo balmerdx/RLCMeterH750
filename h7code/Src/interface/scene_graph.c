@@ -298,7 +298,8 @@ void SceneGraphDrawGraph()
     if(g_settings.graph_type==GRAPH_Z_L
      || g_settings.graph_type==GRAPH_Z_C)
     {
-        ymin = 0;
+        if(ymin<0)
+            ymin = 0;
     }
 
     float ybig = fmaxf(fabsf(ymin), fabsf(ymax));

@@ -12,9 +12,35 @@ volatile int half_conv = 0;
 volatile int full_conv = 0;
 volatile int adc_overrun = 0;
 
-uint32_t AdcSamplesPerSecond()
+//#define ADC_RESOLUTION14_BIT
+//#define SAMPLING_TIME ADC_SAMPLETIME_2CYCLES_5 // Minimum sampling time
+#define SAMPLING_TIME ADC_SAMPLETIME_8CYCLES_5
+//#define SAMPLING_TIME ADC_SAMPLETIME_64CYCLES_5
+
+double AdcSamplesPerSecond()
 {
-    return 2000000;
+    double sps = 22e6;
+    double sampling_time = 2.5;
+    double conversion_time = 8.5; //16 bit resolution
+#if (SAMPLING_TIME==ADC_SAMPLETIME_2CYCLES_5)
+    sampling_time = 2.5;
+#endif
+
+#if (SAMPLING_TIME==ADC_SAMPLETIME_8CYCLES_5)
+    sampling_time = 8.5;
+#endif
+
+#if (SAMPLING_TIME==ADC_SAMPLETIME_64CYCLES_5)
+    sampling_time = 64.5;
+#endif
+
+
+#ifdef ADC_RESOLUTION14_BIT
+    conversion_time = 7.5;
+#endif
+
+    sps /= (sampling_time+conversion_time);
+    return sps;
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
@@ -22,7 +48,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
     GPIO_InitTypeDef          GPIO_InitStruct;
     static DMA_HandleTypeDef  DmaHandle;
 
+#ifdef PCB_V3
     ADC_InitVREFBUF();
+#endif
 
     //##-1- Enable peripherals and GPIO Clocks #################################
     // Enable clock of GPIO associated to the peripheral channels
@@ -142,7 +170,11 @@ static void ADC_Config(void)
     }
 
     AdcHandle_master.Init.ClockPrescaler        = ADC_CLOCK_ASYNC_DIV4;          // Asynchronous clock mode, input ADC clock divided by 4
+#ifdef ADC_RESOLUTION14_BIT
+    AdcHandle_master.Init.Resolution            = ADC_RESOLUTION_14B;            // 16-bit resolution for converted data
+#else
     AdcHandle_master.Init.Resolution            = ADC_RESOLUTION_16B;            // 16-bit resolution for converted data
+#endif
     AdcHandle_master.Init.ScanConvMode          = DISABLE;                       // Sequencer disabled (ADC conversion on only 1 channel: channel set on rank 1)
     AdcHandle_master.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;           // EOC flag picked-up to indicate conversion end
     AdcHandle_master.Init.LowPowerAutoWait      = DISABLE;                       // Auto-delayed conversion feature disabled
@@ -183,7 +215,7 @@ static void ADC_Config(void)
     //       of transfer), select sampling time and ADC clock with sufficient
     //       duration to not create an overhead situation in IRQHandler.
     sConfig.Rank         = ADC_REGULAR_RANK_1;          // Rank of sampled channel number ADCx_CHANNEL
-    sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;    // Minimum sampling time
+    sConfig.SamplingTime = SAMPLING_TIME;
     sConfig.SingleDiff   = ADC_SINGLE_ENDED;            // Single-ended input channel
     sConfig.OffsetNumber = ADC_OFFSET_NONE;             // No offset subtraction
     sConfig.Offset = 0;                                 // Parameter discarded because offset correction is disabled
@@ -317,5 +349,6 @@ void ADC_InitVREFBUF()
         Error_Handler();
     }
 
-    HAL_Delay(20);
+    //Пускай побольше конденсатор успеет зарядиться.
+    HAL_Delay(200);
 }

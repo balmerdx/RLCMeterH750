@@ -8,6 +8,7 @@
 #include "ili/DefaultFonts.h"
 #include "task.h"
 #include "scene_get_float.h"
+#include "scene_debug.h"
 
 enum SingleFreqMenuEnum
 {
@@ -17,7 +18,7 @@ enum SingleFreqMenuEnum
     SFME_Z_REAL_IMAG,
     SFME_Z_ABS_ARG,
     SFME_CALIBRATION,
-    SFME_VIEW_DEBUG,
+    SFME_DEBUG,
     SFME_TO_GRAPH,
 };
 
@@ -32,7 +33,7 @@ void SceneSingleFreqMenuStart()
     MenuAdd("View LC", SFME_LC);
     MenuAdd("View Z real & imag", SFME_Z_REAL_IMAG);
     MenuAdd("View Z abs & arg", SFME_Z_ABS_ARG);
-    MenuAdd(view_debug?"View normal":"View debug", SFME_VIEW_DEBUG);
+    MenuAdd("Debug menu", SFME_DEBUG);
     MenuAdd("Calibration", SFME_CALIBRATION);
     MenuAdd("Switch to graph", SFME_TO_GRAPH);
     MenuRedraw();
@@ -80,10 +81,9 @@ void SceneSingleFreqMenuQuant()
         return;
     }
 
-    if(MenuData()==SFME_VIEW_DEBUG)
+    if(MenuData()==SFME_DEBUG)
     {
-        view_debug = !view_debug;
-        SceneSingleFreqStart();
+        SceneDebugMenuStart();
         return;
     }
 

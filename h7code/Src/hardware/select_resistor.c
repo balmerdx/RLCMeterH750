@@ -160,3 +160,19 @@ float ADC_MaxVoltage()
     return 3.3;
 #endif
 }
+
+const char* GetResistorName(ResistorSelectorEnum r)
+{
+    char* str_r = "Auto";
+    if(r == Resistor_100_Om)
+        str_r = "100 Om";
+    if(r == Resistor_1_KOm)
+        str_r = "1 KOm";
+    if(r == Resistor_10_KOm)
+        str_r = "10 KOm";
+    if(r == Resistor_100_Om_Voltage_Boost)
+        str_r = "100 Om+";
+    if(r == Resistor_10_KOm_Current_Boost)
+        str_r = "10 KOm+";
+    return str_r;
+}

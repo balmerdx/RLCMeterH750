@@ -11,7 +11,7 @@ void DualAdcInitAndStart();
 void AdcConvertDataCallback(uint32_t* data, uint32_t size);
 
 //Количество сэмплов в секунду
-uint32_t AdcSamplesPerSecond();
+double AdcSamplesPerSecond();
 
 extern volatile int half_conv;
 extern volatile int full_conv;
