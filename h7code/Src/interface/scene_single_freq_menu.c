@@ -19,6 +19,7 @@ enum SingleFreqMenuEnum
     SFME_Z_ABS_ARG,
     SFME_CALIBRATION,
     SFME_DEBUG,
+    SFME_FREQ_ALL,
     SFME_TO_GRAPH,
 };
 
@@ -35,6 +36,7 @@ void SceneSingleFreqMenuStart()
     MenuAdd("View Z abs & arg", SFME_Z_ABS_ARG);
     MenuAdd("Debug menu", SFME_DEBUG);
     MenuAdd("Calibration", SFME_CALIBRATION);
+    MenuAdd(g_settings.all_frequencies?"Freq=All":"Freq=Medium", SFME_FREQ_ALL);
     MenuAdd("Switch to graph", SFME_TO_GRAPH);
     MenuRedraw();
 
@@ -98,4 +100,13 @@ void SceneSingleFreqMenuQuant()
         SceneGraphStart();
         return;
     }
+
+    if(MenuData()==SFME_FREQ_ALL)
+    {
+        g_settings.all_frequencies = !g_settings.all_frequencies;
+        SceneSingleFreqChangeFrequency(0);
+        SceneSingleFreqStart();
+        return;
+    }
+
 }

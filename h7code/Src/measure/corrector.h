@@ -7,6 +7,8 @@ typedef complex float complexf;
 
 //Стандартные частоты, на которых будем производить измерения корректирующих коэффициентов
 #define FREQ_INDEX_MAX 58
+//Через какое количество частот шагать, если выбран режим "Freq = Low count"
+#define FREQ_INDEX_DELTA 6
 int32_t StandartFreq(int idx);
 
 

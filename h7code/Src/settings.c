@@ -4,6 +4,7 @@
 
 Settings g_settings = {
     .view_parallel = false,
+    .all_frequencies = false,
     .view_mode = VM_LC,
     .single_freq_index = 18,
     .graph_min_freq = 100,
@@ -15,7 +16,7 @@ Settings g_settings = {
 char* g_correction_names[CORRECTION_COUNT] = {
     "LONG",
     "SHORT",
-    "THIRD"
+    "PCB"
 };
 
 static Settings settings_stored;

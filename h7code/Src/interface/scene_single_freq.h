@@ -13,3 +13,5 @@ void FormatReIm(complex Zx,
                 char* str_im,
                 char* str_re_type,
                 char* str_im_type);
+
+void SceneSingleFreqChangeFrequency(int delta);

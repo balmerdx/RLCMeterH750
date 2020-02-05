@@ -11,6 +11,7 @@ static void SceneSingleFreqDrawNames();
 static void SceneSingleFreqDrawValues();
 static void SceneSingleFreqDrawCurrentR();
 static void SceneSingleFreqDrawDebug();
+void SceneSingleFreqChangeFrequency(int delta);
 
 static int freq_x;
 static int freq_y;
@@ -259,8 +260,17 @@ void SceneSingleFreqStart()
         UTFT_setColorW(VGA_RED);
         strncat(buf, "inval", sizeof(buf)-1);
     }
-    UTF_DrawString(info_current_r_x + info_current_r_width+10, info_current_r_y, buf);
+
+    int start_x = info_current_r_x + info_current_r_width;
+    const int cor_x_space = 10;
+    UTFT_fillRectBack(start_x, info_current_r_y, start_x+cor_x_space, UTFT_getDisplayYSize()-1);
+    start_x += cor_x_space;
+    start_x = UTF_DrawString(start_x, info_current_r_y, buf);
     UTFT_setColorW(VGA_WHITE);
+
+    UTFT_fillRectBack(start_x, info_current_r_y, start_x+cor_x_space, UTFT_getDisplayYSize()-1);
+    start_x += cor_x_space;
+    UTF_DrawStringJustify(start_x, info_current_r_y, g_settings.view_parallel?"PAR":"SER", UTFT_getDisplayXSize()-start_x, UTF_CENTER);
 
     SceneSingleFreqDrawFreq();
     SceneSingleFreqDrawNames();
@@ -272,8 +282,7 @@ void SceneSingleFreqQuant()
 {
     if(EncValueChanged())
     {
-        AddSaturated(&g_settings.single_freq_index, EncValueDelta(), FREQ_INDEX_MAX);
-        TaskSetFreq(StandartFreq(g_settings.single_freq_index));
+        SceneSingleFreqChangeFrequency(EncValueDelta());
     }
 
     if(last_visible_freq != TaskGetFreq())
@@ -437,4 +446,18 @@ void SceneSingleFreqDrawDebug()
     strcpy(buf, "err(im)=");
     floatToString(buf+strlen(buf), 20, g_error.err_R, 4, 7, false);
     UTF_DrawStringJustify(pb_param_x, y, buf, pb_name_width, UTF_CENTER);
+}
+
+void SceneSingleFreqChangeFrequency(int delta)
+{
+    if(g_settings.all_frequencies)
+    {
+        AddSaturated(&g_settings.single_freq_index, delta, FREQ_INDEX_MAX);
+    } else
+    {
+        AddSaturated(&g_settings.single_freq_index, delta*FREQ_INDEX_DELTA, FREQ_INDEX_MAX);
+        g_settings.single_freq_index = g_settings.single_freq_index/FREQ_INDEX_DELTA*FREQ_INDEX_DELTA;
+    }
+
+    TaskSetFreq(StandartFreq(g_settings.single_freq_index));
 }

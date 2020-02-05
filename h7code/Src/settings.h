@@ -25,6 +25,9 @@ typedef enum
 typedef struct Settings
 {
     bool view_parallel;
+    //all_frequencies==true - все частоты из StandartFreq
+    //all_frequencies==false - небольшое количество частот из StandartFreq (чтобы быстро листалось)
+    bool all_frequencies;
     VIEW_MODE view_mode;
 
     //Индекс, для StandartFreq функции
@@ -34,6 +37,7 @@ typedef struct Settings
     int32_t graph_max_freq;
     GraphType graph_type;
 
+    //Индекс таблицы для коррекции
     int correction_index;
 } Settings;
 
