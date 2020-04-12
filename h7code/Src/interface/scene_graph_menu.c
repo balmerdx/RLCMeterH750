@@ -6,13 +6,19 @@
 #include "scene_graph_menu.h"
 #include "scene_single_freq.h"
 #include "scene_graph.h"
+#include "scene_get_float.h"
+
+#include <stdio.h>
 
 enum SceneGraphMenuEnum
 {
+    SGME_BAD,
     SGME_START_SCAN,
     SGME_RETURN,
     SGME_TO_SINGLE,
     SGME_SET_FREQ_MIN,
+    SGME_FREQ_MIN,
+    SGME_FREQ_MAX,
     SGME_GRAPH,
 };
 
@@ -22,23 +28,59 @@ static void SceneSelectFreqQuant();
 
 static void SceneSelectGraphStart();
 static void SceneSelectGraphQuant();
+static void OnFloatDialogResult();
 
 static int g_default_frequencies[] =
-    {   10,   30,   100,   200,
-      600, 3000, 10000, 30000,
-      100000, 300000, 500000
+    {   10,   33,   100,   330,
+      1000, 3300, 10000, 33000,
+      100000, 330000, 500000
     };
 static bool g_current_is_min_freq;
 static int8_t g_current_selected_min_freq_index;
+static int last_sgme = SGME_BAD;
+
+void OnFloatDialogResult()
+{
+    if(last_sgme==SGME_FREQ_MIN && SceneGetFloatOk())
+    {
+        g_settings.graph_min_freq = SceneGetFloat();
+    }
+
+    if(last_sgme==SGME_FREQ_MAX && SceneGetFloatOk())
+    {
+        g_settings.graph_max_freq = SceneGetFloat();
+    }
+
+    if(g_settings.graph_min_freq < 10)
+        g_settings.graph_min_freq = 10;
+
+    if(g_settings.graph_max_freq > 500000)
+        g_settings.graph_max_freq = 500000;
+
+    if(g_settings.graph_min_freq > g_settings.graph_max_freq)
+        g_settings.graph_max_freq = g_settings.graph_min_freq+10;
+
+    last_sgme = SGME_BAD;
+}
 
 void SceneGraphMenuStart()
 {
+    OnFloatDialogResult();
+
+    char buf[32];
     UTFT_setFont(BigFont);
     MenuReset("Graph menu");
     MenuAdd("Graphics", SGME_GRAPH);
     MenuAdd("Start scan", SGME_START_SCAN);
     MenuAdd("To single freq", SGME_TO_SINGLE);
     MenuAdd("Set freq", SGME_SET_FREQ_MIN);
+
+    sprintf(buf, "Freq min=%li", g_settings.graph_min_freq);
+    MenuAdd(buf, SGME_FREQ_MIN);
+
+    sprintf(buf, "Freq max=%li", g_settings.graph_max_freq);
+    MenuAdd(buf, SGME_FREQ_MAX);
+
     MenuAdd1("..", SGME_RETURN, "Return to graph");
 
     MenuRedraw();
@@ -82,6 +124,20 @@ void SceneGraphMenuQuant()
         return;
     }
 
+    if(MenuData()==SGME_FREQ_MIN)
+    {
+        last_sgme = MenuData();
+        SceneGetFloatStart("Min freq", 0, 5, 5, 5, SceneGraphMenuStart);
+        return;
+    }
+
+    if(MenuData()==SGME_FREQ_MAX)
+    {
+        last_sgme = MenuData();
+        SceneGetFloatStart("Max freq", 0, 5, 5, 5, SceneGraphMenuStart);
+        return;
+    }
+
 }
 
 void SceneSelectFreqStart(bool min_freq)
@@ -102,12 +158,25 @@ void SceneSelectFreqStart(bool min_freq)
     }
 
     char st[27];
+    int32_t closest_data = min_index;
+    int32_t closest_freq = 0;
+    int32_t required_feeq = min_freq ? g_settings.graph_min_freq : g_settings.graph_max_freq;
+
     for(int i=min_index; i<count; i++)
     {
         int freq = g_default_frequencies[i];
+
+        if(i==min_index || fabsf(freq-required_feeq)<fabsf(closest_freq-required_feeq))
+        {
+            closest_data = i;
+            closest_freq = freq;
+        }
+
         printEvenFreq(st, freq, 4);
         MenuAdd(st, i);
     }
+
+    MenuSetIndex(MenuIndexByData(closest_data));
 
     MenuRedraw();
     InterfaceGoto(SceneSelectFreqQuant);
