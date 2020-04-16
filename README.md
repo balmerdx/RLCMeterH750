@@ -4,7 +4,8 @@
 * использование быстрого 16-ти битного ADC от STM32H750
 * широкий диапазон тестовых частот 10 Гц - 500 КГц
 
-![Общий вид](https://raw.githubusercontent.com/balmerdx/RLCMeterH750/misc/img/device.jpg)
+misc/img/device.jpg
+![Общий вид](misc/img/device.jpg)
 
 ### Тут много ссылок на посты в Livejournal про то как шла разработка.
 [1](https://balmerdx.livejournal.com/157420.html)
