@@ -20,27 +20,12 @@ volatile int adc_overrun = 0;
 double AdcSamplesPerSecond()
 {
     double sps = 22e6;
-    double sampling_time = 2.5;
-    double conversion_time = 8.5; //16 bit resolution
-#if (SAMPLING_TIME==ADC_SAMPLETIME_2CYCLES_5)
-    sampling_time = 2.5;
+#if (SAMPLING_TIME==ADC_SAMPLETIME_8CYCLES_5) && !defined(ADC_RESOLUTION14_BIT)
+    //supported only 16 bit resolution and ADC_SAMPLETIME_8CYCLES_5
+    return sps / 17; 
+#else
+    #error "Unsupported"
 #endif
-
-#if (SAMPLING_TIME==ADC_SAMPLETIME_8CYCLES_5)
-    sampling_time = 8.5;
-#endif
-
-#if (SAMPLING_TIME==ADC_SAMPLETIME_64CYCLES_5)
-    sampling_time = 64.5;
-#endif
-
-
-#ifdef ADC_RESOLUTION14_BIT
-    conversion_time = 7.5;
-#endif
-
-    sps /= (sampling_time+conversion_time);
-    return sps;
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
@@ -109,8 +94,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
 
     // NVIC configuration for ADC interrupt
     // Priority: high-priority
-    HAL_NVIC_SetPriority(ADCx_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(ADCx_IRQn);
+    //HAL_NVIC_SetPriority(ADCx_IRQn, 0, 0);
+    //HAL_NVIC_EnableIRQ(ADCx_IRQn);
 }
 
 /**

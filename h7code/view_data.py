@@ -163,6 +163,16 @@ def checkBits(data, text):
 			print(text, ": bit", i, " is 0 permanently")
 	return
 
+def test_sin(offset = 82, sampling_time = 17, freq = 10000, size = 10000):
+	sps = 22e6 / sampling_time
+	samples_per_sin = sps / freq
+
+	mul = math.pi * 2 / samples_per_sin
+	
+	x = np.linspace(start=-offset*mul, stop=(size-offset)*mul, num=size, endpoint=False)
+	y = np.cos(x)
+	return y * 21000
+
 def ViewDataBin(filename):
 	(data_xi, data_yi) = readDataInt(filename)
 	checkBits(data_xi, "X")
@@ -178,6 +188,8 @@ def ViewDataBin(filename):
 
 	#(zx, zy) = calcSinParams(data_x, data_y, freq=150)
 	#print("zx=", abs(zx), "zy=", abs(zy), "phase=", cmath.phase(zx/zy)*180/math.pi)
+
+	#data_y = test_sin()
 
 	plotXY(data_x, data_y)
 	#plotFFT(data_x, color = 'red')

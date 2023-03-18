@@ -37,4 +37,4 @@ void AddSaturated(int* value, int add, int max);
 void DefaultQuant();
 
 //Фонт, которым рисуются menu/statusbar/
-const uint32_t* g_default_font;
+extern const uint32_t* g_default_font;

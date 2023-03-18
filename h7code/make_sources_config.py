@@ -5,7 +5,7 @@
 # "output" - output path prefix
 
 import sys
-sys.path.insert(0, '/home/balmer/radio/stm32/projects/BalmerVNA/make_py')
+sys.path.insert(0, '/home/balmer/radio/stm32/projects/make_py')
 import make_sources
 import copy
 
